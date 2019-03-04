@@ -20,7 +20,7 @@ public class ApplicationUI
     private String[] menuItems = {
             "1. List all newspapers",
             "2. Add new newspaper",
-            "3. Find a product by title",
+            "3. Find a newspaper by title",
             "4. Exit",
     };
 
