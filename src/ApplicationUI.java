@@ -16,7 +16,7 @@ public class ApplicationUI
 
    
     // The menu tha will be displayed. Please edit/alter the menu
-    // to fit your application (i.e. replace "prodct" with "litterature"
+    // to fit your application (i.e. replace "product" with "literature"
     // etc.
     private String[] menuItems = {
             "1. List all newspapers",
