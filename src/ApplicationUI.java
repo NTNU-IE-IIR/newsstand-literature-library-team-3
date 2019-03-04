@@ -124,12 +124,12 @@ public class ApplicationUI
     /**
      * Lists all the products/literature in the register
      */
-    void listAllProducts()
+    private void listAllProducts()
     {
         System.out.println("listAllProducts() was called");
     }
 
-    void listAllNewspapers()
+    private void listAllNewspapers()
     {
         Iterator<Newspaper> newsListIt = this.newspaperCollection.getIterator();
         while (newsListIt.hasNext())
@@ -154,7 +154,7 @@ public class ApplicationUI
      * Remember to also handle invalid input from the
      * user!!
      */
-    void addNewProduct()
+    private void addNewProduct()
     {
         System.out.println("addNewProduct() was called");
         
@@ -169,7 +169,7 @@ public class ApplicationUI
      * Then, upon return from the register, you need
      * to print the details of the found item.
      */
-    void findNewspaperByName()
+    private void findNewspaperByName()
     {
         System.out.print("Please enter title to search for: ");
         Scanner reader = new Scanner(System.in);
@@ -192,7 +192,7 @@ public class ApplicationUI
      * create a new newspaper object. This object is later added to the
      * newspaper collection.
      */
-    void addNewspaper()
+    private void addNewspaper()
     {
         System.out.println("Please enter the title of the newspaper: ");
         Scanner reader = new Scanner(System.in);
