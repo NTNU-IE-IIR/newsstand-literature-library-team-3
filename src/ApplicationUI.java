@@ -155,7 +155,6 @@ public class ApplicationUI
      */
     void findProductByName()
     {
-
         System.out.println("findProductByName() was called");
     }
     
