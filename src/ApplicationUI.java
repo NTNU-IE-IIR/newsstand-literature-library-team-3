@@ -181,10 +181,7 @@ public class ApplicationUI
             String currentNewspaperTitle = currentNewspaper.getTitle();
             if (currentNewspaperTitle.contains(searchWord))
             {
-                System.out.println("Title: " + currentNewspaperTitle);
-                System.out.println("Publisher: " + currentNewspaper.getPublisher());
-                System.out.println("Genre: " + currentNewspaper.getGenre());
-                System.out.println("Number of publishments: " + currentNewspaper.getNumberOfPublishments());
+                System.out.println(currentNewspaper.getAllInfoAsString());
             }
 
         }

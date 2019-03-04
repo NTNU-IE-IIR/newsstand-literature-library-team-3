@@ -161,4 +161,18 @@ public class Newspaper
             System.out.println("Please enter title");
         }
     }
+
+    /**
+     * Returns a string that contains the title, publisher, genre and number
+     * of publishments of the newspaper.
+     *
+     * @return A string containing title, publisher, genre and number of publishments.
+     */
+    public String getAllInfoAsString()
+    {
+        return  "Title: " + this.title + "\n" +
+                "Publisher: " + this.publisher + "\n" +
+                "Genre: " + this.genre + "\n" +
+                "Number of publishments: " + this.numberOfPublishments;
+    }
 }
