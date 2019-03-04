@@ -1,6 +1,7 @@
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.Iterator;
 
 /**
  * Makes up the user interface (text based) of the application.
@@ -129,22 +130,6 @@ public class ApplicationUI
         System.out.println("listAllProducts() was called");
     }
 
-    
-    /**
-     * Add a new product/literature to the register.
-     * In this method you have to add code to ask the
-     * user for the necessary information you need to 
-     * create an instance of the product, which you
-     * then send as a parameter to the addNewspaper()-
-     * method of the register.
-     * Remember to also handle invalid input from the
-     * user!!
-     */
-    void addNewProduct()
-    {
-        System.out.println("addNewProduct() was called");
-        
-    }
 
     /**
      * Find and display a product based om name (title).
@@ -157,9 +142,15 @@ public class ApplicationUI
      */
     void findProductByName()
     {
-        System.out.println("findProductByName() was called");
     }
 
+
+    /**
+     * Add a new product/literature to the register.
+     * Uses Scanner class to fill the parameters needed to
+     * create a new newspaper object. This object is later added to the
+     * newspaper collection.
+     */
     void addNewspaper()
     {
         System.out.println("Please enter the title of the newspaper: ");
