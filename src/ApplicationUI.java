@@ -130,6 +130,20 @@ public class ApplicationUI
         System.out.println("listAllProducts() was called");
     }
 
+    void listAllNewspapers()
+    {
+        Iterator<Newspaper> newsListIt = this.newspaperCollection.getIterator();
+        while (newsListIt.hasNext())
+        {
+            Newspaper newspaper = newsListIt.next();
+
+            System.out.println("Title: " + newspaper.getTitle() + "\n" +
+                    "Number of publishments: " + newspaper.getNumberOfPublishments() + "\n" +
+                    "Genre: " + newspaper.getGenre() + "\n" +
+                    "Publisher: " + newspaper.getPublisher());
+        }
+    }
+
     
     /**
      * Add a new product/literature to the register.
