@@ -172,9 +172,6 @@ public class ApplicationUI
             }
 
         }
-
-
-
         System.out.println("findProductByName() was called");
     }
 
@@ -196,7 +193,7 @@ public class ApplicationUI
         System.out.println("Please enter the number of issues of the newspaper: ");
         System.out.println("Set to 0 if unknown");
         System.out.print("> ");
-        String numberOfPublishments = reader.nextLine();
+        int numberOfPublishments = Integer.parseInt(reader.nextLine());
 
 
 

@@ -15,14 +15,16 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ApplicationUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1301">
-              <caret line="201" column="41" selection-start-line="201" selection-start-column="41" selection-end-line="201" selection-end-column="41" />
+            <state relative-caret-position="358">
+              <caret line="195" column="39" lean-forward="true" selection-start-line="195" selection-start-column="39" selection-end-line="195" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3671#3672#0" expanded="true" />
-                <element signature="e#3726#3727#0" expanded="true" />
-                <element signature="e#3833#3834#0" expanded="true" />
-                <element signature="e#3899#3900#0" expanded="true" />
+                <element signature="e#847#848#0" expanded="true" />
+                <element signature="e#914#915#0" expanded="true" />
+                <element signature="e#3731#3732#0" expanded="true" />
+                <element signature="e#3786#3787#0" expanded="true" />
+                <element signature="e#3893#3894#0" expanded="true" />
+                <element signature="e#3959#3960#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -60,7 +62,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Newspaper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-874">
+            <state relative-caret-position="161">
               <caret line="13" column="31" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
               <folding>
                 <element signature="e#2026#2027#0" expanded="true" />
@@ -144,7 +146,7 @@
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551700655206" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551701476253" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
@@ -171,14 +173,14 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1551688212997</updated>
-      <workItem from="1551688216202" duration="7099000" />
+      <workItem from="1551688216202" duration="7378000" />
     </task>
-    <task id="LOCAL-00001" summary="Test av commit via IntelliJ">
-      <created>1551693147717</created>
+    <task id="LOCAL-00001" summary="Updated the workspace.xml file and added &quot;FindProductByName&quot; method to ApplicationUI.">
+      <created>1551701111081</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1551693147717</updated>
+      <updated>1551701111081</updated>
     </task>
     <task id="LOCAL-00002" summary="Endring av menuItems i ApplicationUI">
       <created>1551694665059</created>
@@ -194,10 +196,11 @@
       <option name="project" value="LOCAL" />
       <updated>1551694780279</updated>
     </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7099000" />
+    <option name="totallyTimeSpent" value="7378000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
@@ -261,6 +264,10 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Updated the workspace.xml file and added &quot;FindProductByName&quot; method to ApplicationUI." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated the workspace.xml file and added &quot;FindProductByName&quot; method to ApplicationUI." />
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -289,7 +296,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Newspaper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-874">
+        <state relative-caret-position="161">
           <caret line="13" column="31" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
           <folding>
             <element signature="e#2026#2027#0" expanded="true" />
@@ -306,14 +313,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ApplicationUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1301">
-          <caret line="201" column="41" selection-start-line="201" selection-start-column="41" selection-end-line="201" selection-end-column="41" />
+        <state relative-caret-position="358">
+          <caret line="195" column="39" lean-forward="true" selection-start-line="195" selection-start-column="39" selection-end-line="195" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3671#3672#0" expanded="true" />
-            <element signature="e#3726#3727#0" expanded="true" />
-            <element signature="e#3833#3834#0" expanded="true" />
-            <element signature="e#3899#3900#0" expanded="true" />
+            <element signature="e#847#848#0" expanded="true" />
+            <element signature="e#914#915#0" expanded="true" />
+            <element signature="e#3731#3732#0" expanded="true" />
+            <element signature="e#3786#3787#0" expanded="true" />
+            <element signature="e#3893#3894#0" expanded="true" />
+            <element signature="e#3959#3960#0" expanded="true" />
           </folding>
         </state>
       </provider>
