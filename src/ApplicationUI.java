@@ -186,9 +186,7 @@ public class ApplicationUI
                 System.out.println("Genre: " + currentNewspaper.getGenre());
                 System.out.println("Number of publishments: " + currentNewspaper.getNumberOfPublishments());
             }
-
         }
-        System.out.println("findProductByName() was called");
     }
 
     /**
