@@ -18,9 +18,10 @@ public class ApplicationUI
     // to fit your application (i.e. replace "prodct" with "litterature"
     // etc.
     private String[] menuItems = {
-        "1. List all products",
-        "2. Add new product",
-        "3. Find a product by name",
+            "1. List all newspapers",
+            "2. Add new newspaper",
+            "3. Find a product by title",
+            "4. Exit",
     };
 
     /**
