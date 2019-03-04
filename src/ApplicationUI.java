@@ -24,14 +24,14 @@ public class ApplicationUI
             "3. Find a newspaper by title",
             "4. Exit",
     };
-    private LiteratureRegister newspaperCollection = new LiteratureRegister();
+    private LiteratureRegister newspaperCollection;
 
     /**
      * Creates an instance of the ApplicationUI User interface. 
      */
     public ApplicationUI() 
     {
-
+        this.newspaperCollection = new LiteratureRegister();
     }
 
     /**
@@ -194,11 +194,13 @@ public class ApplicationUI
         String publisher = reader.nextLine();
 
         System.out.println("Please enter the number of issues of the newspaper: ");
+        System.out.println("Set to 0 if unknown");
         System.out.print("> ");
         String numberOfPublishments = reader.nextLine();
 
 
 
-        newspaperCollection.addNewspaper(title, genre, publisher, numberOfPublishments);
+        Newspaper newspaperToAdd = new Newspaper(title, genre, publisher, numberOfPublishments);
+        newspaperCollection.addNewspaper(newspaperToAdd);
     }
 }
