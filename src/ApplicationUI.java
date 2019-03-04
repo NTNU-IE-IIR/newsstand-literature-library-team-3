@@ -183,9 +183,7 @@ public class ApplicationUI
             {
                 System.out.println(currentNewspaper.getAllInfoAsString());
             }
-
         }
-        System.out.println("findProductByName() was called");
     }
 
     /**
