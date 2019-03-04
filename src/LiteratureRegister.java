@@ -34,15 +34,6 @@ public class LiteratureRegister
         return this.newspaperCollection;
     }
 
-    public void listAllNewspapers()
-    {
-        for (Newspaper newspaper : this.newspaperCollection)
-        {
-            System.out.println("Title: " + newspaper.getTitle()
-                                + " Number of issues: " + newspaper.getNumberOfPublishments());
-        }
-    }
-
     /**
      * Removes a newspaper object from the registry
      * @param title the title of the newspaper to be removed
