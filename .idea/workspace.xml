@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="005d996c-887a-48cd-8429-2ab8ebefec7b" name="Default Changelist" comment="">
+    <list default="true" id="005d996c-887a-48cd-8429-2ab8ebefec7b" name="Default Changelist" comment="Edited some method calls in the switch case.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ApplicationUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ApplicationUI.java" afterDir="false" />
     </list>
@@ -15,8 +15,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ApplicationUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="173" column="60" selection-start-line="173" selection-start-column="60" selection-end-line="173" selection-end-column="60" />
+            <state relative-caret-position="503">
+              <caret line="186" column="108" selection-start-line="186" selection-start-column="108" selection-end-line="186" selection-end-column="108" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#847#848#0" expanded="true" />
@@ -26,15 +26,6 @@
                 <element signature="e#3893#3894#0" expanded="true" />
                 <element signature="e#3959#3960#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="759">
-              <caret line="367" column="10" selection-start-line="367" selection-start-column="10" selection-end-line="367" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -146,7 +137,7 @@
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551702465269" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551702617390" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
@@ -224,17 +215,24 @@
       <option name="project" value="LOCAL" />
       <updated>1551702491237</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Edited some method calls in the switch case.">
+      <created>1551702616019</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1551702616019</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8031000" />
+    <option name="totallyTimeSpent" value="8298000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24966443" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24966443" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -252,7 +250,7 @@
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" weight="0.32960895" />
       <window_info anchor="bottom" id="SonarLint" order="9" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="11" visible="true" weight="0.34217876" />
+      <window_info anchor="bottom" id="Version Control" order="11" weight="0.34217876" />
       <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
       <window_info anchor="bottom" id="Messages" order="13" weight="0.29469272" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -305,16 +303,10 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Updated the workspace.xml file and added &quot;FindProductByName&quot; method to ApplicationUI." />
     <MESSAGE value="Removed &quot;Exit&quot; from the string array." />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed &quot;Exit&quot; from the string array." />
+    <MESSAGE value="Edited some method calls in the switch case." />
+    <option name="LAST_COMMIT_MESSAGE" value="Edited some method calls in the switch case." />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="759">
-          <caret line="367" column="10" selection-start-line="367" selection-start-column="10" selection-end-line="367" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/LiteratureRegister.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="23">
@@ -330,6 +322,20 @@
             <element signature="e#723#724#0" expanded="true" />
             <element signature="e#770#771#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="37">
+          <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9016">
+          <caret line="392" column="10" selection-start-line="392" selection-start-column="10" selection-end-line="392" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -350,17 +356,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="37">
-          <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ApplicationUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="173" column="60" selection-start-line="173" selection-start-column="60" selection-end-line="173" selection-end-column="60" />
+        <state relative-caret-position="503">
+          <caret line="186" column="108" selection-start-line="186" selection-start-column="108" selection-end-line="186" selection-end-column="108" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#847#848#0" expanded="true" />
