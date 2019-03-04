@@ -171,7 +171,7 @@ public class ApplicationUI
         int numberOfPublishments = reader.nextInt();
 
 
-
-        newspaperCollection.addNewspaper(title, genre, publisher, numberOfPublishments);
+        Newspaper newspaperToAdd = new Newspaper(title, genre, publisher, numberOfPublishments);
+        newspaperCollection.addNewspaper(newspaperToAdd);
     }
 }
