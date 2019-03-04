@@ -173,7 +173,7 @@ public class ApplicationUI
 
 
 
-        Newspaper newspaper = new Newspaper(title, genre, publisher, numberOfPublishments);
-        newspaperCollection.addNewspaper(newspaper);
+        Newspaper newspaperToAdd = new Newspaper(title, genre, publisher, numberOfPublishments);
+        newspaperCollection.addNewspaper(newspaperToAdd);
     }
 }
