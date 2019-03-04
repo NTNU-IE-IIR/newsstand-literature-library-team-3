@@ -7,7 +7,7 @@ import java.util.Scanner;
  * Makes up the user interface (text based) of the application.
  * Responsible for all user interaction, like displaying the menu
  * and receiving input from the user.
- * TEST
+ *
  * @author asty
  * @version 1.0
  */
@@ -181,7 +181,7 @@ public class ApplicationUI
             String currentNewspaperTitle = currentNewspaper.getTitle();
             if (currentNewspaperTitle.contains(searchWord))
             {
-                System.out.println(currentNewspaperTitle);
+                System.out.println("Title: " + currentNewspaperTitle);
             }
 
         }
