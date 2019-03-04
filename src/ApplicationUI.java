@@ -167,11 +167,13 @@ public class ApplicationUI
         String publisher = reader.nextLine();
 
         System.out.println("Please enter the number of issues of the newspaper: ");
+        System.out.println("Set to 0 if unknown");
         System.out.print("> ");
         int numberOfPublishments = reader.nextInt();
 
 
-        Newspaper newspaperToAdd = new Newspaper(title, genre, publisher, numberOfPublishments);
-        newspaperCollection.addNewspaper(newspaperToAdd);
+
+        Newspaper newspaper = new Newspaper(title, genre, publisher, numberOfPublishments);
+        newspaperCollection.addNewspaper(newspaper);
     }
 }
