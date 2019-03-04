@@ -200,21 +200,17 @@ public class ApplicationUI
     void addNewspaper()
     {
         System.out.println("Please enter the title of the newspaper: ");
-        System.out.print("> ");
         Scanner reader = new Scanner(System.in);
         String title = reader.nextLine();
 
         System.out.println("Please enter the genre: ");
-        System.out.print("> ");
         String genre = reader.nextLine();
 
         System.out.println("Please enter the publisher: ");
-        System.out.print("> ");
         String publisher = reader.nextLine();
 
         System.out.println("Please enter the number of issues of the newspaper: ");
         System.out.println("Set to 0 if unknown");
-        System.out.print("> ");
         int numberOfPublishments = Integer.parseInt(reader.nextLine());
 
 
