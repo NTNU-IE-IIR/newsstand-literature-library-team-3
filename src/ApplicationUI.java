@@ -24,14 +24,14 @@ public class ApplicationUI
             "3. Find a newspaper by title",
             "4. Exit",
     };
-    private LiteratureRegister newspaperCollection = new LiteratureRegister();
+    private LiteratureRegister newspaperCollection;
 
     /**
      * Creates an instance of the ApplicationUI User interface. 
      */
     public ApplicationUI() 
     {
-
+        this.newspaperCollection = new LiteratureRegister();
     }
 
     /**
