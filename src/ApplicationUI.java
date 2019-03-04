@@ -22,7 +22,6 @@ public class ApplicationUI
             "1. List all newspapers",
             "2. Add new newspaper",
             "3. Find a newspaper by title",
-            "4. Exit",
     };
     private LiteratureRegister newspaperCollection;
 
