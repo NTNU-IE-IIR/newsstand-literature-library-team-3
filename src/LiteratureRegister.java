@@ -21,7 +21,7 @@ public class LiteratureRegister
      * @param numberOfPublishments  number of publisments of the newspaper
      */
     public void addNewspaper(String title, String genre,
-                             String publisher, String numberOfPublishments)
+                             String publisher, int numberOfPublishments)
     {
         Newspaper newspaper = new Newspaper(title, publisher, genre, numberOfPublishments);
         this.newspaperMap.put(title, newspaper);

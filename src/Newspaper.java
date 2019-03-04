@@ -11,7 +11,7 @@ public class Newspaper
     private String title;
     private String publisher;
     private String genre;
-    private String numberOfPublishments;
+    private int numberOfPublishments;
 
 
     /**
@@ -23,7 +23,7 @@ public class Newspaper
      * @param genre The genre of the newspaper
      * @param numberOfPublishments The number of publishments of the newspaper
      */
-    public Newspaper(String title, String publisher, String genre, String numberOfPublishments)
+    public Newspaper(String title, String publisher, String genre, int numberOfPublishments)
     {
         setTitle(title);
         setPublisher(publisher);
@@ -33,7 +33,7 @@ public class Newspaper
 
     /**
      * The object contains nformation about the newspaper, such as Title, Publisher and genre.
-     * The number of publishments are left blank
+     * The number of publishments will be set to 0 by default.
      * @param title The title of the newspaper
      * @param genre The genre of the newspaper
      * @param publisher The publisher of the newspaper.
@@ -43,13 +43,14 @@ public class Newspaper
         setTitle(title);
         setPublisher(publisher);
         setGenre(genre);
-        this.numberOfPublishments = "";
+        this.numberOfPublishments = 0;
     }
 
     /**
      * The object contains information about the newspaper,
      * such as title.
-     * The genre, publisher and number of publishments are left blank.
+     * The genre and publisher are left blank.
+     * Number of publishments will be set to 0 by default.
      * @param title
      */
     public Newspaper(String title)
@@ -57,7 +58,7 @@ public class Newspaper
         setTitle(title);
         this.publisher = ("");
         this.genre = ("");
-        this.numberOfPublishments = ("");
+        this.numberOfPublishments = 0;
     }
 
     /**
@@ -83,7 +84,7 @@ public class Newspaper
      * Get the number of publishments of the object
      * @return  number of publishments
      */
-    public String getNumberOfPublishments()
+    public int getNumberOfPublishments()
     {
         return this.numberOfPublishments;
     }
@@ -117,9 +118,9 @@ public class Newspaper
      * Set the number of publishments of the object
      * @param numberOfPublishments
      */
-    public void setNumberOfPublishments(String numberOfPublishments)
+    public void setNumberOfPublishments(int numberOfPublishments)
     {
-        if (numberOfPublishments.length() > 0)
+        if (numberOfPublishments > 0)
         {
             this.numberOfPublishments = numberOfPublishments;
         }
