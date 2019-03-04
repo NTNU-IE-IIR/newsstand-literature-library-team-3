@@ -189,6 +189,12 @@ public class ApplicationUI
         System.out.println("findProductByName() was called");
     }
 
+    /**
+     * Add a new product/literature to the register.
+     * Uses Scanner class to fill the parameters needed to
+     * create a new newspaper object. This object is later added to the
+     * newspaper collection.
+     */
     void addNewspaper()
     {
         System.out.println("Please enter the title of the newspaper: ");

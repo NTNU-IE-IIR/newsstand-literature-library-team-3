@@ -43,4 +43,6 @@ public class LiteratureRegister
         System.out.println("Removed " + title + " from the registry.");
     }
     */
+
+
 }
