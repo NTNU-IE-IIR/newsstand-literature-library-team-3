@@ -177,7 +177,7 @@ public class ApplicationUI
 
         System.out.println("Please enter the number of issues of the newspaper: ");
         System.out.print("> ");
-        String numberOfPublishments = reader.nextLine();
+        int numberOfPublishments = reader.nextInt();
 
 
 
