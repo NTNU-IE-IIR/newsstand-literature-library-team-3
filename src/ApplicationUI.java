@@ -51,7 +51,7 @@ public class ApplicationUI
                 switch (menuSelection) 
                 {
                     case 1:
-                        this.listAllProducts();
+                        this.listAllNewspapers();
                         break;
 
                     case 2:
@@ -59,7 +59,7 @@ public class ApplicationUI
                         break;
 
                     case 3:
-                        this.findProductByName();
+                        this.findNewspaperByName();
                         break;
 
                     case 4:
@@ -169,9 +169,9 @@ public class ApplicationUI
      * Then, upon return from the register, you need
      * to print the details of the found item.
      */
-    void findProductByName()
+    void findNewspaperByName()
     {
-        System.out.print("Please enter title to search for:");
+        System.out.print("Please enter title to search for: ");
         Scanner reader = new Scanner(System.in);
         String searchWord = reader.nextLine();
         Iterator<Newspaper> it = newspaperCollection.getIterator();
@@ -182,6 +182,9 @@ public class ApplicationUI
             if (currentNewspaperTitle.contains(searchWord))
             {
                 System.out.println("Title: " + currentNewspaperTitle);
+                System.out.println("Publisher: " + currentNewspaper.getPublisher());
+                System.out.println("Genre: " + currentNewspaper.getGenre());
+                System.out.println("Number of publishments: " + currentNewspaper.getNumberOfPublishments());
             }
 
         }
