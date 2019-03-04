@@ -22,12 +22,14 @@ public class ApplicationUI
         "2. Add new product",
         "3. Find a product by name",
     };
+    private LiteratureRegister newspaperCollection = new LiteratureRegister();
 
     /**
      * Creates an instance of the ApplicationUI User interface. 
      */
     public ApplicationUI() 
     {
+
     }
 
     /**
@@ -52,7 +54,7 @@ public class ApplicationUI
                         break;
 
                     case 2:
-                        this.addNewProduct();
+                        addNewspaper();
                         break;
 
                     case 3:
@@ -107,7 +109,7 @@ public class ApplicationUI
     }
     
     // ------ The methods below this line are "helper"-methods, used from the menu ----
-    // ------ All these methods are made privat, since they are only used by the menu ---
+    // ------ All these methods are made private, since they are only used by the menu ---
     
     /**
      * Initializes the application.
@@ -156,5 +158,28 @@ public class ApplicationUI
     {
         System.out.println("findProductByName() was called");
     }
-    
+
+    void addNewspaper()
+    {
+        System.out.println("Please enter the title of the newspaper: ");
+        System.out.print("> ");
+        Scanner reader = new Scanner(System.in);
+        String title = reader.nextLine();
+
+        System.out.println("Please enter the genre: ");
+        System.out.print("> ");
+        String genre = reader.nextLine();
+
+        System.out.println("Please enter the publisher: ");
+        System.out.print("> ");
+        String publisher = reader.nextLine();
+
+        System.out.println("Please enter the number of issues of the newspaper: ");
+        System.out.print("> ");
+        String numberOfPublishments = reader.nextLine();
+
+
+
+        newspaperCollection.addNewspaper(title, genre, publisher, numberOfPublishments);
+    }
 }
