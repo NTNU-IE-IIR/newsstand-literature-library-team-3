@@ -48,16 +48,4 @@ public class LiteratureRegister
     {
         return this.newspaperCollection;
     }
-
-    /**
-     * Removes a newspaper object from the registry
-     * @param title the title of the newspaper to be removed
-    public void removeNewspaper(String title)
-    {
-        this.newspaperMap.remove(title);
-        System.out.println("Removed " + title + " from the registry.");
-    }
-    */
-
-
 }
