@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="005d996c-887a-48cd-8429-2ab8ebefec7b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ApplicationUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ApplicationUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LiteratureRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LiteratureRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Newspaper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Newspaper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,11 +44,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/LiteratureRegister.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="900">
-              <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="61" />
+            <state relative-caret-position="378">
+              <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#271#272#0" expanded="true" />
@@ -68,11 +64,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ApplicationUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4220">
-              <caret line="307" column="9" lean-forward="true" selection-start-line="307" selection-start-column="9" selection-end-line="307" selection-end-column="9" />
+            <state relative-caret-position="4635">
+              <caret line="309" column="1" lean-forward="true" selection-start-line="309" selection-start-column="1" selection-end-line="309" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#819#820#0" expanded="true" />
@@ -145,7 +141,7 @@
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551865821448" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551866679054" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
@@ -251,11 +247,25 @@
       <option name="project" value="LOCAL" />
       <updated>1551863115728</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Added a few comments. Removed the System.out.println from the Newspaper class.">
+      <created>1551865808792</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1551865808792</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Added a few comments. Removed the System.out.println from the Newspaper class.">
+      <created>1551865897152</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1551865897152</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19364000" />
+    <option name="totallyTimeSpent" value="20283000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="822" extended-state="0" />
@@ -350,38 +360,14 @@
     <MESSAGE value="Edited some method calls in the switch case." />
     <MESSAGE value="Added a method in the Newspaper class which returns all the info about the newspaper as a string.&#10;This string is used by the findNewspaperByName method in the ApplicationUI class." />
     <MESSAGE value="Added a new addNewspaper method to the ApplicationUI class. The method uses a switch-case statement.&#10;This was to prevent the user from entering invalid parameters." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a new addNewspaper method to the ApplicationUI class. The method uses a switch-case statement.&#10;This was to prevent the user from entering invalid parameters." />
+    <MESSAGE value="Added a few comments. Removed the System.out.println from the Newspaper class." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a few comments. Removed the System.out.println from the Newspaper class." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="9016">
           <caret line="392" column="10" selection-start-line="392" selection-start-column="10" selection-end-line="392" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/LiteratureRegister.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="61" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#271#272#0" expanded="true" />
-            <element signature="e#326#327#0" expanded="true" />
-            <element signature="e#512#513#0" expanded="true" />
-            <element signature="e#567#568#0" expanded="true" />
-            <element signature="e#771#772#0" expanded="true" />
-            <element signature="e#829#830#0" expanded="true" />
-            <element signature="e#1052#1053#0" expanded="true" />
-            <element signature="e#1099#1100#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -407,10 +393,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ApplicationUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4220">
-          <caret line="307" column="9" lean-forward="true" selection-start-line="307" selection-start-column="9" selection-end-line="307" selection-end-column="9" />
+        <state relative-caret-position="4635">
+          <caret line="309" column="1" lean-forward="true" selection-start-line="309" selection-start-column="1" selection-end-line="309" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#819#820#0" expanded="true" />
@@ -421,6 +414,24 @@
             <element signature="e#3943#3944#0" expanded="true" />
             <element signature="e#4954#4955#0" expanded="true" />
             <element signature="e#5018#5019#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LiteratureRegister.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#271#272#0" expanded="true" />
+            <element signature="e#326#327#0" expanded="true" />
+            <element signature="e#512#513#0" expanded="true" />
+            <element signature="e#567#568#0" expanded="true" />
+            <element signature="e#771#772#0" expanded="true" />
+            <element signature="e#829#830#0" expanded="true" />
+            <element signature="e#1052#1053#0" expanded="true" />
+            <element signature="e#1099#1100#0" expanded="true" />
           </folding>
         </state>
       </provider>
