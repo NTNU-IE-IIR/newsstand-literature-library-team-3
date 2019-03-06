@@ -33,7 +33,15 @@ public class LiteratureRegisterTest
         this.testLitReg.addNewspaper(testNewspaper);
         ArrayList<Newspaper> testLitRegArrayList = testLitReg.getAllNewspapers();
         assertEquals(true, testLitRegArrayList.contains(testNewspaper));
+    }
 
+    @Test
+    public void testAddNewspaper2()
+    {
+        Newspaper testNewspaper = null;
+        this.testLitReg.addNewspaper(testNewspaper);
+        int numberOfNewspapers = testLitReg.getNumberOfNewspapers();
+        assertEquals(0, numberOfNewspapers, 0);
     }
 
     @Test

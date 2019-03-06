@@ -28,7 +28,10 @@ public class LiteratureRegister
      * */
     public void addNewspaper(Newspaper newspaper)
     {
-        this.newspaperCollection.add(newspaper);
+        if(newspaper != null)
+        {
+            this.newspaperCollection.add(newspaper);
+        }
     }
 
     /**
@@ -47,5 +50,16 @@ public class LiteratureRegister
     public ArrayList<Newspaper> getAllNewspapers()
     {
         return this.newspaperCollection;
+    }
+
+    /**
+     * Returns the number of newspaper in the register.
+     * @return The number of newspaper in the register.
+     * */
+
+    public int getNumberOfNewspapers()
+    {
+        int numberOfNewspapers = newspaperCollection.size();
+        return numberOfNewspapers;
     }
 }
