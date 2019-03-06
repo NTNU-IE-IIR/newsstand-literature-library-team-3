@@ -2,9 +2,9 @@
 /**
  * The Main-class of the application. This class only holds the main()-method
  * to start the application.
- * 
- * @author asty
- * @version 1.0
+ *
+ * @author Erlend Holseker, Arvin Khodabandeh, Isak Gamnes Sneltvedt
+ * @version 1.0 (2019.03.06)
  */
 public class Main 
 {

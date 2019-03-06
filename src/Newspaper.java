@@ -3,7 +3,7 @@
  * Title, Publisher, Genre and the number of publishments.
  *
  * @author Arvin Khodabandeh, Erlend Holseker & Isak Gamnes Sneltvedt
- * @version 0.1 (2019.02.11)
+ * @version 1.0 (2019.03.06)
  */
 
 public class Newspaper
@@ -51,7 +51,7 @@ public class Newspaper
      * such as title.
      * The genre and publisher are left blank.
      * Number of publishments will be set to 0 by default.
-     * @param title
+     * @param title The title of the newspaper
      */
     public Newspaper(String title)
     {
@@ -73,7 +73,7 @@ public class Newspaper
 
     /**
      * Get the genre of the object
-     * @return  genre
+     * @return genre
      */
     public String getGenre()
     {
@@ -100,66 +100,39 @@ public class Newspaper
 
     /**
      *  Set the genre of the object
-     * @param genre
+     * @param genre The genre of the newspaper
      */
-    public void setGenre(String genre)
+    private void setGenre(String genre)
     {
-        if (genre.length() > 0)
-        {
-            this.genre = genre;
-        }
-        else
-        {
-            System.out.println("Please enter genre");
-        }
+        this.genre = genre;
     }
 
     /**
      * Set the number of publishments of the object
-     * @param numberOfPublishments
+     * @param numberOfPublishments The number of publishments
+     *                             of the newspaper
      */
-    public void setNumberOfPublishments(int numberOfPublishments)
+    private void setNumberOfPublishments(int numberOfPublishments)
     {
-        if (numberOfPublishments > 0)
-        {
-            this.numberOfPublishments = numberOfPublishments;
-        }
-        else
-        {
-            System.out.println("Please enter number of publishments");
-        }
+        this.numberOfPublishments = numberOfPublishments;
     }
 
     /**
      * Set the publisher of the object
-     * @param publisher
+     * @param publisher The publisher of the newspaper
      */
-    public void setPublisher(String publisher)
+    private void setPublisher(String publisher)
     {
-        if (publisher.length() > 0)
-        {
-            this.publisher = publisher;
-        }
-        else
-        {
-            System.out.println("Please enter publisher");
-        }
+        this.publisher = publisher;
     }
 
     /**
      * Set the title of the object
-     * @param title
+     * @param title The title of the newspaper
      */
-    public void setTitle(String title)
+    private void setTitle(String title)
     {
-        if(title.length() > 0)
-        {
-            this.title = title;
-        }
-        else
-        {
-            System.out.println("Please enter title");
-        }
+        this.title = title;
     }
 
     /**

@@ -8,16 +8,13 @@ import java.util.Scanner;
  * Responsible for all user interaction, like displaying the menu
  * and receiving input from the user.
  *
- * @author asty
- * @version 1.0
+ * @author Erlend Holseker, Arvin Khodabandeh, Isak Gamnes Sneltvedt
+ * @version 1.0 (2019.03.06)
  */
 public class ApplicationUI 
 {
 
-   
-    // The menu that will be displayed. Please edit/alter the menu
-    // to fit your application (i.e. replace "product" with "literature"
-    // etc.
+    // An array containing strings to be displayed in the menu.
     private String[] menuItems = {
             "1. List all newspapers",
             "2. Add new newspaper",
@@ -146,7 +143,6 @@ public class ApplicationUI
         }
     }
 
-    
     /**
      * Add a new product/literature to the register.
      * In this method you have to add code to ask the
@@ -160,7 +156,6 @@ public class ApplicationUI
     private void addNewProduct()
     {
         System.out.println("addNewProduct() was called");
-        
     }
 
     /**
