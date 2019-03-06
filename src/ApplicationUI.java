@@ -15,7 +15,7 @@ public class ApplicationUI
 {
 
    
-    // The menu that will be displayed. Please edit/alter the menu
+    // The menu tha will be displayed. Please edit/alter the menu
     // to fit your application (i.e. replace "product" with "literature"
     // etc.
     private String[] menuItems = {
@@ -55,7 +55,7 @@ public class ApplicationUI
                         break;
 
                     case 2:
-                        this.addNewspaper();
+                        addNewspaper();
                         break;
 
                     case 3:
@@ -129,9 +129,6 @@ public class ApplicationUI
         System.out.println("listAllProducts() was called");
     }
 
-    /**
-     * Lists all the newspapers in the register
-     */
     private void listAllNewspapers()
     {
         Iterator<Newspaper> newsListIt = this.newspaperCollection.getIterator();
@@ -189,33 +186,6 @@ public class ApplicationUI
         }
     }
 
-    /**
-     * Add a new product/literature to the register.
-     * Uses Scanner class to fill the parameters needed to
-     * create a new newspaper object. This object is later added to the
-     * newspaper collection.
-     */
-    private void addNewspaper2()
-    {
-        System.out.println("Please enter the title of the newspaper: ");
-        Scanner reader = new Scanner(System.in);
-        String title = reader.nextLine();
-
-        System.out.println("Please enter the genre: ");
-        String genre = reader.nextLine();
-
-        System.out.println("Please enter the publisher: ");
-        String publisher = reader.nextLine();
-
-        System.out.println("Please enter the number of issues of the newspaper: ");
-        System.out.println("Set to 0 if unknown");
-        int numberOfPublishments = Integer.parseInt(reader.nextLine());
-
-
-
-        Newspaper newspaperToAdd = new Newspaper(title, publisher, genre, numberOfPublishments);
-        newspaperCollection.addNewspaper(newspaperToAdd);
-    }
 
     /**
      * Adds a new newspaper to the newspaper register.
