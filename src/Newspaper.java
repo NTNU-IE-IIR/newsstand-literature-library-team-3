@@ -76,7 +76,7 @@ public class Newspaper
     }
 
     /**
-     * Get the genre of the object
+     * Returns the genre of the object
      *
      * @return genre
      */
@@ -165,8 +165,9 @@ public class Newspaper
      */
     private void setTitle(String title)
     {
-        if (title != null && !title.isEmpty())
+        if (title != null )
         {
+            if (!title.isEmpty())
             this.title = title;
         }
         else
