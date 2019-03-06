@@ -15,17 +15,28 @@ public class NewspaperTest {
     }
 
     @Test
+
+    /**
+     * Tests the getTitle method in the Newspaper class.
+     * */
+
     public void getTitle()
     {
         assertEquals("testTittel", this.testNewspaper.getTitle());
     }
 
+    /**
+     * Tests the getNumberOfPublishments method in the Newspaper class.
+     * */
     @Test
     public void getNumberOfPublishments()
     {
         assertEquals(52, this.testNewspaper.getNumberOfPublishments(), 0);
     }
 
+    /**
+     * Tests the setTitle method in the Newspaper class.
+     * */
     @Test
     public void setTitle()
     {
