@@ -46,7 +46,4 @@ public class NewspaperTest {
         assertEquals("UNDEFINED", testNewspaper2.getTitle());
         assertEquals("UNDEFINED", testNewspaper3.getTitle());
     }
-
-
-
 }
