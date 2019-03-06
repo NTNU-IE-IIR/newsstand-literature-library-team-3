@@ -104,35 +104,55 @@ public class Newspaper
      */
     private void setGenre(String genre)
     {
-        this.genre = genre;
-    }
+        if(genre != null && !genre.isEmpty())
+        {
+            this.genre = genre;
+        } else {
+            this.genre = "UNDEFINED";
+        }    }
 
     /**
-     * Set the number of publishments of the object
+     * Set the number of publishments of the newspaper.
+     * If a negative number is chosen, the number is set to 0.
      * @param numberOfPublishments The number of publishments
      *                             of the newspaper
      */
     private void setNumberOfPublishments(int numberOfPublishments)
     {
-        this.numberOfPublishments = numberOfPublishments;
+        if(numberOfPublishments >= 0)
+        {
+            this.numberOfPublishments = numberOfPublishments;
+        } else {
+            this.numberOfPublishments = 0;
+        }
     }
 
     /**
-     * Set the publisher of the object
+     * Set the publisher of the newspaper
      * @param publisher The publisher of the newspaper
      */
     private void setPublisher(String publisher)
     {
-        this.publisher = publisher;
+        if(publisher != null && !publisher.isEmpty())
+        {
+            this.publisher = publisher;
+        } else {
+            this.publisher = "UNDEFINED";
+        }
     }
 
     /**
-     * Set the title of the object
+     * Set the title of the newspaper
      * @param title The title of the newspaper
      */
     private void setTitle(String title)
     {
-        this.title = title;
+        if(title != null && !title.isEmpty())
+        {
+            this.title = title;
+        } else {
+            this.title = "UNDEFINED";
+        }
     }
 
     /**

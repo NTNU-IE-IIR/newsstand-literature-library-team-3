@@ -8,6 +8,7 @@ public class NewspaperTest {
     private Newspaper testNewspaper;
 
 
+
     @Before
     public void setUp() throws Exception
     {
@@ -35,12 +36,17 @@ public class NewspaperTest {
     }
 
     /**
-     * Tests the setTitle method in the Newspaper class.
+     * Tests that it is not possible to enter null in title.
      * */
     @Test
-    public void setTitle()
+    public void testEmptyTitle()
     {
-        this.testNewspaper.setTitle("testTittel2");
-        assertEquals("testTittel2", this.testNewspaper.getTitle());
+        Newspaper testNewspaper2 = new Newspaper("", "VG", "Nyheter", 10);
+        Newspaper testNewspaper3 = new Newspaper(null, "VG", "Nyheter", 10);
+        assertEquals("UNDEFINED", testNewspaper2.getTitle());
+        assertEquals("UNDEFINED", testNewspaper3.getTitle());
     }
+
+
+
 }
