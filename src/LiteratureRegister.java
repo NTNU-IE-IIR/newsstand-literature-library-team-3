@@ -28,7 +28,10 @@ public class LiteratureRegister
      * */
     public void addNewspaper(Newspaper newspaper)
     {
-        this.newspaperCollection.add(newspaper);
+        if(newspaper != null)
+        {
+            this.newspaperCollection.add(newspaper);
+        }
     }
 
     /**
@@ -50,14 +53,13 @@ public class LiteratureRegister
     }
 
     /**
-     * Removes a newspaper object from the registry
-     * @param title the title of the newspaper to be removed
-    public void removeNewspaper(String title)
+     * Returns the number of newspaper in the register.
+     * @return The number of newspaper in the register.
+     * */
+
+    public int getNumberOfNewspapers()
     {
-        this.newspaperMap.remove(title);
-        System.out.println("Removed " + title + " from the registry.");
+        int numberOfNewspapers = newspaperCollection.size();
+        return numberOfNewspapers;
     }
-    */
-
-
 }

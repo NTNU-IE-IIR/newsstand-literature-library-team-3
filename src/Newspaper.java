@@ -18,9 +18,10 @@ public class Newspaper
      * The object contains
      * information about the newspaper, such as Title, Publisher, Genre and
      * the number of publishments.
-     * @param title The title of the newspaper
-     * @param publisher The publisher of the newspaper
-     * @param genre The genre of the newspaper
+     *
+     * @param title                The title of the newspaper
+     * @param publisher            The publisher of the newspaper
+     * @param genre                The genre of the newspaper
      * @param numberOfPublishments The number of publishments of the newspaper
      */
     public Newspaper(String title, String publisher, String genre, int numberOfPublishments)
@@ -34,8 +35,9 @@ public class Newspaper
     /**
      * The object contains nformation about the newspaper, such as Title, Publisher and genre.
      * The number of publishments will be set to 0 by default.
-     * @param title The title of the newspaper
-     * @param genre The genre of the newspaper
+     *
+     * @param title     The title of the newspaper
+     * @param genre     The genre of the newspaper
      * @param publisher The publisher of the newspaper.
      */
     public Newspaper(String title, String publisher, String genre)
@@ -51,6 +53,7 @@ public class Newspaper
      * such as title.
      * The genre and publisher are left blank.
      * Number of publishments will be set to 0 by default.
+     *
      * @param title The title of the newspaper
      */
     public Newspaper(String title)
@@ -63,6 +66,7 @@ public class Newspaper
 
     /**
      * Get the title of the object
+     *
      * @return title
      */
 
@@ -72,17 +76,19 @@ public class Newspaper
     }
 
     /**
-     * Get the genre of the object
+     * Returns the genre of the object
+     *
      * @return genre
      */
     public String getGenre()
     {
-         return this.genre;
+        return this.genre;
     }
 
     /**
      * Get the number of publishments of the object
-     * @return  number of publishments
+     *
+     * @return number of publishments
      */
     public int getNumberOfPublishments()
     {
@@ -91,7 +97,8 @@ public class Newspaper
 
     /**
      * Get the publisher of the object
-     * @return  publisher
+     *
+     * @return publisher
      */
     public String getPublisher()
     {
@@ -99,58 +106,72 @@ public class Newspaper
     }
 
     /**
-     *  Set the genre of the object
+     * Set the genre of the object
+     *
      * @param genre The genre of the newspaper
      */
     private void setGenre(String genre)
     {
-        if(genre != null && !genre.isEmpty())
+        if (genre != null && !genre.isEmpty())
         {
             this.genre = genre;
-        } else {
+        }
+        else
+        {
             this.genre = "UNDEFINED";
-        }    }
+        }
+    }
 
     /**
      * Set the number of publishments of the newspaper.
      * If a negative number is chosen, the number is set to 0.
+     *
      * @param numberOfPublishments The number of publishments
      *                             of the newspaper
      */
     private void setNumberOfPublishments(int numberOfPublishments)
     {
-        if(numberOfPublishments >= 0)
+        if (numberOfPublishments >= 0)
         {
             this.numberOfPublishments = numberOfPublishments;
-        } else {
+        }
+        else
+        {
             this.numberOfPublishments = 0;
         }
     }
 
     /**
      * Set the publisher of the newspaper
+     *
      * @param publisher The publisher of the newspaper
      */
     private void setPublisher(String publisher)
     {
-        if(publisher != null && !publisher.isEmpty())
+        if (publisher != null && !publisher.isEmpty())
         {
             this.publisher = publisher;
-        } else {
+        }
+        else
+        {
             this.publisher = "UNDEFINED";
         }
     }
 
     /**
      * Set the title of the newspaper
+     *
      * @param title The title of the newspaper
      */
     private void setTitle(String title)
     {
-        if(title != null && !title.isEmpty())
+        if (title != null )
         {
+            if (!title.isEmpty())
             this.title = title;
-        } else {
+        }
+        else
+        {
             this.title = "UNDEFINED";
         }
     }
@@ -163,7 +184,7 @@ public class Newspaper
      */
     public String getAllInfoAsString()
     {
-        return  "Title: " + this.title + "\n" +
+        return "Title: " + this.title + "\n" +
                 "Publisher: " + this.publisher + "\n" +
                 "Genre: " + this.genre + "\n" +
                 "Number of publishments: " + this.numberOfPublishments;
