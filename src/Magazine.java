@@ -1,18 +1,24 @@
 /**
- *  The Magazine class makes objects of the type "Magazine". This class
- *  inherits from the "Periodical" class. It does not contain any fields on its own.
  *
- * @author  Arvin Khodabandeh, Erlend Holseker & Isak Gamnes Sneltvedt
- * @version 0.1 (2019.03.25)
+ *
+ * @author
+ * @version
  */
 
 public class Magazine extends Periodical
 {
     public Magazine(String title, String publisher, String publishYear, String language, String genre,
-                    int price, int quantityInStock, int numberOfYearlyPublications)
+                    int price, int quantity, int numberOfYearlyPublications)
     {
-        super(title, publisher, publishYear, language, genre,
-        price, quantityInStock, numberOfYearlyPublications);
+        super(numberOfYearlyPublications);
+        setTitle(title);
+        setPublisher(publisher);
+        setPublishYear(publishYear);
+        setLanguage(language);
+        setGenre(genre);
+        setPrice(price);
+        setQuantity(quantity);
+        setNumberOfYearlyPublications(numberOfYearlyPublications);
 
     }
 }
