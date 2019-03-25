@@ -9,7 +9,7 @@ import java.util.Scanner;
  * and receiving input from the user.
  *
  * @author Erlend Holseker, Arvin Khodabandeh, Isak Gamnes Sneltvedt
- * @version 1.0 (2019.03.06)
+ * @version 0.1 (2019.03.06)
  */
 public class ApplicationUI 
 {
