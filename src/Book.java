@@ -23,21 +23,63 @@ public class Book extends Literature
     //------Set-methods------
 
     /**
-     * Sets the author of the book
-     * @param author the author of the book
+     * Sets the author of the book.
+     * If the input is empty, the author will
+     * be set to "UNDEFINED".
+     * @param author The author of the book.
      */
-    public void setAuthor(String author)
+    private void setAuthor(String author)
     {
-        this.author = author;
+        if (author != null )
+        {
+            if (!author.isEmpty())
+            {
+                this.author = author;
+            }
+        }
+        else
+        {
+            this.author = "UNDEFINED";
+        }
     }
 
 
     /**
-     * Sets the edition of the book
-     * @param edition the edition of the book
+     * Sets the edition of the book.
+     * If the input is empty, the edition will
+     * be set to "UNDEFINED".
+     * @param edition The edition of the book.
      */
-    public void setEdition(String edition)
+    private void setEdition(String edition)
     {
-        this.edition = edition;
+        if (edition != null )
+        {
+            if (!edition.isEmpty())
+            {
+                this.edition = edition;
+            }
+        }
+        else
+        {
+            this.edition = "UNDEFINED";
+        }
+    }
+
+    //------Get-methods------
+
+    /** Returns the author of the given book.
+     * @return author A string containing the author of the given book.
+     */
+    public String getAuthor()
+    {
+        return author;
+    }
+
+    /** Returns the edition of the given book.
+     * @return edition A string containing the edition of the given book.
+     */
+    public String getEdition()
+    {
+        return edition;
     }
 }
