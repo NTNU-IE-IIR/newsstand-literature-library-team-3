@@ -11,15 +11,25 @@ public abstract class Periodical extends Literature
     private int numberOfYearlyPublications;
 
 
-    public Periodical()
+    public Periodical(String title, String publisher, String publishYear, String language, String genre,
+                      int price, int quantityInStock, int numberOfYearlyPublications)
     {
-        super();
+        super(title, publisher, publishYear, language, genre, price, quantityInStock);
+        setNumberOfYearlyPublications(numberOfYearlyPublications);
+
 
     }
 
     protected void setNumberOfYearlyPublications(int numberOfYearlyPublications)
     {
-        this.numberOfYearlyPublications = numberOfYearlyPublications;
+        if(numberOfYearlyPublications >= 0)
+        {
+            this.numberOfYearlyPublications = numberOfYearlyPublications;
+        }
+        else
+        {
+            this.numberOfYearlyPublications = 0;
+        }
     }
 
 }
