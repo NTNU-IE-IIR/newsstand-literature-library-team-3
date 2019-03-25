@@ -11,10 +11,9 @@ public abstract class Periodical extends Literature
     private int numberOfYearlyPublications;
 
 
-    public Periodical(int numberOfYearlyPublications)
+    public Periodical()
     {
         super();
-        setNumberOfYearlyPublications(numberOfYearlyPublications);
 
     }
 
