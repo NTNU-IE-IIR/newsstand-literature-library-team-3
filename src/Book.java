@@ -22,11 +22,20 @@ public class Book extends Literature
 
     //------Set-methods------
 
+    /**
+     * Sets the author of the book
+     * @param author the author of the book
+     */
     public void setAuthor(String author)
     {
         this.author = author;
     }
 
+
+    /**
+     * Sets the edition of the book
+     * @param edition the edition of the book
+     */
     public void setEdition(String edition)
     {
         this.edition = edition;
