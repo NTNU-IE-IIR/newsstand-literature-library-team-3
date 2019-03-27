@@ -37,17 +37,7 @@ public abstract class Literature
      */
     protected void setTitle(String title)
     {
-        if (title != null )
-        {
-            if (!title.isEmpty())
-            {
-                this.title = title;
-            }
-        }
-        else
-        {
-            this.title = "UNDEFINED";
-        }
+        this.title = setString(title);
     }
 
     /**
@@ -58,17 +48,7 @@ public abstract class Literature
      */
     protected void setPublisher(String publisher)
     {
-        if (publisher != null )
-        {
-            if (!publisher.isEmpty())
-            {
-                this.publisher = publisher;
-            }
-        }
-        else
-        {
-            this.publisher = "UNDEFINED";
-        }
+        this.publisher = setString(publisher);
     }
 
     /**
@@ -79,17 +59,7 @@ public abstract class Literature
      */
     protected void setPublishYear(String publishYear)
     {
-        if (publishYear != null )
-        {
-            if (!publishYear.isEmpty())
-            {
-                this.publishYear = publishYear;
-            }
-        }
-        else
-        {
-            this.publishYear = "UNDEFINED";
-        }
+        this.publishYear = setString(publishYear);
     }
 
     /**
@@ -100,17 +70,7 @@ public abstract class Literature
      */
     protected void setLanguage(String language)
     {
-        if (language != null )
-        {
-            if (!language.isEmpty())
-            {
-                this.language = language;
-            }
-        }
-        else
-        {
-            this.language = "UNDEFINED";
-        }
+        this.language = setString(language);
     }
 
     /**
@@ -121,17 +81,7 @@ public abstract class Literature
      */
     protected void setGenre(String genre)
     {
-        if (genre != null )
-        {
-            if (!genre.isEmpty())
-            {
-                this.genre = genre;
-            }
-        }
-        else
-        {
-            this.genre = "UNDEFINED";
-        }
+        this.genre = setString(genre);
     }
 
     /**
@@ -142,14 +92,7 @@ public abstract class Literature
      */
     protected void setPrice(int price)
     {
-        if (price >= 0)
-        {
-            this.price = price;
-        }
-        else
-        {
-            this.price = 0;
-        }
+        this.price = setInt(price);
     }
 
     /**
@@ -160,14 +103,50 @@ public abstract class Literature
      */
     protected void setQuantityInStock(int quantityInStock)
     {
-        if (quantityInStock >= 0)
+        this.quantityInStock = setInt(quantityInStock);
+    }
+
+    /**
+     * Used by all set-methods requiring datatype String
+     * in this class and all sub-classes.
+     * The method returns a String. If the input is empty,
+     * it will return a String containing "UNDEFINED". If not,
+     * the return String will be equal to the input.
+     * @param input The input from the set-method calling on this method.
+     * @return The String to be set in the field.
+     */
+    protected String setString(String input)
+    {
+        String returnString = "UNDEFINED";
+
+        if (input != null )
         {
-            this.quantityInStock = quantityInStock;
+            if (!input.isEmpty())
+            {
+                returnString = input;
+            }
         }
-        else
+        return returnString;
+    }
+
+    /**
+     * Used by all set-methods requiring datatype int,
+     * in this class and all sub-classes.
+     * The method returns an int. If the input is less or equal to 0,
+     * it will return an int equal to 0. If not,
+     * it will return an int equal to the input.
+     * @param input The input from the set-method calling on this method.
+     * @return The int to be set in the field.
+     */
+    protected int setInt(int input)
+    {
+        int returnInt = 0;
+
+        if (input >= 0)
         {
-            this.quantityInStock = 0;
+            returnInt = input;
         }
+        return returnInt;
     }
 
     //------Get-methods------
@@ -228,4 +207,6 @@ public abstract class Literature
     {
         return quantityInStock;
     }
+
+
 }

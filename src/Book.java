@@ -11,13 +11,18 @@ public class Book extends Literature
 {
     private String author;
     private String edition;
+    private String seriesTitle;
+
+    private boolean partOfBookSeries;
 
     public Book(String title, String publisher, String publishYear, String language, String genre, int price,
-                int quantityInStock, String author, String edition)
+                int quantityInStock, String author, String edition, String seriesTitle)
     {
         super(title, publisher, publishYear, language, genre, price, quantityInStock);
         setAuthor(author);
         setEdition(edition);
+        setSeriesTitle(seriesTitle);
+        setPartOfBookSeries();
     }
 
     //------Set-methods------
@@ -30,19 +35,8 @@ public class Book extends Literature
      */
     private void setAuthor(String author)
     {
-        if (author != null )
-        {
-            if (!author.isEmpty())
-            {
-                this.author = author;
-            }
-        }
-        else
-        {
-            this.author = "UNDEFINED";
-        }
+        this.author = setString(author);
     }
-
 
     /**
      * Sets the edition of the book.
@@ -52,16 +46,35 @@ public class Book extends Literature
      */
     private void setEdition(String edition)
     {
-        if (edition != null )
+        this.edition = setString(edition);
+    }
+
+    /**
+     * Sets the title of the bookseries the book is part of.
+     * If the input is empty, the series-title will
+     * be set to "UNDEFINED".
+     * @param seriesTitle The title of the bookseries the book is part of.
+     */
+    private void setSeriesTitle(String seriesTitle)
+    {
+        this.seriesTitle = setString(seriesTitle);
+    }
+
+    /**
+     * Sets the boolean field "partOfBookSeries".
+     * If the book is not a part of a bookseries,
+     * which means that the "seriesTitle"-field will
+     * contain "UNDEFINED",
+     * the "partOfBookSeries"-field will be set to false.
+     * If not, it will be set to true.
+     */
+    private void setPartOfBookSeries()
+    {
+        partOfBookSeries = false;
+
+        if (seriesTitle != "UNDEFINED")
         {
-            if (!edition.isEmpty())
-            {
-                this.edition = edition;
-            }
-        }
-        else
-        {
-            this.edition = "UNDEFINED";
+            partOfBookSeries = true;
         }
     }
 
@@ -81,5 +94,10 @@ public class Book extends Literature
     public String getEdition()
     {
         return edition;
+    }
+
+    public boolean isPartOfBookSeries()
+    {
+        return partOfBookSeries;
     }
 }
