@@ -3,7 +3,7 @@
  * Title, Publisher, Genre and the number of publishments.
  *
  * @author Arvin Khodabandeh, Erlend Holseker & Isak Gamnes Sneltvedt
- * @version 1.0 (2019.03.06)
+ * @version 0.1 (2019.03.06)
  */
 
 public class Newspaper

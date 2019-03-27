@@ -8,7 +8,9 @@ import static org.junit.Assert.*;
 /**
     Represents a test class for the LiteratureRegister class. Contains test methods
     to verify the functions of the methods in the LiteratureRegister class.
+
     @author Arvin Khodabandeh, Erlend Holseker, Isak Sneltvedt Gamnes
+    @version 0.1 (2019.03.06)
 
  */
 public class LiteratureRegisterTest
