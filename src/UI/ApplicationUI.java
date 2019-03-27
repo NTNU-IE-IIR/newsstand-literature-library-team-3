@@ -128,6 +128,9 @@ public class ApplicationUI
         System.out.println("listAllProducts() was called");
     }
 
+    /**
+     * Lists all the literature in the register
+     */
     private void listAllLiterature()
     {
         listAllBooks();
@@ -135,50 +138,73 @@ public class ApplicationUI
         listAllNewspapers();
     }
 
+    /**
+     * Lists all the magazines in the register
+     */
     private void listAllMagazines()
     {
         Iterator<Literature> litListIt = this.literatureCollection.getIterator();
-        System.out.println("Magazines: \n");
+        boolean headerHasBeenPrinted = false;
         while (litListIt.hasNext())
         {
             Literature literature = litListIt.next();
-
             if (literature instanceof Magazine)
             {
+                if(!headerHasBeenPrinted)
+                {
+                    System.out.println("Magazines: \n");
+                    headerHasBeenPrinted = true;
+                }
                 System.out.println(literature.getAllInfoAsString());
+                System.out.println();
             }
         }
     }
 
 
+    /**
+     * Lists all the books in the register
+     */
     private void listAllBooks()
         {
             Iterator<Literature> litListIt = this.literatureCollection.getIterator();
-            System.out.println("Books: \n");
+            boolean headerHasBeenPrinted = false;
             while (litListIt.hasNext())
             {
                 Literature literature = litListIt.next();
                 if (literature instanceof Book)
                 {
+                    if(!headerHasBeenPrinted)
+                    {
+                        System.out.println("Books: \n");
+                        headerHasBeenPrinted = true;
+                    }
                     System.out.println(literature.getAllInfoAsString());
+                    System.out.println();
                 }
             }
         }
 
 
     /**
-     * Lists all the literature in the register
+     * Lists all the newspapers in the register
      */
     private void listAllNewspapers()
     {
         Iterator<Literature> litListIt = this.literatureCollection.getIterator();
-        System.out.println("Newspapers: ");
+        boolean headerHasBeenPrinted = false;
         while (litListIt.hasNext())
         {
             Literature literature = litListIt.next();
             if (literature instanceof Newspaper)
             {
+                if(!headerHasBeenPrinted)
+                {
+                    System.out.println("Newspapers: \n");
+                    headerHasBeenPrinted = true;
+                }
                 System.out.println(literature.getAllInfoAsString());
+                System.out.println();
             }
         }
 
