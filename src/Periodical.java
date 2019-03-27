@@ -39,6 +39,7 @@ public abstract class Periodical extends Literature
      *
      * @return A string containing title, publisher, genre and number of publishments.
      */
+    @Override
     public String getAllInfoAsString()
     {
         return super.getAllInfoAsString() +
