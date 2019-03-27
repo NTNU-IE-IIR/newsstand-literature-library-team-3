@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -21,6 +22,7 @@ public class ApplicationUI
             "3. Find a newspaper by title",
     };
     private LiteratureRegister newspaperCollection;
+    private LiteratureRegister literatureCollection;
 
     /**
      * Creates an instance of the ApplicationUI User interface. 
@@ -28,6 +30,7 @@ public class ApplicationUI
     public ApplicationUI() 
     {
         this.newspaperCollection = new LiteratureRegister();
+        this.literatureCollection = new LiteratureRegister();
     }
 
     /**
@@ -126,8 +129,58 @@ public class ApplicationUI
         System.out.println("listAllProducts() was called");
     }
 
+    private void listAllLiterature()
+    {
+        Iterator<Literature> litListIt = this.literatureCollection.getIterator();
+        while (litListIt.hasNext())
+        {
+            Literature literature = litListIt.next();
+
+            ArrayList<Book> bookCollection = new ArrayList<>();
+            ArrayList<Magazine> magazineCollection = new ArrayList<>();
+            ArrayList<Newspaper> newspaperCollection = new ArrayList<>();
+            if(literature instanceof Book)
+            {
+                bookCollection.add((Book)literature);
+            }
+            if(literature instanceof Magazine)
+            {
+                magazineCollection.add((Magazine)literature);
+            }
+            if(literature instanceof  Newspaper)
+            {
+                newspaperCollection.add((Newspaper)literature);
+            }
+
+            if(!litListIt.hasNext())
+            {
+                Iterator<Book> bookIt = bookCollection.iterator();
+                Iterator<Magazine> magazineIt = magazineCollection.iterator();
+                Iterator<Newspaper> newspaperIt = newspaperCollection.iterator();
+
+                System.out.println("Books: \n");
+                while(bookIt.hasNext())
+                {
+                    Book book = bookIt.next();
+                    System.out.println(book.getAllInfoAsString());
+                }
+                while(magazineIt.hasNext())
+                {
+                    Magazine magazine = magazineIt.next();
+                    System.out.println(magazine.getAllInfoAsString());
+                }
+                while(newspaperIt.hasNext())
+                {
+                    Newspaper newspaper = newspaperIt.next();
+                    System.out.println(newspaper.getAllInfoAsString());
+                }
+            }
+
+        }
+    }
+
     /**
-     * Lists all the newspapers in the register
+     * Lists all the literature in the register
      */
     private void listAllNewspapers()
     {
@@ -137,7 +190,7 @@ public class ApplicationUI
             Newspaper newspaper = newsListIt.next();
 
             System.out.println("Title: " + newspaper.getTitle() + "\n" +
-                    "Number of publishments: " + newspaper.getNumberOfPublishments() + "\n" +
+                    "Number of publications: " + newspaper.getNumberOfPublishments() + "\n" +
                     "Genre: " + newspaper.getGenre() + "\n" +
                     "Publisher: " + newspaper.getPublisher());
         }

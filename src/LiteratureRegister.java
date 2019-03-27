@@ -12,54 +12,54 @@ import java.util.Iterator;
 public class LiteratureRegister
 {
 
-    private ArrayList<Newspaper> newspaperCollection;
+    private ArrayList<Literature> literatureCollection;
 
     /**
-     * Creates a new registry to store different newspapers
+     * Creates a new registry to store different literature
      */
     public LiteratureRegister()
     {
-        newspaperCollection = new ArrayList<>();
+        literatureCollection = new ArrayList<>();
     }
 
     /**
-     * Adds new newspapers in the register.
-     * @param newspaper The newspaper to be added to the register.
+     * Adds new literature in the register.
+     * @param literature The literature to be added to the register.
      * */
-    public void addNewspaper(Newspaper newspaper)
+    public void addLiterature(Literature literature)
     {
-        if(newspaper != null)
+        if(literature != null)
         {
-            this.newspaperCollection.add(newspaper);
+            this.literatureCollection.add(literature);
         }
     }
 
     /**
-     * Returns an Iterator for the newspaper collection.
-     * @return An Iterator for the ArrayList containing the newspaper objects.
+     * Returns an Iterator for the literature collection.
+     * @return An Iterator for the ArrayList containing the literature objects.
      */
-    public Iterator<Newspaper> getIterator()
+    public Iterator<Literature> getIterator()
     {
-        return this.newspaperCollection.iterator();
+        return this.literatureCollection.iterator();
     }
 
     /**
-     * Returns an ArrayList which contains a collection of newspapers.
-     * @return An ArrayList which contains a collection of newspaper objects.
+     * Returns an ArrayList which contains a collection of literature.
+     * @return An ArrayList which contains a collection of literature objects.
      */
-    public ArrayList<Newspaper> getAllNewspapers()
+    public ArrayList<Literature> getAllLiterature()
     {
-        return this.newspaperCollection;
+        return this.literatureCollection;
     }
 
     /**
-     * Returns the number of newspaper in the register.
-     * @return The number of newspaper in the register.
+     * Returns the number of literature in the register.
+     * @return The number of literaturein the register.
      * */
 
     public int getNumberOfNewspapers()
     {
-        int numberOfNewspapers = newspaperCollection.size();
+        int numberOfNewspapers = literatureCollection.size();
         return numberOfNewspapers;
     }
 }
