@@ -70,11 +70,11 @@ public class Book extends Literature
      */
     private void setPartOfBookSeries()
     {
-        partOfBookSeries = false;
+        this.partOfBookSeries = false;
 
-        if (seriesTitle != "UNDEFINED")
+        if (this.seriesTitle != "UNDEFINED")
         {
-            partOfBookSeries = true;
+            this.partOfBookSeries = true;
         }
     }
 
@@ -85,7 +85,7 @@ public class Book extends Literature
      */
     public String getAuthor()
     {
-        return author;
+        return this.author;
     }
 
     /** Returns the edition of the given book.
@@ -93,11 +93,27 @@ public class Book extends Literature
      */
     public String getEdition()
     {
-        return edition;
+        return this.edition;
     }
 
+    /**
+     * Returns the title of the bookseries the book is part of.
+     * @return The title of the bookseries the book is part of.
+     */
+    public String getSeriesTitle()
+    {
+        return this.seriesTitle;
+    }
+
+    /**
+     * Returns a boolean value representing whether
+     * the book is part of a bookseries or not.
+     * True if the book is part of a bookseries,
+     * false if not.
+     * @return A boolean value representing whether the book is part of a bookseries or not.
+     */
     public boolean isPartOfBookSeries()
     {
-        return partOfBookSeries;
+        return this.partOfBookSeries;
     }
 }

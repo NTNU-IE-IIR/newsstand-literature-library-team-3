@@ -209,4 +209,21 @@ public abstract class Literature
     }
 
 
+    /**
+     * Returns a string that contains the title, publisher, genre and number
+     * of publishments of the newspaper.
+     *
+     * @return A string containing title, publisher, genre and number of publishments.
+     */
+    public String getAllInfoAsString()
+    {
+        return "Title: " + this.title + "\n" +
+                "Publisher: " + this.publisher + "\n" +
+                "Publish year: " + this.publishYear + "\n" +
+                "Language: " + this.language + "\n" +
+                "Genre: " + this.genre + "\n" +
+                "Price: " + this.price + "\n" +
+                "Quantity in stock: " + this.quantityInStock;
+    }
+
 }
