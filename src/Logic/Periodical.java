@@ -53,7 +53,7 @@ public abstract class Periodical extends Literature
     @Override
     public String getAllInfoAsString()
     {
-        return super.getAllInfoAsString() +
+        return super.getAllInfoAsString() + "\n" +
                 "Number of publications per year: " + this.numberOfYearlyPublications;
     }
 }
