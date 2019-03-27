@@ -1,3 +1,7 @@
+package Logic;
+
+import Logic.Literature;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 

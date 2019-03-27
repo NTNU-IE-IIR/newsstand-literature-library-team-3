@@ -8,8 +8,8 @@ import java.util.Iterator;
 import static org.junit.Assert.*;
 */
 /**
-    Represents a test class for the LiteratureRegister class. Contains test methods
-    to verify the functions of the methods in the LiteratureRegister class.
+    Represents a test class for the Logic.LiteratureRegister class. Contains test methods
+    to verify the functions of the methods in the Logic.LiteratureRegister class.
 
     @author Arvin Khodabandeh, Erlend Holseker, Isak Sneltvedt Gamnes
     @version 0.1 (2019.03.06)
@@ -18,34 +18,34 @@ import static org.junit.Assert.*;
 
 public class LiteratureRegisterTest
 {
-    private LiteratureRegister testLitReg;
+    private Logic.LiteratureRegister testLitReg;
 
     @Before
     public void setUp() throws Exception
     {
-        this.testLitReg = new LiteratureRegister();
+        this.testLitReg = new Logic.LiteratureRegister();
     }
 
     */
 /**
-    A positive test of testAddNewspaper method. Making a Newspaper object and putting it in the LiteratureRegister
-    object. Then retrieves an ArrayList from the LiteratureRegister object, and checks if this ArrayList contains
+    A positive test of testAddNewspaper method. Making a Logic.Newspaper object and putting it in the Logic.LiteratureRegister
+    object. Then retrieves an ArrayList from the Logic.LiteratureRegister object, and checks if this ArrayList contains
     the added newspaper object.
      *//*
 
     @Test
     public void testAddNewspaper()
     {
-        Newspaper testNewspaper = new Newspaper("testTitle", "VG", "News", 52);
+        Logic.Newspaper testNewspaper = new Logic.Newspaper("testTitle", "VG", "News", 52);
         this.testLitReg.addNewspaper(testNewspaper);
-        ArrayList<Newspaper> testLitRegArrayList = testLitReg.getAllNewspapers();
+        ArrayList<Logic.Newspaper> testLitRegArrayList = testLitReg.getAllNewspapers();
         assertEquals(true, testLitRegArrayList.contains(testNewspaper));
     }
 
     @Test
     public void testAddNewspaper2()
     {
-        Newspaper testNewspaper = null;
+        Logic.Newspaper testNewspaper = null;
         this.testLitReg.addNewspaper(testNewspaper);
         int numberOfNewspapers = testLitReg.getNumberOfNewspapers();
         assertEquals(0, numberOfNewspapers, 0);

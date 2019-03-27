@@ -1,7 +1,6 @@
+import Logic.Newspaper;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class NewspaperTest {
 
@@ -19,7 +18,7 @@ public class NewspaperTest {
     @Test
 
     /**
-     * Tests the getTitle method in the Newspaper class.
+     * Tests the getTitle method in the Logic.Newspaper class.
      * */
 
     public void getTitle()
@@ -28,7 +27,7 @@ public class NewspaperTest {
     }
 
     /**
-     * Tests the getNumberOfPublishments method in the Newspaper class.
+     * Tests the getNumberOfPublishments method in the Logic.Newspaper class.
      * */
     @Test
     public void getNumberOfPublishments()

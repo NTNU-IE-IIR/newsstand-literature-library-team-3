@@ -1,5 +1,7 @@
+package UI;
 
-import java.sql.SQLOutput;
+import Logic.*;
+
 import java.util.*;
 
 /**
@@ -15,7 +17,7 @@ public class ApplicationUI
 
     // An array containing strings to be displayed in the menu.
     private String[] menuItems = {
-            "1. List all Literature",
+            "1. List all Logic.Literature",
             "2. Add new literature"
             //"3. Find a newspaper by title",
     };
@@ -23,7 +25,7 @@ public class ApplicationUI
     private LiteratureRegister literatureCollection;
 
     /**
-     * Creates an instance of the ApplicationUI User interface.
+     * Creates an instance of the UI.ApplicationUI User interface.
      */
     public ApplicationUI()
     {
@@ -211,10 +213,10 @@ public class ApplicationUI
 //            System.out.print("Please enter title to search for: ");
 //            Scanner reader = new Scanner(System.in);
 //            String searchWord = reader.nextLine();
-//            Iterator<Newspaper> it = newspaperCollection.getIterator();
+//            Iterator<Logic.Newspaper> it = newspaperCollection.getIterator();
 //            while (it.hasNext())
 //            {
-//                Newspaper currentNewspaper = it.next();
+//                Logic.Newspaper currentNewspaper = it.next();
 //                String currentNewspaperTitle = currentNewspaper.getTitle();
 //                if (currentNewspaperTitle.contains(searchWord))
 //                {
@@ -246,7 +248,7 @@ public class ApplicationUI
 //            int numberOfPublishments = Integer.parseInt(reader.nextLine());
 //
 //
-//            Newspaper newspaperToAdd = new Newspaper(title, publisher, genre, numberOfPublishments);
+//            Logic.Newspaper newspaperToAdd = new Logic.Newspaper(title, publisher, genre, numberOfPublishments);
 //            newspaperCollection.addNewspaper(newspaperToAdd);
 //        }
 
@@ -333,7 +335,7 @@ public class ApplicationUI
 //                        }
 //
 //                    case 5:
-//                        Newspaper newspaperToAdd = new Newspaper(title, publisher, genre, numberOfPublishments);
+//                        Logic.Newspaper newspaperToAdd = new Logic.Newspaper(title, publisher, genre, numberOfPublishments);
 //                        newspaperCollection.addNewspaper(newspaperToAdd);
 //                        System.out.println("The newspaper was successfully added to the register");
 //                        completed = true;
@@ -365,9 +367,9 @@ public class ApplicationUI
         int numberOfYearlyPublishments = 0;
 
         String[] choices = {
-                "1. Book",
-                "2. Newspaper",
-                "3. Magazine"
+                "1. Logic.Book",
+                "2. Logic.Newspaper",
+                "3. Logic.Magazine"
         };
         int choice = 0;
 

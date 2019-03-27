@@ -1,3 +1,5 @@
+package Logic;
+
 /**
  *  Represents a magazine. This class inherits from the periodical class.
  *

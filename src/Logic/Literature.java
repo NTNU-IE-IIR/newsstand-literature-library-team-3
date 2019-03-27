@@ -1,6 +1,8 @@
+package Logic;
+
 /**
  * The literature-class contains information that is common for all literature.
- * It is not meant to create instances of type Literature.
+ * It is not meant to create instances of type Logic.Literature.
  *
  * @author Arvin Khodabandeh, Erlend Holseker & Isak Gamnes Sneltvedt
  * @version 0.1 (2019.03.25)
