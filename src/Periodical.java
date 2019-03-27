@@ -20,6 +20,8 @@ public abstract class Periodical extends Literature
 
     }
 
+
+
     protected void setNumberOfYearlyPublications(int numberOfYearlyPublications)
     {
         if(numberOfYearlyPublications >= 0)
@@ -32,6 +34,11 @@ public abstract class Periodical extends Literature
         }
     }
 
+
+    public int getNumberOfYearlyPublications()
+    {
+        return numberOfYearlyPublications;
+    }
 
     /**
      * Returns a string that contains the title, publisher, genre and number

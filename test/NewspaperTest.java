@@ -12,7 +12,8 @@ public class NewspaperTest {
     @Before
     public void setUp() throws Exception
     {
-        this.testNewspaper = new Newspaper("testTittel", "VG", "Nyheter", 52);
+        this.testNewspaper = new Newspaper("testTittel", "VG", "2019", "Norsk",
+                "Nyheter", 20, 15, 52);
     }
 
     @Test
@@ -32,7 +33,7 @@ public class NewspaperTest {
     @Test
     public void getNumberOfPublishments()
     {
-        assertEquals(52, this.testNewspaper.getNumberOfPublishments(), 0);
+        assertEquals(52, this.testNewspaper.getNumberOfYearlyPublications(), 0);
     }
 
     /**
@@ -41,8 +42,10 @@ public class NewspaperTest {
     @Test
     public void testEmptyTitle()
     {
-        Newspaper testNewspaper2 = new Newspaper("", "VG", "Nyheter", 10);
-        Newspaper testNewspaper3 = new Newspaper(null, "VG", "Nyheter", 10);
+        Newspaper testNewspaper2 = new Newspaper("", "VG", "2019", "Norsk",
+                "Nyheter", 20, 15, 52);
+        Newspaper testNewspaper3 = new Newspaper(null, "VG", "2019", "Norsk",
+                "Nyheter", 20, 15, 52);
         assertEquals("UNDEFINED", testNewspaper2.getTitle());
         assertEquals("UNDEFINED", testNewspaper3.getTitle());
     }
