@@ -4,7 +4,7 @@
  * Title, publisher, publish-year, language, genre, price, quantity in stock, author and edition.
  *
  * @author Arvin Khodabandeh, Erlend Holseker, Isak Gamnes Sneltvedt
- * @verion 0.1 (2019.03.25)
+ * @version 0.1 (2019.03.25)
  */
 
 public class Book extends Literature
