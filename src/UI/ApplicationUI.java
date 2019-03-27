@@ -393,9 +393,9 @@ public class ApplicationUI
         int numberOfYearlyPublishments = 0;
 
         String[] choices = {
-                "1. Logic.Book",
-                "2. Logic.Newspaper",
-                "3. Logic.Magazine"
+                "1. Book",
+                "2. Newspaper",
+                "3. Magazine"
         };
         int choice = 0;
 
