@@ -1,6 +1,10 @@
+package Logic;
+
+import Logic.Literature;
+
 /**
  * A periodical is a type of literature that is published according to a regular schedule.
- * This class inherits from the class Literature
+ * This class inherits from the class Logic.Literature
  *
  * @author Arvin Khodabandeh, Erlend Holseker & Isak Gamnes Sneltvedt
  * @version 0.1 (2019.03.25)

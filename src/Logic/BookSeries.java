@@ -1,3 +1,7 @@
+package Logic;
+
+import Logic.Book;
+
 import java.util.ArrayList;
 
 /**

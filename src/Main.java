@@ -1,3 +1,4 @@
+import UI.ApplicationUI;
 
 /**
  * The Main-class of the application. This class only holds the main()-method

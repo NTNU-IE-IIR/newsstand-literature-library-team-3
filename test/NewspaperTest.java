@@ -1,7 +1,7 @@
+/*
+import Logic.Newspaper;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class NewspaperTest {
 
@@ -18,27 +18,33 @@ public class NewspaperTest {
 
     @Test
 
-    /**
-     * Tests the getTitle method in the Newspaper class.
-     * */
+    */
+/**
+     * Tests the getTitle method in the Logic.Newspaper class.
+     * *//*
+
 
     public void getTitle()
     {
         assertEquals("testTittel", this.testNewspaper.getTitle());
     }
 
-    /**
-     * Tests the getNumberOfPublishments method in the Newspaper class.
-     * */
+    */
+/**
+     * Tests the getNumberOfPublishments method in the Logic.Newspaper class.
+     * *//*
+
     @Test
     public void getNumberOfPublishments()
     {
         assertEquals(52, this.testNewspaper.getNumberOfYearlyPublications(), 0);
     }
 
-    /**
+    */
+/**
      * Tests that it is not possible to enter null in title.
-     * */
+     * *//*
+
     @Test
     public void testEmptyTitle()
     {
@@ -49,4 +55,4 @@ public class NewspaperTest {
         assertEquals("UNDEFINED", testNewspaper2.getTitle());
         assertEquals("UNDEFINED", testNewspaper3.getTitle());
     }
-}
+}*/
