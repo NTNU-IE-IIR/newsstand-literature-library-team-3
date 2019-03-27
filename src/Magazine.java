@@ -11,6 +11,5 @@ public class Magazine extends Periodical
                     int price, int quantityInStock, int numberOfYearlyPublications)
     {
         super(title, publisher, publishYear, language, genre, price, quantityInStock, numberOfYearlyPublications);
-
     }
 }
