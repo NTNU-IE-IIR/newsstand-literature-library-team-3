@@ -18,11 +18,13 @@ public class ApplicationUI
     // An array containing strings to be displayed in the menu.
     private String[] menuItems = {
             "1. List all Logic.Literature",
-            "2. Add new literature"
+            "2. Add new literature",
+            "3. Manage cart"
             //"3. Find a newspaper by title",
     };
     private LiteratureRegister newspaperCollection;
     private LiteratureRegister literatureCollection;
+    private Cart cart = new Cart();
 
     /**
      * Creates an instance of the UI.ApplicationUI User interface.
@@ -58,11 +60,14 @@ public class ApplicationUI
                         this.addLiterature();
                         break;
 
-                    //case 3:
-                     //   this.findNewspaperByName();
-                     //   break;
-
                     case 3:
+                        this.cartMenu();
+                        break;
+                    //case 3:
+                    //   this.findNewspaperByName();
+                    //   break;
+
+                    case 4:
                         System.out.println("\nThank you for using Application v0.1. Bye!\n");
                         quit = true;
                         break;
@@ -150,7 +155,7 @@ public class ApplicationUI
             Literature literature = litListIt.next();
             if (literature instanceof Magazine)
             {
-                if(!headerHasBeenPrinted)
+                if (!headerHasBeenPrinted)
                 {
                     System.out.println("Magazines: \n");
                     headerHasBeenPrinted = true;
@@ -166,24 +171,24 @@ public class ApplicationUI
      * Lists all the books in the register
      */
     private void listAllBooks()
+    {
+        Iterator<Literature> litListIt = this.literatureCollection.getIterator();
+        boolean headerHasBeenPrinted = false;
+        while (litListIt.hasNext())
         {
-            Iterator<Literature> litListIt = this.literatureCollection.getIterator();
-            boolean headerHasBeenPrinted = false;
-            while (litListIt.hasNext())
+            Literature literature = litListIt.next();
+            if (literature instanceof Book)
             {
-                Literature literature = litListIt.next();
-                if (literature instanceof Book)
+                if (!headerHasBeenPrinted)
                 {
-                    if(!headerHasBeenPrinted)
-                    {
-                        System.out.println("Books: \n");
-                        headerHasBeenPrinted = true;
-                    }
-                    System.out.println(literature.getAllInfoAsString());
-                    System.out.println();
+                    System.out.println("Books: \n");
+                    headerHasBeenPrinted = true;
                 }
+                System.out.println(literature.getAllInfoAsString());
+                System.out.println();
             }
         }
+    }
 
 
     /**
@@ -198,7 +203,7 @@ public class ApplicationUI
             Literature literature = litListIt.next();
             if (literature instanceof Newspaper)
             {
-                if(!headerHasBeenPrinted)
+                if (!headerHasBeenPrinted)
                 {
                     System.out.println("Newspapers: \n");
                     headerHasBeenPrinted = true;
@@ -210,20 +215,20 @@ public class ApplicationUI
 
     }
 
-        /**
-         * Add a new product/literature to the register.
-         * In this method you have to add code to ask the
-         * user for the necessary information you need to
-         * create an instance of the product, which you
-         * then send as a parameter to the addNewspaper()-
-         * method of the register.
-         * Remember to also handle invalid input from the
-         * user!!
-         */
-        private void addNewProduct ()
-        {
-            System.out.println("addNewProduct() was called");
-        }
+    /**
+     * Add a new product/literature to the register.
+     * In this method you have to add code to ask the
+     * user for the necessary information you need to
+     * create an instance of the product, which you
+     * then send as a parameter to the addNewspaper()-
+     * method of the register.
+     * Remember to also handle invalid input from the
+     * user!!
+     */
+    private void addNewProduct()
+    {
+        System.out.println("addNewProduct() was called");
+    }
 
 //        /**
 //         * Find and display a product based om name (title).
@@ -426,8 +431,7 @@ public class ApplicationUI
                         choice = Integer.parseInt(choiceInput);
                         inputCase = 1;
                         break;
-                    }
-                    else
+                    } else
                     {
                         System.out.println("You need to enter a number between 1-3");
                         System.out.println(choices);
@@ -499,8 +503,7 @@ public class ApplicationUI
                     {
                         System.out.println("You need to enter the language");
                         break;
-                    }
-                    else
+                    } else
                     {
                         language = languageInput;
                         inputCase = 6;
@@ -515,8 +518,7 @@ public class ApplicationUI
                     {
                         System.out.println("You need to enter the price");
                         break;
-                    }
-                    else
+                    } else
                     {
                         price = Integer.parseInt(priceInput);
                         inputCase = 7;
@@ -531,21 +533,18 @@ public class ApplicationUI
                     {
                         System.out.println("You need to enter the quantity");
                         break;
-                    }
-                    else
+                    } else
                     {
                         quantity = Integer.parseInt(quantityInput);
                         if (choice == 1)
                         {
                             inputCase = 8;
                             break;
-                        }
-                        else if (choice == 2)
+                        } else if (choice == 2)
                         {
                             inputCase = 11;
                             break;
-                        }
-                        else if (choice == 3)
+                        } else if (choice == 3)
                         {
                             inputCase = 13;
                             break;
@@ -560,8 +559,7 @@ public class ApplicationUI
                     {
                         System.out.println("You need to enter the name of the author");
                         break;
-                    }
-                    else
+                    } else
                     {
                         author = authorInput;
                         inputCase = 9;
@@ -575,8 +573,7 @@ public class ApplicationUI
                     {
                         System.out.println("You need to enter the edition of the book");
                         break;
-                    }
-                    else
+                    } else
                     {
                         edition = editionInput;
                         inputCase = 10;
@@ -598,8 +595,7 @@ public class ApplicationUI
                     {
                         System.out.println("You need to enter the number of yearly publishments of the newspaper");
                         break;
-                    }
-                    else
+                    } else
                     {
                         numberOfYearlyPublishments = Integer.parseInt(yearlyPublishInput);
                         inputCase = 12;
@@ -621,8 +617,7 @@ public class ApplicationUI
                     {
                         System.out.println("You need to enter the number of yearly publishments of the newspaper");
                         break;
-                    }
-                    else
+                    } else
                     {
                         numberOfYearlyPublishments = Integer.parseInt(yearlyMagPublishInput);
                         inputCase = 14;
@@ -639,5 +634,107 @@ public class ApplicationUI
             }
         }
     }
+
+    private void cartMenu()
+    {
+        boolean completed = false;
+        String[] choices = {
+                "1. Show content in cart",
+                "2. Show total price",
+                "3. Add dummies",
+                "4. Back"
+        };
+        int inputCase = 0;
+        Scanner reader = new Scanner(System.in);
+
+        for(String menuItem : choices)
+        {
+            System.out.println(menuItem);
+        }
+
+        inputCase = reader.nextInt();
+
+        while (!completed)
+
+            switch (inputCase)
+            {
+                case 1:
+                    System.out.println(this.cart.showCart());
+                    String[] NewMenu = {
+                            "1. Show total price",
+                            "2. Back"
+                    };
+                    for (String menuItem : NewMenu)
+                    {
+                        System.out.println(menuItem);
+                    }
+                    int nextMenuChoice = reader.nextInt();
+
+                    if (nextMenuChoice == 1)
+                    {
+                        inputCase = 2;
+                    }
+                    if (nextMenuChoice == 2)
+                    {
+                        completed = true;
+                    }
+
+                    break;
+
+                case 2:
+                    System.out.println(this.cart.getTotalPrice());
+                    String[] NewMenu2 = {
+                            "1. Show content in cart",
+                            "2. Back"
+                    };
+                    for (String menuItem : NewMenu2)
+                    {
+                        System.out.println(menuItem);
+                    }
+                    nextMenuChoice = reader.nextInt();
+                    if (nextMenuChoice == 1)
+                    {
+                        inputCase = 1;
+                    }
+                    if (nextMenuChoice == 2)
+                    {
+                        completed = true;
+                    }
+                    break;
+
+                case 3:
+                    this.cart.addDummiesToCart();
+                    String[] NewMenu3 = {
+                            "1. Show content in cart",
+                            "2. Show total price",
+                            "3. Back"
+                    };
+                    for (String menuItem : NewMenu3)
+                    {
+                        System.out.println(menuItem);
+                    }
+                    int menuChoice = reader.nextInt();
+                    if (menuChoice == 1)
+                    {
+                        inputCase = 1;
+                    }
+                    if (menuChoice == 2)
+                    {
+                        inputCase = 2;
+                    }
+                    if (menuChoice == 3)
+                    {
+                        completed = true;
+                    }
+
+                    break;
+
+                case 4:
+                    completed = true;
+                    break;
+            }
     }
+
+}
+
 
