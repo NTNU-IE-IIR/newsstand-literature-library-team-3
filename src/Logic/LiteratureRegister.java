@@ -61,10 +61,10 @@ public class LiteratureRegister
      * @return The number of literature in the register.
      * */
 
-    public int getNumberOfNewspapers()
+    public int getNumberOfLiterature()
     {
-        int numberOfNewspapers = literatureCollection.size();
-        return numberOfNewspapers;
+        int numberOfLiterature = literatureCollection.size();
+        return numberOfLiterature;
     }
 
     public Literature searchByTitle(String searchTitle)
