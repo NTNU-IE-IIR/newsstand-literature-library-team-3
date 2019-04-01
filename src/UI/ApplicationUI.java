@@ -638,17 +638,7 @@ public class ApplicationUI
     private void cartMenu()
     {
         boolean completed = false;
-        boolean contentHasBeenPrinted = false;
-        String[] choices = {
-                "1. Show content in cart",
-                "2. Show total price",
-                "3. Add items to cart",
-                "4. Remove items from cart",
-                "5. Check out",
-                "6. Back"
-        };
         int inputCase = 1;
-        Scanner reader = new Scanner(System.in);
 
 
         while (!completed)
@@ -658,209 +648,216 @@ public class ApplicationUI
 
                 case 1:
 
-                    for(String menuItem : choices)
-                    {
-                        System.out.println(menuItem);
-                    }
-
-                    inputCase = reader.nextInt() + 1;
-
+                    inputCase = printMainCartMenu();
                     break;
 
 
                 case 2:
                     System.out.println(this.cart.showCart());
-                    String[] NewMenu = {
-                            "1. Show total price",
-                            "2. Proceed to check out",
-                            "3. Back"
-                    };
-                    for (String menuItem : NewMenu)
-                    {
-                        System.out.println(menuItem);
-                    }
-                    int nextMenuChoice = reader.nextInt();
-
-                    if (nextMenuChoice == 1)
-                    {
-                        inputCase = 2;
-                    }
-                    if (nextMenuChoice == 2)
-                    {
-                        inputCase = 4;
-                    }
-                    if (nextMenuChoice == 3)
-                    {
-                        completed = true;
-                    }
-
+                    inputCase = 1;
                     break;
 
                 case 3:
-                    if(cart.getSize() == 0)
-                    {
-                        System.out.println("You have no items in your cart.");
-                        inputCase = 1;
-                    }
-                    else
-                    {
-                        cart.showCart();
-                        System.out.println("Please enter the title of the product you wish to remove");
-                        String productToRemove = reader.nextLine();
-                        Literature result = cart.searchByTitle(productToRemove);
-
-                        if(result == null)
-                        {
-                            System.out.println("Could not find any product mathcing your search.");
-                            inputCase = 1;
-                        }
-                        else
-                        {
-                            System.out.println("Do you wish to remove this product from your cart?");
-                            System.out.println(result.getAllInfoAsString());
-                            System.out.println("Please enter yes or no");
-                            String answer = reader.nextLine();
-                            if(answer.equals("yes"))
-                            {
-                                System.out.println(result.getTitle() + " was successfully removed from your cart.");
-                                cart.removeFromCart(result);
-                                inputCase = 1;
-                            }
-                            else if (answer.equals("no"))
-                            {
-                                System.out.println(result.getTitle() + " was not removed from your cart");
-                                inputCase = 1;
-                            }
-                            else
-                            {
-                                System.out.println("You entered an invalid answer. Request aborted.");
-                                inputCase = 1;
-                            }
-                        }
-                    }
+                    showCartPrice();
+                    inputCase = 1;
                     break;
 
                 case 4:
 
-                    System.out.println("Please enter the title of the literature you are interested in");
-                    String searchWord = reader.nextLine();
-                    Literature result = literatureCollection.searchByTitle(searchWord);
-                    if (result == null)
-                    {
-                        System.out.println("Could not find any product matching your search.");
-                        inputCase = 1;
-                    }
-                    else
-                    {
-                        System.out.println(result.getAllInfoAsString());
-                        System.out.println("Do you wish to add this item to your cart?");
-                        System.out.println("Enter yes or no");
-                        String answer = reader.nextLine();
-                        if (answer.equals("yes"))
-                        {
-                            this.cart.addToCart(result);
-                            System.out.println(result.getTitle() + " has been successfully added to your cart.");
-                            System.out.println("Do you wish to add another product?");
-                            System.out.println("Enter yes or no");
-
-                            answer = reader.nextLine();
-                            if (answer.equals("yes"))
-                            {
-                                inputCase = 3;
-                            }
-                            else
-                            {
-                                inputCase = 1;
-                            }
-
-                        } else if (answer.equals("no"))
-                        {
-                            System.out.println(result.getTitle() + " was not added to your cart.");
-                            inputCase = 1;
-                        }
-                        else
-                        {
-                            System.out.println("You entered an invalid answer. Request aborted.");
-                            inputCase = 1;
-                        }
-
-                    }
-
+                    inputCase = addItemToCart();
                     break;
 
                 case 5:
 
-                    this.cart.addDummiesToCart();
-                    String[] NewMenu3 = {
-                            "1. Show content in cart",
-                            "2. Show total price",
-                            "3. Proceed to check out",
-                            "4. Back"
-                    };
-                    for (String menuItem : NewMenu3)
-                    {
-                        System.out.println(menuItem);
-                    }
-                    int menuChoice = reader.nextInt();
-                    if (menuChoice == 1)
-                    {
-                        inputCase = 1;
-                    }
-                    if (menuChoice == 2)
-                    {
-                        inputCase = 2;
-                    }
-                    if (menuChoice == 3)
-                    {
-                        inputCase = 4;
-                    }
-                    if (menuChoice == 4)
-                    {
-                        completed = true;
-                    }
-
+                    inputCase = removeItemFromCart();
                     break;
 
                 case 6:
 
-                    if(!contentHasBeenPrinted)
-                    {
-                        System.out.println(cart.showCart());
-                        contentHasBeenPrinted = true;
-                    }
-                    int priceToPay = cart.getTotalPrice();
-                    System.out.println("Total price: " + priceToPay);
-                    System.out.println();
-                    System.out.println("Please enter the amount to pay");
-
-
-                    int enteredAmount = reader.nextInt();
-
-                    if(enteredAmount < priceToPay)
-                    {
-                        System.out.println("Payment aborted. Amount was too low.");
-                    }
-                    else if (enteredAmount > priceToPay)
-                    {
-                        int change = enteredAmount - priceToPay;
-                        System.out.println("Entered amount exceeded the total price.");
-                        System.out.println("An amount of " + change + " will automatically be refunded to your bank account");
-                        cart.checkOut();
-                        completed = true;
-                    }
-                    else
-                    {
-                        System.out.println("Thank you! Have a nice day.");
-                        cart.checkOut();
-                        completed = true;
-                    }
-
+                    completed = proceedToCheckOut();
+                    inputCase = 1;
                     break;
 
                 case 7:
+
                     completed = true;
                     break;
             }
+    }
+
+    private int printMainCartMenu()
+    {
+        int inputCase;
+        Scanner reader = new Scanner(System.in);
+        String[] choices = {
+                "1. Show content in cart",
+                "2. Show total price",
+                "3. Add items to cart",
+                "4. Remove items from cart",
+                "5. Check out",
+                "6. Back"
+        };
+
+        for(String menuItem : choices)
+        {
+            System.out.println(menuItem);
+        }
+
+        inputCase = reader.nextInt() + 1;
+        return inputCase;
+    }
+
+    private void showCartPrice()
+    {
+        int returnPrice;
+        if (cart.getSize() == 0)
+        {
+            System.out.println("There are no items in your cart.");
+        }
+        else
+        {
+            returnPrice = cart.getTotalPrice();
+            System.out.println("The total price in your cart is: " + returnPrice);
+        }
+    }
+
+    private int addItemToCart()
+    {
+        int inputCase;
+        Scanner reader = new Scanner(System.in);
+
+        System.out.println("Please enter the title of the literature you are interested in");
+        String searchWord = reader.nextLine();
+        Literature result = literatureCollection.searchByTitle(searchWord);
+        if (result == null)
+        {
+            System.out.println("Could not find any product matching your search.");
+            inputCase = 1;
+        }
+        else
+        {
+            System.out.println(result.getAllInfoAsString());
+            System.out.println("Do you wish to add this item to your cart?");
+            System.out.println("Enter yes or no");
+            String answer = reader.nextLine();
+            if (answer.equals("yes"))
+            {
+                this.cart.addToCart(result);
+                System.out.println(result.getTitle() + " has been successfully added to your cart.");
+                System.out.println("Do you wish to add another product?");
+                System.out.println("Enter yes or no");
+
+                answer = reader.nextLine();
+                if (answer.equals("yes"))
+                {
+                    inputCase = 3;
+                }
+                else
+                {
+                    inputCase = 1;
+                }
+
+            } else if (answer.equals("no"))
+            {
+                System.out.println(result.getTitle() + " was not added to your cart.");
+                inputCase = 1;
+            }
+            else
+            {
+                System.out.println("You entered an invalid answer. Request aborted.");
+                inputCase = 1;
+            }
+
+        }
+       return inputCase;
+    }
+
+    private int removeItemFromCart()
+    {
+        int inputCase = 1;
+        Scanner reader = new Scanner(System.in);
+
+        if(cart.getSize() == 0)
+        {
+            System.out.println("You have no items in your cart.");
+
+        }
+        else
+        {
+            cart.showCart();
+            System.out.println("Please enter the title of the product you wish to remove");
+            String productToRemove = reader.nextLine();
+            Literature removeProduct = cart.searchByTitle(productToRemove);
+
+            if(removeProduct == null)
+            {
+                System.out.println("Could not find any product mathcing your search.");
+            }
+            else
+            {
+                System.out.println("Do you wish to remove this product from your cart?");
+                System.out.println(removeProduct.getAllInfoAsString());
+                System.out.println("Please enter yes or no");
+                String answer = reader.nextLine();
+                if(answer.equals("yes"))
+                {
+                    System.out.println(removeProduct.getTitle() + " was successfully removed from your cart.");
+                    cart.removeFromCart(removeProduct);
+                }
+                else if (answer.equals("no"))
+                {
+                    System.out.println(removeProduct.getTitle() + " was not removed from your cart");
+                }
+                else
+                {
+                    System.out.println("You entered an invalid answer. Request aborted.");
+                }
+
+            }
+        }
+        return inputCase;
+    }
+
+    private boolean proceedToCheckOut()
+    {
+        boolean returnBoolean = false;
+        Scanner reader = new Scanner(System.in);
+
+        if (cart.getSize() == 0)
+        {
+            System.out.println("You have no items in cart.");
+        }
+        else
+        {
+
+            System.out.println(cart.showCart());
+
+            int priceToPay = cart.getTotalPrice();
+            System.out.println("Total price: " + priceToPay);
+            System.out.println();
+            System.out.println("Please enter the amount to pay");
+
+            int enteredAmount = reader.nextInt();
+
+            if (enteredAmount < priceToPay)
+            {
+                System.out.println("Payment aborted. Amount was too low.");
+
+            } else if (enteredAmount > priceToPay)
+            {
+                int change = enteredAmount - priceToPay;
+                System.out.println("Entered amount exceeded the total price.");
+                System.out.println("An amount of " + change + " will automatically be refunded to your bank account");
+                cart.checkOut();
+                returnBoolean = true;
+            } else
+            {
+                System.out.println("Thank you! Have a nice day.");
+                cart.checkOut();
+                returnBoolean = true;
+            }
+        }
+        return returnBoolean;
     }
 
 }
