@@ -1,6 +1,7 @@
 package Logic;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 
 
@@ -16,11 +17,15 @@ public class Cart
 
     public void addToCart(Literature literatureToAdd)
     {
+        int price = literatureToAdd.getPrice();
+        this.totalPrice = totalPrice + price;
         cart.add(literatureToAdd);
     }
 
     public void removeFromCart(Literature literatureToRemove)
     {
+        int price = literatureToRemove.getPrice();
+        this.totalPrice = totalPrice - price;
         cart.remove(literatureToRemove);
     }
 
@@ -66,7 +71,15 @@ public class Cart
         cart.add(testNewspaper3);
     }
 
-
+    public void checkOut()
+    {
+        Iterator<Literature> it = cart.iterator();
+        while(it.hasNext())
+        {
+            Literature nextItem = it.next();
+            it.remove();
+        }
+    }
 
 
 
