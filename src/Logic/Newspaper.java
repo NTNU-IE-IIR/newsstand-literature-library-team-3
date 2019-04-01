@@ -10,15 +10,6 @@ package Logic;
 
 public class Newspaper extends Periodical
 {
-    private String title;
-    private String publisher;
-    private String publishYear;
-    private String language;
-    private String genre;
-    private int price;
-    private int quantityInStock;
-    private int numberOfYearlyPublications;
-
 
     /**
      * The object contains
@@ -33,10 +24,12 @@ public class Newspaper extends Periodical
      * @param price                         The price per newspaper
      * @param quantityInStock               The amount of newspapers left in stock
      * @param numberOfYearlyPublications    The number of yearly publications
+     * @param publicationDate               The date this newspaper was published
      */
     public Newspaper(String title, String publisher, String publishYear, String language, String genre,
-                     int price, int quantityInStock, int numberOfYearlyPublications)
+                     int price, int quantityInStock, int numberOfYearlyPublications, int publicationDate)
     {
-        super(title, publisher, publishYear, language, genre, price, quantityInStock, numberOfYearlyPublications);
+        super(title, publisher, publishYear, language, genre, price, quantityInStock, numberOfYearlyPublications,
+                publicationDate);
     }
 }

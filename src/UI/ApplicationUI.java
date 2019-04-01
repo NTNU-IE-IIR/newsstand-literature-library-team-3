@@ -160,7 +160,7 @@ public class ApplicationUI
                     System.out.println("Magazines: \n");
                     headerHasBeenPrinted = true;
                 }
-                System.out.println(new MagazineView((Magazine)literature).show());
+                System.out.println(new Viewer().createViewer(literature).showLimited());
                 System.out.println();
             }
         }
@@ -184,7 +184,7 @@ public class ApplicationUI
                     System.out.println("Books: \n");
                     headerHasBeenPrinted = true;
                 }
-                System.out.println(literature.getAllInfoAsString());
+                System.out.println(new Viewer().createViewer(literature).showLimited());
                 System.out.println();
             }
         }
@@ -208,11 +208,10 @@ public class ApplicationUI
                     System.out.println("Newspapers: \n");
                     headerHasBeenPrinted = true;
                 }
-                System.out.println(literature.getAllInfoAsString());
+                System.out.println(new Viewer().createViewer(literature).showLimited());
                 System.out.println();
             }
         }
-
     }
 
     /**

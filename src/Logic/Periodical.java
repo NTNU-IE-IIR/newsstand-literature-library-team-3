@@ -12,19 +12,25 @@ import Logic.Literature;
 
 public abstract class Periodical extends Literature
 {
+    private int publicationDate;
     private int numberOfYearlyPublications;
 
 
     public Periodical(String title, String publisher, String publishYear, String language, String genre,
-                      int price, int quantityInStock, int numberOfYearlyPublications)
+                      int price, int quantityInStock, int numberOfYearlyPublications, int publicationDate)
     {
         super(title, publisher, publishYear, language, genre, price, quantityInStock);
         setNumberOfYearlyPublications(numberOfYearlyPublications);
+        setPublicationDate(publicationDate);
 
 
     }
 
 
+    protected void setPublicationDate(int publicationDate)
+    {
+        this.publicationDate = publicationDate;
+    }
 
     protected void setNumberOfYearlyPublications(int numberOfYearlyPublications)
     {
@@ -38,6 +44,10 @@ public abstract class Periodical extends Literature
         }
     }
 
+    public int getPublicationDate()
+    {
+        return publicationDate;
+    }
 
     public int getNumberOfYearlyPublications()
     {

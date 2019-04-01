@@ -15,6 +15,7 @@ public class BookView implements LiteratureView
 
     /**
      * Constructor of the BookView-class.
+     *
      * @param book The book to be viewed.
      */
     public BookView(Book book)
@@ -24,12 +25,13 @@ public class BookView implements LiteratureView
 
     /**
      * Returns all the information of the book.
+     *
      * @return A String containing all the information of the book.
      */
     @Override
     public String show()
     {
-        return  "Seriestitle: " + book.getSeriesTitle() + "\n" +
+        return "Seriestitle: " + book.getSeriesTitle() + "\n" +
                 "Title: " + book.getTitle() + "\n" +
                 "Author:" + book.getAuthor() + "\n" +
                 "Edition: " + book.getEdition() + "\n" +
@@ -43,13 +45,15 @@ public class BookView implements LiteratureView
 
     /**
      * Returns the title, publisher and price of the book.
+     *
      * @return A String containing the title, publisher and price of the book.
      */
     @Override
     public String showLimited()
     {
-       return "Title: " + book.getTitle() + "\n" +
-               "Publisher: " + book.getPublisher() + "\n" +
-               "Price: " + book.getPrice() + "\n";
+        return "Title: " + book.getTitle() + "\n" +
+                "Author: " + book.getAuthor() + "\n" +
+                "Publisher: " + book.getPublisher() + "\n" +
+                "Price: " + book.getPrice() + "\n";
     }
 }
