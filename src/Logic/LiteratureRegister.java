@@ -58,7 +58,7 @@ public class LiteratureRegister
 
     /**
      * Returns the number of literature in the register.
-     * @return The number of literaturein the register.
+     * @return The number of literature in the register.
      * */
 
     public int getNumberOfNewspapers()
