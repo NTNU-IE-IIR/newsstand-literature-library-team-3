@@ -108,6 +108,11 @@ public abstract class Literature
         this.quantityInStock = setInt(quantityInStock);
     }
 
+    protected void reduceQuantityByOne()
+    {
+        this.quantityInStock--;
+    }
+
     /**
      * Used by all set-methods requiring datatype String
      * in this class and all sub-classes.
