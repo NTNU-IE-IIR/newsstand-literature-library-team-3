@@ -20,6 +20,7 @@ public class NewspaperView implements LiteratureView
     {
         return "Title: " + this.newspaper.getTitle() + "\n" +
                 "Publisher: " + this.newspaper.getPublisher() + "\n" +
+                "Publish date: " + this.newspaper.getPublicationDate() + "\n" +
                 "Publish year: " + this.newspaper.getPublishYear() + "\n" +
                 "Language: " + this.newspaper.getLanguage() + "\n" +
                 "Genre: " + this.newspaper.getGenre() + "\n" +
@@ -38,6 +39,7 @@ public class NewspaperView implements LiteratureView
     {
         return "Title: " + this.newspaper.getTitle() + "\n" +
                 "Publisher: " + this.newspaper.getPublisher() + "\n" +
+                "Publication date: " + this.newspaper.getPublicationDate() + "\n" +
                 "Price: " + this.newspaper.getPrice();
     }
 

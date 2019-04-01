@@ -22,10 +22,12 @@ public class Magazine extends Periodical
      * @param price                         The price per newspaper
      * @param quantityInStock               The amount of newspapers left in stock
      * @param numberOfYearlyPublications    The number of yearly publications
+     * @param publicationDate               The date this magazine was published
      */
     public Magazine(String title, String publisher, String publishYear, String language, String genre,
-                    int price, int quantityInStock, int numberOfYearlyPublications)
+                    int price, int quantityInStock, int numberOfYearlyPublications, int publicationDate)
     {
-        super(title, publisher, publishYear, language, genre, price, quantityInStock, numberOfYearlyPublications);
+        super(title, publisher, publishYear, language, genre, price, quantityInStock, numberOfYearlyPublications,
+                publicationDate);
     }
 }
