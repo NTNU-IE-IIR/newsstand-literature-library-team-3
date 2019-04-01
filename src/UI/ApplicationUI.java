@@ -160,7 +160,7 @@ public class ApplicationUI
                     System.out.println("Magazines: \n");
                     headerHasBeenPrinted = true;
                 }
-                System.out.println(literature.getAllInfoAsString());
+                System.out.println(new MagazineView((Magazine)literature).show());
                 System.out.println();
             }
         }
@@ -589,11 +589,11 @@ public class ApplicationUI
                     break;
 
                 case 11:
-                    System.out.println("Please enter the number of yearly publications of the newspaper");
+                    System.out.println("Please enter the number of yearly publications of the literature");
                     String yearlyPublishInput = reader.nextLine();
                     if (yearlyPublishInput.isEmpty())
                     {
-                        System.out.println("You need to enter the number of yearly publications of the newspaper");
+                        System.out.println("You need to enter the number of yearly publications of the literature");
                         break;
                     } else
                     {
@@ -611,11 +611,11 @@ public class ApplicationUI
                     break;
 
                 case 13:
-                    System.out.println("Please enter the number of yearly publishments of the newspaper");
+                    System.out.println("Please enter the number of yearly publications of the magazine");
                     String yearlyMagPublishInput = reader.nextLine();
                     if (yearlyMagPublishInput.isEmpty())
                     {
-                        System.out.println("You need to enter the number of yearly publishments of the newspaper");
+                        System.out.println("You need to enter the number of yearly publications of the magazine");
                         break;
                     } else
                     {
