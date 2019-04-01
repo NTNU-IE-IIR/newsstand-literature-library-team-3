@@ -757,7 +757,7 @@ public class ApplicationUI
 
         inputCase = reader.nextInt() + 1;
 
-        if(inputCase <= 1 || inputCase > 7)
+        if(inputCase <= 1 || inputCase > (choices.length + 1))
         {
             System.out.println("Please enter a number between 1 - " + choices.length);
             inputCase = 1;
