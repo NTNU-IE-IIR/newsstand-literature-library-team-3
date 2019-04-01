@@ -754,15 +754,25 @@ public class ApplicationUI
                         System.out.println(cart.showCart());
                         contentHasBeenPrinted = true;
                     }
-                    System.out.println("Total price: " + cart.getTotalPrice());
+                    int priceToPay = cart.getTotalPrice();
+                    System.out.println("Total price: " + priceToPay);
                     System.out.println();
                     System.out.println("Please enter the amount to pay");
 
+
                     int enteredAmount = reader.nextInt();
 
-                    if(enteredAmount < cart.getTotalPrice())
+                    if(enteredAmount < priceToPay)
                     {
                         System.out.println("Payment aborted. Amount was too low.");
+                    }
+                    else if (enteredAmount > priceToPay)
+                    {
+                        int change = enteredAmount - priceToPay;
+                        System.out.println("Entered amount exceeded the total price.");
+                        System.out.println("An amount of " + change + " will automatically be refunded to your bank account");
+                        cart.checkOut();
+                        completed = true;
                     }
                     else
                     {

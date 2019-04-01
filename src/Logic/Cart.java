@@ -77,6 +77,7 @@ public class Cart
         while(it.hasNext())
         {
             Literature nextItem = it.next();
+            nextItem.reduceQuantityByOne();
             it.remove();
         }
     }
