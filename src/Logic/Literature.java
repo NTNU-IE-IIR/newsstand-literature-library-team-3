@@ -111,6 +111,7 @@ public abstract class Literature
     protected void reduceQuantityByOne()
     {
         this.quantityInStock--;
+
     }
 
     /**
