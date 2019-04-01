@@ -683,7 +683,13 @@ public class ApplicationUI
             String answer = reader.nextLine();
             if (answer.equals("yes"))
             {
-                this.cart.addToCart(result);
+                System.out.println("Please enter the amount you wish to add");
+                int amount = reader.nextInt();
+
+                for(int i = 1; i <= amount; i++)
+                {
+                    this.cart.addToCart(result);
+                }
                 System.out.println(result.getTitle() + " has been successfully added to your cart.");
                 System.out.println("Do you wish to add another product?");
                 System.out.println("Enter yes or no");
