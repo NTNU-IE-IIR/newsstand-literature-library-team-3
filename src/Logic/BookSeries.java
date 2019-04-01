@@ -2,7 +2,7 @@ package Logic;
 
 import Logic.Book;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Represents a bookseries.
@@ -16,12 +16,12 @@ import java.util.ArrayList;
 public class BookSeries
 {
     private String seriesTitle;
-    private ArrayList<Book> bookSeries;
+    private HashMap<String,Book> bookSeries;
 
     public BookSeries(String seriesTitle)
     {
         this.seriesTitle = seriesTitle;
-        bookSeries = new ArrayList<>();
+        bookSeries = new HashMap<>();
     }
 
     /**
@@ -32,7 +32,7 @@ public class BookSeries
     {
         if (book != null)
         {
-            this.bookSeries.add(book);
+            this.bookSeries.put(book.getTitle(), book);
         }
     }
 
@@ -42,17 +42,17 @@ public class BookSeries
      */
     public void removeBook(Book book)
     {
-        if (this.bookSeries.contains(book))
+        if (this.bookSeries.containsValue(book))
         {
             this.bookSeries.remove(book);
         }
     }
 
     /**
-     * Returns an ArrayList containing all books in the bookseries.
-     * @return An ArrayList containing all books in the bookseries.
+     * Returns an HashMap containing all books in the bookseries.
+     * @return An HashMap containing all books in the bookseries.
      */
-    public ArrayList<Book> getBookSeries()
+    public HashMap<String ,Book> getBookSeries()
     {
         return this.bookSeries;
     }
@@ -64,5 +64,39 @@ public class BookSeries
     public String getSeriesTitle()
     {
         return this.seriesTitle;
+    }
+
+    public boolean containsKey(String key)
+    {
+        boolean result = false;
+        if (this.bookSeries.containsKey(key))
+        {
+            result = true;
+        }
+        else
+        {
+            result = false;
+        }
+        return result;
+    }
+
+    /**
+     * Checks if the bookseries already exists in the application.
+     * Returns true if the bookseries already exists, false if not.
+     * @param seriesTitle The title of the bookseries.
+     * @return True if the bookseries already exists, false if not.
+     */
+    public boolean exists(String seriesTitle)
+    {
+        boolean result = false;
+        if (this.seriesTitle.equals(seriesTitle))
+        {
+            result = true;
+        }
+        else
+        {
+            result = false;
+        }
+        return result;
     }
 }
