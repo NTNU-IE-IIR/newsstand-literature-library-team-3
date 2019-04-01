@@ -17,7 +17,7 @@ public class ApplicationUI
 
     // An array containing strings to be displayed in the menu.
     private String[] menuItems = {
-            "1. List all Logic.Literature",
+            "1. List all literature",
             "2. Add new literature",
             "3. Manage cart"
             //"3. Find a newspaper by title",
@@ -395,7 +395,7 @@ public class ApplicationUI
         int quantity = 0;
         String author = null;
         String edition = null;
-        int numberOfYearlyPublishments = 0;
+        int numberOfYearlyPublications = 0;
 
         String[] choices = {
                 "1. Book",
@@ -589,22 +589,22 @@ public class ApplicationUI
                     break;
 
                 case 11:
-                    System.out.println("Please enter the number of yearly publishments of the newspaper");
+                    System.out.println("Please enter the number of yearly publications of the newspaper");
                     String yearlyPublishInput = reader.nextLine();
                     if (yearlyPublishInput.isEmpty())
                     {
-                        System.out.println("You need to enter the number of yearly publishments of the newspaper");
+                        System.out.println("You need to enter the number of yearly publications of the newspaper");
                         break;
                     } else
                     {
-                        numberOfYearlyPublishments = Integer.parseInt(yearlyPublishInput);
+                        numberOfYearlyPublications = Integer.parseInt(yearlyPublishInput);
                         inputCase = 12;
                         break;
                     }
 
                 case 12:
                     Newspaper newspaperToAdd = new Newspaper(title, publisher, publishYear, language,
-                            genre, price, quantity, numberOfYearlyPublishments);
+                            genre, price, quantity, numberOfYearlyPublications);
                     literatureCollection.addLiterature(newspaperToAdd);
                     System.out.println("The newspaper was successfully added to the literature register");
                     completed = true;
@@ -619,14 +619,14 @@ public class ApplicationUI
                         break;
                     } else
                     {
-                        numberOfYearlyPublishments = Integer.parseInt(yearlyMagPublishInput);
+                        numberOfYearlyPublications = Integer.parseInt(yearlyMagPublishInput);
                         inputCase = 14;
                         break;
                     }
 
                 case 14:
                     Magazine magazineToAdd = new Magazine(title, publisher, publishYear, language,
-                            genre, price, quantity, numberOfYearlyPublishments);
+                            genre, price, quantity, numberOfYearlyPublications);
                     literatureCollection.addLiterature(magazineToAdd);
                     System.out.println("The magazine was successfully added to the literature register");
                     completed = true;
