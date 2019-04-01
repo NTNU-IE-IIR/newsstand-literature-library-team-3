@@ -734,7 +734,8 @@ public class ApplicationUI
 
 
     /**
-     * Prints the main menu for the manage cart option.
+     * Prints the main menu for the manage cart option. Will check that the number entered is valid.
+     * @return The inputcase used in the switchcase in the cart menu. will return 1 if the number entered is invalid
      * */
     private int printMainCartMenu()
     {
@@ -755,6 +756,13 @@ public class ApplicationUI
         }
 
         inputCase = reader.nextInt() + 1;
+
+        if(inputCase <= 1 || inputCase > 7)
+        {
+            System.out.println("Please enter a number between 1 - " + choices.length);
+            inputCase = 1;
+        }
+
         return inputCase;
     }
 
