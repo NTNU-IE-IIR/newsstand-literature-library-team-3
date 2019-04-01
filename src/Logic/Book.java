@@ -78,6 +78,11 @@ public class Book extends Literature
         {
             this.partOfBookSeries = true;
         }
+        else
+        {
+            this.seriesTitle = "Not part of a bookseries";
+            this.partOfBookSeries = false;
+        }
     }
 
     //------Get-methods------

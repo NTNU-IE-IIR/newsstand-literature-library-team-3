@@ -16,5 +16,5 @@ public interface LiteratureView
     /*
     Method used for creating a String containing only title, publisher and price of the literature object.
      */
-    String showRestricted();
+    String showLimited();
 }
