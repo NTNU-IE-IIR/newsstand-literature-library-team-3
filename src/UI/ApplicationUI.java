@@ -323,7 +323,6 @@ public class ApplicationUI
 
                 case 4:
                     System.out.println("Please enter the publish-year");
-                    System.out.println("Set to UNDEFINED if unknown");
                     String publishYearInput = reader.nextLine();
                     if (publishYearInput.isEmpty())
                     {
@@ -338,7 +337,6 @@ public class ApplicationUI
 
                 case 5:
                     System.out.println("Please enter the language the literature is written in");
-                    System.out.println("Set to UNDEFINED if unknown");
                     String languageInput = reader.nextLine();
                     if (languageInput.isEmpty())
                     {
@@ -353,7 +351,6 @@ public class ApplicationUI
 
                 case 6:
                     System.out.println("Please enter the price of the literature");
-                    System.out.println("Set to 0 if unknown");
                     String priceInput = reader.nextLine();
                     if (priceInput.isEmpty())
                     {
@@ -368,7 +365,6 @@ public class ApplicationUI
 
                 case 7:
                     System.out.println("Please enter the quantity of this literature in stock");
-                    System.out.println("Set to 0 if unknown");
                     String quantityInput = reader.nextLine();
                     if (quantityInput.isEmpty())
                     {
