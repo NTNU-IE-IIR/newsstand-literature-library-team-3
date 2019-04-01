@@ -668,8 +668,8 @@ public class ApplicationUI
                     break;
 
                 case 5:
-
-                    inputCase = removeItemFromCart();
+                    removeItemFromCart();
+                    inputCase = 1;
                     break;
 
                 case 6:
@@ -685,6 +685,10 @@ public class ApplicationUI
             }
     }
 
+
+    /**
+     * Prints the main menu for the manage cart option.
+     * */
     private int printMainCartMenu()
     {
         int inputCase;
@@ -707,20 +711,32 @@ public class ApplicationUI
         return inputCase;
     }
 
+
+
+    /**
+     * prints the total price for all the products in the cart. if there are no
+     * items in the cart, a message will be sent to the user.
+     * */
     private void showCartPrice()
     {
-        int returnPrice;
+        int price;
         if (cart.getSize() == 0)
         {
             System.out.println("There are no items in your cart.");
         }
         else
         {
-            returnPrice = cart.getTotalPrice();
-            System.out.println("The total price in your cart is: " + returnPrice + "$");
+            price = cart.getTotalPrice();
+            System.out.println("The total price in your cart is: " + price + "$");
         }
     }
 
+
+    /**
+     * Lets the user add an item to the cart. Requiers the user to search for the
+     * product by title. If the cart is empty, and message will be sent to the user.
+     * @return The inputCase used in the switch case in the cartMenu.
+     * */
     private int addItemToCart()
     {
         int inputCase;
@@ -772,9 +788,13 @@ public class ApplicationUI
        return inputCase;
     }
 
-    private int removeItemFromCart()
+    /**
+     * Lets the user remove an item from the cart. Requiers the user to search for the
+     * product by title. If the cart is empty, and message will be sent to the user.
+     * */
+
+    private void removeItemFromCart()
     {
-        int inputCase = 1;
         Scanner reader = new Scanner(System.in);
 
         if(cart.getSize() == 0)
@@ -815,8 +835,13 @@ public class ApplicationUI
 
             }
         }
-        return inputCase;
     }
+
+    /**
+     * Allows the user to pay for the products in the cart. Change will be given if the amount
+     * is too big. If there are no items in the cart or the pay amount is too low a message will be sent to the user.
+     * @return true if the payment is successful
+     * */
 
     private boolean proceedToCheckOut()
     {
