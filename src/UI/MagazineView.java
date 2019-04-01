@@ -19,27 +19,34 @@ public class MagazineView implements LiteratureView
     }
 
     /**
-     * Used to display all information about the magazine item.
+     * Used to collect all information about the magazine item as a string.
+     *
+     * @return all information about the magazine item as a string.
      */
-    public void show()
+    @Override
+    public String show()
     {
-        "Title: " + this.magazine.getTitle() + "\n" +
-                "Publisher: " + this.publisher + "\n" +
-                "Publish year: " + this.publishYear + "\n" +
-                "Language: " + this.language + "\n" +
-                "Genre: " + this.genre + "\n" +
-                "Price: " + this.price + "\n" +
-                "Quantity in stock: " + this.quantityInStock;
+        return "Title: " + this.magazine.getTitle() + "\n" +
+                "Publisher: " + this.magazine.getPublisher() + "\n" +
+                "Publish year: " + this.magazine.getPublishYear() + "\n" +
+                "Language: " + this.magazine.getLanguage() + "\n" +
+                "Genre: " + this.magazine.getGenre() + "\n" +
+                "Price: " + this.magazine.getPrice() + "\n" +
+                "Quantity in stock: " + this.magazine.getQuantityInStock() + "\n" +
+                "Number of yearly publications: " + this.magazine.getNumberOfYearlyPublications();
     }
 
     /**
-     * Used to display Title, Publisher and Price of the magazine item.
+     * Used to collect the Title, Publisher and Price of the magazine item as a string.
+     *
+     * @return the Title, Publisher and Price of the magazine as a string.
      */
-    public void showRestricted()
+    @Override
+    public String showLimited()
     {
-
+        return "Title: " + this.magazine.getTitle() + "\n" +
+                "Publisher: " + this.magazine.getPublisher() + "\n" +
+                "Price: " + this.magazine.getPrice();
     }
-
-
 }
 
