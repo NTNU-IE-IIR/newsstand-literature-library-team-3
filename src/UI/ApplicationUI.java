@@ -717,7 +717,7 @@ public class ApplicationUI
         else
         {
             returnPrice = cart.getTotalPrice();
-            System.out.println("The total price in your cart is: " + returnPrice);
+            System.out.println("The total price in your cart is: " + returnPrice + "$");
         }
     }
 
@@ -750,7 +750,7 @@ public class ApplicationUI
                 answer = reader.nextLine();
                 if (answer.equals("yes"))
                 {
-                    inputCase = 3;
+                    inputCase = 4;
                 }
                 else
                 {
@@ -833,7 +833,7 @@ public class ApplicationUI
             System.out.println(cart.showCart());
 
             int priceToPay = cart.getTotalPrice();
-            System.out.println("Total price: " + priceToPay);
+            System.out.println("Total price: " + priceToPay + "$");
             System.out.println();
             System.out.println("Please enter the amount to pay");
 
@@ -847,7 +847,7 @@ public class ApplicationUI
             {
                 int change = enteredAmount - priceToPay;
                 System.out.println("Entered amount exceeded the total price.");
-                System.out.println("An amount of " + change + " will automatically be refunded to your bank account");
+                System.out.println("An amount of " + change + "$ will automatically be refunded to your bank account");
                 cart.checkOut();
                 returnBoolean = true;
             } else
