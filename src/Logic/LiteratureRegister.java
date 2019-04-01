@@ -66,4 +66,17 @@ public class LiteratureRegister
         int numberOfNewspapers = literatureCollection.size();
         return numberOfNewspapers;
     }
+
+    public Literature searchByTitle(String searchTitle)
+    {
+        Literature returnString = null;
+        for (Literature literature : literatureCollection)
+        {
+            if(literature.getTitle().equals(searchTitle))
+            {
+                returnString = literature;
+            }
+        }
+        return returnString;
+    }
 }
