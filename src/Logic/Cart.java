@@ -62,7 +62,7 @@ public class Cart
 
     public String showCart()
     {
-        String itemsInCart = null;
+        String itemsInCart = "";
 
         if(cart.isEmpty())
         {
