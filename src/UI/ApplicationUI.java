@@ -638,11 +638,13 @@ public class ApplicationUI
     private void cartMenu()
     {
         boolean completed = false;
+        boolean contentHasBeenPrinted = false;
         String[] choices = {
                 "1. Show content in cart",
                 "2. Show total price",
                 "3. Add dummies",
-                "4. Back"
+                "4. Check out",
+                "5. Back"
         };
         int inputCase = 0;
         Scanner reader = new Scanner(System.in);
@@ -662,7 +664,8 @@ public class ApplicationUI
                     System.out.println(this.cart.showCart());
                     String[] NewMenu = {
                             "1. Show total price",
-                            "2. Back"
+                            "2. Proceed to check out",
+                            "3. Back"
                     };
                     for (String menuItem : NewMenu)
                     {
@@ -676,6 +679,10 @@ public class ApplicationUI
                     }
                     if (nextMenuChoice == 2)
                     {
+                        inputCase = 4;
+                    }
+                    if (nextMenuChoice == 3)
+                    {
                         completed = true;
                     }
 
@@ -685,7 +692,8 @@ public class ApplicationUI
                     System.out.println(this.cart.getTotalPrice());
                     String[] NewMenu2 = {
                             "1. Show content in cart",
-                            "2. Back"
+                            "2. Proceed to check out",
+                            "3. Back"
                     };
                     for (String menuItem : NewMenu2)
                     {
@@ -698,6 +706,10 @@ public class ApplicationUI
                     }
                     if (nextMenuChoice == 2)
                     {
+                        inputCase = 4;
+                    }
+                    if (nextMenuChoice == 3)
+                    {
                         completed = true;
                     }
                     break;
@@ -707,7 +719,8 @@ public class ApplicationUI
                     String[] NewMenu3 = {
                             "1. Show content in cart",
                             "2. Show total price",
-                            "3. Back"
+                            "3. Proceed to check out",
+                            "4. Back"
                     };
                     for (String menuItem : NewMenu3)
                     {
@@ -724,12 +737,53 @@ public class ApplicationUI
                     }
                     if (menuChoice == 3)
                     {
+                        inputCase = 4;
+                    }
+                    if (menuChoice == 4)
+                    {
                         completed = true;
                     }
 
                     break;
 
+
                 case 4:
+
+                    if(!contentHasBeenPrinted)
+                    {
+                        System.out.println(cart.showCart());
+                        contentHasBeenPrinted = true;
+                    }
+                    int priceToPay = cart.getTotalPrice();
+                    System.out.println("Total price: " + priceToPay);
+                    System.out.println();
+                    System.out.println("Please enter the amount to pay");
+
+
+                    int enteredAmount = reader.nextInt();
+
+                    if(enteredAmount < priceToPay)
+                    {
+                        System.out.println("Payment aborted. Amount was too low.");
+                    }
+                    else if (enteredAmount > priceToPay)
+                    {
+                        int change = enteredAmount - priceToPay;
+                        System.out.println("Entered amount exceeded the total price.");
+                        System.out.println("An amount of " + change + " will automatically be refunded to your bank account");
+                        cart.checkOut();
+                        completed = true;
+                    }
+                    else
+                    {
+                        System.out.println("Thank you! Have a nice day.");
+                        cart.checkOut();
+                        completed = true;
+                    }
+
+                    break;
+
+                case 5:
                     completed = true;
                     break;
             }
