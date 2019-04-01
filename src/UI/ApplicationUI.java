@@ -215,170 +215,10 @@ public class ApplicationUI
     }
 
     /**
-     * Add a new product/literature to the register.
-     * In this method you have to add code to ask the
-     * user for the necessary information you need to
-     * create an instance of the product, which you
-     * then send as a parameter to the addNewspaper()-
-     * method of the register.
-     * Remember to also handle invalid input from the
-     * user!!
-     */
-    private void addNewProduct()
-    {
-        System.out.println("addNewProduct() was called");
-    }
-
-//        /**
-//         * Find and display a product based om name (title).
-//         * As with the addNewProduct()-method, you have to
-//         * ask the user for the string (name/title/publisher)
-//         * to search for, and then use this string as input-
-//         * parameter to the method in the register-object.
-//         * Then, upon return from the register, you need
-//         * to print the details of the found item.
-//         */
-//        private void findNewspaperByName ()
-//        {
-//            System.out.print("Please enter title to search for: ");
-//            Scanner reader = new Scanner(System.in);
-//            String searchWord = reader.nextLine();
-//            Iterator<Logic.Newspaper> it = newspaperCollection.getIterator();
-//            while (it.hasNext())
-//            {
-//                Logic.Newspaper currentNewspaper = it.next();
-//                String currentNewspaperTitle = currentNewspaper.getTitle();
-//                if (currentNewspaperTitle.contains(searchWord))
-//                {
-//                    System.out.println(currentNewspaper.getAllInfoAsString());
-//                }
-//            }
-//        }
-//
-//        /**
-//         * Add a new product/literature to the register.
-//         * Uses Scanner class to fill the parameters needed to
-//         * create a new newspaper object. This object is later added to the
-//         * newspaper collection.
-//         */
-//        private void addNewspaper2 ()
-//        {
-//            System.out.println("Please enter the title of the newspaper: ");
-//            Scanner reader = new Scanner(System.in);
-//            String title = reader.nextLine();
-//
-//            System.out.println("Please enter the genre: ");
-//            String genre = reader.nextLine();
-//
-//            System.out.println("Please enter the publisher: ");
-//            String publisher = reader.nextLine();
-//
-//            System.out.println("Please enter the number of issues of the newspaper: ");
-//            System.out.println("Set to 0 if unknown");
-//            int numberOfPublishments = Integer.parseInt(reader.nextLine());
-//
-//
-//            Logic.Newspaper newspaperToAdd = new Logic.Newspaper(title, publisher, genre, numberOfPublishments);
-//            newspaperCollection.addNewspaper(newspaperToAdd);
-//        }
-
-//        /**
-//         * Adds a new newspaper to the newspaper register.
-//         * Uses a Scanner class to fill the parameters to create a
-//         * new newspaper object. This object is added to the
-//         * newspaper collection.
-//         * A switch-case statement is used, where each parameter input is
-//         * entered in its own case. The switch-case statement is used
-//         * to secure the user from entering invalid input.
-//         */
-//        private void addNewspaper ()
-//        {
-//            String title = null;
-//            String genre = null;
-//            String publisher = null;
-//            int numberOfPublishments = 0;
-//
-//            boolean completed = false;
-//
-//            int inputCase = 1;
-//            Scanner reader = new Scanner(System.in);
-//            while (!completed)
-//            {
-//                switch (inputCase)
-//                {
-//                    case 1:
-//                        System.out.println("Please enter the title of the newspaper: ");
-//                        String titleInput = reader.nextLine();
-//                        if (titleInput.isEmpty())
-//                        {
-//                            System.out.println("You need to enter the title");
-//                            break;
-//                        } else
-//                        {
-//                            title = titleInput;
-//                            inputCase = 2;
-//                            break;
-//                        }
-//
-//                    case 2:
-//                        System.out.println("Please enter the genre: ");
-//                        String genreInput = reader.nextLine();
-//                        if (genreInput.isEmpty())
-//                        {
-//                            System.out.println("You need to enter the genre");
-//                            break;
-//                        } else
-//                        {
-//                            genre = genreInput;
-//                            inputCase = 3;
-//                            break;
-//                        }
-//
-//                    case 3:
-//                        System.out.println("Please enter the publisher: ");
-//                        String publisherInput = reader.nextLine();
-//                        if (publisherInput.isEmpty())
-//                        {
-//                            System.out.println("You need to enter the publisher");
-//                            break;
-//                        } else
-//                        {
-//                            publisher = publisherInput;
-//                            inputCase = 4;
-//                            break;
-//                        }
-//
-//                    case 4:
-//                        System.out.println("Please enter the number of issues of the newspaper: ");
-//                        System.out.println("Set to 0 if unknown");
-//                        String inputNumber = reader.nextLine();
-//                        if (inputNumber.isEmpty())
-//                        {
-//                            System.out.println("You need to enter a number");
-//                            break;
-//                        } else
-//                        {
-//                            int numberOfPublishmentsInput = Integer.parseInt(inputNumber);
-//                            numberOfPublishments = numberOfPublishmentsInput;
-//                            inputCase = 5;
-//                            break;
-//                        }
-//
-//                    case 5:
-//                        Logic.Newspaper newspaperToAdd = new Logic.Newspaper(title, publisher, genre, numberOfPublishments);
-//                        newspaperCollection.addNewspaper(newspaperToAdd);
-//                        System.out.println("The newspaper was successfully added to the register");
-//                        completed = true;
-//                        break;
-//                }
-//            }
-//        }
-
-    /**
-     * Adds a new newspaper to the newspaper register.
+     * Adds a new literature-object to the literatureregister.
      * Uses a Scanner class to fill the parameters to create a
-     * new newspaper object. This object is added to the
-     * newspaper collection.
+     * new literature object. This object is added to the
+     * literature collection.
      * A switch-case statement is used, where each parameter input is
      * entered in its own case. The switch-case statement is used
      * to secure the user from entering invalid input.
@@ -396,6 +236,7 @@ public class ApplicationUI
         String edition = null;
         String seriesTitle = null;
         int numberOfYearlyPublications = 0;
+        String publicationDate = null;
 
         String[] choices = {
                 "1. Book",
@@ -546,7 +387,7 @@ public class ApplicationUI
                             break;
                         } else if (choice == 3)
                         {
-                            inputCase = 14;
+                            inputCase = 15;
                             break;
                         }
                         break;
@@ -601,11 +442,11 @@ public class ApplicationUI
                     break;
 
                 case 12:
-                    System.out.println("Please enter the number of yearly publications of the literature");
+                    System.out.println("Please enter the number of yearly publications of the newspaper");
                     String yearlyPublishInput = reader.nextLine();
                     if (yearlyPublishInput.isEmpty())
                     {
-                        System.out.println("You need to enter the number of yearly publications of the literature");
+                        System.out.println("You need to enter the number of yearly publications of the newspaper");
                         break;
                     } else
                     {
@@ -615,14 +456,29 @@ public class ApplicationUI
                     }
 
                 case 13:
+                    System.out.println("Please enter the publication date of the newspaper");
+                    String publishDateInput = reader.nextLine();
+                    if (publishDateInput.isEmpty())
+                    {
+                        System.out.println("You need to enter the publication date of the newspaper");
+                        break;
+                    }
+                    else
+                    {
+                        publicationDate = publishDateInput;
+                        inputCase = 14;
+                        break;
+                    }
+
+                case 14:
                     Newspaper newspaperToAdd = new Newspaper(title, publisher, publishYear, language,
-                            genre, price, quantity, numberOfYearlyPublications);
+                            genre, price, quantity, numberOfYearlyPublications, publicationDate);
                     literatureCollection.addLiterature(newspaperToAdd);
                     System.out.println("The newspaper was successfully added to the literature register");
                     completed = true;
                     break;
 
-                case 14:
+                case 15:
                     System.out.println("Please enter the number of yearly publications of the magazine");
                     String yearlyMagPublishInput = reader.nextLine();
                     if (yearlyMagPublishInput.isEmpty())
@@ -636,9 +492,24 @@ public class ApplicationUI
                         break;
                     }
 
-                case 15:
+                case 16:
+                    System.out.println("Please enter the publication date of the magazine");
+                    String magPublishDateInput = reader.nextLine();
+                    if (magPublishDateInput.isEmpty())
+                    {
+                        System.out.println("You need to enter the publication date of the magazine");
+                        break;
+                    }
+                    else
+                    {
+                        publicationDate = magPublishDateInput;
+                        inputCase = 17;
+                        break;
+                    }
+
+                case 17:
                     Magazine magazineToAdd = new Magazine(title, publisher, publishYear, language,
-                            genre, price, quantity, numberOfYearlyPublications);
+                            genre, price, quantity, numberOfYearlyPublications, publicationDate);
                     literatureCollection.addLiterature(magazineToAdd);
                     System.out.println("The magazine was successfully added to the literature register");
                     completed = true;

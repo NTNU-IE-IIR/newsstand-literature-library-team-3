@@ -27,7 +27,7 @@ public class Newspaper extends Periodical
      * @param publicationDate               The date this newspaper was published
      */
     public Newspaper(String title, String publisher, String publishYear, String language, String genre,
-                     int price, int quantityInStock, int numberOfYearlyPublications, int publicationDate)
+                     int price, int quantityInStock, int numberOfYearlyPublications, String publicationDate)
     {
         super(title, publisher, publishYear, language, genre, price, quantityInStock, numberOfYearlyPublications,
                 publicationDate);

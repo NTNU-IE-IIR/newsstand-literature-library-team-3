@@ -25,7 +25,7 @@ public class Magazine extends Periodical
      * @param publicationDate               The date this magazine was published
      */
     public Magazine(String title, String publisher, String publishYear, String language, String genre,
-                    int price, int quantityInStock, int numberOfYearlyPublications, int publicationDate)
+                    int price, int quantityInStock, int numberOfYearlyPublications, String publicationDate)
     {
         super(title, publisher, publishYear, language, genre, price, quantityInStock, numberOfYearlyPublications,
                 publicationDate);

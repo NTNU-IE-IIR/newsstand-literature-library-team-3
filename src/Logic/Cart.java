@@ -81,11 +81,11 @@ public class Cart
     public void addDummiesToCart()
     {
         Newspaper testNewspaper2 = new Newspaper("Katastrofe", "VG", "2019", "Norsk",
-                "Nyheter", 20, 15, 52);
+                "Nyheter", 20, 15, 52, "01.01.2019");
         Newspaper testNewspaper3 = new Newspaper("Det kunne gått bedre", "VG", "2019", "Norsk",
-                "Nyheter", 20, 15, 52);
+                "Nyheter", 20, 15, 52, "05.03.2019");
         Newspaper testNewspaper = new Newspaper("Ingen trodde dette kunne skje", "Aftenposten", "2018",
-                "Norsk", "Nyheter", 35, 10, 52);
+                "Norsk", "Nyheter", 35, 10, 52, "13.01.2018");
         cart.add(testNewspaper);
         cart.add(testNewspaper2);
         cart.add(testNewspaper3);
