@@ -22,17 +22,15 @@ public class ApplicationUI
             "3. Manage cart"
             //"3. Find a newspaper by title",
     };
-    private LiteratureRegister newspaperCollection;
     private LiteratureRegister literatureCollection;
-    private Cart cart = new Cart();
+    private BookSeriesRegister bookSeriesRegister;
+    private Cart cart;
 
     /**
      * Creates an instance of the UI.ApplicationUI User interface.
      */
     public ApplicationUI()
     {
-        this.newspaperCollection = new LiteratureRegister();
-        this.literatureCollection = new LiteratureRegister();
     }
 
     /**
@@ -118,11 +116,13 @@ public class ApplicationUI
 
     /**
      * Initializes the application.
-     * Typically you would create the LiteratureRegistrer-instance here
+     * Creates the literatureregister-instance, bookseriesregister-instance and the cart-instance.
      */
     private void init()
     {
-        System.out.println("init() was called");
+        this.literatureCollection = new LiteratureRegister();
+        this.bookSeriesRegister = new BookSeriesRegister();
+        this.cart = new Cart();
     }
 
     /**
@@ -395,6 +395,7 @@ public class ApplicationUI
         int quantity = 0;
         String author = null;
         String edition = null;
+        String seriesTitle = null;
         int numberOfYearlyPublications = 0;
 
         String[] choices = {
@@ -542,11 +543,11 @@ public class ApplicationUI
                             break;
                         } else if (choice == 2)
                         {
-                            inputCase = 11;
+                            inputCase = 12;
                             break;
                         } else if (choice == 3)
                         {
-                            inputCase = 13;
+                            inputCase = 14;
                             break;
                         }
                         break;
@@ -581,14 +582,26 @@ public class ApplicationUI
                     }
 
                 case 10:
+                    System.out.println("Please enter the seriestitle");
+                    String seriesTitleInput = reader.nextLine();
+                    seriesTitle = seriesTitleInput;
+                    inputCase = 11;
+                    break;
+
+
+                case 11:
                     Book bookToAdd = new Book(title, publisher, publishYear, language, genre, price,
                             quantity, author, edition, "");
                     literatureCollection.addLiterature(bookToAdd);
+                    if (bookToAdd.isPartOfBookSeries())
+                    {
+                        addBookToBookSeries(bookToAdd);
+                    }
                     System.out.println("The book was successfully added to the literature register");
                     completed = true;
                     break;
 
-                case 11:
+                case 12:
                     System.out.println("Please enter the number of yearly publications of the literature");
                     String yearlyPublishInput = reader.nextLine();
                     if (yearlyPublishInput.isEmpty())
@@ -598,11 +611,11 @@ public class ApplicationUI
                     } else
                     {
                         numberOfYearlyPublications = Integer.parseInt(yearlyPublishInput);
-                        inputCase = 12;
+                        inputCase = 13;
                         break;
                     }
 
-                case 12:
+                case 13:
                     Newspaper newspaperToAdd = new Newspaper(title, publisher, publishYear, language,
                             genre, price, quantity, numberOfYearlyPublications);
                     literatureCollection.addLiterature(newspaperToAdd);
@@ -610,7 +623,7 @@ public class ApplicationUI
                     completed = true;
                     break;
 
-                case 13:
+                case 14:
                     System.out.println("Please enter the number of yearly publications of the magazine");
                     String yearlyMagPublishInput = reader.nextLine();
                     if (yearlyMagPublishInput.isEmpty())
@@ -620,11 +633,11 @@ public class ApplicationUI
                     } else
                     {
                         numberOfYearlyPublications = Integer.parseInt(yearlyMagPublishInput);
-                        inputCase = 14;
+                        inputCase = 15;
                         break;
                     }
 
-                case 14:
+                case 15:
                     Magazine magazineToAdd = new Magazine(title, publisher, publishYear, language,
                             genre, price, quantity, numberOfYearlyPublications);
                     literatureCollection.addLiterature(magazineToAdd);
@@ -632,6 +645,40 @@ public class ApplicationUI
                     completed = true;
                     break;
             }
+        }
+    }
+
+    /**
+     * Adds a book to a bookseries. If the bookseries the
+     * book belongs to already exists in the application,
+     * the book will be added to that bookseries.
+     * If the bookseries does not exist in the application,
+     * the new bookseries will be created, and the book will
+     * be added to this bookseries.
+     * @param book The book to be added to the bookseries.
+     */
+    private void addBookToBookSeries(Book book)
+    {
+        Iterator<BookSeries> bookSeriesRegIt = this.bookSeriesRegister.getIterator();
+        boolean bookSeriesFound = false;
+        String key = book.getTitle();
+        while (bookSeriesRegIt.hasNext())
+        {
+            if (!bookSeriesFound)
+            {
+                BookSeries bookSeries = bookSeriesRegIt.next();
+                if (bookSeries.exists(key))
+                {
+                    bookSeries.addBook(book);
+                    bookSeriesFound = true;
+                }
+            }
+        }
+
+        if (!bookSeriesFound)
+        {
+            BookSeries newBookSeries = new BookSeries(book.getSeriesTitle());
+            newBookSeries.addBook(book);
         }
     }
 
