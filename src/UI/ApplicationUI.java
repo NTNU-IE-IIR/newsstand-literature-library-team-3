@@ -791,7 +791,7 @@ public class ApplicationUI
 
             if(removeProduct == null)
             {
-                System.out.println("Could not find any product mathcing your search.");
+                System.out.println("Could not find any product matching your search.");
             }
             else
             {
