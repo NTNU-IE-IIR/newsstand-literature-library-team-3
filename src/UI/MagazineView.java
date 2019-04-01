@@ -28,6 +28,7 @@ public class MagazineView implements LiteratureView
     {
         return "Title: " + this.magazine.getTitle() + "\n" +
                 "Publisher: " + this.magazine.getPublisher() + "\n" +
+                "Publication date: " + this.magazine.getPublicationDate() + "\n" +
                 "Publish year: " + this.magazine.getPublishYear() + "\n" +
                 "Language: " + this.magazine.getLanguage() + "\n" +
                 "Genre: " + this.magazine.getGenre() + "\n" +
@@ -46,6 +47,7 @@ public class MagazineView implements LiteratureView
     {
         return "Title: " + this.magazine.getTitle() + "\n" +
                 "Publisher: " + this.magazine.getPublisher() + "\n" +
+                "Publication date: " + this.magazine.getPublicationDate() + "\n" +
                 "Price: " + this.magazine.getPrice();
     }
 }

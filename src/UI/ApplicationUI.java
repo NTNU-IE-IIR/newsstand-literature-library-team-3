@@ -160,7 +160,7 @@ public class ApplicationUI
                     System.out.println("Magazines: \n");
                     headerHasBeenPrinted = true;
                 }
-                System.out.println(new MagazineView((Magazine)literature).show());
+                System.out.println(new Viewer().createViewer(literature).showLimited());
                 System.out.println();
             }
         }
@@ -184,7 +184,7 @@ public class ApplicationUI
                     System.out.println("Books: \n");
                     headerHasBeenPrinted = true;
                 }
-                System.out.println(literature.getAllInfoAsString());
+                System.out.println(new Viewer().createViewer(literature).showLimited());
                 System.out.println();
             }
         }
@@ -208,11 +208,10 @@ public class ApplicationUI
                     System.out.println("Newspapers: \n");
                     headerHasBeenPrinted = true;
                 }
-                System.out.println(literature.getAllInfoAsString());
+                System.out.println(new Viewer().createViewer(literature).showLimited());
                 System.out.println();
             }
         }
-
     }
 
     /**
@@ -649,7 +648,7 @@ public class ApplicationUI
         int inputCase = 0;
         Scanner reader = new Scanner(System.in);
 
-        for(String menuItem : choices)
+        for (String menuItem : choices)
         {
             System.out.println(menuItem);
         }
@@ -749,7 +748,7 @@ public class ApplicationUI
 
                 case 4:
 
-                    if(!contentHasBeenPrinted)
+                    if (!contentHasBeenPrinted)
                     {
                         System.out.println(cart.showCart());
                         contentHasBeenPrinted = true;
@@ -762,19 +761,17 @@ public class ApplicationUI
 
                     int enteredAmount = reader.nextInt();
 
-                    if(enteredAmount < priceToPay)
+                    if (enteredAmount < priceToPay)
                     {
                         System.out.println("Payment aborted. Amount was too low.");
-                    }
-                    else if (enteredAmount > priceToPay)
+                    } else if (enteredAmount > priceToPay)
                     {
                         int change = enteredAmount - priceToPay;
                         System.out.println("Entered amount exceeded the total price.");
                         System.out.println("An amount of " + change + " will automatically be refunded to your bank account");
                         cart.checkOut();
                         completed = true;
-                    }
-                    else
+                    } else
                     {
                         System.out.println("Thank you! Have a nice day.");
                         cart.checkOut();
