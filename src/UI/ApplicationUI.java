@@ -271,13 +271,12 @@ public class ApplicationUI
                     {
                         choice = Integer.parseInt(choiceInput);
                         inputCase = 1;
-                        break;
                     } else
                     {
                         System.out.println("You need to enter a number between 1-3");
                         System.out.println(choices);
-                        break;
                     }
+                    break;
 
                 case 1:
                     System.out.println("Please enter the title of the literature: ");
@@ -285,13 +284,12 @@ public class ApplicationUI
                     if (titleInput.isEmpty())
                     {
                         System.out.println("You need to enter the title");
-                        break;
                     } else
                     {
                         title = titleInput;
                         inputCase = 2;
-                        break;
                     }
+                    break;
 
                 case 2:
                     System.out.println("Please enter the genre: ");
@@ -299,13 +297,12 @@ public class ApplicationUI
                     if (genreInput.isEmpty())
                     {
                         System.out.println("You need to enter the genre");
-                        break;
                     } else
                     {
                         genre = genreInput;
                         inputCase = 3;
-                        break;
                     }
+                    break;
 
                 case 3:
                     System.out.println("Please enter the publisher: ");
@@ -313,85 +310,73 @@ public class ApplicationUI
                     if (publisherInput.isEmpty())
                     {
                         System.out.println("You need to enter the publisher");
-                        break;
                     } else
                     {
                         publisher = publisherInput;
                         inputCase = 4;
-                        break;
                     }
+                    break;
 
                 case 4:
                     System.out.println("Please enter the publish-year");
-                    System.out.println("Set to UNDEFINED if unknown");
                     String publishYearInput = reader.nextLine();
                     if (publishYearInput.isEmpty())
                     {
                         System.out.println("You need to enter the publish-year");
-                        break;
                     } else
                     {
                         publishYear = publishYearInput;
                         inputCase = 5;
-                        break;
                     }
+                    break;
 
                 case 5:
                     System.out.println("Please enter the language the literature is written in");
-                    System.out.println("Set to UNDEFINED if unknown");
                     String languageInput = reader.nextLine();
                     if (languageInput.isEmpty())
                     {
                         System.out.println("You need to enter the language");
-                        break;
                     } else
                     {
                         language = languageInput;
                         inputCase = 6;
-                        break;
                     }
+                    break;
 
                 case 6:
                     System.out.println("Please enter the price of the literature");
-                    System.out.println("Set to 0 if unknown");
                     String priceInput = reader.nextLine();
                     if (priceInput.isEmpty())
                     {
                         System.out.println("You need to enter the price");
-                        break;
                     } else
                     {
                         price = Integer.parseInt(priceInput);
                         inputCase = 7;
-                        break;
                     }
+                    break;
 
                 case 7:
                     System.out.println("Please enter the quantity of this literature in stock");
-                    System.out.println("Set to 0 if unknown");
                     String quantityInput = reader.nextLine();
                     if (quantityInput.isEmpty())
                     {
                         System.out.println("You need to enter the quantity");
-                        break;
                     } else
                     {
                         quantity = Integer.parseInt(quantityInput);
                         if (choice == 1)
                         {
                             inputCase = 8;
-                            break;
                         } else if (choice == 2)
                         {
                             inputCase = 12;
-                            break;
                         } else if (choice == 3)
                         {
                             inputCase = 15;
-                            break;
                         }
-                        break;
                     }
+                    break;
 
                 case 8:
                     System.out.println("Please enter the name of the author of the book");
@@ -399,13 +384,12 @@ public class ApplicationUI
                     if (authorInput.isEmpty())
                     {
                         System.out.println("You need to enter the name of the author");
-                        break;
                     } else
                     {
                         author = authorInput;
                         inputCase = 9;
-                        break;
                     }
+                    break;
 
                 case 9:
                     System.out.println("Please enter the edition of the book");
@@ -413,13 +397,12 @@ public class ApplicationUI
                     if (editionInput.isEmpty())
                     {
                         System.out.println("You need to enter the edition of the book");
-                        break;
                     } else
                     {
                         edition = editionInput;
                         inputCase = 10;
-                        break;
                     }
+                    break;
 
                 case 10:
                     System.out.println("Please enter the seriestitle");
@@ -447,13 +430,12 @@ public class ApplicationUI
                     if (yearlyPublishInput.isEmpty())
                     {
                         System.out.println("You need to enter the number of yearly publications of the newspaper");
-                        break;
                     } else
                     {
                         numberOfYearlyPublications = Integer.parseInt(yearlyPublishInput);
                         inputCase = 13;
-                        break;
                     }
+                    break;
 
                 case 13:
                     System.out.println("Please enter the publication date of the newspaper");
@@ -461,14 +443,13 @@ public class ApplicationUI
                     if (publishDateInput.isEmpty())
                     {
                         System.out.println("You need to enter the publication date of the newspaper");
-                        break;
                     }
                     else
                     {
                         publicationDate = publishDateInput;
                         inputCase = 14;
-                        break;
                     }
+                    break;
 
                 case 14:
                     Newspaper newspaperToAdd = new Newspaper(title, publisher, publishYear, language,
@@ -484,13 +465,12 @@ public class ApplicationUI
                     if (yearlyMagPublishInput.isEmpty())
                     {
                         System.out.println("You need to enter the number of yearly publications of the magazine");
-                        break;
                     } else
                     {
                         numberOfYearlyPublications = Integer.parseInt(yearlyMagPublishInput);
-                        inputCase = 15;
-                        break;
+                        inputCase = 16;
                     }
+                    break;
 
                 case 16:
                     System.out.println("Please enter the publication date of the magazine");
@@ -498,14 +478,13 @@ public class ApplicationUI
                     if (magPublishDateInput.isEmpty())
                     {
                         System.out.println("You need to enter the publication date of the magazine");
-                        break;
                     }
                     else
                     {
                         publicationDate = magPublishDateInput;
                         inputCase = 17;
-                        break;
                     }
+                    break;
 
                 case 17:
                     Magazine magazineToAdd = new Magazine(title, publisher, publishYear, language,
