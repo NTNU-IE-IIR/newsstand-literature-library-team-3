@@ -17,7 +17,7 @@ public class ApplicationUI
 
     // An array containing strings to be displayed in the menu.
     private String[] menuItems = {
-            "1. List all Logic.Literature",
+            "1. List all literature",
             "2. Add new literature",
             "3. Manage cart"
             //"3. Find a newspaper by title",
@@ -160,7 +160,7 @@ public class ApplicationUI
                     System.out.println("Magazines: \n");
                     headerHasBeenPrinted = true;
                 }
-                System.out.println(literature.getAllInfoAsString());
+                System.out.println(new MagazineView((Magazine)literature).show());
                 System.out.println();
             }
         }
@@ -395,7 +395,7 @@ public class ApplicationUI
         int quantity = 0;
         String author = null;
         String edition = null;
-        int numberOfYearlyPublishments = 0;
+        int numberOfYearlyPublications = 0;
 
         String[] choices = {
                 "1. Book",
@@ -589,44 +589,44 @@ public class ApplicationUI
                     break;
 
                 case 11:
-                    System.out.println("Please enter the number of yearly publishments of the newspaper");
+                    System.out.println("Please enter the number of yearly publications of the literature");
                     String yearlyPublishInput = reader.nextLine();
                     if (yearlyPublishInput.isEmpty())
                     {
-                        System.out.println("You need to enter the number of yearly publishments of the newspaper");
+                        System.out.println("You need to enter the number of yearly publications of the literature");
                         break;
                     } else
                     {
-                        numberOfYearlyPublishments = Integer.parseInt(yearlyPublishInput);
+                        numberOfYearlyPublications = Integer.parseInt(yearlyPublishInput);
                         inputCase = 12;
                         break;
                     }
 
                 case 12:
                     Newspaper newspaperToAdd = new Newspaper(title, publisher, publishYear, language,
-                            genre, price, quantity, numberOfYearlyPublishments);
+                            genre, price, quantity, numberOfYearlyPublications);
                     literatureCollection.addLiterature(newspaperToAdd);
                     System.out.println("The newspaper was successfully added to the literature register");
                     completed = true;
                     break;
 
                 case 13:
-                    System.out.println("Please enter the number of yearly publishments of the newspaper");
+                    System.out.println("Please enter the number of yearly publications of the magazine");
                     String yearlyMagPublishInput = reader.nextLine();
                     if (yearlyMagPublishInput.isEmpty())
                     {
-                        System.out.println("You need to enter the number of yearly publishments of the newspaper");
+                        System.out.println("You need to enter the number of yearly publications of the magazine");
                         break;
                     } else
                     {
-                        numberOfYearlyPublishments = Integer.parseInt(yearlyMagPublishInput);
+                        numberOfYearlyPublications = Integer.parseInt(yearlyMagPublishInput);
                         inputCase = 14;
                         break;
                     }
 
                 case 14:
                     Magazine magazineToAdd = new Magazine(title, publisher, publishYear, language,
-                            genre, price, quantity, numberOfYearlyPublishments);
+                            genre, price, quantity, numberOfYearlyPublications);
                     literatureCollection.addLiterature(magazineToAdd);
                     System.out.println("The magazine was successfully added to the literature register");
                     completed = true;
@@ -638,155 +638,226 @@ public class ApplicationUI
     private void cartMenu()
     {
         boolean completed = false;
-        boolean contentHasBeenPrinted = false;
+        int inputCase = 1;
+
+
+        while (!completed)
+
+            switch (inputCase)
+            {
+
+                case 1:
+
+                    inputCase = printMainCartMenu();
+                    break;
+
+
+                case 2:
+                    System.out.println(this.cart.showCart());
+                    inputCase = 1;
+                    break;
+
+                case 3:
+                    showCartPrice();
+                    inputCase = 1;
+                    break;
+
+                case 4:
+
+                    inputCase = addItemToCart();
+                    break;
+
+                case 5:
+
+                    inputCase = removeItemFromCart();
+                    break;
+
+                case 6:
+
+                    completed = proceedToCheckOut();
+                    inputCase = 1;
+                    break;
+
+                case 7:
+
+                    completed = true;
+                    break;
+            }
+    }
+
+    private int printMainCartMenu()
+    {
+        int inputCase;
+        Scanner reader = new Scanner(System.in);
         String[] choices = {
                 "1. Show content in cart",
                 "2. Show total price",
-                "3. Add dummies",
-                "4. Check out",
-                "5. Back"
+                "3. Add items to cart",
+                "4. Remove items from cart",
+                "5. Check out",
+                "6. Back"
         };
-        int inputCase = 0;
-        Scanner reader = new Scanner(System.in);
 
         for(String menuItem : choices)
         {
             System.out.println(menuItem);
         }
 
-        inputCase = reader.nextInt();
+        inputCase = reader.nextInt() + 1;
+        return inputCase;
+    }
 
-        while (!completed)
+    private void showCartPrice()
+    {
+        int returnPrice;
+        if (cart.getSize() == 0)
+        {
+            System.out.println("There are no items in your cart.");
+        }
+        else
+        {
+            returnPrice = cart.getTotalPrice();
+            System.out.println("The total price in your cart is: " + returnPrice + "$");
+        }
+    }
 
-            switch (inputCase)
+    private int addItemToCart()
+    {
+        int inputCase;
+        Scanner reader = new Scanner(System.in);
+
+        System.out.println("Please enter the title of the literature you are interested in");
+        String searchWord = reader.nextLine();
+        Literature result = literatureCollection.searchByTitle(searchWord);
+        if (result == null)
+        {
+            System.out.println("Could not find any product matching your search.");
+            inputCase = 1;
+        }
+        else
+        {
+            System.out.println(result.getAllInfoAsString());
+            System.out.println("Do you wish to add this item to your cart?");
+            System.out.println("Enter yes or no");
+            String answer = reader.nextLine();
+            if (answer.equals("yes"))
             {
-                case 1:
-                    System.out.println(this.cart.showCart());
-                    String[] NewMenu = {
-                            "1. Show total price",
-                            "2. Proceed to check out",
-                            "3. Back"
-                    };
-                    for (String menuItem : NewMenu)
-                    {
-                        System.out.println(menuItem);
-                    }
-                    int nextMenuChoice = reader.nextInt();
+                this.cart.addToCart(result);
+                System.out.println(result.getTitle() + " has been successfully added to your cart.");
+                System.out.println("Do you wish to add another product?");
+                System.out.println("Enter yes or no");
 
-                    if (nextMenuChoice == 1)
-                    {
-                        inputCase = 2;
-                    }
-                    if (nextMenuChoice == 2)
-                    {
-                        inputCase = 4;
-                    }
-                    if (nextMenuChoice == 3)
-                    {
-                        completed = true;
-                    }
+                answer = reader.nextLine();
+                if (answer.equals("yes"))
+                {
+                    inputCase = 4;
+                }
+                else
+                {
+                    inputCase = 1;
+                }
 
-                    break;
-
-                case 2:
-                    System.out.println(this.cart.getTotalPrice());
-                    String[] NewMenu2 = {
-                            "1. Show content in cart",
-                            "2. Proceed to check out",
-                            "3. Back"
-                    };
-                    for (String menuItem : NewMenu2)
-                    {
-                        System.out.println(menuItem);
-                    }
-                    nextMenuChoice = reader.nextInt();
-                    if (nextMenuChoice == 1)
-                    {
-                        inputCase = 1;
-                    }
-                    if (nextMenuChoice == 2)
-                    {
-                        inputCase = 4;
-                    }
-                    if (nextMenuChoice == 3)
-                    {
-                        completed = true;
-                    }
-                    break;
-
-                case 3:
-                    this.cart.addDummiesToCart();
-                    String[] NewMenu3 = {
-                            "1. Show content in cart",
-                            "2. Show total price",
-                            "3. Proceed to check out",
-                            "4. Back"
-                    };
-                    for (String menuItem : NewMenu3)
-                    {
-                        System.out.println(menuItem);
-                    }
-                    int menuChoice = reader.nextInt();
-                    if (menuChoice == 1)
-                    {
-                        inputCase = 1;
-                    }
-                    if (menuChoice == 2)
-                    {
-                        inputCase = 2;
-                    }
-                    if (menuChoice == 3)
-                    {
-                        inputCase = 4;
-                    }
-                    if (menuChoice == 4)
-                    {
-                        completed = true;
-                    }
-
-                    break;
-
-
-                case 4:
-
-                    if(!contentHasBeenPrinted)
-                    {
-                        System.out.println(cart.showCart());
-                        contentHasBeenPrinted = true;
-                    }
-                    int priceToPay = cart.getTotalPrice();
-                    System.out.println("Total price: " + priceToPay);
-                    System.out.println();
-                    System.out.println("Please enter the amount to pay");
-
-
-                    int enteredAmount = reader.nextInt();
-
-                    if(enteredAmount < priceToPay)
-                    {
-                        System.out.println("Payment aborted. Amount was too low.");
-                    }
-                    else if (enteredAmount > priceToPay)
-                    {
-                        int change = enteredAmount - priceToPay;
-                        System.out.println("Entered amount exceeded the total price.");
-                        System.out.println("An amount of " + change + " will automatically be refunded to your bank account");
-                        cart.checkOut();
-                        completed = true;
-                    }
-                    else
-                    {
-                        System.out.println("Thank you! Have a nice day.");
-                        cart.checkOut();
-                        completed = true;
-                    }
-
-                    break;
-
-                case 5:
-                    completed = true;
-                    break;
+            } else if (answer.equals("no"))
+            {
+                System.out.println(result.getTitle() + " was not added to your cart.");
+                inputCase = 1;
             }
+            else
+            {
+                System.out.println("You entered an invalid answer. Request aborted.");
+                inputCase = 1;
+            }
+
+        }
+       return inputCase;
+    }
+
+    private int removeItemFromCart()
+    {
+        int inputCase = 1;
+        Scanner reader = new Scanner(System.in);
+
+        if(cart.getSize() == 0)
+        {
+            System.out.println("You have no items in your cart.");
+
+        }
+        else
+        {
+            cart.showCart();
+            System.out.println("Please enter the title of the product you wish to remove");
+            String productToRemove = reader.nextLine();
+            Literature removeProduct = cart.searchByTitle(productToRemove);
+
+            if(removeProduct == null)
+            {
+                System.out.println("Could not find any product matching your search.");
+            }
+            else
+            {
+                System.out.println("Do you wish to remove this product from your cart?");
+                System.out.println(removeProduct.getAllInfoAsString());
+                System.out.println("Please enter yes or no");
+                String answer = reader.nextLine();
+                if(answer.equals("yes"))
+                {
+                    System.out.println(removeProduct.getTitle() + " was successfully removed from your cart.");
+                    cart.removeFromCart(removeProduct);
+                }
+                else if (answer.equals("no"))
+                {
+                    System.out.println(removeProduct.getTitle() + " was not removed from your cart");
+                }
+                else
+                {
+                    System.out.println("You entered an invalid answer. Request aborted.");
+                }
+
+            }
+        }
+        return inputCase;
+    }
+
+    private boolean proceedToCheckOut()
+    {
+        boolean returnBoolean = false;
+        Scanner reader = new Scanner(System.in);
+
+        if (cart.getSize() == 0)
+        {
+            System.out.println("You have no items in cart.");
+        }
+        else
+        {
+
+            System.out.println(cart.showCart());
+
+            int priceToPay = cart.getTotalPrice();
+            System.out.println("Total price: " + priceToPay + "$");
+            System.out.println();
+            System.out.println("Please enter the amount to pay");
+
+            int enteredAmount = reader.nextInt();
+
+            if (enteredAmount < priceToPay)
+            {
+                System.out.println("Payment aborted. Amount was too low.");
+
+            } else if (enteredAmount > priceToPay)
+            {
+                int change = enteredAmount - priceToPay;
+                System.out.println("Entered amount exceeded the total price.");
+                System.out.println("An amount of " + change + "$ will automatically be refunded to your bank account");
+                cart.checkOut();
+                returnBoolean = true;
+            } else
+            {
+                System.out.println("Thank you! Have a nice day.");
+                cart.checkOut();
+                returnBoolean = true;
+            }
+        }
+        return returnBoolean;
     }
 
 }

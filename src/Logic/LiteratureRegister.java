@@ -111,4 +111,17 @@ public class LiteratureRegister
         int numberOfLiterature = literatureCollection.size();
         return numberOfLiterature;
     }
+
+    public Literature searchByTitle(String searchTitle)
+    {
+        Literature returnString = null;
+        for (Literature literature : literatureCollection)
+        {
+            if(literature.getTitle().equals(searchTitle))
+            {
+                returnString = literature;
+            }
+        }
+        return returnString;
+    }
 }
