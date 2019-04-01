@@ -1,7 +1,5 @@
 package Logic;
 
-import Logic.Book;
-
 import java.util.HashMap;
 
 /**
@@ -64,20 +62,6 @@ public class BookSeries
     public String getSeriesTitle()
     {
         return this.seriesTitle;
-    }
-
-    public boolean containsKey(String key)
-    {
-        boolean result = false;
-        if (this.bookSeries.containsKey(key))
-        {
-            result = true;
-        }
-        else
-        {
-            result = false;
-        }
-        return result;
     }
 
     /**
