@@ -157,7 +157,7 @@ public abstract class Literature
      * Returns the title of the given literature.
      * @return title A string containing the title of the given literature.
      */
-    protected String getTitle()
+    public String getTitle()
     {
         return title;
     }
@@ -165,7 +165,7 @@ public abstract class Literature
     /** Returns the publisher of the given literature.
      * @return publisher A string containing the publisher of the given literature.
      */
-    protected String getPublisher()
+    public String getPublisher()
     {
         return publisher;
     }
@@ -173,7 +173,7 @@ public abstract class Literature
     /** Returns the year the given literature was published.
      * @return publishYear A string containing the year the given literature was published.
      */
-    protected String getPublishYear()
+    public String getPublishYear()
     {
         return publishYear;
     }
@@ -181,7 +181,7 @@ public abstract class Literature
     /** Returns the year the given literature was published.
      * @return publishYear A string containing the year the given literature was published.
      */
-    protected String getLanguage()
+    public String getLanguage()
     {
         return language;
     }
@@ -189,7 +189,7 @@ public abstract class Literature
     /** Returns the genre of the given literature.
      * @return genre A string containing the genre of the given literature.
      */
-    protected String getGenre()
+    public String getGenre()
     {
         return genre;
     }
@@ -197,7 +197,7 @@ public abstract class Literature
     /** Returns the price of the given literature.
      * @return price An int representing the price of the given literature, in NOK (Norwegian kroner).
      */
-    protected int getPrice()
+    public int getPrice()
     {
         return price;
     }
@@ -205,7 +205,7 @@ public abstract class Literature
     /** Returns the amount of the given literature in stock.
      * @return quantityInStock An int representing the amount of the given literature in stock.
      */
-    protected int getQuantityInStock()
+    public int getQuantityInStock()
     {
         return quantityInStock;
     }

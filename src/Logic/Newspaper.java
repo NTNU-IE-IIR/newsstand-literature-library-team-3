@@ -2,7 +2,7 @@ package Logic;
 
 /**
  * Stores information about "Logic.Newspaper" objects, such as
- * Title, Publisher, Genre and the number of publishments.
+ * Title, Publisher, Genre and the number of publications.
  *
  * @author Arvin Khodabandeh, Erlend Holseker & Isak Gamnes Sneltvedt
  * @version 0.1 (2019.03.06)
