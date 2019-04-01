@@ -22,17 +22,15 @@ public class ApplicationUI
             "3. Manage cart"
             //"3. Find a newspaper by title",
     };
-    private LiteratureRegister newspaperCollection;
     private LiteratureRegister literatureCollection;
-    private Cart cart = new Cart();
+    private BookSeriesRegister bookSeriesRegister;
+    private Cart cart;
 
     /**
      * Creates an instance of the UI.ApplicationUI User interface.
      */
     public ApplicationUI()
     {
-        this.newspaperCollection = new LiteratureRegister();
-        this.literatureCollection = new LiteratureRegister();
     }
 
     /**
@@ -118,11 +116,13 @@ public class ApplicationUI
 
     /**
      * Initializes the application.
-     * Typically you would create the LiteratureRegistrer-instance here
+     * Creates the literatureregister-instance, bookseriesregister-instance and the cart-instance.
      */
     private void init()
     {
-        System.out.println("init() was called");
+        this.literatureCollection = new LiteratureRegister();
+        this.bookSeriesRegister = new BookSeriesRegister();
+        this.cart = new Cart();
     }
 
     /**
@@ -394,6 +394,7 @@ public class ApplicationUI
         int quantity = 0;
         String author = null;
         String edition = null;
+        String seriesTitle = null;
         int numberOfYearlyPublications = 0;
 
         String[] choices = {
@@ -541,11 +542,11 @@ public class ApplicationUI
                             break;
                         } else if (choice == 2)
                         {
-                            inputCase = 11;
+                            inputCase = 12;
                             break;
                         } else if (choice == 3)
                         {
-                            inputCase = 13;
+                            inputCase = 14;
                             break;
                         }
                         break;
@@ -580,14 +581,26 @@ public class ApplicationUI
                     }
 
                 case 10:
+                    System.out.println("Please enter the seriestitle");
+                    String seriesTitleInput = reader.nextLine();
+                    seriesTitle = seriesTitleInput;
+                    inputCase = 11;
+                    break;
+
+
+                case 11:
                     Book bookToAdd = new Book(title, publisher, publishYear, language, genre, price,
                             quantity, author, edition, "");
                     literatureCollection.addLiterature(bookToAdd);
+                    if (bookToAdd.isPartOfBookSeries())
+                    {
+                        addBookToBookSeries(bookToAdd);
+                    }
                     System.out.println("The book was successfully added to the literature register");
                     completed = true;
                     break;
 
-                case 11:
+                case 12:
                     System.out.println("Please enter the number of yearly publications of the literature");
                     String yearlyPublishInput = reader.nextLine();
                     if (yearlyPublishInput.isEmpty())
@@ -597,11 +610,11 @@ public class ApplicationUI
                     } else
                     {
                         numberOfYearlyPublications = Integer.parseInt(yearlyPublishInput);
-                        inputCase = 12;
+                        inputCase = 13;
                         break;
                     }
 
-                case 12:
+                case 13:
                     Newspaper newspaperToAdd = new Newspaper(title, publisher, publishYear, language,
                             genre, price, quantity, numberOfYearlyPublications);
                     literatureCollection.addLiterature(newspaperToAdd);
@@ -609,7 +622,7 @@ public class ApplicationUI
                     completed = true;
                     break;
 
-                case 13:
+                case 14:
                     System.out.println("Please enter the number of yearly publications of the magazine");
                     String yearlyMagPublishInput = reader.nextLine();
                     if (yearlyMagPublishInput.isEmpty())
@@ -619,11 +632,11 @@ public class ApplicationUI
                     } else
                     {
                         numberOfYearlyPublications = Integer.parseInt(yearlyMagPublishInput);
-                        inputCase = 14;
+                        inputCase = 15;
                         break;
                     }
 
-                case 14:
+                case 15:
                     Magazine magazineToAdd = new Magazine(title, publisher, publishYear, language,
                             genre, price, quantity, numberOfYearlyPublications);
                     literatureCollection.addLiterature(magazineToAdd);
@@ -634,156 +647,288 @@ public class ApplicationUI
         }
     }
 
+    /**
+     * Adds a book to a bookseries. If the bookseries the
+     * book belongs to already exists in the application,
+     * the book will be added to that bookseries.
+     * If the bookseries does not exist in the application,
+     * the new bookseries will be created, and the book will
+     * be added to this bookseries.
+     * @param book The book to be added to the bookseries.
+     */
+    private void addBookToBookSeries(Book book)
+    {
+        Iterator<BookSeries> bookSeriesRegIt = this.bookSeriesRegister.getIterator();
+        boolean bookSeriesFound = false;
+        String key = book.getTitle();
+        while (bookSeriesRegIt.hasNext())
+        {
+            if (!bookSeriesFound)
+            {
+                BookSeries bookSeries = bookSeriesRegIt.next();
+                if (bookSeries.exists(key))
+                {
+                    bookSeries.addBook(book);
+                    bookSeriesFound = true;
+                }
+            }
+        }
+
+        if (!bookSeriesFound)
+        {
+            BookSeries newBookSeries = new BookSeries(book.getSeriesTitle());
+            newBookSeries.addBook(book);
+        }
+    }
+
     private void cartMenu()
     {
         boolean completed = false;
-        boolean contentHasBeenPrinted = false;
-        String[] choices = {
-                "1. Show content in cart",
-                "2. Show total price",
-                "3. Add dummies",
-                "4. Check out",
-                "5. Back"
-        };
-        int inputCase = 0;
-        Scanner reader = new Scanner(System.in);
+        int inputCase = 1;
 
-        for (String menuItem : choices)
-        {
-            System.out.println(menuItem);
-        }
-
-        inputCase = reader.nextInt();
 
         while (!completed)
 
             switch (inputCase)
             {
+
                 case 1:
-                    System.out.println(this.cart.showCart());
-                    String[] NewMenu = {
-                            "1. Show total price",
-                            "2. Proceed to check out",
-                            "3. Back"
-                    };
-                    for (String menuItem : NewMenu)
-                    {
-                        System.out.println(menuItem);
-                    }
-                    int nextMenuChoice = reader.nextInt();
 
-                    if (nextMenuChoice == 1)
-                    {
-                        inputCase = 2;
-                    }
-                    if (nextMenuChoice == 2)
-                    {
-                        inputCase = 4;
-                    }
-                    if (nextMenuChoice == 3)
-                    {
-                        completed = true;
-                    }
-
+                    inputCase = printMainCartMenu();
                     break;
 
+
                 case 2:
-                    System.out.println(this.cart.getTotalPrice());
-                    String[] NewMenu2 = {
-                            "1. Show content in cart",
-                            "2. Proceed to check out",
-                            "3. Back"
-                    };
-                    for (String menuItem : NewMenu2)
-                    {
-                        System.out.println(menuItem);
-                    }
-                    nextMenuChoice = reader.nextInt();
-                    if (nextMenuChoice == 1)
-                    {
-                        inputCase = 1;
-                    }
-                    if (nextMenuChoice == 2)
-                    {
-                        inputCase = 4;
-                    }
-                    if (nextMenuChoice == 3)
-                    {
-                        completed = true;
-                    }
+                    System.out.println(this.cart.showCart());
+                    inputCase = 1;
                     break;
 
                 case 3:
-                    this.cart.addDummiesToCart();
-                    String[] NewMenu3 = {
-                            "1. Show content in cart",
-                            "2. Show total price",
-                            "3. Proceed to check out",
-                            "4. Back"
-                    };
-                    for (String menuItem : NewMenu3)
-                    {
-                        System.out.println(menuItem);
-                    }
-                    int menuChoice = reader.nextInt();
-                    if (menuChoice == 1)
-                    {
-                        inputCase = 1;
-                    }
-                    if (menuChoice == 2)
-                    {
-                        inputCase = 2;
-                    }
-                    if (menuChoice == 3)
-                    {
-                        inputCase = 4;
-                    }
-                    if (menuChoice == 4)
-                    {
-                        completed = true;
-                    }
-
+                    showCartPrice();
+                    inputCase = 1;
                     break;
-
 
                 case 4:
 
-                    if (!contentHasBeenPrinted)
-                    {
-                        System.out.println(cart.showCart());
-                        contentHasBeenPrinted = true;
-                    }
-                    int priceToPay = cart.getTotalPrice();
-                    System.out.println("Total price: " + priceToPay);
-                    System.out.println();
-                    System.out.println("Please enter the amount to pay");
-
-
-                    int enteredAmount = reader.nextInt();
-
-                    if (enteredAmount < priceToPay)
-                    {
-                        System.out.println("Payment aborted. Amount was too low.");
-                    } else if (enteredAmount > priceToPay)
-                    {
-                        int change = enteredAmount - priceToPay;
-                        System.out.println("Entered amount exceeded the total price.");
-                        System.out.println("An amount of " + change + " will automatically be refunded to your bank account");
-                        cart.checkOut();
-                        completed = true;
-                    } else
-                    {
-                        System.out.println("Thank you! Have a nice day.");
-                        cart.checkOut();
-                        completed = true;
-                    }
-
+                    inputCase = addItemToCart();
                     break;
 
                 case 5:
+                    removeItemFromCart();
+                    inputCase = 1;
+                    break;
+
+                case 6:
+
+                    completed = proceedToCheckOut();
+                    inputCase = 1;
+                    break;
+
+                case 7:
+
                     completed = true;
                     break;
             }
+    }
+
+
+    /**
+     * Prints the main menu for the manage cart option.
+     * */
+    private int printMainCartMenu()
+    {
+        int inputCase;
+        Scanner reader = new Scanner(System.in);
+        String[] choices = {
+                "1. Show content in cart",
+                "2. Show total price",
+                "3. Add items to cart",
+                "4. Remove items from cart",
+                "5. Check out",
+                "6. Back"
+        };
+
+        for(String menuItem : choices)
+        {
+            System.out.println(menuItem);
+        }
+
+        inputCase = reader.nextInt() + 1;
+        return inputCase;
+    }
+
+
+
+    /**
+     * prints the total price for all the products in the cart. if there are no
+     * items in the cart, a message will be sent to the user.
+     * */
+    private void showCartPrice()
+    {
+        int price;
+        if (cart.getSize() == 0)
+        {
+            System.out.println("There are no items in your cart.");
+        }
+        else
+        {
+            price = cart.getTotalPrice();
+            System.out.println("The total price in your cart is: " + price + "$");
+        }
+    }
+
+
+    /**
+     * Lets the user add an item to the cart. Requiers the user to search for the
+     * product by title. If the cart is empty, and message will be sent to the user.
+     * @return The inputCase used in the switch case in the cartMenu.
+     * */
+    private int addItemToCart()
+    {
+        int inputCase;
+        Scanner reader = new Scanner(System.in);
+
+        System.out.println("Please enter the title of the literature you are interested in");
+        String searchWord = reader.nextLine();
+        Literature result = literatureCollection.searchByTitle(searchWord);
+        if (result == null)
+        {
+            System.out.println("Could not find any product matching your search.");
+            inputCase = 1;
+        }
+        else
+        {
+            System.out.println(result.getAllInfoAsString());
+            System.out.println("Do you wish to add this item to your cart?");
+            System.out.println("Enter yes or no");
+            String answer = reader.nextLine();
+            if (answer.equals("yes"))
+            {
+                this.cart.addToCart(result);
+                System.out.println(result.getTitle() + " has been successfully added to your cart.");
+                System.out.println("Do you wish to add another product?");
+                System.out.println("Enter yes or no");
+
+                answer = reader.nextLine();
+                if (answer.equals("yes"))
+                {
+                    inputCase = 4;
+                }
+                else
+                {
+                    inputCase = 1;
+                }
+
+            } else if (answer.equals("no"))
+            {
+                System.out.println(result.getTitle() + " was not added to your cart.");
+                inputCase = 1;
+            }
+            else
+            {
+                System.out.println("You entered an invalid answer. Request aborted.");
+                inputCase = 1;
+            }
+
+        }
+       return inputCase;
+    }
+
+    /**
+     * Lets the user remove an item from the cart. Requiers the user to search for the
+     * product by title. If the cart is empty, and message will be sent to the user.
+     * */
+
+    private void removeItemFromCart()
+    {
+        Scanner reader = new Scanner(System.in);
+
+        if(cart.getSize() == 0)
+        {
+            System.out.println("You have no items in your cart.");
+
+        }
+        else
+        {
+            cart.showCart();
+            System.out.println("Please enter the title of the product you wish to remove");
+            String productToRemove = reader.nextLine();
+            Literature removeProduct = cart.searchByTitle(productToRemove);
+
+            if(removeProduct == null)
+            {
+                System.out.println("Could not find any product matching your search.");
+            }
+            else
+            {
+                System.out.println("Do you wish to remove this product from your cart?");
+                System.out.println(removeProduct.getAllInfoAsString());
+                System.out.println("Please enter yes or no");
+                String answer = reader.nextLine();
+                if(answer.equals("yes"))
+                {
+                    System.out.println(removeProduct.getTitle() + " was successfully removed from your cart.");
+                    cart.removeFromCart(removeProduct);
+                }
+                else if (answer.equals("no"))
+                {
+                    System.out.println(removeProduct.getTitle() + " was not removed from your cart");
+                }
+                else
+                {
+                    System.out.println("You entered an invalid answer. Request aborted.");
+                }
+
+            }
+        }
+    }
+
+    /**
+     * Allows the user to pay for the products in the cart. Change will be given if the amount
+     * is too big. If there are no items in the cart or the pay amount is too low a message will be sent to the user.
+     * @return true if the payment is successful
+     * */
+
+    private boolean proceedToCheckOut()
+    {
+        boolean returnBoolean = false;
+        Scanner reader = new Scanner(System.in);
+
+        if (cart.getSize() == 0)
+        {
+            System.out.println("You have no items in cart.");
+        }
+        else
+        {
+
+            System.out.println(cart.showCart());
+
+            int priceToPay = cart.getTotalPrice();
+            System.out.println("Total price: " + priceToPay + "$");
+            System.out.println();
+            System.out.println("Please enter the amount to pay");
+
+            int enteredAmount = reader.nextInt();
+
+            if (enteredAmount < priceToPay)
+            {
+                System.out.println("Payment aborted. Amount was too low.");
+
+            } else if (enteredAmount > priceToPay)
+            {
+                int change = enteredAmount - priceToPay;
+                System.out.println("Entered amount exceeded the total price.");
+                System.out.println("An amount of " + change + "$ will automatically be refunded to your bank account");
+                cart.checkOut();
+                returnBoolean = true;
+            } else
+            {
+                System.out.println("Thank you! Have a nice day.");
+                cart.checkOut();
+                returnBoolean = true;
+            }
+        }
+        return returnBoolean;
     }
 
 }

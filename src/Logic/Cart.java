@@ -3,7 +3,13 @@ package Logic;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-
+/**
+* Represents the cart with product the costumer wants to buy. Uses Arraylist to hold the products
+* and to give the total price, and list up the content in cart.
+*
+* @author Erlend Holseker, Arvin Khodabandeh, Isak Gamnes Sneltvedt
+* @version 0.1 (2019.04.01)
+* */
 
 public class Cart
 {
@@ -15,18 +21,32 @@ public class Cart
         cart = new ArrayList<>();
     }
 
+
+/**
+ * Adds a product to the cart and
+ * */
     public void addToCart(Literature literatureToAdd)
     {
-        int price = literatureToAdd.getPrice();
-        this.totalPrice = totalPrice + price;
+        updateTotalPricePlus(literatureToAdd);
         cart.add(literatureToAdd);
     }
 
     public void removeFromCart(Literature literatureToRemove)
     {
-        int price = literatureToRemove.getPrice();
-        this.totalPrice = totalPrice - price;
+        updateTotalPriceMinus(literatureToRemove);
         cart.remove(literatureToRemove);
+    }
+
+    private void updateTotalPricePlus(Literature priceObject)
+    {
+        int price = priceObject.getPrice();
+        this.totalPrice = totalPrice + price;
+    }
+
+    private void updateTotalPriceMinus(Literature priceObject)
+    {
+        int price = priceObject.getPrice();
+        this.totalPrice = totalPrice - price;
     }
 
     public int getTotalPrice()
@@ -82,6 +102,22 @@ public class Cart
         }
     }
 
+    public int getSize()
+    {
+        return cart.size();
+    }
 
+    public Literature searchByTitle(String searchTitle)
+    {
+        Literature returnString = null;
+        for (Literature literature : cart)
+        {
+            if(literature.getTitle().equals(searchTitle))
+            {
+                returnString = literature;
+            }
+        }
+        return returnString;
+    }
 
 }

@@ -5,6 +5,9 @@ import Logic.Book;
 /**
  * Represents the viewer for books. Formats the requested information into a readable form
  * and returns it as a String.
+ *
+ * @author Arvin Khodabandeh, Erlend Holseker, Isak Gamnes Sneltvedt
+ * @version 0.1 (2019.04.01)
  */
 public class BookView implements LiteratureView
 {
