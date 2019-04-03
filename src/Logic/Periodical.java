@@ -46,17 +46,4 @@ public abstract class Periodical extends Literature
     {
         return numberOfYearlyPublications;
     }
-
-    /**
-     * Returns a string that contains the title, publisher, genre and number
-     * of publications of the newspaper.
-     *
-     * @return A string containing title, publisher, genre and number of publications.
-     */
-    @Override
-    public String getAllInfoAsString()
-    {
-        return super.getAllInfoAsString() + "\n" +
-                "Number of publications per year: " + this.numberOfYearlyPublications;
-    }
 }

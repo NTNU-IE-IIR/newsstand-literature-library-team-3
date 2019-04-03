@@ -1,4 +1,5 @@
 package Logic;
+import UI.Viewer;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -71,7 +72,9 @@ public class Cart
 
         for(Literature literature : cart)
         {
-            String thisLiterature = literature.getAllInfoAsString() + "\n";
+            Viewer litView = new Viewer();
+            String litInfo = litView.createViewer(literature).showLimited();
+            String thisLiterature = litInfo + "\n";
             itemsInCart = itemsInCart + thisLiterature + "\n";
         }
 
