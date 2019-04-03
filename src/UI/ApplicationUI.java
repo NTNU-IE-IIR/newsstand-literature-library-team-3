@@ -17,7 +17,7 @@ public class ApplicationUI
 
     // An array containing strings to be displayed in the menu.
     private String[] menuItems = {
-            "1. List all literature",
+            "1. List literature",
             "2. Add new literature",
             "3. Manage cart"
             //"3. Find a newspaper by title",
@@ -51,7 +51,7 @@ public class ApplicationUI
                 switch (menuSelection)
                 {
                     case 1:
-                        this.listAllLiterature();
+                        this.listLiterature();
                         break;
 
                     case 2:
@@ -125,12 +125,199 @@ public class ApplicationUI
         this.cart = new Cart();
     }
 
-    /**
-     * Lists all the products/literature in the register
-     */
-    private void listAllProducts()
+    private void listLiterature()
     {
-        System.out.println("listAllProducts() was called");
+        int inputCase = 1;
+        boolean completed = false;
+        while (!completed)
+        {
+            switch (inputCase)
+            {
+                case 1:
+                    inputCase = printLiteratureViewChoices();
+                    break;
+
+                case 2:
+                    listBooks();
+                    completed = true;
+                    break;
+
+                case 3:
+                    listNewspapers();
+                    completed = true;
+                    break;
+
+                case 4:
+                    listMagazines();
+                    completed = true;
+                    break;
+
+                case 5:
+                    listAllLiterature();
+                    completed = true;
+                    break;
+
+                case 6:
+                    completed = true;
+                    break;
+            }
+        }
+    }
+
+
+    private int printLiteratureViewChoices()
+    {
+        String[] choices = {
+                "1. Books",
+                "2. Newspapers",
+                "3. Magazines",
+                "4. All literature",
+                "5. Back"
+        };
+        return listChoices(choices);
+    }
+
+    private int listChoices(String[] choices)
+    {
+        int inputCase;
+        Scanner reader = new Scanner(System.in);
+        for(String menuItem : choices)
+        {
+            System.out.println(menuItem);
+        }
+
+        inputCase = reader.nextInt() + 1;
+
+        if(inputCase <= 1 || inputCase > (choices.length + 1))
+        {
+            System.out.println("Please enter a number between 1 - " + choices.length);
+            inputCase = 1;
+        }
+
+        return inputCase;
+    }
+
+    /**
+     * The user will get the opportunity to list either
+     * all information about each book, or only a limited amount
+     * of the information about each book.
+     */
+    private void listBooks()
+    {
+        String[] choices = {
+                "1. List all information about the books",
+                "2. List keyinformation about the books",
+                "3. Back"
+        };
+
+        int inputCase = 1;
+        boolean completed = false;
+
+        while (!completed)
+        {
+            switch (inputCase)
+            {
+                case 1:
+                    inputCase = listChoices(choices);
+                    break;
+
+                case 2:
+                    listAllBooks(true);
+                    completed = true;
+                    break;
+
+                case 3:
+                    listAllBooks(false);
+                    completed = true;
+                    break;
+
+                case 4:
+                    completed = true;
+                    break;
+            }
+        }
+    }
+
+    /**
+     * The user will get the opportunity to list either
+     * all information about each magazine, or only a limited amount
+     * of the information about each magazine.
+     */
+    private void listMagazines()
+    {
+        String[] choices = {
+                "1. List all information about the magazines",
+                "2. List keyinformation about the books",
+                "3. Back"
+        };
+
+        int inputCase = 1;
+        boolean completed = false;
+
+        while(!completed)
+        {
+            switch (inputCase)
+            {
+                case 1:
+                    inputCase = listChoices(choices);
+                    break;
+
+                case 2:
+                    listAllMagazines(true);
+                    completed = true;
+                    break;
+
+                case 3:
+                    listAllMagazines(false);
+                    completed = true;
+                    break;
+
+                case 4:
+                    completed = true;
+                    break;
+            }
+        }
+    }
+
+    /**
+     * The user will get the opportunity to list either
+     * all information about each newspaper, or only a limited amount
+     * of the information about each newspaper.
+     */
+    private void listNewspapers()
+    {
+        String[] choices = {
+                "1. List all information about the newspapers",
+                "2. List keyinformation about the newspapers",
+                "3. Back"
+        };
+
+        int inputCase = 1;
+        boolean completed = false;
+
+        while(!completed)
+        {
+            switch (inputCase)
+            {
+                case 1:
+                    inputCase = listChoices(choices);
+                    break;
+
+                case 2:
+                    listAllNewspapers(true);
+                    completed = true;
+                    break;
+
+                case 3:
+                    listAllNewspapers(false);
+                    completed = true;
+                    break;
+
+                case 4:
+                    completed = true;
+                    break;
+            }
+        }
     }
 
     /**
@@ -138,15 +325,54 @@ public class ApplicationUI
      */
     private void listAllLiterature()
     {
-        listAllBooks();
-        listAllMagazines();
-        listAllNewspapers();
+        String[] choices = {
+                "1. List all information about all literature",
+                "2. List keyinformation about all literature",
+                "3. Back"
+        };
+
+        int inputCase = 1;
+        boolean completed = false;
+
+        while(!completed)
+        {
+            switch(inputCase)
+            {
+                case 1:
+                    inputCase = listChoices(choices);
+                    break;
+
+                case 2:
+                    listAllBooks(true);
+                    listAllMagazines(true);
+                    listAllNewspapers(true);
+                    completed = true;
+                    break;
+
+                case 3:
+                    listAllBooks(false);
+                    listAllMagazines(false);
+                    listAllNewspapers(false);
+                    completed = true;
+                    break;
+
+                case 4:
+                    completed = true;
+                    break;
+            }
+        }
     }
 
     /**
-     * Lists all the magazines in the register
+     * Lists all the magazines in the register.
+     * Takes in a boolean parameter. If the parameter is true,
+     * the magazines will be listed with all info. If false,
+     * the magazines will be listed with limited info.
+     * @param showExtended Determines whether all the info or only
+     *                     a limited amount of the info is going to
+     *                     be printed.
      */
-    private void listAllMagazines()
+    private void listAllMagazines(boolean showExtended)
     {
         Iterator<Literature> litListIt = this.literatureCollection.getIterator();
         boolean headerHasBeenPrinted = false;
@@ -160,17 +386,26 @@ public class ApplicationUI
                     System.out.println("Magazines: \n");
                     headerHasBeenPrinted = true;
                 }
-                System.out.println(new Viewer().createViewer(literature).showLimited());
-                System.out.println();
+                printLiteratureInformation(showExtended, literature);
             }
+        }
+        if (!headerHasBeenPrinted)
+        {
+            System.out.println("There is no magazines in the bookstore.");
         }
     }
 
 
     /**
-     * Lists all the books in the register
+     * Lists all the books in the register.
+     * Takes in a boolean parameter. If the parameter is true,
+     * the books will be listed with all info. If false,
+     * the books will be listed with limited info.
+     * @param showExtended Determines whether all the info or only
+     *                     a limited amount of the info is going to
+     *                     be printed.
      */
-    private void listAllBooks()
+    private void listAllBooks(boolean showExtended)
     {
         Iterator<Literature> litListIt = this.literatureCollection.getIterator();
         boolean headerHasBeenPrinted = false;
@@ -184,17 +419,26 @@ public class ApplicationUI
                     System.out.println("Books: \n");
                     headerHasBeenPrinted = true;
                 }
-                System.out.println(new Viewer().createViewer(literature).showLimited());
-                System.out.println();
+                printLiteratureInformation(showExtended, literature);
             }
+        }
+        if (!headerHasBeenPrinted)
+        {
+            System.out.println("There is no books in the bookstore.");
         }
     }
 
 
     /**
-     * Lists all the newspapers in the register
+     * Lists all the newspapers in the register.
+     * Takes in a boolean parameter. If the parameter is true,
+     * the newspapers will be listed with all info. If false,
+     * the newspapers will be listed with limited info.
+     * @param showExtended Determines whether all the info or only
+     *                     a limited amount of the info is going to
+     *                     be printed.
      */
-    private void listAllNewspapers()
+    private void listAllNewspapers(boolean showExtended)
     {
         Iterator<Literature> litListIt = this.literatureCollection.getIterator();
         boolean headerHasBeenPrinted = false;
@@ -208,10 +452,35 @@ public class ApplicationUI
                     System.out.println("Newspapers: \n");
                     headerHasBeenPrinted = true;
                 }
-                System.out.println(new Viewer().createViewer(literature).showLimited());
-                System.out.println();
+                printLiteratureInformation(showExtended, literature);
             }
         }
+        if (!headerHasBeenPrinted)
+        {
+            System.out.println("There is no newspapers in the bookstore.");
+        }
+    }
+
+    /**
+     * Prints the information of all instances of a given literaturetype.
+     * Takes in a boolean variable, which determines whether the information
+     * to be printed should be limited, of extended.
+     * @param showExtended Decides whether the information to be printed
+     *                     should be limited or extended.
+     * @param literature The literature type to be examined. The literature type
+     *                   is chosen by the method calling this method.
+     */
+    private void printLiteratureInformation(boolean showExtended, Literature literature)
+    {
+        if (!showExtended)
+        {
+            System.out.println(new Viewer().createViewer(literature).showLimited());
+        }
+        if (showExtended)
+        {
+            System.out.println(new Viewer().createViewer(literature).show());
+        }
+        System.out.println();
     }
 
     /**
@@ -414,7 +683,7 @@ public class ApplicationUI
 
                 case 11:
                     Book bookToAdd = new Book(title, publisher, publishYear, language, genre, price,
-                            quantity, author, edition, "");
+                            quantity, author, edition, seriesTitle);
                     literatureCollection.addLiterature(bookToAdd);
                     if (bookToAdd.isPartOfBookSeries())
                     {
@@ -588,8 +857,6 @@ public class ApplicationUI
      * */
     private int printMainCartMenu()
     {
-        int inputCase;
-        Scanner reader = new Scanner(System.in);
         String[] choices = {
                 "1. Show content in cart",
                 "2. Show total price",
@@ -598,21 +865,7 @@ public class ApplicationUI
                 "5. Check out",
                 "6. Back"
         };
-
-        for(String menuItem : choices)
-        {
-            System.out.println(menuItem);
-        }
-
-        inputCase = reader.nextInt() + 1;
-
-        if(inputCase <= 1 || inputCase > (choices.length + 1))
-        {
-            System.out.println("Please enter a number between 1 - " + choices.length);
-            inputCase = 1;
-        }
-
-        return inputCase;
+        return listChoices(choices);
     }
 
 
