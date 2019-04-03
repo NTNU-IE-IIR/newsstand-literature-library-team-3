@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 /**
  * Test class for testing the functionality of the Newspaper class.
  * @author Arvin Khodabandeh, Erlend Holseker, Isak Gamnes Sneltvedt
- * @version 0.1 (2019.04.03)
+ * @version 0.2 (2019.04.03)
  */
 public class NewspaperTest
 {

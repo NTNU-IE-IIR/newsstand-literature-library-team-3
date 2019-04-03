@@ -8,7 +8,7 @@ import java.util.HashMap;
  * members of the same bookseries.
  *
  * @author Arvin Khodabandeh, Erlend Holseker, Isak Gamnes Sneltvedt
- * @version 0.1 (2019.03.25)
+ * @version 0.2 (2019.04.03)
  */
 
 public class BookSeries

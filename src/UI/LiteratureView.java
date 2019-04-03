@@ -4,7 +4,7 @@ package UI;
  * This is an interface used by the viewing-classes for the literature objects.
  *
  * @author Arvin Khodabandeh, Erlend Holseker, Isak Gamnes Sneltvedt
- * @version 0.1 (2019.04.01)
+ * @version 0.2 (2019.04.03)
  */
 public interface LiteratureView
 {

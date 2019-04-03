@@ -5,7 +5,7 @@ import Logic.*;
 /**
  * Makes a viewer object. Sorts objects and creates an appropriate viewer class.
  * @author Arvin Khodabandeh, Erlend Holsker, Isak Gamnes Sneltvedt.
- * @version 0.1 (2019.04.01)
+ * @version 0.2 (2019.04.03)
  */
 public class Viewer
 {

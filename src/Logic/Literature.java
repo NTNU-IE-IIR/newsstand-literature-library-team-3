@@ -5,7 +5,7 @@ package Logic;
  * It is not meant to create instances of type Logic.Literature.
  *
  * @author Arvin Khodabandeh, Erlend Holseker & Isak Gamnes Sneltvedt
- * @version 0.1 (2019.03.25)
+ * @version 0.2 (2019.04.03)
  */
 
 public abstract class Literature

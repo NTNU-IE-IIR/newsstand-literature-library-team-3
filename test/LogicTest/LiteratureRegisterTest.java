@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
  * to verify the functions of the methods in the Logic.LiteratureRegister class.
  *
  * @author Arvin Khodabandeh, Erlend Holseker, Isak Sneltvedt Gamnes
- * @version 0.1 (2019.03.06)
+ * @version 0.2 (2019.04.03)
  */
 
 

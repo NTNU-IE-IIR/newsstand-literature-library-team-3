@@ -7,7 +7,7 @@ import Logic.Book;
  * and returns it as a String.
  *
  * @author Arvin Khodabandeh, Erlend Holseker, Isak Gamnes Sneltvedt
- * @version 0.1 (2019.04.01)
+ * @version 0.2 (2019.04.03)
  */
 public class BookView implements LiteratureView
 {

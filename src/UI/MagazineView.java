@@ -6,7 +6,7 @@ import Logic.Magazine;
  * It extends the LiteratureView interface.
  *
  * @author Arvin Khodabandeh, Erlend Holseker, Isak Gamnes Sneltvedt
- * @version 0.1 (2019.04.01)
+ * @version 0.2 (2019.04.03)
  */
 
 public class MagazineView implements LiteratureView

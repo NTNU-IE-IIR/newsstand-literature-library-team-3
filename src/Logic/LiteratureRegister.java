@@ -10,7 +10,7 @@ import java.util.Iterator;
  * of newspaper objects. The newspaper objects is stored in an ArrayList.
  *
  * @author Erlend Holseker, Arvin Khodabandeh, Isak Gamnes Sneltvedt
- * @version 0.1 (2019.03.06)
+ * @version 0.2 (2019.04.03)
  */
 
 public class LiteratureRegister

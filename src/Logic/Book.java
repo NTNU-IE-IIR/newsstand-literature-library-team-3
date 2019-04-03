@@ -6,7 +6,7 @@ package Logic;
  * Title, publisher, publish-year, language, genre, price, quantity in stock, author and edition.
  *
  * @author Arvin Khodabandeh, Erlend Holseker, Isak Gamnes Sneltvedt
- * @version 0.1 (2019.03.25)
+ * @version 0.2 (2019.04.03)
  */
 
 public class Book extends Literature
@@ -122,5 +122,75 @@ public class Book extends Literature
     public boolean isPartOfBookSeries()
     {
         return this.partOfBookSeries;
+    }
+
+    /**
+     * Returns the title of the given book.
+     *
+     * @return title A string containing the title of the given book.
+     */
+    public String getTitle()
+    {
+        return super.getTitle();
+    }
+
+    /**
+     * Returns the publisher of the given book.
+     *
+     * @return publisher A string containing the publisher of the given book.
+     */
+    public String getPublisher()
+    {
+        return super.getPublisher();
+    }
+
+    /**
+     * Returns the year the given book was published.
+     *
+     * @return publishYear A string containing the year the given book was published.
+     */
+    public String getPublishYear()
+    {
+        return super.getPublishYear();
+    }
+
+    /**
+     * Returns the year the given book was published.
+     *
+     * @return publishYear A string containing the year the given book was published.
+     */
+    public String getLanguage()
+    {
+        return super.getLanguage();
+    }
+
+    /**
+     * Returns the genre of the given book.
+     *
+     * @return genre A string containing the genre of the given book.
+     */
+    public String getGenre()
+    {
+        return super.getGenre();
+    }
+
+    /**
+     * Returns the price of the given book.
+     *
+     * @return price An int representing the price of the given book, in NOK (Norwegian kroner).
+     */
+    public int getPrice()
+    {
+        return super.getPrice();
+    }
+
+    /**
+     * Returns the amount of the given book in stock.
+     *
+     * @return quantityInStock An int representing the amount of the given book in stock.
+     */
+    public int getQuantityInStock()
+    {
+        return super.getQuantityInStock();
     }
 }

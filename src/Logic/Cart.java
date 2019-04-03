@@ -9,7 +9,7 @@ import java.util.Iterator;
 * and to give the total price, and list up the content in cart.
 *
 * @author Erlend Holseker, Arvin Khodabandeh, Isak Gamnes Sneltvedt
-* @version 0.1 (2019.04.01)
+* @version 0.2 (2019.04.03)
 * */
 
 public class Cart
