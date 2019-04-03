@@ -656,7 +656,10 @@ public class ApplicationUI
         }
         else
         {
-            System.out.println(result.getAllInfoAsString());
+            Viewer litView = new Viewer();
+            String litInfo = litView.createViewer(result).showLimited();
+            System.out.println(litInfo);
+            //System.out.println(result.getAllInfoAsString());
             System.out.println("Do you wish to add this item to your cart?");
             System.out.println("Enter yes or no");
             String answer = reader.nextLine();
@@ -720,7 +723,10 @@ public class ApplicationUI
             else
             {
                 System.out.println("Do you wish to remove this product from your cart?");
-                System.out.println(removeProduct.getAllInfoAsString());
+                Viewer litView = new Viewer();
+                String litInfo = litView.createViewer(removeProduct).showLimited();
+                System.out.println(litInfo);
+                //System.out.println(removeProduct.getAllInfoAsString());
                 System.out.println("Please enter yes or no");
                 String answer = reader.nextLine();
                 if(answer.equals("yes"))
