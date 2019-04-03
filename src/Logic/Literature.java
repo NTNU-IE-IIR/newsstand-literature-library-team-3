@@ -35,6 +35,7 @@ public abstract class Literature
      * Sets the title of the given literature.
      * If the input is empty, the title will
      * be set to "UNDEFINED".
+     *
      * @param title The title of the given literature.
      */
     protected void setTitle(String title)
@@ -46,6 +47,7 @@ public abstract class Literature
      * Sets the publisher of the given literature.
      * If the input is empty, the publisher will
      * be set to "UNDEFINED".
+     *
      * @param publisher The publisher of the given literature.
      */
     protected void setPublisher(String publisher)
@@ -57,6 +59,7 @@ public abstract class Literature
      * Sets the year the given literature was published.
      * If the input is empty, the publish-year will
      * be set to "UNDEFINED".
+     *
      * @param publishYear The year the given literature was published.
      */
     protected void setPublishYear(String publishYear)
@@ -68,6 +71,7 @@ public abstract class Literature
      * Sets the language the given literature is written in.
      * If the input is empty, the language will
      * be set to "UNDEFINED".
+     *
      * @param language The language the given literature is written in.
      */
     protected void setLanguage(String language)
@@ -79,6 +83,7 @@ public abstract class Literature
      * Sets the genre of the the given literature.
      * If the input is empty, the genre will
      * be set to "UNDEFINED".
+     *
      * @param genre The genre of the given literature.
      */
     protected void setGenre(String genre)
@@ -90,6 +95,7 @@ public abstract class Literature
      * Sets the price of the the given literature.
      * If the input is empty, the price will
      * be set to 0.
+     *
      * @param price The price of the given literature.
      */
     protected void setPrice(int price)
@@ -101,6 +107,7 @@ public abstract class Literature
      * Sets the amount of the the given literature in stock.
      * If the input is empty, the amount will
      * be set to 0.
+     *
      * @param quantityInStock The amount of the given literature in stock.
      */
     protected void setQuantityInStock(int quantityInStock)
@@ -108,10 +115,16 @@ public abstract class Literature
         this.quantityInStock = setInt(quantityInStock);
     }
 
+
+    /**
+     * Reduces the current quantity of a specific literature item by one.
+     */
     protected void reduceQuantityByOne()
     {
-        this.quantityInStock--;
-
+        if (this.quantityInStock < 0)
+        {
+            this.quantityInStock--;
+        }
     }
 
     /**
@@ -120,6 +133,7 @@ public abstract class Literature
      * The method returns a String. If the input is empty,
      * it will return a String containing "UNDEFINED". If not,
      * the return String will be equal to the input.
+     *
      * @param input The input from the set-method calling on this method.
      * @return The String to be set in the field.
      */
@@ -127,7 +141,7 @@ public abstract class Literature
     {
         String returnString = "UNDEFINED";
 
-        if (input != null )
+        if (input != null)
         {
             if (!input.isEmpty())
             {
@@ -143,6 +157,7 @@ public abstract class Literature
      * The method returns an int. If the input is less or equal to 0,
      * it will return an int equal to 0. If not,
      * it will return an int equal to the input.
+     *
      * @param input The input from the set-method calling on this method.
      * @return The int to be set in the field.
      */
@@ -161,6 +176,7 @@ public abstract class Literature
 
     /**
      * Returns the title of the given literature.
+     *
      * @return title A string containing the title of the given literature.
      */
     public String getTitle()
@@ -168,7 +184,9 @@ public abstract class Literature
         return title;
     }
 
-    /** Returns the publisher of the given literature.
+    /**
+     * Returns the publisher of the given literature.
+     *
      * @return publisher A string containing the publisher of the given literature.
      */
     public String getPublisher()
@@ -176,7 +194,9 @@ public abstract class Literature
         return publisher;
     }
 
-    /** Returns the year the given literature was published.
+    /**
+     * Returns the year the given literature was published.
+     *
      * @return publishYear A string containing the year the given literature was published.
      */
     public String getPublishYear()
@@ -184,7 +204,9 @@ public abstract class Literature
         return publishYear;
     }
 
-    /** Returns the year the given literature was published.
+    /**
+     * Returns the year the given literature was published.
+     *
      * @return publishYear A string containing the year the given literature was published.
      */
     public String getLanguage()
@@ -192,7 +214,9 @@ public abstract class Literature
         return language;
     }
 
-    /** Returns the genre of the given literature.
+    /**
+     * Returns the genre of the given literature.
+     *
      * @return genre A string containing the genre of the given literature.
      */
     public String getGenre()
@@ -200,7 +224,9 @@ public abstract class Literature
         return genre;
     }
 
-    /** Returns the price of the given literature.
+    /**
+     * Returns the price of the given literature.
+     *
      * @return price An int representing the price of the given literature, in NOK (Norwegian kroner).
      */
     public int getPrice()
@@ -208,7 +234,9 @@ public abstract class Literature
         return price;
     }
 
-    /** Returns the amount of the given literature in stock.
+    /**
+     * Returns the amount of the given literature in stock.
+     *
      * @return quantityInStock An int representing the amount of the given literature in stock.
      */
     public int getQuantityInStock()
