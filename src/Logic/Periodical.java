@@ -27,21 +27,41 @@ public abstract class Periodical extends Literature
     }
 
 
+    /**
+     * Sets the publication date of the periodical.
+     *
+     * @param publicationDate the publication date of the periodical.
+     */
     protected void setPublicationDate(String publicationDate)
     {
         this.publicationDate = setString(publicationDate);
     }
 
+    /**
+     * Sets the number of yearly publications of the periodical.
+     *
+     * @param numberOfYearlyPublications the number of yearly publications of the periodical.
+     */
     protected void setNumberOfYearlyPublications(int numberOfYearlyPublications)
     {
-       this.numberOfYearlyPublications = setInt(numberOfYearlyPublications);
+        this.numberOfYearlyPublications = setInt(numberOfYearlyPublications);
     }
 
+    /**
+     * Returns the publication date of the given periodical.
+     *
+     * @return the publication date of the given periodical.
+     */
     public String getPublicationDate()
     {
         return publicationDate;
     }
 
+    /**
+     * Returns the number of yearly publications of the periodical.
+     *
+     * @return the number of yearly publications of the periodical.
+     */
     public int getNumberOfYearlyPublications()
     {
         return numberOfYearlyPublications;
