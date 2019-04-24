@@ -2,6 +2,7 @@ package UI;
 
 import Logic.*;
 
+import java.sql.SQLOutput;
 import java.util.*;
 
 /**
@@ -19,8 +20,8 @@ public class ApplicationUI
     private String[] menuItems = {
             "1. List literature",
             "2. Add new literature",
-            "3. Manage cart"
-            //"3. Find a newspaper by title",
+            "3. Create bookseries / bookcollection",
+            "4. Manage cart"
     };
     private LiteratureRegister literatureCollection;
     private BookSeriesRegister bookSeriesRegister;
@@ -59,13 +60,14 @@ public class ApplicationUI
                         break;
 
                     case 3:
-                        this.cartMenu();
+                        this.createBookSeries();
                         break;
-                    //case 3:
-                    //   this.findNewspaperByName();
-                    //   break;
 
                     case 4:
+                        this.cartMenu();
+                        break;
+
+                    case 5:
                         System.out.println("\nThank you for using Application v0.1. Bye!\n");
                         quit = true;
                         break;
@@ -483,6 +485,133 @@ public class ApplicationUI
         System.out.println();
     }
 
+
+    /**
+     * Creates a new bookseries / bookcollection. The user gets a list
+     * of all available books, and is asked to type the titles of the
+     * books he or she wants to add to the collection.
+     * The price of the collection is calculated by adding the prices of
+     * each book together. If the user wants to redefine the price,
+     * he or she will be asked to do so.
+     * The quantity of the collection is determined by the book in the
+     * collection with the lowest quantity.
+     */
+    private void createBookSeries()
+    {
+        String seriesTitle = null;
+        int price = 0;
+        HashMap<String, Book> booksToAdd = new HashMap<>();
+        int inputCase = 0;
+        Scanner reader = new Scanner(System.in);
+
+        boolean completed = false;
+
+        while (!completed)
+        {
+            switch(inputCase)
+            {
+                case 0:
+                System.out.println("Please enter the title of the collection you want to create");
+                String seriesTitleInput = reader.nextLine();
+                if (seriesTitleInput.isEmpty())
+                {
+                    System.out.println("You need to enter the title of the collection you want to create");
+                } else
+                {
+                    seriesTitle = seriesTitleInput;
+                    inputCase = 1;
+                }
+                break;
+
+                case 1:
+                System.out.println("Please type the title of the books you want to add to a collection.");
+                System.out.println("One title at the time.");
+                System.out.println("These are the books you can add:");
+                listAllBooks(false);
+
+                String titleInput = reader.nextLine();
+                if (this.literatureCollection.containsBook(titleInput))
+                {
+                    Book bookToAdd = this.literatureCollection.getBook(titleInput);
+                    booksToAdd.put(titleInput, bookToAdd);
+                    price += bookToAdd.getPrice();
+                    inputCase = 2;
+                } else
+                {
+                    System.out.println("The title you entered does not exist in the register.");
+                }
+                break;
+
+                case 2:
+                System.out.println("Are you finished adding books to the collection?");
+                System.out.println("Please type yes or no.");
+
+                String answer = reader.nextLine();
+                char choice = answer.charAt(0);
+
+                if (choice == 'y')
+                {
+                    inputCase = 3;
+                } else
+                {
+                    inputCase = 1;
+                }
+                break;
+
+                case 3:
+                System.out.println("The total price of this collection is calculated to be:");
+                System.out.println(price + " NOK");
+                System.out.println("Do you want to change the price of the collection?");
+                System.out.println("Please type yes or no.");
+
+                answer = reader.nextLine();
+                choice = answer.charAt(0);
+
+                if (choice == 'y')
+                {
+                    System.out.println("Please enter the price you want to set for the collection.");
+
+                    price = reader.nextInt();
+
+                    System.out.println("The price of the collection is now " + price + " NOK");
+
+                    inputCase = 4;
+                } else
+                {
+                    inputCase = 4;
+                }
+                break;
+
+                case 4:
+                int quantity = 0;
+                boolean firstQuantityFound = false;
+                Iterator<Book> bookListIt = booksToAdd.values().iterator();
+                while (bookListIt.hasNext())
+                {
+                    if (!firstQuantityFound)
+                    {
+                        Book book = bookListIt.next();
+                        quantity = book.getQuantityInStock();
+                        firstQuantityFound = true;
+                    } else
+                    {
+                        Book book = bookListIt.next();
+
+                        if (book.getQuantityInStock() < quantity)
+                        {
+                            quantity = book.getQuantityInStock();
+                        }
+                    }
+                }
+                BookSeries newBookSeries = new BookSeries(seriesTitle, price, quantity);
+                newBookSeries.getBookSeries().putAll(booksToAdd);
+
+                System.out.println("The collection was successfully created.");
+                completed = true;
+                break;
+            }
+        }
+    }
     /**
      * Adds a new literature-object to the literatureregister.
      * Uses a Scanner class to fill the parameters to create a
@@ -685,10 +814,10 @@ public class ApplicationUI
                     Book bookToAdd = new Book(title, publisher, publishYear, language, genre, price,
                             quantity, author, edition, seriesTitle);
                     literatureCollection.addLiterature(bookToAdd);
-                    if (bookToAdd.isPartOfBookSeries())
-                    {
-                        addBookToBookSeries(bookToAdd);
-                    }
+                    //if (bookToAdd.isPartOfBookSeries())
+                    //{
+                    //    addBookToBookSeries(bookToAdd);
+                    //}
                     System.out.println("The book was successfully added to the literature register");
                     completed = true;
                     break;
@@ -766,39 +895,39 @@ public class ApplicationUI
         }
     }
 
-    /**
-     * Adds a book to a bookseries. If the bookseries the
-     * book belongs to already exists in the application,
-     * the book will be added to that bookseries.
-     * If the bookseries does not exist in the application,
-     * the new bookseries will be created, and the book will
-     * be added to this bookseries.
-     * @param book The book to be added to the bookseries.
-     */
-    private void addBookToBookSeries(Book book)
-    {
-        Iterator<BookSeries> bookSeriesRegIt = this.bookSeriesRegister.getIterator();
-        boolean bookSeriesFound = false;
-        String key = book.getTitle();
-        while (bookSeriesRegIt.hasNext())
-        {
-            if (!bookSeriesFound)
-            {
-                BookSeries bookSeries = bookSeriesRegIt.next();
-                if (bookSeries.exists(key))
-                {
-                    bookSeries.addBook(book);
-                    bookSeriesFound = true;
-                }
-            }
-        }
-
-        if (!bookSeriesFound)
-        {
-            BookSeries newBookSeries = new BookSeries(book.getSeriesTitle());
-            newBookSeries.addBook(book);
-        }
-    }
+//    /**
+//     * Adds a book to a bookseries. If the bookseries the
+//     * book belongs to already exists in the application,
+//     * the book will be added to that bookseries.
+//     * If the bookseries does not exist in the application,
+//     * the new bookseries will be created, and the book will
+//     * be added to this bookseries.
+//     * @param book The book to be added to the bookseries.
+//     */
+//    private void addBookToBookSeries(Book book)
+//    {
+//        Iterator<BookSeries> bookSeriesRegIt = this.bookSeriesRegister.getIterator();
+//        boolean bookSeriesFound = false;
+//        String key = book.getSeriesTitle();
+//        while (bookSeriesRegIt.hasNext())
+//        {
+//            if (!bookSeriesFound)
+//            {
+//                BookSeries bookSeries = bookSeriesRegIt.next();
+//                if (bookSeries.exists(key))
+//                {
+//                    bookSeries.addBook(book);
+//                    bookSeriesFound = true;
+//                }
+//            }
+//        }
+//
+//        if (!bookSeriesFound)
+//        {
+//            BookSeries newBookSeries = new BookSeries(book.getSeriesTitle());
+//            newBookSeries.addBook(book);
+//        }
+//    }
 
     private void cartMenu()
     {
