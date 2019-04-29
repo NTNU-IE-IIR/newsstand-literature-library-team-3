@@ -75,7 +75,7 @@ public class Cart
             if(salesItem instanceof Literature)
             {
                 Viewer litView = new Viewer();
-                String litInfo = litView.createViewer((Literature) salesItem).showLimited();
+                String litInfo = litView.createViewer(salesItem).showLimited();
                 String thisLiterature = litInfo + "\n";
                 itemsInCart = itemsInCart + thisLiterature + "\n";
             }

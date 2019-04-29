@@ -1422,14 +1422,10 @@ public class ApplicationUI
             else
             {
                 System.out.println("Do you wish to remove this product from your cart?");
-                if(removeProduct instanceof Literature)
-                {
-                    Viewer litView = new Viewer();
-                    String litInfo = litView.createViewer((Literature) removeProduct).showLimited();
-                    System.out.println(litInfo);
-                } else {
-                    System.out.println(removeProduct.getTitle() + "\n" + removeProduct.getPrice());
-                }
+
+                Viewer litView = new Viewer();
+                String litInfo = litView.createViewer(removeProduct).showLimited();
+                System.out.println(litInfo);
                 System.out.println("Please enter yes or no");
                 String answer = reader.nextLine();
                 if(answer.equals("yes"))
