@@ -493,7 +493,8 @@ public class ApplicationUI
     /**
      *  Lists either extended information about the book series with
      *  additional information about the books in the series, or a limited
-     *  amount of information containing the series title and the price.
+     *  amount of information containing the series title, the price and
+     *  the quantity in stock.
      */
     private void listBookSeries()
     {
@@ -533,9 +534,6 @@ public class ApplicationUI
                     break;
             }
         }
-
-
-
     }
 
     /**

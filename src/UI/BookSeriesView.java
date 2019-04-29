@@ -3,15 +3,32 @@ import Logic.Book;
 import Logic.BookSeries;
 import java.util.Iterator;
 
+/**
+ * Represents the viewer for book series. Formats the requested information into a readable form
+ * and returns it as a String.
+ *
+ * @author Arvin Khodabandeh, Erlend Holseker, Isak Gamnes Sneltvedt
+ * @version 0.2 (2019.04.29)
+ */
 public class BookSeriesView implements SalesItemView
 {
     private BookSeries bookSeries;
 
+    /**
+     * Constructor of the BookSeriesView-class.
+     *
+     * @param bookSeries The book series to be viewed.
+     */
     public BookSeriesView(BookSeries bookSeries)
     {
         this.bookSeries = bookSeries;
     }
 
+    /**
+     * Returns all the information of the book series.
+     *
+     * @return A String containing all the information of the book series.
+     */
     @Override
     public String show()
     {
@@ -35,6 +52,11 @@ public class BookSeriesView implements SalesItemView
         return returnString;
     }
 
+    /**
+     * Returns the title, price and quantity of the book series.
+     *
+     * @return A String containing the title, price and quantity of the book series.
+     */
     @Override
     public String showLimited()
     {
