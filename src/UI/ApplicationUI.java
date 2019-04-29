@@ -517,16 +517,8 @@ public class ApplicationUI
                 case 1:
                     while (bookSeriesIterator.hasNext())
                     {
-                        BookSeries bookseries = bookSeriesIterator.next();
-                        System.out.println("Series title: " + bookseries.getTitle() +
-                                "\nPrice: " + bookseries.getPrice() + "\nBooks in this series: ");
-                        Iterator<Book> bookIterator = bookseries.getIterator();
-                        while (bookIterator.hasNext())
-                        {
-                            Book book = bookIterator.next();
-                            System.out.println("Title: " + book.getTitle() + "\nAuthor: " +
-                                    book.getAuthor() + "\nGenre: " + book.getGenre() + "\n");
-                        }
+                        BookSeries bookSeries = bookSeriesIterator.next();
+                        System.out.println(new Viewer().createViewer(bookSeries).show());
                         completed = true;
                     }
                     break;
@@ -534,9 +526,8 @@ public class ApplicationUI
                 case 2:
                     while (bookSeriesIterator.hasNext())
                     {
-                        BookSeries bookseries = bookSeriesIterator.next();
-                        System.out.println("Series title: " + bookseries.getTitle() +
-                                "\nPrice: " + bookseries.getPrice());
+                        BookSeries bookSeries = bookSeriesIterator.next();
+                        System.out.println(new Viewer().createViewer(bookSeries).showLimited());
                     }
                     completed = true;
                     break;

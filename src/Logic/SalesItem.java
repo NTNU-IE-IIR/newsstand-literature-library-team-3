@@ -4,11 +4,9 @@ public abstract class SalesItem
 {
     private int price;
     private int quantityInStock;
-    private String title;
 
-    public SalesItem(String title, int price, int quantityInStock)
+    public SalesItem(int price, int quantityInStock)
     {
-        setString(title);
         setPrice(price);
         setQuantityInStock(quantityInStock);
     }
@@ -68,6 +66,7 @@ public abstract class SalesItem
         }
         return returnInt;
     }
+    public abstract String getTitle();
 
     /**
      * Returns the price of the given salesitem.
@@ -90,10 +89,6 @@ public abstract class SalesItem
     }
 
 
-    public String getTitle()
-    {
-        return this.title;
-    }
 
     protected String setString(String input)
     {

@@ -19,8 +19,8 @@ public class BookSeries extends SalesItem
 
     public BookSeries(String seriesTitle, int price, int quantityOfSeries)
     {
-        super(seriesTitle, price, quantityOfSeries);
-
+        super(price, quantityOfSeries);
+        this.title = seriesTitle;
         bookSeries = new HashMap<>();
     }
 

@@ -8,7 +8,7 @@ import Logic.Newspaper;
  * @author Arvin Khodabandeh, Erlend Holseker, Isak Gamnes Sneltvedt
  * @version 0.2 (2019.04.03)
  */
-public class NewspaperView implements LiteratureView
+public class NewspaperView implements SalesItemView
 {
     Newspaper newspaper;
 

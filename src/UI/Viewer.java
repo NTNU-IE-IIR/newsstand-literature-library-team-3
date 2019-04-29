@@ -16,23 +16,27 @@ public class Viewer
 
     /**
      * Creates and returns an appropriate viewer object based on the type of literature in the input.
-     * @param literature the literature to make a viewer of.
+     * @param salesItem the salesItem to make a viewer of.
      * @return a viewer of the appropriate type.
      */
-    public LiteratureView createViewer(Literature literature)
+    public SalesItemView createViewer(SalesItem salesItem)
     {
-        LiteratureView viewer = null;
-        if (literature instanceof Book)
+        SalesItemView viewer = null;
+        if (salesItem instanceof Book)
         {
-            viewer = new BookView((Book) literature);
+            viewer = new BookView((Book) salesItem);
         }
-        else if (literature instanceof Newspaper)
+        else if (salesItem instanceof Newspaper)
         {
-            viewer = new NewspaperView((Newspaper) literature);
+            viewer = new NewspaperView((Newspaper) salesItem);
         }
-        else if (literature instanceof Magazine)
+        else if (salesItem instanceof Magazine)
         {
-            viewer = new MagazineView((Magazine) literature);
+            viewer = new MagazineView((Magazine) salesItem);
+        }
+        else if (salesItem instanceof BookSeries)
+        {
+            viewer = new BookSeriesView((BookSeries) salesItem);
         }
         return viewer;
     }

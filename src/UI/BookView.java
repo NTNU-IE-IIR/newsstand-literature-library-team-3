@@ -9,7 +9,7 @@ import Logic.Book;
  * @author Arvin Khodabandeh, Erlend Holseker, Isak Gamnes Sneltvedt
  * @version 0.2 (2019.04.03)
  */
-public class BookView implements LiteratureView
+public class BookView implements SalesItemView
 {
     private Book book;
 
@@ -31,8 +31,7 @@ public class BookView implements LiteratureView
     @Override
     public String show()
     {
-        return "Seriestitle: " + book.getSeriesTitle() + "\n" +
-                "Title: " + book.getTitle() + "\n" +
+        return "Title: " + book.getTitle() + "\n" +
                 "Author:" + book.getAuthor() + "\n" +
                 "Edition: " + book.getEdition() + "\n" +
                 "Publisher: " + book.getPublisher() + "\n" +

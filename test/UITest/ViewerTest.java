@@ -34,7 +34,7 @@ public class ViewerTest
                 "Cappelen Damm", "1999", "Norwegian",
                 "Fantasy", 20, 50, "J.K. Rowling",
                 "1", "Harry Potter");
-        LiteratureView literatureView = this.viewer.createViewer(book);
+        SalesItemView literatureView = this.viewer.createViewer(book);
         assertFalse(literatureView instanceof MagazineView);
         assertFalse(literatureView instanceof NewspaperView);
         assertTrue(literatureView instanceof BookView);
@@ -49,7 +49,7 @@ public class ViewerTest
         Literature magazine = new Magazine("Teknisk Ukeblad", "TU Media", "2019",
                 "Norwegian", "Technology", 10, 17,
                 52, "June 20th");
-        LiteratureView literatureView = this.viewer.createViewer(magazine);
+        SalesItemView literatureView = this.viewer.createViewer(magazine);
         assertFalse(literatureView instanceof NewspaperView);
         assertFalse(literatureView instanceof BookView);
         assertTrue(literatureView instanceof MagazineView);
@@ -64,7 +64,7 @@ public class ViewerTest
         Literature newspaper = new Newspaper("VG", "Schibsted", "2019",
                 "Norwegian", "News", 10, 17,
                 52, "June 20th");
-        LiteratureView literatureView = this.viewer.createViewer(newspaper);
+        SalesItemView literatureView = this.viewer.createViewer(newspaper);
         assertFalse(literatureView instanceof MagazineView);
         assertFalse(literatureView instanceof BookView);
         assertTrue(literatureView instanceof NewspaperView);

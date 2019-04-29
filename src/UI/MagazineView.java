@@ -9,7 +9,7 @@ import Logic.Magazine;
  * @version 0.2 (2019.04.03)
  */
 
-public class MagazineView implements LiteratureView
+public class MagazineView implements SalesItemView
 {
     private Magazine magazine;
 

@@ -18,7 +18,8 @@ public abstract class Literature extends SalesItem
 
     public Literature(String title, String publisher, String publishYear, String language, String genre, int price, int quantityInStock)
     {
-        super(title, price, quantityInStock);
+        super(price, quantityInStock);
+        setTitle(title);
         setPublisher(publisher);
         setPublishYear(publishYear);
         setLanguage(language);
