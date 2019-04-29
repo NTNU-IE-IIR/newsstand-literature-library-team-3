@@ -1,6 +1,7 @@
 package Logic;
 
 import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  * Represents a bookseries.
@@ -85,5 +86,10 @@ public class BookSeries extends SalesItem
             result = false;
         }
         return result;
+    }
+
+    public Iterator getIterator()
+    {
+        return this.bookSeries.values().iterator();
     }
 }

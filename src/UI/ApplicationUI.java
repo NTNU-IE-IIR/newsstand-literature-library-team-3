@@ -20,8 +20,9 @@ public class ApplicationUI
     private String[] menuItems = {
             "1. List literature",
             "2. Add new literature",
-            "3. Create bookseries / bookcollection",
-            "4. Manage cart"
+            "3. List book series/ book collections",
+            "4. Create book series / book collection",
+            "5. Manage cart"
     };
     private LiteratureRegister literatureCollection;
     private BookSeriesRegister bookSeriesRegister;
@@ -60,14 +61,18 @@ public class ApplicationUI
                         break;
 
                     case 3:
-                        this.createBookSeries();
+                        this.listBookSeries();
                         break;
 
                     case 4:
-                        this.cartMenu();
+                        this.createBookSeries();
                         break;
 
                     case 5:
+                        this.cartMenu();
+                        break;
+
+                    case 6:
                         System.out.println("\nThank you for using Application v0.1. Bye!\n");
                         quit = true;
                         break;
@@ -485,6 +490,62 @@ public class ApplicationUI
         System.out.println();
     }
 
+    /**
+     *  Lists either extended information about the book series with
+     *  additional information about the books in the series, or a limited
+     *  amount of information containing the series title and the price.
+     */
+    private void listBookSeries()
+    {
+        String[] choices = {
+                "1. List all information about the book series",
+                "2. List key information about the book series",
+                "3. Back"
+        };
+        Iterator<BookSeries> bookSeriesIterator = this.bookSeriesRegister.getIterator();
+        Scanner reader = new Scanner(System.in);
+        int inputCase = 0;
+        boolean completed = false;
+        while (!completed)
+        {
+            switch (inputCase)
+            {
+                case 0:
+                    inputCase = listChoices(choices) - 1;
+                    break;
+
+                case 1:
+                    while (bookSeriesIterator.hasNext())
+                    {
+                        BookSeries bookseries = bookSeriesIterator.next();
+                        System.out.println("Series title: " + bookseries.getSeriesTitle() +
+                                "\nPrice: " + bookseries.getPrice() + "\nBooks in this series: ");
+                        Iterator<Book> bookIterator = bookseries.getIterator();
+                        while (bookIterator.hasNext())
+                        {
+                            Book book = bookIterator.next();
+                            System.out.println("Title: " + book.getTitle() + "\nAuthor: " +
+                                    book.getAuthor() + "\nGenre: " + book.getGenre() + "\n");
+                        }
+                        completed = true;
+                    }
+                    break;
+
+                case 2:
+                    while (bookSeriesIterator.hasNext())
+                    {
+                        BookSeries bookseries = bookSeriesIterator.next();
+                        System.out.println("Series title: " + bookseries.getSeriesTitle() +
+                                "\nPrice: " + bookseries.getPrice());
+                    }
+                    completed = true;
+                    break;
+            }
+        }
+
+
+
+    }
 
     /**
      * Creates a new bookseries / bookcollection. The user gets a list
@@ -605,6 +666,7 @@ public class ApplicationUI
                 }
                 BookSeries newBookSeries = new BookSeries(seriesTitle, price, quantity);
                 newBookSeries.getBookSeries().putAll(booksToAdd);
+                this.bookSeriesRegister.addBookSeries(newBookSeries);
 
                 System.out.println("The collection was successfully created.");
                 completed = true;
