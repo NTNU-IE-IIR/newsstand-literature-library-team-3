@@ -506,11 +506,13 @@ public class ApplicationUI
         String seriesTitle = null;
         int numberOfYearlyPublications = 0;
         String publicationDate = null;
+        String abortInput;
 
         String[] choices = {
                 "1. Book",
                 "2. Newspaper",
-                "3. Magazine"
+                "3. Magazine",
+                "4. Cancel"
         };
         int choice = 0;
 
@@ -532,17 +534,29 @@ public class ApplicationUI
                     String[] validChoices = {
                             "1",
                             "2",
-                            "3"
+                            "3",
+                            "4"
                     };
                     List<String> validChoiceList = Arrays.asList(validChoices);
 
                     if (validChoiceList.contains(choiceInput))
                     {
+
                         choice = Integer.parseInt(choiceInput);
                         inputCase = 1;
+
+                        if(choiceInput.equals("4"))
+                        {
+                            System.out.println("Do you wish to cancel?");
+                            abortInput = reader.nextLine();
+                            if(abortInput.equals("yes"))
+                            {
+                                completed = true;
+                            }
+                        }
                     } else
                     {
-                        System.out.println("You need to enter a number between 1-3");
+                        System.out.println("You need to enter a number between 1-4");
                         System.out.println(choices);
                     }
                     break;
@@ -550,7 +564,21 @@ public class ApplicationUI
                 case 1:
                     System.out.println("Please enter the title of the literature: ");
                     String titleInput = reader.nextLine();
-                    if (titleInput.isEmpty())
+                    if(titleInput.equals("cancel"))
+                    {
+                        System.out.println("Do you wish to cancel? Write no if you want to name the title cancel");
+                        abortInput = reader.nextLine();
+                        if(abortInput.equals("yes"))
+                        {
+                            completed = true;
+                        }
+                        if(abortInput.equals("no"))
+                        {
+                            title = titleInput;
+                            inputCase = 2;
+                        }
+                    }
+                    else if (titleInput.isEmpty())
                     {
                         System.out.println("You need to enter the title");
                     } else
@@ -563,7 +591,23 @@ public class ApplicationUI
                 case 2:
                     System.out.println("Please enter the genre: ");
                     String genreInput = reader.nextLine();
-                    if (genreInput.isEmpty())
+
+                    if(genreInput.equals("cancel"))
+                    {
+                        System.out.println("Do you wish to cancel? Write no if you want to name the genre cancel");
+                        abortInput = reader.nextLine();
+                        if(abortInput.equals("yes"))
+                        {
+                            completed = true;
+                        }
+                        if(abortInput.equals("no"))
+                        {
+                            genre = genreInput;
+                            inputCase = 3;
+                        }
+                    }
+
+                    else if (genreInput.isEmpty())
                     {
                         System.out.println("You need to enter the genre");
                     } else
@@ -576,7 +620,23 @@ public class ApplicationUI
                 case 3:
                     System.out.println("Please enter the publisher: ");
                     String publisherInput = reader.nextLine();
-                    if (publisherInput.isEmpty())
+
+                    if(publisherInput.equals("cancel"))
+                    {
+                        System.out.println("Do you wish to cancel?");
+                        abortInput = reader.nextLine();
+                        if(abortInput.equals("yes"))
+                        {
+                            completed = true;
+                        }
+                        if(abortInput.equals("no"))
+                        {
+                            publisher = publisherInput;
+                            inputCase = 4;
+                        }
+                    }
+
+                    else if (publisherInput.isEmpty())
                     {
                         System.out.println("You need to enter the publisher");
                     } else
@@ -589,7 +649,23 @@ public class ApplicationUI
                 case 4:
                     System.out.println("Please enter the publish-year");
                     String publishYearInput = reader.nextLine();
-                    if (publishYearInput.isEmpty())
+
+                    if(publishYearInput.equals("cancel"))
+                    {
+                        System.out.println("Do you wish to cancel?");
+                        abortInput = reader.nextLine();
+                        if(abortInput.equals("yes"))
+                        {
+                            completed = true;
+                        }
+                        if(abortInput.equals("no"))
+                        {
+                            publishYear = publishYearInput;
+                            inputCase = 5;
+                        }
+                    }
+
+                    else if (publishYearInput.isEmpty())
                     {
                         System.out.println("You need to enter the publish-year");
                     } else
@@ -602,7 +678,24 @@ public class ApplicationUI
                 case 5:
                     System.out.println("Please enter the language the literature is written in");
                     String languageInput = reader.nextLine();
-                    if (languageInput.isEmpty())
+
+
+                    if(languageInput.equals("cancel"))
+                    {
+                        System.out.println("Do you wish to cancel?");
+                        abortInput = reader.nextLine();
+                        if(abortInput.equals("yes"))
+                        {
+                            completed = true;
+                        }
+                        if(abortInput.equals("no"))
+                        {
+                            language = languageInput;
+                            inputCase = 6;
+                        }
+                    }
+
+                    else if (languageInput.isEmpty())
                     {
                         System.out.println("You need to enter the language");
                     } else
@@ -615,7 +708,24 @@ public class ApplicationUI
                 case 6:
                     System.out.println("Please enter the price of the literature");
                     String priceInput = reader.nextLine();
-                    if (priceInput.isEmpty())
+
+
+                    if(priceInput.equals("cancel"))
+                    {
+                        System.out.println("Do you wish to cancel?");
+                        abortInput = reader.nextLine();
+                        if(abortInput.equals("yes"))
+                        {
+                            completed = true;
+                        }
+                        if(abortInput.equals("no"))
+                        {
+                            price = Integer.parseInt(priceInput);
+                            inputCase = 7;
+                        }
+                    }
+
+                    else if (priceInput.isEmpty())
                     {
                         System.out.println("You need to enter the price");
                     } else
@@ -628,7 +738,33 @@ public class ApplicationUI
                 case 7:
                     System.out.println("Please enter the quantity of this literature in stock");
                     String quantityInput = reader.nextLine();
-                    if (quantityInput.isEmpty())
+
+
+                    if(quantityInput.equals("cancel"))
+                    {
+                        System.out.println("Do you wish to cancel?");
+                        abortInput = reader.nextLine();
+                        if(abortInput.equals("yes"))
+                        {
+                            completed = true;
+                        }
+                        if(abortInput.equals("no"))
+                        {
+                            quantity = Integer.parseInt(quantityInput);
+                            if (choice == 1)
+                            {
+                                inputCase = 8;
+                            } else if (choice == 2)
+                            {
+                                inputCase = 12;
+                            } else if (choice == 3)
+                            {
+                                inputCase = 15;
+                            }
+                        }
+                    }
+
+                    else if (quantityInput.isEmpty())
                     {
                         System.out.println("You need to enter the quantity");
                     } else
@@ -650,7 +786,24 @@ public class ApplicationUI
                 case 8:
                     System.out.println("Please enter the name of the author of the book");
                     String authorInput = reader.nextLine();
-                    if (authorInput.isEmpty())
+
+
+                    if(authorInput.equals("cancel"))
+                    {
+                        System.out.println("Do you wish to cancel? Write no if you want to name the author cancel");
+                        abortInput = reader.nextLine();
+                        if(abortInput.equals("yes"))
+                        {
+                            completed = true;
+                        }
+                        if(abortInput.equals("no"))
+                        {
+                            author = authorInput;
+                            inputCase = 9;
+                        }
+                    }
+
+                    else if (authorInput.isEmpty())
                     {
                         System.out.println("You need to enter the name of the author");
                     } else
@@ -663,7 +816,24 @@ public class ApplicationUI
                 case 9:
                     System.out.println("Please enter the edition of the book");
                     String editionInput = reader.nextLine();
-                    if (editionInput.isEmpty())
+
+
+                    if(editionInput.equals("cancel"))
+                    {
+                        System.out.println("Do you wish to cancel?");
+                        abortInput = reader.nextLine();
+                        if(abortInput.equals("yes"))
+                        {
+                            completed = true;
+                        }
+                        if(abortInput.equals("no"))
+                        {
+                            edition = editionInput;
+                            inputCase = 10;
+                        }
+                    }
+
+                    else if (editionInput.isEmpty())
                     {
                         System.out.println("You need to enter the edition of the book");
                     } else
@@ -676,8 +846,27 @@ public class ApplicationUI
                 case 10:
                     System.out.println("Please enter the seriestitle");
                     String seriesTitleInput = reader.nextLine();
-                    seriesTitle = seriesTitleInput;
-                    inputCase = 11;
+
+                    if(seriesTitleInput.equals("cancel"))
+                    {
+                        System.out.println("Do you wish to cancel? Write no if you want to name the series cancel");
+                        abortInput = reader.nextLine();
+                        if(abortInput.equals("yes"))
+                        {
+                            completed = true;
+                        }
+                        if(abortInput.equals("no"))
+                        {
+                            seriesTitle = seriesTitleInput;
+                            inputCase = 11;
+                        }
+                    }
+
+                    else
+                    {
+                        seriesTitle = seriesTitleInput;
+                        inputCase = 11;
+                    }
                     break;
 
 
@@ -696,7 +885,24 @@ public class ApplicationUI
                 case 12:
                     System.out.println("Please enter the number of yearly publications of the newspaper");
                     String yearlyPublishInput = reader.nextLine();
-                    if (yearlyPublishInput.isEmpty())
+
+
+                    if(yearlyPublishInput.equals("cancel"))
+                    {
+                        System.out.println("Do you wish to cancel?");
+                        abortInput = reader.nextLine();
+                        if(abortInput.equals("yes"))
+                        {
+                            completed = true;
+                        }
+                        if(abortInput.equals("no"))
+                        {
+                            numberOfYearlyPublications = Integer.parseInt(yearlyPublishInput);
+                            inputCase = 13;
+                        }
+                    }
+
+                    else if (yearlyPublishInput.isEmpty())
                     {
                         System.out.println("You need to enter the number of yearly publications of the newspaper");
                     } else
@@ -709,7 +915,24 @@ public class ApplicationUI
                 case 13:
                     System.out.println("Please enter the publication date of the newspaper");
                     String publishDateInput = reader.nextLine();
-                    if (publishDateInput.isEmpty())
+
+
+                    if(publishDateInput.equals("cancel"))
+                    {
+                        System.out.println("Do you wish to cancel?");
+                        abortInput = reader.nextLine();
+                        if(abortInput.equals("yes"))
+                        {
+                            completed = true;
+                        }
+                        if(abortInput.equals("no"))
+                        {
+                            publicationDate = publishDateInput;
+                            inputCase = 14;
+                        }
+                    }
+
+                    else if (publishDateInput.isEmpty())
                     {
                         System.out.println("You need to enter the publication date of the newspaper");
                     }
@@ -731,7 +954,24 @@ public class ApplicationUI
                 case 15:
                     System.out.println("Please enter the number of yearly publications of the magazine");
                     String yearlyMagPublishInput = reader.nextLine();
-                    if (yearlyMagPublishInput.isEmpty())
+
+
+                    if(yearlyMagPublishInput.equals("cancel"))
+                    {
+                        System.out.println("Do you wish to cancel?");
+                        abortInput = reader.nextLine();
+                        if(abortInput.equals("yes"))
+                        {
+                            completed = true;
+                        }
+                        if(abortInput.equals("no"))
+                        {
+                            numberOfYearlyPublications = Integer.parseInt(yearlyMagPublishInput);
+                            inputCase = 16;
+                        }
+                    }
+
+                    else if (yearlyMagPublishInput.isEmpty())
                     {
                         System.out.println("You need to enter the number of yearly publications of the magazine");
                     } else
@@ -744,7 +984,24 @@ public class ApplicationUI
                 case 16:
                     System.out.println("Please enter the publication date of the magazine");
                     String magPublishDateInput = reader.nextLine();
-                    if (magPublishDateInput.isEmpty())
+
+
+                    if(magPublishDateInput.equals("cancel"))
+                    {
+                        System.out.println("Do you wish to cancel?");
+                        abortInput = reader.nextLine();
+                        if(abortInput.equals("yes"))
+                        {
+                            completed = true;
+                        }
+                        if(abortInput.equals("no"))
+                        {
+                            title = magPublishDateInput;
+                            inputCase = 17;
+                        }
+                    }
+
+                    else if (magPublishDateInput.isEmpty())
                     {
                         System.out.println("You need to enter the publication date of the magazine");
                     }
@@ -1053,6 +1310,7 @@ public class ApplicationUI
         }
         return returnBoolean;
     }
+
 
 }
 
