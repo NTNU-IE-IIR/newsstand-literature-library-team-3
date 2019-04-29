@@ -79,4 +79,41 @@ public class LiteratureRegister
         }
         return returnString;
     }
+
+    public boolean containsBook(String bookTitle)
+    {
+        boolean result = false;
+
+        Iterator<Literature> litListIt = this.literatureCollection.iterator();
+            while (litListIt.hasNext() && !result)
+            {
+                Literature literature = litListIt.next();
+                if (literature instanceof Book)
+                {
+                    if (literature.getTitle().equals(bookTitle))
+                    {
+                        result = true;
+                    }
+                }
+            }
+        return result;
+    }
+
+    public Book getBook(String title)
+    {
+        Book book = null;
+        Iterator<Literature> litListIt = this.literatureCollection.iterator();
+        while (litListIt.hasNext())
+        {
+            Literature literature = litListIt.next();
+            if (literature instanceof Book)
+            {
+                if (literature.getTitle().equals(title))
+                {
+                    book = (Book) literature;
+                }
+            }
+        }
+        return book;
+    }
 }

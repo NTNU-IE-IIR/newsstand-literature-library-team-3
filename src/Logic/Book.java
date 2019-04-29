@@ -74,7 +74,7 @@ public class Book extends Literature
     {
         this.partOfBookSeries = false;
 
-        if (this.seriesTitle != "UNDEFINED")
+        if (!this.seriesTitle.equals("UNDEFINED"))
         {
             this.partOfBookSeries = true;
         }

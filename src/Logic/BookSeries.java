@@ -1,6 +1,7 @@
 package Logic;
 
 import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  * Represents a bookseries.
@@ -11,13 +12,14 @@ import java.util.HashMap;
  * @version 0.2 (2019.04.03)
  */
 
-public class BookSeries
+public class BookSeries extends SalesItem
 {
     private String seriesTitle;
     private HashMap<String,Book> bookSeries;
 
-    public BookSeries(String seriesTitle)
+    public BookSeries(String seriesTitle, int price, int quantityOfSeries)
     {
+        super(price, quantityOfSeries);
         this.seriesTitle = seriesTitle;
         bookSeries = new HashMap<>();
     }
@@ -31,6 +33,8 @@ public class BookSeries
         if (book != null)
         {
             this.bookSeries.put(book.getTitle(), book);
+            int newPrice = getPrice() + book.getPrice();
+            setPrice(newPrice);
         }
     }
 
@@ -82,5 +86,10 @@ public class BookSeries
             result = false;
         }
         return result;
+    }
+
+    public Iterator getIterator()
+    {
+        return this.bookSeries.values().iterator();
     }
 }
