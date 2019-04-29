@@ -490,6 +490,7 @@ public class ApplicationUI
         System.out.println();
     }
 
+
     /**
      *  Lists either extended information about the book series with
      *  additional information about the books in the series, or a limited

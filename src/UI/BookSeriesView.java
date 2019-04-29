@@ -52,6 +52,7 @@ public class BookSeriesView implements SalesItemView
         return returnString;
     }
 
+
     /**
      * Returns the title, price and quantity of the book series.
      *
