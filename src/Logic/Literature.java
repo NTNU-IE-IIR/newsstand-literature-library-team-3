@@ -18,8 +18,7 @@ public abstract class Literature extends SalesItem
 
     public Literature(String title, String publisher, String publishYear, String language, String genre, int price, int quantityInStock)
     {
-        super(price, quantityInStock);
-        setTitle(title);
+        super(title, price, quantityInStock);
         setPublisher(publisher);
         setPublishYear(publishYear);
         setLanguage(language);
@@ -99,18 +98,18 @@ public abstract class Literature extends SalesItem
      * @return The String to be set in the field.
      */
     protected String setString(String input)
-    {
-        String returnString = "UNDEFINED";
+{
+    String returnString = "UNDEFINED";
 
-        if (input != null)
+    if (input != null)
+    {
+        if (!input.isEmpty())
         {
-            if (!input.isEmpty())
-            {
-                returnString = input;
-            }
+            returnString = input;
         }
-        return returnString;
     }
+    return returnString;
+}
 
     //------Get-methods------
 

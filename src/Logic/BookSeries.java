@@ -14,13 +14,13 @@ import java.util.Iterator;
 
 public class BookSeries extends SalesItem
 {
-    private String seriesTitle;
+    private String title;
     private HashMap<String,Book> bookSeries;
 
     public BookSeries(String seriesTitle, int price, int quantityOfSeries)
     {
-        super(price, quantityOfSeries);
-        this.seriesTitle = seriesTitle;
+        super(seriesTitle, price, quantityOfSeries);
+
         bookSeries = new HashMap<>();
     }
 
@@ -63,9 +63,9 @@ public class BookSeries extends SalesItem
      * Returns the title of the bookseries.
      * @return The title of the bookseries.
      */
-    public String getSeriesTitle()
+    public String getTitle()
     {
-        return this.seriesTitle;
+        return this.title;
     }
 
     /**
@@ -77,7 +77,7 @@ public class BookSeries extends SalesItem
     public boolean exists(String seriesTitle)
     {
         boolean result = false;
-        if (this.seriesTitle.equals(seriesTitle))
+        if (this.title.equals(seriesTitle))
         {
             result = true;
         }

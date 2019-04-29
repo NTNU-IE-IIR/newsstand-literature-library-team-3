@@ -15,7 +15,7 @@ import java.util.Iterator;
 public class Cart
 {
     private int totalPrice = 0;
-    private ArrayList<Literature> cart;
+    private ArrayList<SalesItem> cart;
 
     public Cart ()
     {
@@ -26,25 +26,25 @@ public class Cart
 /**
  * Adds a product to the cart and
  * */
-    public void addToCart(Literature literatureToAdd)
+    public void addToCart(SalesItem literatureToAdd)
     {
         updateTotalPricePlus(literatureToAdd);
         cart.add(literatureToAdd);
     }
 
-    public void removeFromCart(Literature literatureToRemove)
+    public void removeFromCart(SalesItem literatureToRemove)
     {
         updateTotalPriceMinus(literatureToRemove);
         cart.remove(literatureToRemove);
     }
 
-    private void updateTotalPricePlus(Literature priceObject)
+    private void updateTotalPricePlus(SalesItem priceObject)
     {
         int price = priceObject.getPrice();
         this.totalPrice = totalPrice + price;
     }
 
-    private void updateTotalPriceMinus(Literature priceObject)
+    private void updateTotalPriceMinus(SalesItem priceObject)
     {
         int price = priceObject.getPrice();
         this.totalPrice = totalPrice - price;
@@ -53,7 +53,7 @@ public class Cart
     public int getTotalPrice()
     {
         int price = 0;
-        for (Literature literature : cart)
+        for (SalesItem literature : cart)
         {
             int priceForThisLiterature = literature.getPrice();
             price = price + priceForThisLiterature;
@@ -70,12 +70,15 @@ public class Cart
             itemsInCart = "No items in cart.";
         }
 
-        for(Literature literature : cart)
+        for(SalesItem salesItem : cart)
         {
-            Viewer litView = new Viewer();
-            String litInfo = litView.createViewer(literature).showLimited();
-            String thisLiterature = litInfo + "\n";
-            itemsInCart = itemsInCart + thisLiterature + "\n";
+            if(salesItem instanceof Literature)
+            {
+                Viewer litView = new Viewer();
+                String litInfo = litView.createViewer((Literature) salesItem).showLimited();
+                String thisLiterature = litInfo + "\n";
+                itemsInCart = itemsInCart + thisLiterature + "\n";
+            }
         }
 
         return itemsInCart;
@@ -96,10 +99,10 @@ public class Cart
 
     public void checkOut()
     {
-        Iterator<Literature> it = cart.iterator();
+        Iterator<SalesItem> it = cart.iterator();
         while(it.hasNext())
         {
-            Literature nextItem = it.next();
+            SalesItem nextItem = it.next();
             nextItem.reduceQuantityByOne();
             it.remove();
         }
@@ -110,10 +113,10 @@ public class Cart
         return cart.size();
     }
 
-    public Literature searchByTitle(String searchTitle)
+    public SalesItem searchByTitle(String searchTitle)
     {
-        Literature returnString = null;
-        for (Literature literature : cart)
+        SalesItem returnString = null;
+        for (SalesItem literature : cart)
         {
             if(literature.getTitle().equals(searchTitle))
             {

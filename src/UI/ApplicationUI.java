@@ -518,7 +518,7 @@ public class ApplicationUI
                     while (bookSeriesIterator.hasNext())
                     {
                         BookSeries bookseries = bookSeriesIterator.next();
-                        System.out.println("Series title: " + bookseries.getSeriesTitle() +
+                        System.out.println("Series title: " + bookseries.getTitle() +
                                 "\nPrice: " + bookseries.getPrice() + "\nBooks in this series: ");
                         Iterator<Book> bookIterator = bookseries.getIterator();
                         while (bookIterator.hasNext())
@@ -535,7 +535,7 @@ public class ApplicationUI
                     while (bookSeriesIterator.hasNext())
                     {
                         BookSeries bookseries = bookSeriesIterator.next();
-                        System.out.println("Series title: " + bookseries.getSeriesTitle() +
+                        System.out.println("Series title: " + bookseries.getTitle() +
                                 "\nPrice: " + bookseries.getPrice());
                     }
                     completed = true;
@@ -1422,7 +1422,7 @@ public class ApplicationUI
             cart.showCart();
             System.out.println("Please enter the title of the product you wish to remove");
             String productToRemove = reader.nextLine();
-            Literature removeProduct = cart.searchByTitle(productToRemove);
+            SalesItem removeProduct = cart.searchByTitle(productToRemove);
 
             if(removeProduct == null)
             {
@@ -1431,10 +1431,14 @@ public class ApplicationUI
             else
             {
                 System.out.println("Do you wish to remove this product from your cart?");
-                Viewer litView = new Viewer();
-                String litInfo = litView.createViewer(removeProduct).showLimited();
-                System.out.println(litInfo);
-                //System.out.println(removeProduct.getAllInfoAsString());
+                if(removeProduct instanceof Literature)
+                {
+                    Viewer litView = new Viewer();
+                    String litInfo = litView.createViewer((Literature) removeProduct).showLimited();
+                    System.out.println(litInfo);
+                } else {
+                    System.out.println(removeProduct.getTitle() + "\n" + removeProduct.getPrice());
+                }
                 System.out.println("Please enter yes or no");
                 String answer = reader.nextLine();
                 if(answer.equals("yes"))
