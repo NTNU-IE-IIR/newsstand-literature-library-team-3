@@ -525,6 +525,7 @@ public class ApplicationUI
             switch (inputCase)
             {
                 case 0:
+                    System.out.println("You can at any time write cancel to to abort.");
                     System.out.println("Which kind of literature do you want to add?");
                     for (String literatureChoice : choices)
                     {
