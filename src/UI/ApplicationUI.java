@@ -688,6 +688,7 @@ public class ApplicationUI
         int numberOfYearlyPublications = 0;
         String publicationDate = null;
         String abortInput;
+        String litChoice = "literature";
 
         String[] choices = {
                 "1. Book",
@@ -706,7 +707,8 @@ public class ApplicationUI
             switch (inputCase)
             {
                 case 0:
-                    System.out.println("You can at any time write cancel to to abort.");
+                    System.out.println("When you have started to add a literaturetype, " +  "\n" +
+                            "you can type 'cancel' at any time to abort.");
                     System.out.println("Which kind of literature do you want to add?");
                     for (String literatureChoice : choices)
                     {
@@ -723,41 +725,58 @@ public class ApplicationUI
 
                     if (validChoiceList.contains(choiceInput))
                     {
-
                         choice = Integer.parseInt(choiceInput);
+                        if(choice == 1)
+                        {
+                            litChoice = "book";
+                        }
+                        else if(choice == 2)
+                        {
+                            litChoice = "newspaper";
+                        }
+                        else if(choice == 3)
+                        {
+                            litChoice = "magazine";
+                        }
                         inputCase = 1;
 
                         if(choiceInput.equals("4"))
                         {
-                            System.out.println("Do you wish to cancel?");
+                            System.out.println("Do you wish to cancel? Please type 'yes' or 'no'.");
                             abortInput = reader.nextLine();
                             if(abortInput.equals("yes"))
                             {
                                 completed = true;
                             }
                         }
+
                     } else
                     {
                         System.out.println("You need to enter a number between 1-4");
-                        System.out.println(choices);
                     }
                     break;
 
                 case 1:
-                    System.out.println("Please enter the title of the literature: ");
+                    System.out.println("Please enter the title of the " + litChoice + ": ");
                     String titleInput = reader.nextLine();
                     if(titleInput.equals("cancel"))
                     {
-                        System.out.println("Do you wish to cancel? Write no if you want to name the title cancel");
+                        System.out.println("Do you wish to cancel? Type 'no' if you want to name the title 'cancel'." +
+                                        "\n" + "If you really wish to cancel, type 'yes'.");
                         abortInput = reader.nextLine();
                         if(abortInput.equals("yes"))
                         {
                             completed = true;
                         }
-                        if(abortInput.equals("no"))
+                        else if(abortInput.equals("no"))
                         {
                             title = titleInput;
                             inputCase = 2;
+                        }
+                        else
+                        {
+                            System.out.println("Your input was neither 'yes' or 'no'.");
+                            inputCase = 1;
                         }
                     }
                     else if (titleInput.isEmpty())
@@ -776,16 +795,22 @@ public class ApplicationUI
 
                     if(genreInput.equals("cancel"))
                     {
-                        System.out.println("Do you wish to cancel? Write no if you want to name the genre cancel");
+                        System.out.println("Do you wish to cancel? Type 'no' if you want to name the genre 'cancel'." +
+                                        "\n" + "If you really wish to cancel, type 'yes'.");
                         abortInput = reader.nextLine();
                         if(abortInput.equals("yes"))
                         {
                             completed = true;
                         }
-                        if(abortInput.equals("no"))
+                        else if(abortInput.equals("no"))
                         {
                             genre = genreInput;
                             inputCase = 3;
+                        }
+                        else
+                        {
+                            System.out.println("Your input was neither 'yes' or 'no'.");
+                            inputCase = 2;
                         }
                     }
 
@@ -805,16 +830,20 @@ public class ApplicationUI
 
                     if(publisherInput.equals("cancel"))
                     {
-                        System.out.println("Do you wish to cancel?");
+                        System.out.println("Do you wish to cancel? Type 'yes' or 'no'.");
                         abortInput = reader.nextLine();
                         if(abortInput.equals("yes"))
                         {
                             completed = true;
                         }
-                        if(abortInput.equals("no"))
+                        else if(abortInput.equals("no"))
                         {
-                            publisher = publisherInput;
-                            inputCase = 4;
+                            inputCase = 3;
+                        }
+                        else
+                        {
+                            System.out.println("Your input was neither 'yes' or 'no'.");
+                            inputCase = 3;
                         }
                     }
 
@@ -834,16 +863,20 @@ public class ApplicationUI
 
                     if(publishYearInput.equals("cancel"))
                     {
-                        System.out.println("Do you wish to cancel?");
+                        System.out.println("Do you wish to cancel? Type 'yes' or 'no'.");
                         abortInput = reader.nextLine();
                         if(abortInput.equals("yes"))
                         {
                             completed = true;
                         }
-                        if(abortInput.equals("no"))
+                        else if(abortInput.equals("no"))
                         {
-                            publishYear = publishYearInput;
-                            inputCase = 5;
+                            inputCase = 4;
+                        }
+                        else
+                        {
+                            System.out.println("Your input was neither 'yes' or 'no'.");
+                            inputCase = 4;
                         }
                     }
 
@@ -858,22 +891,26 @@ public class ApplicationUI
                     break;
 
                 case 5:
-                    System.out.println("Please enter the language the literature is written in");
+                    System.out.println("Please enter the language the " + litChoice + " is written in");
                     String languageInput = reader.nextLine();
 
 
                     if(languageInput.equals("cancel"))
                     {
-                        System.out.println("Do you wish to cancel?");
+                        System.out.println("Do you wish to cancel? Type 'yes' or 'no'.");
                         abortInput = reader.nextLine();
                         if(abortInput.equals("yes"))
                         {
                             completed = true;
                         }
-                        if(abortInput.equals("no"))
+                        else if(abortInput.equals("no"))
                         {
-                            language = languageInput;
-                            inputCase = 6;
+                            inputCase = 5;
+                        }
+                        else
+                        {
+                            System.out.println("Your input was neither 'yes' or 'no'.");
+                            inputCase = 5;
                         }
                     }
 
@@ -888,22 +925,26 @@ public class ApplicationUI
                     break;
 
                 case 6:
-                    System.out.println("Please enter the price of the literature");
+                    System.out.println("Please enter the price of the " + litChoice);
                     String priceInput = reader.nextLine();
 
 
                     if(priceInput.equals("cancel"))
                     {
-                        System.out.println("Do you wish to cancel?");
+                        System.out.println("Do you wish to cancel? Type 'yes' or 'no'.");
                         abortInput = reader.nextLine();
                         if(abortInput.equals("yes"))
                         {
                             completed = true;
                         }
-                        if(abortInput.equals("no"))
+                        else if(abortInput.equals("no"))
                         {
-                            price = Integer.parseInt(priceInput);
-                            inputCase = 7;
+                            inputCase = 6;
+                        }
+                        else
+                        {
+                            System.out.println("Your input was neither 'yes' or 'no'.");
+                            inputCase = 6;
                         }
                     }
 
@@ -918,31 +959,26 @@ public class ApplicationUI
                     break;
 
                 case 7:
-                    System.out.println("Please enter the quantity of this literature in stock");
+                    System.out.println("Please enter the quantity of this " + litChoice + " in stock");
                     String quantityInput = reader.nextLine();
 
 
                     if(quantityInput.equals("cancel"))
                     {
-                        System.out.println("Do you wish to cancel?");
+                        System.out.println("Do you wish to cancel? Type 'yes' or 'no'.");
                         abortInput = reader.nextLine();
                         if(abortInput.equals("yes"))
                         {
                             completed = true;
                         }
-                        if(abortInput.equals("no"))
+                        else if(abortInput.equals("no"))
                         {
-                            quantity = Integer.parseInt(quantityInput);
-                            if (choice == 1)
-                            {
-                                inputCase = 8;
-                            } else if (choice == 2)
-                            {
-                                inputCase = 12;
-                            } else if (choice == 3)
-                            {
-                                inputCase = 15;
-                            }
+                            inputCase = 7;
+                        }
+                        else
+                        {
+                            System.out.println("Your input was neither 'yes' or 'no'.");
+                            inputCase = 7;
                         }
                     }
 
@@ -972,16 +1008,22 @@ public class ApplicationUI
 
                     if(authorInput.equals("cancel"))
                     {
-                        System.out.println("Do you wish to cancel? Write no if you want to name the author cancel");
+                        System.out.println("Do you wish to cancel? Type 'no' if you want to name the author 'cancel'." +
+                                "\n" + "If you really wish to cancel, type 'yes'.");
                         abortInput = reader.nextLine();
                         if(abortInput.equals("yes"))
                         {
                             completed = true;
                         }
-                        if(abortInput.equals("no"))
+                        else if(abortInput.equals("no"))
                         {
                             author = authorInput;
                             inputCase = 9;
+                        }
+                        else
+                        {
+                            System.out.println("Your input was neither 'yes' or 'no'.");
+                            inputCase = 8;
                         }
                     }
 
@@ -1002,16 +1044,20 @@ public class ApplicationUI
 
                     if(editionInput.equals("cancel"))
                     {
-                        System.out.println("Do you wish to cancel?");
+                        System.out.println("Do you wish to cancel? Type 'yes' or 'no'.");
                         abortInput = reader.nextLine();
                         if(abortInput.equals("yes"))
                         {
                             completed = true;
                         }
-                        if(abortInput.equals("no"))
+                        else if(abortInput.equals("no"))
                         {
-                            edition = editionInput;
-                            inputCase = 10;
+                            inputCase = 9;
+                        }
+                        else
+                        {
+                            System.out.println("Your input was neither 'yes' or 'no'.");
+                            inputCase = 9;
                         }
                     }
 
@@ -1031,16 +1077,22 @@ public class ApplicationUI
 
                     if(seriesTitleInput.equals("cancel"))
                     {
-                        System.out.println("Do you wish to cancel? Write no if you want to name the series cancel");
+                        System.out.println("Do you wish to cancel? Type 'no' if you want to name the series 'cancel'." +
+                                "\n" + "If you really wish to cancel, type 'yes'.");
                         abortInput = reader.nextLine();
                         if(abortInput.equals("yes"))
                         {
                             completed = true;
                         }
-                        if(abortInput.equals("no"))
+                        else if(abortInput.equals("no"))
                         {
                             seriesTitle = seriesTitleInput;
                             inputCase = 11;
+                        }
+                        else
+                        {
+                            System.out.println("Your input was neither 'yes' or 'no'.");
+                            inputCase = 10;
                         }
                     }
 
@@ -1056,10 +1108,6 @@ public class ApplicationUI
                     Book bookToAdd = new Book(title, publisher, publishYear, language, genre, price,
                             quantity, author, edition, seriesTitle);
                     literatureCollection.addLiterature(bookToAdd);
-                    //if (bookToAdd.isPartOfBookSeries())
-                    //{
-                    //    addBookToBookSeries(bookToAdd);
-                    //}
                     System.out.println("The book was successfully added to the literature register");
                     completed = true;
                     break;
@@ -1071,16 +1119,20 @@ public class ApplicationUI
 
                     if(yearlyPublishInput.equals("cancel"))
                     {
-                        System.out.println("Do you wish to cancel?");
+                        System.out.println("Do you wish to cancel? Type 'yes' or 'no'.");
                         abortInput = reader.nextLine();
                         if(abortInput.equals("yes"))
                         {
                             completed = true;
                         }
-                        if(abortInput.equals("no"))
+                        else if(abortInput.equals("no"))
                         {
-                            numberOfYearlyPublications = Integer.parseInt(yearlyPublishInput);
-                            inputCase = 13;
+                            inputCase = 12;
+                        }
+                        else
+                        {
+                            System.out.println("Your input was neither 'yes' or 'no'.");
+                            inputCase = 12;
                         }
                     }
 
@@ -1101,16 +1153,20 @@ public class ApplicationUI
 
                     if(publishDateInput.equals("cancel"))
                     {
-                        System.out.println("Do you wish to cancel?");
+                        System.out.println("Do you wish to cancel? Type 'yes' or 'no'.");
                         abortInput = reader.nextLine();
                         if(abortInput.equals("yes"))
                         {
                             completed = true;
                         }
-                        if(abortInput.equals("no"))
+                        else if(abortInput.equals("no"))
                         {
-                            publicationDate = publishDateInput;
-                            inputCase = 14;
+                            inputCase = 13;
+                        }
+                        else
+                        {
+                            System.out.println("Your input was neither 'yes' or 'no'.");
+                            inputCase = 13;
                         }
                     }
 
@@ -1140,16 +1196,20 @@ public class ApplicationUI
 
                     if(yearlyMagPublishInput.equals("cancel"))
                     {
-                        System.out.println("Do you wish to cancel?");
+                        System.out.println("Do you wish to cancel? Type 'yes' or 'no'.");
                         abortInput = reader.nextLine();
                         if(abortInput.equals("yes"))
                         {
                             completed = true;
                         }
-                        if(abortInput.equals("no"))
+                        else if(abortInput.equals("no"))
                         {
-                            numberOfYearlyPublications = Integer.parseInt(yearlyMagPublishInput);
-                            inputCase = 16;
+                            inputCase = 15;
+                        }
+                        else
+                        {
+                            System.out.println("Your input was neither 'yes' or 'no'.");
+                            inputCase = 15;
                         }
                     }
 
@@ -1170,16 +1230,20 @@ public class ApplicationUI
 
                     if(magPublishDateInput.equals("cancel"))
                     {
-                        System.out.println("Do you wish to cancel?");
+                        System.out.println("Do you wish to cancel? Type 'yes' or 'no'.");
                         abortInput = reader.nextLine();
                         if(abortInput.equals("yes"))
                         {
                             completed = true;
                         }
-                        if(abortInput.equals("no"))
+                        else if(abortInput.equals("no"))
                         {
-                            title = magPublishDateInput;
-                            inputCase = 17;
+                            inputCase = 16;
+                        }
+                        else
+                        {
+                            System.out.println("Your input was neither 'yes' or 'no'.");
+                            inputCase = 16;
                         }
                     }
 
