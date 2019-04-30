@@ -993,10 +993,10 @@ public class ApplicationUI
                             inputCase = 8;
                         } else if (choice == 2)
                         {
-                            inputCase = 12;
+                            inputCase = 11;
                         } else if (choice == 3)
                         {
-                            inputCase = 15;
+                            inputCase = 14;
                         }
                     }
                     break;
@@ -1072,47 +1072,14 @@ public class ApplicationUI
                     break;
 
                 case 10:
-                    System.out.println("Please enter the seriestitle");
-                    String seriesTitleInput = reader.nextLine();
-
-                    if(seriesTitleInput.equals("cancel"))
-                    {
-                        System.out.println("Do you wish to cancel? Type 'no' if you want to name the series 'cancel'." +
-                                "\n" + "If you really wish to cancel, type 'yes'.");
-                        abortInput = reader.nextLine();
-                        if(abortInput.equals("yes"))
-                        {
-                            completed = true;
-                        }
-                        else if(abortInput.equals("no"))
-                        {
-                            seriesTitle = seriesTitleInput;
-                            inputCase = 11;
-                        }
-                        else
-                        {
-                            System.out.println("Your input was neither 'yes' or 'no'.");
-                            inputCase = 10;
-                        }
-                    }
-
-                    else
-                    {
-                        seriesTitle = seriesTitleInput;
-                        inputCase = 11;
-                    }
-                    break;
-
-
-                case 11:
                     Book bookToAdd = new Book(title, publisher, publishYear, language, genre, price,
-                            quantity, author, edition, seriesTitle);
+                            quantity, author, edition);
                     literatureCollection.addLiterature(bookToAdd);
                     System.out.println("The book was successfully added to the literature register");
                     completed = true;
                     break;
 
-                case 12:
+                case 11:
                     System.out.println("Please enter the number of yearly publications of the newspaper");
                     String yearlyPublishInput = reader.nextLine();
 
@@ -1127,12 +1094,12 @@ public class ApplicationUI
                         }
                         else if(abortInput.equals("no"))
                         {
-                            inputCase = 12;
+                            inputCase = 11;
                         }
                         else
                         {
                             System.out.println("Your input was neither 'yes' or 'no'.");
-                            inputCase = 12;
+                            inputCase = 11;
                         }
                     }
 
@@ -1142,11 +1109,11 @@ public class ApplicationUI
                     } else
                     {
                         numberOfYearlyPublications = Integer.parseInt(yearlyPublishInput);
-                        inputCase = 13;
+                        inputCase = 12;
                     }
                     break;
 
-                case 13:
+                case 12:
                     System.out.println("Please enter the publication date of the newspaper");
                     String publishDateInput = reader.nextLine();
 
@@ -1161,12 +1128,12 @@ public class ApplicationUI
                         }
                         else if(abortInput.equals("no"))
                         {
-                            inputCase = 13;
+                            inputCase = 12;
                         }
                         else
                         {
                             System.out.println("Your input was neither 'yes' or 'no'.");
-                            inputCase = 13;
+                            inputCase = 12;
                         }
                     }
 
@@ -1177,11 +1144,11 @@ public class ApplicationUI
                     else
                     {
                         publicationDate = publishDateInput;
-                        inputCase = 14;
+                        inputCase = 13;
                     }
                     break;
 
-                case 14:
+                case 13:
                     Newspaper newspaperToAdd = new Newspaper(title, publisher, publishYear, language,
                             genre, price, quantity, numberOfYearlyPublications, publicationDate);
                     literatureCollection.addLiterature(newspaperToAdd);
@@ -1189,7 +1156,7 @@ public class ApplicationUI
                     completed = true;
                     break;
 
-                case 15:
+                case 14:
                     System.out.println("Please enter the number of yearly publications of the magazine");
                     String yearlyMagPublishInput = reader.nextLine();
 
@@ -1204,12 +1171,12 @@ public class ApplicationUI
                         }
                         else if(abortInput.equals("no"))
                         {
-                            inputCase = 15;
+                            inputCase = 14;
                         }
                         else
                         {
                             System.out.println("Your input was neither 'yes' or 'no'.");
-                            inputCase = 15;
+                            inputCase = 14;
                         }
                     }
 
@@ -1219,11 +1186,11 @@ public class ApplicationUI
                     } else
                     {
                         numberOfYearlyPublications = Integer.parseInt(yearlyMagPublishInput);
-                        inputCase = 16;
+                        inputCase = 15;
                     }
                     break;
 
-                case 16:
+                case 15:
                     System.out.println("Please enter the publication date of the magazine");
                     String magPublishDateInput = reader.nextLine();
 
@@ -1238,12 +1205,12 @@ public class ApplicationUI
                         }
                         else if(abortInput.equals("no"))
                         {
-                            inputCase = 16;
+                            inputCase = 15;
                         }
                         else
                         {
                             System.out.println("Your input was neither 'yes' or 'no'.");
-                            inputCase = 16;
+                            inputCase = 15;
                         }
                     }
 
@@ -1254,11 +1221,11 @@ public class ApplicationUI
                     else
                     {
                         publicationDate = magPublishDateInput;
-                        inputCase = 17;
+                        inputCase = 16;
                     }
                     break;
 
-                case 17:
+                case 16:
                     Magazine magazineToAdd = new Magazine(title, publisher, publishYear, language,
                             genre, price, quantity, numberOfYearlyPublications, publicationDate);
                     literatureCollection.addLiterature(magazineToAdd);
@@ -1269,39 +1236,6 @@ public class ApplicationUI
         }
     }
 
-//    /**
-//     * Adds a book to a bookseries. If the bookseries the
-//     * book belongs to already exists in the application,
-//     * the book will be added to that bookseries.
-//     * If the bookseries does not exist in the application,
-//     * the new bookseries will be created, and the book will
-//     * be added to this bookseries.
-//     * @param book The book to be added to the bookseries.
-//     */
-//    private void addBookToBookSeries(Book book)
-//    {
-//        Iterator<BookSeries> bookSeriesRegIt = this.bookSeriesRegister.getIterator();
-//        boolean bookSeriesFound = false;
-//        String key = book.getSeriesTitle();
-//        while (bookSeriesRegIt.hasNext())
-//        {
-//            if (!bookSeriesFound)
-//            {
-//                BookSeries bookSeries = bookSeriesRegIt.next();
-//                if (bookSeries.exists(key))
-//                {
-//                    bookSeries.addBook(book);
-//                    bookSeriesFound = true;
-//                }
-//            }
-//        }
-//
-//        if (!bookSeriesFound)
-//        {
-//            BookSeries newBookSeries = new BookSeries(book.getSeriesTitle());
-//            newBookSeries.addBook(book);
-//        }
-//    }
 
     private void cartMenu()
     {

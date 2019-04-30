@@ -38,7 +38,7 @@ public class LiteratureRegisterTest
         Literature testBook = new Book("Harry Potter og de Vises Sten",
                 "Cappelen Damm", "1999", "Norwegian",
                 "Fantasy", 20, 50, "J.K. Rowling",
-                "1", "Harry Potter");
+                "1");
         testLitReg.addLiterature(testBook);
         List<Literature> testLitRegList = testLitReg.getAllLiterature();
         assertEquals(true, testLitRegList.contains(testBook));

@@ -33,7 +33,7 @@ public class ViewerTest
         Literature book = new Book("Harry Potter og de Vises Sten",
                 "Cappelen Damm", "1999", "Norwegian",
                 "Fantasy", 20, 50, "J.K. Rowling",
-                "1", "Harry Potter");
+                "1");
         SalesItemView literatureView = this.viewer.createViewer(book);
         assertFalse(literatureView instanceof MagazineView);
         assertFalse(literatureView instanceof NewspaperView);
