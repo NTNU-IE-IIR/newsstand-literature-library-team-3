@@ -27,8 +27,9 @@ public class Book extends Literature
 
     /**
      * Sets the author of the book.
-     * If the input is empty, the author will
-     * be set to "UNDEFINED".
+     * If the input is empty, an
+     * InputMismatchException will be
+     * thrown from the setString-method.
      * @param author The author of the book.
      */
     private void setAuthor(String author)
@@ -38,8 +39,9 @@ public class Book extends Literature
 
     /**
      * Sets the edition of the book.
-     * If the input is empty, the edition will
-     * be set to "UNDEFINED".
+     * If the input is empty, an
+     * InputMismatchException will be
+     * thrown from the setString-method.
      * @param edition The edition of the book.
      */
     private void setEdition(String edition)
@@ -65,6 +67,10 @@ public class Book extends Literature
         return this.edition;
     }
 
+    /**
+     * Returns the title of the given book.
+     * @return The title of the given book.
+     */
     public String getTitle()
     {
         return super.getTitle();
