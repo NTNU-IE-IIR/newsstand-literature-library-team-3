@@ -1,5 +1,7 @@
 package Logic;
 
+import java.util.InputMismatchException;
+
 /**
  * Represents a book. The class inherits from the literature-class.
  * The book-class contains the following information about a book:
