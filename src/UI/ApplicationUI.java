@@ -3,7 +3,6 @@ package UI;
 import Logic.*;
 import Exception.InsufficientQuantityException;
 
-import java.sql.SQLOutput;
 import java.util.*;
 
 /**
@@ -54,7 +53,7 @@ public class ApplicationUI
                 switch (menuSelection)
                 {
                     case 1:
-                        this.listLiterature();
+                        this.listSalesItems();
                         break;
 
                     case 2:
@@ -133,7 +132,7 @@ public class ApplicationUI
         this.cart = new Cart();
     }
 
-    private void listLiterature()
+    private void listSalesItems()
     {
         int inputCase = 1;
         boolean completed = false;
@@ -142,7 +141,7 @@ public class ApplicationUI
             switch (inputCase)
             {
                 case 1:
-                    inputCase = printLiteratureViewChoices();
+                    inputCase = printSalesItemViewChoices();
                     break;
 
                 case 2:
@@ -161,11 +160,16 @@ public class ApplicationUI
                     break;
 
                 case 5:
-                    listAllLiterature();
+                    listBookSeries();
                     completed = true;
                     break;
 
                 case 6:
+                    listAllLiterature();
+                    completed = true;
+                    break;
+
+                case 7:
                     completed = true;
                     break;
             }
@@ -173,14 +177,15 @@ public class ApplicationUI
     }
 
 
-    private int printLiteratureViewChoices()
+    private int printSalesItemViewChoices()
     {
         String[] choices = {
                 "1. Books",
                 "2. Newspapers",
                 "3. Magazines",
-                "4. All literature",
-                "5. Back"
+                "4. Book series",
+                "5. All literature",
+                "6. Back"
         };
         return listChoices(choices);
     }
@@ -189,14 +194,14 @@ public class ApplicationUI
     {
         int inputCase;
         Scanner reader = new Scanner(System.in);
-        for(String menuItem : choices)
+        for (String menuItem : choices)
         {
             System.out.println(menuItem);
         }
 
         inputCase = reader.nextInt() + 1;
 
-        if(inputCase <= 1 || inputCase > (choices.length + 1))
+        if (inputCase <= 1 || inputCase > (choices.length + 1))
         {
             System.out.println("Please enter a number between 1 - " + choices.length);
             inputCase = 1;
@@ -262,7 +267,7 @@ public class ApplicationUI
         int inputCase = 1;
         boolean completed = false;
 
-        while(!completed)
+        while (!completed)
         {
             switch (inputCase)
             {
@@ -303,7 +308,7 @@ public class ApplicationUI
         int inputCase = 1;
         boolean completed = false;
 
-        while(!completed)
+        while (!completed)
         {
             switch (inputCase)
             {
@@ -342,9 +347,9 @@ public class ApplicationUI
         int inputCase = 1;
         boolean completed = false;
 
-        while(!completed)
+        while (!completed)
         {
-            switch(inputCase)
+            switch (inputCase)
             {
                 case 1:
                     inputCase = listChoices(choices);
@@ -376,6 +381,7 @@ public class ApplicationUI
      * Takes in a boolean parameter. If the parameter is true,
      * the magazines will be listed with all info. If false,
      * the magazines will be listed with limited info.
+     *
      * @param showExtended Determines whether all the info or only
      *                     a limited amount of the info is going to
      *                     be printed.
@@ -409,6 +415,7 @@ public class ApplicationUI
      * Takes in a boolean parameter. If the parameter is true,
      * the books will be listed with all info. If false,
      * the books will be listed with limited info.
+     *
      * @param showExtended Determines whether all the info or only
      *                     a limited amount of the info is going to
      *                     be printed.
@@ -442,6 +449,7 @@ public class ApplicationUI
      * Takes in a boolean parameter. If the parameter is true,
      * the newspapers will be listed with all info. If false,
      * the newspapers will be listed with limited info.
+     *
      * @param showExtended Determines whether all the info or only
      *                     a limited amount of the info is going to
      *                     be printed.
@@ -473,10 +481,11 @@ public class ApplicationUI
      * Prints the information of all instances of a given literaturetype.
      * Takes in a boolean variable, which determines whether the information
      * to be printed should be limited, of extended.
+     *
      * @param showExtended Decides whether the information to be printed
      *                     should be limited or extended.
-     * @param literature The literature type to be examined. The literature type
-     *                   is chosen by the method calling this method.
+     * @param literature   The literature type to be examined. The literature type
+     *                     is chosen by the method calling this method.
      */
     private void printLiteratureInformation(boolean showExtended, Literature literature)
     {
@@ -493,10 +502,10 @@ public class ApplicationUI
 
 
     /**
-     *  Lists either extended information about the book series with
-     *  additional information about the books in the series, or a limited
-     *  amount of information containing the series title, the price and
-     *  the quantity in stock.
+     * Lists either extended information about the book series with
+     * additional information about the books in the series, or a limited
+     * amount of information containing the series title, the price and
+     * the quantity in stock.
      */
     private void listBookSeries()
     {
@@ -506,7 +515,6 @@ public class ApplicationUI
                 "3. Back"
         };
         Iterator<BookSeries> bookSeriesIterator = this.bookSeriesRegister.getIterator();
-        Scanner reader = new Scanner(System.in);
         int inputCase = 0;
         boolean completed = false;
         while (!completed)
@@ -560,111 +568,112 @@ public class ApplicationUI
 
         while (!completed)
         {
-            switch(inputCase)
+            switch (inputCase)
             {
                 case 0:
-                System.out.println("Please enter the title of the collection you want to create");
-                String seriesTitleInput = reader.nextLine();
-                if (seriesTitleInput.isEmpty())
-                {
-                    System.out.println("You need to enter the title of the collection you want to create");
-                } else
-                {
-                    seriesTitle = seriesTitleInput;
-                    inputCase = 1;
-                }
-                break;
-
-                case 1:
-                System.out.println("Please type the title of the books you want to add to a collection.");
-                System.out.println("One title at the time.");
-                System.out.println("These are the books you can add:");
-                listAllBooks(false);
-
-                String titleInput = reader.nextLine();
-                if (this.literatureCollection.containsBook(titleInput))
-                {
-                    Book bookToAdd = this.literatureCollection.getBook(titleInput);
-                    booksToAdd.put(titleInput, bookToAdd);
-                    price += bookToAdd.getPrice();
-                    inputCase = 2;
-                } else
-                {
-                    System.out.println("The title you entered does not exist in the register.");
-                }
-                break;
-
-                case 2:
-                System.out.println("Are you finished adding books to the collection?");
-                System.out.println("Please type yes or no.");
-
-                String answer = reader.nextLine();
-                char choice = answer.charAt(0);
-
-                if (choice == 'y')
-                {
-                    inputCase = 3;
-                } else
-                {
-                    inputCase = 1;
-                }
-                break;
-
-                case 3:
-                System.out.println("The total price of this collection is calculated to be:");
-                System.out.println(price + " NOK");
-                System.out.println("Do you want to change the price of the collection?");
-                System.out.println("Please type yes or no.");
-
-                answer = reader.nextLine();
-                choice = answer.charAt(0);
-
-                if (choice == 'y')
-                {
-                    System.out.println("Please enter the price you want to set for the collection.");
-
-                    price = reader.nextInt();
-
-                    System.out.println("The price of the collection is now " + price + " NOK");
-
-                    inputCase = 4;
-                } else
-                {
-                    inputCase = 4;
-                }
-                break;
-
-                case 4:
-                int quantity = 0;
-                boolean firstQuantityFound = false;
-                Iterator<Book> bookListIt = booksToAdd.values().iterator();
-                while (bookListIt.hasNext())
-                {
-                    if (!firstQuantityFound)
+                    System.out.println("Please enter the title of the collection you want to create");
+                    String seriesTitleInput = reader.nextLine();
+                    if (seriesTitleInput.isEmpty())
                     {
-                        Book book = bookListIt.next();
-                        quantity = book.getQuantityInStock();
-                        firstQuantityFound = true;
+                        System.out.println("You need to enter the title of the collection you want to create");
                     } else
                     {
-                        Book book = bookListIt.next();
+                        seriesTitle = seriesTitleInput;
+                        inputCase = 1;
+                    }
+                    break;
 
-                        if (book.getQuantityInStock() < quantity)
+                case 1:
+                    System.out.println("Please type the title of the books you want to add to a collection.");
+                    System.out.println("One title at the time.");
+                    System.out.println("These are the books you can add:");
+                    listAllBooks(false);
+
+                    String titleInput = reader.nextLine();
+                    if (this.literatureCollection.containsBook(titleInput))
+                    {
+                        Book bookToAdd = this.literatureCollection.getBook(titleInput);
+                        booksToAdd.put(titleInput, bookToAdd);
+                        price += bookToAdd.getPrice();
+                        inputCase = 2;
+                    } else
+                    {
+                        System.out.println("The title you entered does not exist in the register.");
+                    }
+                    break;
+
+                case 2:
+                    System.out.println("Are you finished adding books to the collection?");
+                    System.out.println("Please type yes or no.");
+
+                    String answer = reader.nextLine();
+                    char choice = answer.charAt(0);
+
+                    if (choice == 'y')
+                    {
+                        inputCase = 3;
+                    } else
+                    {
+                        inputCase = 1;
+                    }
+                    break;
+
+                case 3:
+                    System.out.println("The total price of this collection is calculated to be:");
+                    System.out.println(price + " NOK");
+                    System.out.println("Do you want to change the price of the collection?");
+                    System.out.println("Please type yes or no.");
+
+                    answer = reader.nextLine();
+                    choice = answer.charAt(0);
+
+                    if (choice == 'y')
+                    {
+                        System.out.println("Please enter the price you want to set for the collection.");
+
+                        price = reader.nextInt();
+
+                        System.out.println("The price of the collection is now " + price + " NOK");
+
+                        inputCase = 4;
+                    } else
+                    {
+                        inputCase = 4;
+                    }
+                    break;
+
+                case 4:
+                    int quantity = 0;
+                    boolean firstQuantityFound = false;
+                    Iterator<Book> bookListIt = booksToAdd.values().iterator();
+                    while (bookListIt.hasNext())
+                    {
+                        if (!firstQuantityFound)
                         {
+                            Book book = bookListIt.next();
                             quantity = book.getQuantityInStock();
+                            firstQuantityFound = true;
+                        } else
+                        {
+                            Book book = bookListIt.next();
+
+                            if (book.getQuantityInStock() < quantity)
+                            {
+                                quantity = book.getQuantityInStock();
+                            }
                         }
                     }
-                }
-                BookSeries newBookSeries = new BookSeries(seriesTitle, price, quantity);
-                newBookSeries.getBookSeries().putAll(booksToAdd);
-                this.bookSeriesRegister.addBookSeries(newBookSeries);
+                    BookSeries newBookSeries = new BookSeries(seriesTitle, price, quantity);
+                    newBookSeries.getBookSeries().putAll(booksToAdd);
+                    this.bookSeriesRegister.addBookSeries(newBookSeries);
 
-                System.out.println("The collection was successfully created.");
-                completed = true;
-                break;
+                    System.out.println("The collection was successfully created.");
+                    completed = true;
+                    break;
             }
         }
     }
+
     /**
      * Adds a new literature-object to the literatureregister.
      * Uses a Scanner class to fill the parameters to create a
@@ -707,7 +716,7 @@ public class ApplicationUI
             switch (inputCase)
             {
                 case 0:
-                    System.out.println("When you have started to add a literaturetype, " +  "\n" +
+                    System.out.println("When you have started to add a literaturetype, " + "\n" +
                             "you can type 'cancel' at any time to abort.");
                     System.out.println("Which kind of literature do you want to add?");
                     for (String literatureChoice : choices)
@@ -726,25 +735,23 @@ public class ApplicationUI
                     if (validChoiceList.contains(choiceInput))
                     {
                         choice = Integer.parseInt(choiceInput);
-                        if(choice == 1)
+                        if (choice == 1)
                         {
                             litChoice = "book";
-                        }
-                        else if(choice == 2)
+                        } else if (choice == 2)
                         {
                             litChoice = "newspaper";
-                        }
-                        else if(choice == 3)
+                        } else if (choice == 3)
                         {
                             litChoice = "magazine";
                         }
                         inputCase = 1;
 
-                        if(choiceInput.equals("4"))
+                        if (choiceInput.equals("4"))
                         {
                             System.out.println("Do you wish to cancel? Please type 'yes' or 'no'.");
                             abortInput = reader.nextLine();
-                            if(abortInput.equals("yes"))
+                            if (abortInput.equals("yes"))
                             {
                                 completed = true;
                             }
@@ -759,27 +766,24 @@ public class ApplicationUI
                 case 1:
                     System.out.println("Please enter the title of the " + litChoice + ": ");
                     String titleInput = reader.nextLine();
-                    if(titleInput.equals("cancel"))
+                    if (titleInput.equals("cancel"))
                     {
                         System.out.println("Do you wish to cancel? Type 'no' if you want to name the title 'cancel'." +
-                                        "\n" + "If you really wish to cancel, type 'yes'.");
+                                "\n" + "If you really wish to cancel, type 'yes'.");
                         abortInput = reader.nextLine();
-                        if(abortInput.equals("yes"))
+                        if (abortInput.equals("yes"))
                         {
                             completed = true;
-                        }
-                        else if(abortInput.equals("no"))
+                        } else if (abortInput.equals("no"))
                         {
                             title = titleInput;
                             inputCase = 2;
-                        }
-                        else
+                        } else
                         {
                             System.out.println("Your input was neither 'yes' or 'no'.");
                             inputCase = 1;
                         }
-                    }
-                    else if (titleInput.isEmpty())
+                    } else if (titleInput.isEmpty())
                     {
                         System.out.println("You need to enter the title");
                     } else
@@ -793,28 +797,24 @@ public class ApplicationUI
                     System.out.println("Please enter the genre: ");
                     String genreInput = reader.nextLine();
 
-                    if(genreInput.equals("cancel"))
+                    if (genreInput.equals("cancel"))
                     {
                         System.out.println("Do you wish to cancel? Type 'no' if you want to name the genre 'cancel'." +
-                                        "\n" + "If you really wish to cancel, type 'yes'.");
+                                "\n" + "If you really wish to cancel, type 'yes'.");
                         abortInput = reader.nextLine();
-                        if(abortInput.equals("yes"))
+                        if (abortInput.equals("yes"))
                         {
                             completed = true;
-                        }
-                        else if(abortInput.equals("no"))
+                        } else if (abortInput.equals("no"))
                         {
                             genre = genreInput;
                             inputCase = 3;
-                        }
-                        else
+                        } else
                         {
                             System.out.println("Your input was neither 'yes' or 'no'.");
                             inputCase = 2;
                         }
-                    }
-
-                    else if (genreInput.isEmpty())
+                    } else if (genreInput.isEmpty())
                     {
                         System.out.println("You need to enter the genre");
                     } else
@@ -828,26 +828,22 @@ public class ApplicationUI
                     System.out.println("Please enter the publisher: ");
                     String publisherInput = reader.nextLine();
 
-                    if(publisherInput.equals("cancel"))
+                    if (publisherInput.equals("cancel"))
                     {
                         System.out.println("Do you wish to cancel? Type 'yes' or 'no'.");
                         abortInput = reader.nextLine();
-                        if(abortInput.equals("yes"))
+                        if (abortInput.equals("yes"))
                         {
                             completed = true;
-                        }
-                        else if(abortInput.equals("no"))
+                        } else if (abortInput.equals("no"))
                         {
                             inputCase = 3;
-                        }
-                        else
+                        } else
                         {
                             System.out.println("Your input was neither 'yes' or 'no'.");
                             inputCase = 3;
                         }
-                    }
-
-                    else if (publisherInput.isEmpty())
+                    } else if (publisherInput.isEmpty())
                     {
                         System.out.println("You need to enter the publisher");
                     } else
@@ -861,26 +857,22 @@ public class ApplicationUI
                     System.out.println("Please enter the publish-year");
                     String publishYearInput = reader.nextLine();
 
-                    if(publishYearInput.equals("cancel"))
+                    if (publishYearInput.equals("cancel"))
                     {
                         System.out.println("Do you wish to cancel? Type 'yes' or 'no'.");
                         abortInput = reader.nextLine();
-                        if(abortInput.equals("yes"))
+                        if (abortInput.equals("yes"))
                         {
                             completed = true;
-                        }
-                        else if(abortInput.equals("no"))
+                        } else if (abortInput.equals("no"))
                         {
                             inputCase = 4;
-                        }
-                        else
+                        } else
                         {
                             System.out.println("Your input was neither 'yes' or 'no'.");
                             inputCase = 4;
                         }
-                    }
-
-                    else if (publishYearInput.isEmpty())
+                    } else if (publishYearInput.isEmpty())
                     {
                         System.out.println("You need to enter the publish-year");
                     } else
@@ -895,26 +887,22 @@ public class ApplicationUI
                     String languageInput = reader.nextLine();
 
 
-                    if(languageInput.equals("cancel"))
+                    if (languageInput.equals("cancel"))
                     {
                         System.out.println("Do you wish to cancel? Type 'yes' or 'no'.");
                         abortInput = reader.nextLine();
-                        if(abortInput.equals("yes"))
+                        if (abortInput.equals("yes"))
                         {
                             completed = true;
-                        }
-                        else if(abortInput.equals("no"))
+                        } else if (abortInput.equals("no"))
                         {
                             inputCase = 5;
-                        }
-                        else
+                        } else
                         {
                             System.out.println("Your input was neither 'yes' or 'no'.");
                             inputCase = 5;
                         }
-                    }
-
-                    else if (languageInput.isEmpty())
+                    } else if (languageInput.isEmpty())
                     {
                         System.out.println("You need to enter the language");
                     } else
@@ -929,26 +917,22 @@ public class ApplicationUI
                     String priceInput = reader.nextLine();
 
 
-                    if(priceInput.equals("cancel"))
+                    if (priceInput.equals("cancel"))
                     {
                         System.out.println("Do you wish to cancel? Type 'yes' or 'no'.");
                         abortInput = reader.nextLine();
-                        if(abortInput.equals("yes"))
+                        if (abortInput.equals("yes"))
                         {
                             completed = true;
-                        }
-                        else if(abortInput.equals("no"))
+                        } else if (abortInput.equals("no"))
                         {
                             inputCase = 6;
-                        }
-                        else
+                        } else
                         {
                             System.out.println("Your input was neither 'yes' or 'no'.");
                             inputCase = 6;
                         }
-                    }
-
-                    else if (priceInput.isEmpty())
+                    } else if (priceInput.isEmpty())
                     {
                         System.out.println("You need to enter the price");
                     } else
@@ -963,26 +947,22 @@ public class ApplicationUI
                     String quantityInput = reader.nextLine();
 
 
-                    if(quantityInput.equals("cancel"))
+                    if (quantityInput.equals("cancel"))
                     {
                         System.out.println("Do you wish to cancel? Type 'yes' or 'no'.");
                         abortInput = reader.nextLine();
-                        if(abortInput.equals("yes"))
+                        if (abortInput.equals("yes"))
                         {
                             completed = true;
-                        }
-                        else if(abortInput.equals("no"))
+                        } else if (abortInput.equals("no"))
                         {
                             inputCase = 7;
-                        }
-                        else
+                        } else
                         {
                             System.out.println("Your input was neither 'yes' or 'no'.");
                             inputCase = 7;
                         }
-                    }
-
-                    else if (quantityInput.isEmpty())
+                    } else if (quantityInput.isEmpty())
                     {
                         System.out.println("You need to enter the quantity");
                     } else
@@ -1006,28 +986,24 @@ public class ApplicationUI
                     String authorInput = reader.nextLine();
 
 
-                    if(authorInput.equals("cancel"))
+                    if (authorInput.equals("cancel"))
                     {
                         System.out.println("Do you wish to cancel? Type 'no' if you want to name the author 'cancel'." +
                                 "\n" + "If you really wish to cancel, type 'yes'.");
                         abortInput = reader.nextLine();
-                        if(abortInput.equals("yes"))
+                        if (abortInput.equals("yes"))
                         {
                             completed = true;
-                        }
-                        else if(abortInput.equals("no"))
+                        } else if (abortInput.equals("no"))
                         {
                             author = authorInput;
                             inputCase = 9;
-                        }
-                        else
+                        } else
                         {
                             System.out.println("Your input was neither 'yes' or 'no'.");
                             inputCase = 8;
                         }
-                    }
-
-                    else if (authorInput.isEmpty())
+                    } else if (authorInput.isEmpty())
                     {
                         System.out.println("You need to enter the name of the author");
                     } else
@@ -1042,26 +1018,22 @@ public class ApplicationUI
                     String editionInput = reader.nextLine();
 
 
-                    if(editionInput.equals("cancel"))
+                    if (editionInput.equals("cancel"))
                     {
                         System.out.println("Do you wish to cancel? Type 'yes' or 'no'.");
                         abortInput = reader.nextLine();
-                        if(abortInput.equals("yes"))
+                        if (abortInput.equals("yes"))
                         {
                             completed = true;
-                        }
-                        else if(abortInput.equals("no"))
+                        } else if (abortInput.equals("no"))
                         {
                             inputCase = 9;
-                        }
-                        else
+                        } else
                         {
                             System.out.println("Your input was neither 'yes' or 'no'.");
                             inputCase = 9;
                         }
-                    }
-
-                    else if (editionInput.isEmpty())
+                    } else if (editionInput.isEmpty())
                     {
                         System.out.println("You need to enter the edition of the book");
                     } else
@@ -1084,26 +1056,22 @@ public class ApplicationUI
                     String yearlyPublishInput = reader.nextLine();
 
 
-                    if(yearlyPublishInput.equals("cancel"))
+                    if (yearlyPublishInput.equals("cancel"))
                     {
                         System.out.println("Do you wish to cancel? Type 'yes' or 'no'.");
                         abortInput = reader.nextLine();
-                        if(abortInput.equals("yes"))
+                        if (abortInput.equals("yes"))
                         {
                             completed = true;
-                        }
-                        else if(abortInput.equals("no"))
+                        } else if (abortInput.equals("no"))
                         {
                             inputCase = 11;
-                        }
-                        else
+                        } else
                         {
                             System.out.println("Your input was neither 'yes' or 'no'.");
                             inputCase = 11;
                         }
-                    }
-
-                    else if (yearlyPublishInput.isEmpty())
+                    } else if (yearlyPublishInput.isEmpty())
                     {
                         System.out.println("You need to enter the number of yearly publications of the newspaper");
                     } else
@@ -1118,30 +1086,25 @@ public class ApplicationUI
                     String publishDateInput = reader.nextLine();
 
 
-                    if(publishDateInput.equals("cancel"))
+                    if (publishDateInput.equals("cancel"))
                     {
                         System.out.println("Do you wish to cancel? Type 'yes' or 'no'.");
                         abortInput = reader.nextLine();
-                        if(abortInput.equals("yes"))
+                        if (abortInput.equals("yes"))
                         {
                             completed = true;
-                        }
-                        else if(abortInput.equals("no"))
+                        } else if (abortInput.equals("no"))
                         {
                             inputCase = 12;
-                        }
-                        else
+                        } else
                         {
                             System.out.println("Your input was neither 'yes' or 'no'.");
                             inputCase = 12;
                         }
-                    }
-
-                    else if (publishDateInput.isEmpty())
+                    } else if (publishDateInput.isEmpty())
                     {
                         System.out.println("You need to enter the publication date of the newspaper");
-                    }
-                    else
+                    } else
                     {
                         publicationDate = publishDateInput;
                         inputCase = 13;
@@ -1161,26 +1124,22 @@ public class ApplicationUI
                     String yearlyMagPublishInput = reader.nextLine();
 
 
-                    if(yearlyMagPublishInput.equals("cancel"))
+                    if (yearlyMagPublishInput.equals("cancel"))
                     {
                         System.out.println("Do you wish to cancel? Type 'yes' or 'no'.");
                         abortInput = reader.nextLine();
-                        if(abortInput.equals("yes"))
+                        if (abortInput.equals("yes"))
                         {
                             completed = true;
-                        }
-                        else if(abortInput.equals("no"))
+                        } else if (abortInput.equals("no"))
                         {
                             inputCase = 14;
-                        }
-                        else
+                        } else
                         {
                             System.out.println("Your input was neither 'yes' or 'no'.");
                             inputCase = 14;
                         }
-                    }
-
-                    else if (yearlyMagPublishInput.isEmpty())
+                    } else if (yearlyMagPublishInput.isEmpty())
                     {
                         System.out.println("You need to enter the number of yearly publications of the magazine");
                     } else
@@ -1195,30 +1154,25 @@ public class ApplicationUI
                     String magPublishDateInput = reader.nextLine();
 
 
-                    if(magPublishDateInput.equals("cancel"))
+                    if (magPublishDateInput.equals("cancel"))
                     {
                         System.out.println("Do you wish to cancel? Type 'yes' or 'no'.");
                         abortInput = reader.nextLine();
-                        if(abortInput.equals("yes"))
+                        if (abortInput.equals("yes"))
                         {
                             completed = true;
-                        }
-                        else if(abortInput.equals("no"))
+                        } else if (abortInput.equals("no"))
                         {
                             inputCase = 15;
-                        }
-                        else
+                        } else
                         {
                             System.out.println("Your input was neither 'yes' or 'no'.");
                             inputCase = 15;
                         }
-                    }
-
-                    else if (magPublishDateInput.isEmpty())
+                    } else if (magPublishDateInput.isEmpty())
                     {
                         System.out.println("You need to enter the publication date of the magazine");
-                    }
-                    else
+                    } else
                     {
                         publicationDate = magPublishDateInput;
                         inputCase = 16;
@@ -1268,10 +1222,12 @@ public class ApplicationUI
                     try
                     {
                         inputCase = addItemToCart();
-                    }
-                    catch(InsufficientQuantityException e)
+                    } catch (InsufficientQuantityException e)
                     {
                         System.out.println(e.toString());
+                    } catch (InputMismatchException e)
+                    {
+                        System.out.println("Invalid input.");
                     }
                     break;
 
@@ -1296,8 +1252,9 @@ public class ApplicationUI
 
     /**
      * Prints the main menu for the manage cart option. Will check that the number entered is valid.
+     *
      * @return The inputcase used in the switchcase in the cart menu. will return 1 if the number entered is invalid
-     * */
+     */
     private int printMainCartMenu()
     {
         String[] choices = {
@@ -1312,19 +1269,17 @@ public class ApplicationUI
     }
 
 
-
     /**
      * prints the total price for all the products in the cart. if there are no
      * items in the cart, a message will be sent to the user.
-     * */
+     */
     private void showCartPrice()
     {
         int price;
         if (cart.getSize() == 0)
         {
             System.out.println("There are no items in your cart.");
-        }
-        else
+        } else
         {
             price = cart.getTotalPrice();
             System.out.println("The total price in your cart is: " + price + "$");
@@ -1332,43 +1287,169 @@ public class ApplicationUI
     }
 
 
+//    /**
+//     * Lets the user add an item to the cart. Requiers the user to search for the
+//     * product by title. If the cart is empty, and message will be sent to the user.
+//     * @return The inputCase used in the switch case in the cartMenu.
+//     * */
+//    private int addItemToCart() throws InsufficientQuantityException
+//    {
+//        int inputCase;
+//        Scanner reader = new Scanner(System.in);
+//
+//        System.out.println("Please enter the title of the item you are interested in: ");
+//        String searchWord = reader.nextLine();
+//        Literature result = literatureCollection.searchByTitle(searchWord);
+//        if (result == null)
+//        {
+//            System.out.println("Could not find any product matching your search.");
+//            inputCase = 1;
+//        }
+//        else
+//        {
+//            Viewer litView = new Viewer();
+//            String litInfo = litView.createViewer(result).showLimited();
+//            System.out.println(litInfo);
+//            System.out.println("Do you wish to add this item to your cart?");
+//            System.out.println("Enter yes or no");
+//            String answer = reader.nextLine();
+//            if (answer.equals("yes"))
+//            {
+//                System.out.println("Please enter the amount you wish to add");
+//                int amount = reader.nextInt();
+//
+//                if(amount <= result.getQuantityInStock())
+//                {
+//                    for (int i = 1; i <= amount; i++)
+//                    {
+//                        this.cart.addToCart(result);
+//
+//                    }
+//                }
+//                else
+//                {
+//                    throw new InsufficientQuantityException(amount, result.getQuantityInStock());
+//                }
+//                System.out.println(result.getTitle() + " has been successfully added to your cart.");
+//                System.out.println("Do you wish to add another product?");
+//                System.out.println("Enter yes or no");
+//
+//                answer = reader.nextLine();
+//                if (answer.equals("yes"))
+//                {
+//                    inputCase = 4;
+//                }
+//                else
+//                {
+//                    inputCase = 1;
+//                }
+//
+//            } else if (answer.equals("no"))
+//            {
+//                System.out.println(result.getTitle() + " was not added to your cart.");
+//                inputCase = 1;
+//            }
+//            else
+//            {
+//                System.out.println("You entered an invalid answer. Request aborted.");
+//                inputCase = 1;
+//            }
+//
+//        }
+//       return inputCase;
+//    }
+
     /**
      * Lets the user add an item to the cart. Requiers the user to search for the
      * product by title. If the cart is empty, and message will be sent to the user.
+     *
      * @return The inputCase used in the switch case in the cartMenu.
-     * */
+     */
     private int addItemToCart() throws InsufficientQuantityException
     {
-        int inputCase;
+        boolean completed = false;
+        int inputCase = 0;
+        String[] choices =
+                {
+                        "1. Books",
+                        "2. Newspapers",
+                        "3. Magazines",
+                        "4. Book series",
+                        "5. Back",
+                };
         Scanner reader = new Scanner(System.in);
+        System.out.println("Please choose the type of item you wish to purchase: ");
+        for (String menuItem : choices)
+        {
+            System.out.println(menuItem);
+        }
+        int inputChoice = Integer.parseInt(reader.nextLine());
 
-        System.out.println("Please enter the title of the literature you are interested in");
+
+        while (!completed)
+        {
+            switch (inputChoice)
+            {
+                case 1:
+                    listBooks();
+                    completed = true;
+                    break;
+
+                case 2:
+                    listNewspapers();
+                    completed = true;
+                    break;
+
+                case 3:
+                    listMagazines();
+                    completed = true;
+                    break;
+
+                case 4:
+                    listBookSeries();
+                    completed = true;
+                    break;
+
+                case 5:
+                    completed = true;
+                    break;
+            }
+        }
+
+        System.out.println("Please enter the title of the item you are interested in: ");
         String searchWord = reader.nextLine();
-        Literature result = literatureCollection.searchByTitle(searchWord);
+        SalesItem result = null;
+        if((inputChoice == (1)) || (inputChoice == (2)) || (inputChoice == (3)))
+        {
+            result = literatureCollection.searchByTitle(searchWord);
+        }
+        else if(inputChoice == 4)
+        {
+            result = bookSeriesRegister.searchByTitle(searchWord);
+        }
         if (result == null)
         {
             System.out.println("Could not find any product matching your search.");
             inputCase = 1;
-        }
-        else
+        } else
         {
-            Viewer litView = new Viewer();
-            String litInfo = litView.createViewer(result).showLimited();
-            System.out.println(litInfo);
+            Viewer itemView = new Viewer();
+            String itemInfo = itemView.createViewer(result).showLimited();
+            System.out.println(itemInfo);
             System.out.println("Do you wish to add this item to your cart?");
             System.out.println("Enter yes or no");
             String answer = reader.nextLine();
             if (answer.equals("yes"))
             {
-                System.out.println("Please enter the amount you wish to add");
-                int amount = reader.nextInt();
-
-                if(amount <= result.getQuantityInStock())
+                System.out.println("Please enter the amount you wish to add.");
+                System.out.println("Quantity in stock: " + result.getQuantityInStock());
+                int amount = Integer.parseInt(reader.nextLine());
+                if (amount <= result.getQuantityInStock())
                 {
                     for (int i = 1; i <= amount; i++)
                     {
                         this.cart.addToCart(result);
-
+                        result.reduceQuantityByOne();
                     }
                 }
                 else
@@ -1393,43 +1474,41 @@ public class ApplicationUI
             {
                 System.out.println(result.getTitle() + " was not added to your cart.");
                 inputCase = 1;
-            }
-            else
+            } else
             {
                 System.out.println("You entered an invalid answer. Request aborted.");
                 inputCase = 1;
             }
-
         }
-       return inputCase;
+        return inputCase;
     }
+
+
 
     /**
      * Lets the user remove an item from the cart. Requiers the user to search for the
      * product by title. If the cart is empty, and message will be sent to the user.
-     * */
+     */
 
     private void removeItemFromCart()
     {
         Scanner reader = new Scanner(System.in);
 
-        if(cart.getSize() == 0)
+        if (cart.getSize() == 0)
         {
             System.out.println("You have no items in your cart.");
 
-        }
-        else
+        } else
         {
             cart.showCart();
             System.out.println("Please enter the title of the product you wish to remove");
             String productToRemove = reader.nextLine();
             SalesItem removeProduct = cart.searchByTitle(productToRemove);
 
-            if(removeProduct == null)
+            if (removeProduct == null)
             {
                 System.out.println("Could not find any product matching your search.");
-            }
-            else
+            } else
             {
                 System.out.println("Do you wish to remove this product from your cart?");
 
@@ -1438,16 +1517,14 @@ public class ApplicationUI
                 System.out.println(litInfo);
                 System.out.println("Please enter yes or no");
                 String answer = reader.nextLine();
-                if(answer.equals("yes"))
+                if (answer.equals("yes"))
                 {
                     System.out.println(removeProduct.getTitle() + " was successfully removed from your cart.");
                     cart.removeFromCart(removeProduct);
-                }
-                else if (answer.equals("no"))
+                } else if (answer.equals("no"))
                 {
                     System.out.println(removeProduct.getTitle() + " was not removed from your cart");
-                }
-                else
+                } else
                 {
                     System.out.println("You entered an invalid answer. Request aborted.");
                 }
@@ -1459,8 +1536,9 @@ public class ApplicationUI
     /**
      * Allows the user to pay for the products in the cart. Change will be given if the amount
      * is too big. If there are no items in the cart or the pay amount is too low a message will be sent to the user.
+     *
      * @return true if the payment is successful
-     * */
+     */
 
     private boolean proceedToCheckOut()
     {
@@ -1470,8 +1548,7 @@ public class ApplicationUI
         if (cart.getSize() == 0)
         {
             System.out.println("You have no items in cart.");
-        }
-        else
+        } else
         {
 
             System.out.println(cart.showCart());

@@ -38,12 +38,20 @@ public abstract class SalesItem
     /**
      * Reduces the current quantity of a specific salesitem by one.
      */
-    protected void reduceQuantityByOne()
+    public void reduceQuantityByOne()
     {
-        if (this.quantityInStock < 0)
+        if (this.quantityInStock > 0)
         {
             this.quantityInStock--;
         }
+    }
+
+    /**
+     * Increases the current quantity of a specific salesitem by one.
+     */
+    public void increaseQuantityByOne()
+    {
+        this.quantityInStock++;
     }
 
     /**

@@ -66,4 +66,18 @@ public class BookSeriesRegister
         return success;
     }
 
+    public BookSeries searchByTitle(String searchTitle)
+    {
+        BookSeries returnString = null;
+        for (BookSeries bookSeries : this.bookSeriesCollection)
+        {
+            if(bookSeries.getTitle().equals(searchTitle))
+            {
+                returnString = bookSeries;
+            }
+        }
+        return returnString;
+    }
+
+
 }
