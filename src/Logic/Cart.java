@@ -35,6 +35,7 @@ public class Cart
         else
         {
             updateTotalPricePlus(literatureToAdd);
+            literatureToAdd.reduceQuantityByOne();
             cart.add(literatureToAdd);
         }
     }
