@@ -99,6 +99,10 @@ public class Cart
 
     public void checkOut()
     {
+        if(cart.isEmpty())
+        {
+            System.out.println("No have no items in your cart.");
+        }
         Iterator<SalesItem> it = cart.iterator();
         while(it.hasNext())
         {
@@ -123,7 +127,10 @@ public class Cart
                 returnString = literature;
             }
         }
+        if(returnString.equals(null))
+        {
+            System.out.println("No items matching your search.");
+        }
         return returnString;
     }
-
 }
