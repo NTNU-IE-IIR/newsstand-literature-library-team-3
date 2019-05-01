@@ -1,6 +1,8 @@
 package UI;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
+
 import Exception.UserInterruptException;
 
 public class UserInput
@@ -14,7 +16,7 @@ public class UserInput
 
     private String readInput()
     {
-        return this.userInput.nextLine();
+        return this.userInput.nextLine().trim();
     }
 
     /**
@@ -29,35 +31,29 @@ public class UserInput
         boolean completed = false;
         while (!completed)
         {
-            try
+            System.out.println("Type '/cancel' to abort.");
+            String input = readInput();
+            if (input.equals("/cancel"))
             {
-                System.out.println("Please type an integer value. Type '/cancel' to abort.");
-                String input = readInput();
-                if (input.equals("/cancel"))
+                System.out.println("Are you sure you want to cancel? Type yes to confirm.");
+                input = readInput();
+                if (input.equals("yes"))
                 {
-                    System.out.println("Are you sure you want to cancel? Type yes to confirm.");
-                    input = readInput();
-                    if (input.equals("yes"))
-                    {
-                        throw new UserInterruptException();
-                    }
+                    throw new UserInterruptException();
                 }
-                else
-                {
-                    returnValue = Integer.parseInt(input);
-                    if(returnValue < 0)
-                    {
-                        System.out.println("The value can not be negative");
-                    }
-                    else
-                    {
-                        completed = true;
-                    }
-                }
-            }
-            catch (NumberFormatException e)
+            } else if (input.isEmpty())
             {
-                System.out.println("ERROR: Input must be an integer.");
+                throw new InputMismatchException();
+            } else
+            {
+                returnValue = Integer.parseInt(input);
+                if (returnValue < 0)
+                {
+                    System.out.println("The value can not be negative");
+                } else
+                {
+                    completed = true;
+                }
             }
         }
 
@@ -76,22 +72,21 @@ public class UserInput
         boolean completed = false;
         while (!completed)
         {
-                System.out.println("Please type your input. Type '/cancel' to abort.");
-                String input = readInput();
-                if (input.equals("/cancel"))
+            System.out.println("Type '/cancel' to abort. ");
+            String input = readInput();
+            if (input.equals("/cancel"))
+            {
+                System.out.println("Are you sure you want to cancel? Type yes to confirm.");
+                input = readInput();
+                if (input.equals("yes"))
                 {
-                    System.out.println("Are you sure you want to cancel? Type yes to confirm.");
-                    input = readInput();
-                    if (input.equals("yes"))
-                    {
-                        throw new UserInterruptException();
-                    }
+                    throw new UserInterruptException();
                 }
-                else
-                {
-                    returnString = input;
-                    completed = true;
-                }
+            } else
+            {
+                returnString = input;
+                completed = true;
+            }
         }
 
         return returnString;

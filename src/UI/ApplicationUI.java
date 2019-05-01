@@ -1,7 +1,7 @@
 package UI;
 
 import Logic.*;
-import Exception.InsufficientQuantityException;
+import Exception.*;
 
 import java.util.*;
 
@@ -27,6 +27,8 @@ public class ApplicationUI
     private LiteratureRegister literatureCollection;
     private BookSeriesRegister bookSeriesRegister;
     private Cart cart;
+
+    private UserInput userInput;
 
     /**
      * Creates an instance of the UI.ApplicationUI User interface.
@@ -130,6 +132,7 @@ public class ApplicationUI
         this.literatureCollection = new LiteratureRegister();
         this.bookSeriesRegister = new BookSeriesRegister();
         this.cart = new Cart();
+        this.userInput = new UserInput();
     }
 
     private void listSalesItems()
@@ -406,6 +409,7 @@ public class ApplicationUI
         if (!headerHasBeenPrinted)
         {
             System.out.println("There is no magazines in the bookstore.");
+            System.out.println();
         }
     }
 
@@ -440,6 +444,7 @@ public class ApplicationUI
         if (!headerHasBeenPrinted)
         {
             System.out.println("There is no books in the bookstore.");
+            System.out.println();
         }
     }
 
@@ -474,6 +479,7 @@ public class ApplicationUI
         if (!headerHasBeenPrinted)
         {
             System.out.println("There is no newspapers in the bookstore.");
+            System.out.println();
         }
     }
 
@@ -497,7 +503,6 @@ public class ApplicationUI
         {
             System.out.println(new Viewer().createViewer(literature).show());
         }
-        System.out.println();
     }
 
 
@@ -703,8 +708,7 @@ public class ApplicationUI
         String[] choices = {
                 "1. Book",
                 "2. Newspaper",
-                "3. Magazine",
-                "4. Cancel"
+                "3. Magazine"
         };
         int choice = 0;
 
@@ -719,25 +723,22 @@ public class ApplicationUI
                 switch (inputCase)
                 {
                     case 0:
-                        System.out.println("When you have started to add a literaturetype, " + "\n" +
-                                "you can type 'cancel' at any time to abort.");
                         System.out.println("Which kind of literature do you want to add?");
                         for (String literatureChoice : choices)
                         {
                             System.out.println(literatureChoice);
                         }
-                        String choiceInput = reader.nextLine();
-                        String[] validChoices = {
-                                "1",
-                                "2",
-                                "3",
-                                "4"
+                        int choiceInput = userInput.asInteger();
+                        Integer[] validChoices = {
+                                1,
+                                2,
+                                3
                         };
-                        List<String> validChoiceList = Arrays.asList(validChoices);
+                        List<Integer> validChoiceList = Arrays.asList(validChoices);
 
                         if (validChoiceList.contains(choiceInput))
                         {
-                            choice = Integer.parseInt(choiceInput);
+                            choice = choiceInput;
                             if (choice == 1)
                             {
                                 litChoice = "book";
@@ -749,44 +750,17 @@ public class ApplicationUI
                                 litChoice = "magazine";
                             }
                             inputCase = 1;
-
-                            if (choiceInput.equals("4"))
-                            {
-                                System.out.println("Do you wish to cancel? Please type 'yes' or 'no'.");
-                                abortInput = reader.nextLine();
-                                if (abortInput.equals("yes"))
-                                {
-                                    completed = true;
-                                }
-                            }
-
                         } else
                         {
-                            System.out.println("You need to enter a number between 1-4");
+                            System.out.println("You need to enter a number between 1-3");
                         }
                         break;
 
                     case 1:
-                        System.out.println("Please enter the title of the " + litChoice + ": ");
-                        String titleInput = reader.nextLine().trim();
-                        if (titleInput.equals("cancel"))
-                        {
-                            System.out.println("Do you wish to cancel? Type 'no' if you want to name the title 'cancel'." +
-                                    "\n" + "If you really wish to cancel, type 'yes'.");
-                            abortInput = reader.nextLine();
-                            if (abortInput.equals("yes"))
-                            {
-                                completed = true;
-                            } else if (abortInput.equals("no"))
-                            {
-                                title = titleInput;
-                                inputCase = 2;
-                            } else
-                            {
-                                System.out.println("Your input was neither 'yes' or 'no'.");
-                                inputCase = 1;
-                            }
-                        } else if (titleInput.isEmpty())
+                        System.out.print("Please enter the title of the " + litChoice + ". ");
+                        String titleInput = userInput.asString();
+
+                        if (titleInput.isEmpty())
                         {
                             throw new InputMismatchException();
                         } else
@@ -797,27 +771,10 @@ public class ApplicationUI
                         break;
 
                     case 2:
-                        System.out.println("Please enter the genre: ");
-                        String genreInput = reader.nextLine().trim();
+                        System.out.print("Please enter the genre. ");
+                        String genreInput = userInput.asString();
 
-                        if (genreInput.equals("cancel"))
-                        {
-                            System.out.println("Do you wish to cancel? Type 'no' if you want to name the genre 'cancel'." +
-                                    "\n" + "If you really wish to cancel, type 'yes'.");
-                            abortInput = reader.nextLine();
-                            if (abortInput.equals("yes"))
-                            {
-                                completed = true;
-                            } else if (abortInput.equals("no"))
-                            {
-                                genre = genreInput;
-                                inputCase = 3;
-                            } else
-                            {
-                                System.out.println("Your input was neither 'yes' or 'no'.");
-                                inputCase = 2;
-                            }
-                        } else if (genreInput.isEmpty())
+                        if (genreInput.isEmpty())
                         {
                             throw new InputMismatchException();
                         } else
@@ -828,25 +785,10 @@ public class ApplicationUI
                         break;
 
                     case 3:
-                        System.out.println("Please enter the publisher: ");
-                        String publisherInput = reader.nextLine().trim();
+                        System.out.print("Please enter the publisher. ");
+                        String publisherInput = userInput.asString();
 
-                        if (publisherInput.equals("cancel"))
-                        {
-                            System.out.println("Do you wish to cancel? Type 'yes' or 'no'.");
-                            abortInput = reader.nextLine();
-                            if (abortInput.equals("yes"))
-                            {
-                                completed = true;
-                            } else if (abortInput.equals("no"))
-                            {
-                                inputCase = 3;
-                            } else
-                            {
-                                System.out.println("Your input was neither 'yes' or 'no'.");
-                                inputCase = 3;
-                            }
-                        } else if (publisherInput.isEmpty())
+                        if (publisherInput.isEmpty())
                         {
                             throw new InputMismatchException();
                         } else
@@ -857,25 +799,10 @@ public class ApplicationUI
                         break;
 
                     case 4:
-                        System.out.println("Please enter the publish-year");
-                        String publishYearInput = reader.nextLine().trim();
+                        System.out.print("Please enter the publish-year. ");
+                        String publishYearInput = userInput.asString();
 
-                        if (publishYearInput.equals("cancel"))
-                        {
-                            System.out.println("Do you wish to cancel? Type 'yes' or 'no'.");
-                            abortInput = reader.nextLine();
-                            if (abortInput.equals("yes"))
-                            {
-                                completed = true;
-                            } else if (abortInput.equals("no"))
-                            {
-                                inputCase = 4;
-                            } else
-                            {
-                                System.out.println("Your input was neither 'yes' or 'no'.");
-                                inputCase = 4;
-                            }
-                        } else if (publishYearInput.isEmpty())
+                        if (publishYearInput.isEmpty())
                         {
                             throw new InputMismatchException();
                         } else
@@ -886,26 +813,10 @@ public class ApplicationUI
                         break;
 
                     case 5:
-                        System.out.println("Please enter the language the " + litChoice + " is written in");
-                        String languageInput = reader.nextLine().trim();
+                        System.out.print("Please enter the language the " + litChoice + " is written in. ");
+                        String languageInput = userInput.asString();
 
-
-                        if (languageInput.equals("cancel"))
-                        {
-                            System.out.println("Do you wish to cancel? Type 'yes' or 'no'.");
-                            abortInput = reader.nextLine();
-                            if (abortInput.equals("yes"))
-                            {
-                                completed = true;
-                            } else if (abortInput.equals("no"))
-                            {
-                                inputCase = 5;
-                            } else
-                            {
-                                System.out.println("Your input was neither 'yes' or 'no'.");
-                                inputCase = 5;
-                            }
-                        } else if (languageInput.isEmpty())
+                        if (languageInput.isEmpty())
                         {
                             throw new InputMismatchException();
                         } else
@@ -916,102 +827,28 @@ public class ApplicationUI
                         break;
 
                     case 6:
-                            System.out.println("Please enter the price of the " + litChoice);
-                            String priceInput = reader.nextLine().trim();
-
-
-                            if (priceInput.equals("cancel"))
-                            {
-                                System.out.println("Do you wish to cancel? Type 'yes' or 'no'.");
-                                abortInput = reader.nextLine();
-                                if (abortInput.equals("yes"))
-                                {
-                                    completed = true;
-                                } else if (abortInput.equals("no"))
-                                {
-                                    inputCase = 6;
-                                } else
-                                {
-                                    System.out.println("Your input was neither 'yes' or 'no'.");
-                                    inputCase = 6;
-                                }
-                            } else if (priceInput.isEmpty())
-                            {
-                                throw new InputMismatchException();
-                            } else if (Integer.parseInt(priceInput) < 0)
-                            {
-                                throw new InputMismatchException("ERROR: The price must be greater or equal to 0");
-                            } else
-                            {
-                                price = Integer.parseInt(priceInput);
-                                inputCase = 7;
-                            }
+                        System.out.print("Please enter the price of the " + litChoice + ". ");
+                        price = userInput.asInteger();
+                        inputCase = 7;
                         break;
 
                     case 7:
-                        System.out.println("Please enter the quantity of this " + litChoice + " in stock");
-                        String quantityInput = reader.nextLine().trim();
-
-
-                        if (quantityInput.equals("cancel"))
+                        System.out.println("Please enter the quantity of this " + litChoice + " in stock. ");
+                        quantity = userInput.asInteger();
+                        if (choice == 1)
                         {
-                            System.out.println("Do you wish to cancel? Type 'yes' or 'no'.");
-                            abortInput = reader.nextLine();
-                            if (abortInput.equals("yes"))
-                            {
-                                completed = true;
-                            } else if (abortInput.equals("no"))
-                            {
-                                inputCase = 7;
-                            } else
-                            {
-                                System.out.println("Your input was neither 'yes' or 'no'.");
-                                inputCase = 7;
-                            }
-                        } else if (quantityInput.isEmpty())
+                            inputCase = 8;
+                        } else if (choice == 2 || choice == 3)
                         {
-                            throw new InputMismatchException();
-                        }
-                        else if (Integer.parseInt(quantityInput) <= 0)
-                        {
-                            throw new InputMismatchException("ERROR: The quantity must be greater than 0");
-                        }
-                        else
-                        {
-                            quantity = Integer.parseInt(quantityInput);
-                            if (choice == 1)
-                            {
-                                inputCase = 8;
-                            } else if (choice == 2 || choice == 3)
-                            {
-                                inputCase = 11;
-                            }
+                            inputCase = 11;
                         }
                         break;
 
                     case 8:
                         System.out.println("Please enter the name of the author of the book");
-                        String authorInput = reader.nextLine().trim();
+                        String authorInput = userInput.asString();
 
-
-                        if (authorInput.equals("cancel"))
-                        {
-                            System.out.println("Do you wish to cancel? Type 'no' if you want to name the author 'cancel'." +
-                                    "\n" + "If you really wish to cancel, type 'yes'.");
-                            abortInput = reader.nextLine();
-                            if (abortInput.equals("yes"))
-                            {
-                                completed = true;
-                            } else if (abortInput.equals("no"))
-                            {
-                                author = authorInput;
-                                inputCase = 9;
-                            } else
-                            {
-                                System.out.println("Your input was neither 'yes' or 'no'.");
-                                inputCase = 8;
-                            }
-                        } else if (authorInput.isEmpty())
+                        if (authorInput.isEmpty())
                         {
                             throw new InputMismatchException();
                         } else
@@ -1023,25 +860,9 @@ public class ApplicationUI
 
                     case 9:
                         System.out.println("Please enter the edition of the book");
-                        String editionInput = reader.nextLine().trim();
+                        String editionInput = userInput.asString();
 
-
-                        if (editionInput.equals("cancel"))
-                        {
-                            System.out.println("Do you wish to cancel? Type 'yes' or 'no'.");
-                            abortInput = reader.nextLine();
-                            if (abortInput.equals("yes"))
-                            {
-                                completed = true;
-                            } else if (abortInput.equals("no"))
-                            {
-                                inputCase = 9;
-                            } else
-                            {
-                                System.out.println("Your input was neither 'yes' or 'no'.");
-                                inputCase = 9;
-                            }
-                        } else if (editionInput.isEmpty())
+                        if (editionInput.isEmpty())
                         {
                             throw new InputMismatchException();
                         } else
@@ -1061,71 +882,32 @@ public class ApplicationUI
 
                     case 11:
                         System.out.println("Please enter the number of yearly publications of the " + litChoice);
-                        String yearlyPublishInput = reader.nextLine().trim();
+                        int yearlyPublishInput = userInput.asInteger();
 
-
-                        if (yearlyPublishInput.equals("cancel"))
-                        {
-                            System.out.println("Do you wish to cancel? Type 'yes' or 'no'.");
-                            abortInput = reader.nextLine();
-                            if (abortInput.equals("yes"))
-                            {
-                                completed = true;
-                            } else if (abortInput.equals("no"))
-                            {
-                                inputCase = 11;
-                            } else
-                            {
-                                System.out.println("Your input was neither 'yes' or 'no'.");
-                                inputCase = 11;
-                            }
-                        } else if (yearlyPublishInput.isEmpty())
-                        {
-                            throw new InputMismatchException();
-                        }
-                        else if (Integer.parseInt(yearlyPublishInput) <= 0)
+                        if (yearlyPublishInput <= 0)
                         {
                             throw new InputMismatchException("ERROR: Number of yearly publications must be greater than 0");
-                        }
-                        else
+                        } else
                         {
-                            numberOfYearlyPublications = Integer.parseInt(yearlyPublishInput);
+                            numberOfYearlyPublications = yearlyPublishInput;
                             inputCase = 12;
                         }
                         break;
 
                     case 12:
                         System.out.println("Please enter the publication date of the " + litChoice);
-                        String publishDateInput = reader.nextLine().trim();
+                        String publishDateInput = userInput.asString();
 
-
-                        if (publishDateInput.equals("cancel"))
-                        {
-                            System.out.println("Do you wish to cancel? Type 'yes' or 'no'.");
-                            abortInput = reader.nextLine();
-                            if (abortInput.equals("yes"))
-                            {
-                                completed = true;
-                            } else if (abortInput.equals("no"))
-                            {
-                                inputCase = 12;
-                            } else
-                            {
-                                System.out.println("Your input was neither 'yes' or 'no'.");
-                                inputCase = 12;
-                            }
-                        } else if (publishDateInput.isEmpty())
+                        if (publishDateInput.isEmpty())
                         {
                             throw new InputMismatchException();
-                        }
-                        else
+                        } else
                         {
                             publicationDate = publishDateInput;
                             if (choice == 2)
                             {
                                 inputCase = 13;
-                            }
-                            else if (choice == 3)
+                            } else if (choice == 3)
                             {
                                 inputCase = 14;
                             }
@@ -1148,21 +930,22 @@ public class ApplicationUI
                         completed = true;
                         break;
                 }
-            }
-            catch (InputMismatchException e)
+            } catch (InputMismatchException e)
             {
                 if (e.getMessage() == null)
                 {
                     System.out.println("Sorry! Your input seems to be empty. Please try again.");
-                }
-                else
+                } else
                 {
                     System.out.println(e.getMessage());
                 }
-            }
-            catch (NumberFormatException ne)
+            } catch (NumberFormatException ne)
             {
                 System.out.println("ERROR: You must enter a number.");
+            } catch (UserInterruptException e)
+            {
+                System.out.println(e.toString());
+                completed = true;
             }
         }
     }
@@ -1328,7 +1111,7 @@ public class ApplicationUI
             }
         }
 
-        if(inputChoice != 5)
+        if (inputChoice != 5)
         {
             System.out.println("Please enter the title of the item you are interested in: ");
             String searchWord = reader.nextLine();

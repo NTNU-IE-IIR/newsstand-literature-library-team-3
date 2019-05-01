@@ -32,7 +32,7 @@ public class BookView implements SalesItemView
     public String show()
     {
         return "Title: " + book.getTitle() + "\n" +
-                "Author:" + book.getAuthor() + "\n" +
+                "Author: " + book.getAuthor() + "\n" +
                 "Edition: " + book.getEdition() + "\n" +
                 "Publisher: " + book.getPublisher() + "\n" +
                 "Publish year: " + book.getPublishYear() + "\n" +
