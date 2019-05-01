@@ -195,21 +195,33 @@ public class ApplicationUI
 
     private int listChoices(String[] choices)
     {
-        int inputCase;
-        Scanner reader = new Scanner(System.in);
-        for (String menuItem : choices)
+        int inputCase = 1;
+        try
         {
-            System.out.println(menuItem);
+            for (String menuItem : choices)
+            {
+                System.out.println(menuItem);
+            }
+
+            int input = userInput.asInteger();
+            if ((input < 1) || (input > 6))
+            {
+                throw new NumberFormatException("Input must be a number between 1 and 6.");
+            }
+            else
+            {
+                inputCase = input + 1;
+            }
+
         }
-
-        inputCase = reader.nextInt() + 1;
-
-        if (inputCase <= 1 || inputCase > (choices.length + 1))
+        catch (UserInterruptException e)
         {
-            System.out.println("Please enter a number between 1 - " + choices.length);
-            inputCase = 1;
+            System.out.println(e.toString());
         }
-
+        catch (NumberFormatException e)
+        {
+            System.out.println(e.getMessage());
+        }
         return inputCase;
     }
 
@@ -702,7 +714,6 @@ public class ApplicationUI
         String edition = null;
         int numberOfYearlyPublications = 0;
         String publicationDate = null;
-        String abortInput;
         String litChoice = "literature";
 
         String[] choices = {
@@ -714,8 +725,7 @@ public class ApplicationUI
 
         boolean completed = false;
 
-        int inputCase = 0;
-        Scanner reader = new Scanner(System.in);
+        int inputCase = 0;;
         while (!completed)
         {
             try
