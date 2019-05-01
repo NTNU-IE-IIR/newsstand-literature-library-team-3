@@ -9,9 +9,16 @@ package Exception;
 
 public class InsufficientQuantityException extends Exception
 {
-    private int insufficientQuantity;   //The quantity which is too high.
-    private int availableQuantity;      //The quantity which is available.
+    private final int insufficientQuantity;   //The quantity which is too high.
+    private final int availableQuantity;      //The quantity which is available.
 
+    /**
+     * Constructor of the insufficient quantity exception.
+     * Stores the details in error.
+     *
+     * @param insufficientQuantity  The quantity which is too high.
+     * @param availableQuantity     The quantity which is available.
+     */
     public InsufficientQuantityException(int insufficientQuantity, int availableQuantity)
     {
         this.insufficientQuantity = insufficientQuantity;
