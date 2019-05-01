@@ -38,7 +38,7 @@ public class InsufficientQuantityException extends Exception
     public String toString()
     {
         String message = "The quantity you want to access is higher than what is available. " + "\n" +
-                        "The quantity which was tried to be accessed was: " + this.insufficientQuantity + "\n" +
+                        "The quantity which was tried to be accessed was: " + getInsufficientQuantity() + "\n" +
                         "The quantity which is available is: " + this.availableQuantity;
 
         return message;
