@@ -673,6 +673,7 @@ public class ApplicationUI
      * A switch-case statement is used, where each parameter input is
      * entered in its own case. The switch-case statement is used
      * to secure the user from entering invalid input.
+     * An InputMismatchException will be thrown if the input is invalid.
      */
     private void addLiterature()
     {
