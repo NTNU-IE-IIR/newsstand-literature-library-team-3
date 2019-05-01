@@ -684,7 +684,6 @@ public class ApplicationUI
         int quantity = 0;
         String author = null;
         String edition = null;
-        String seriesTitle = null;
         int numberOfYearlyPublications = 0;
         String publicationDate = null;
         String abortInput;

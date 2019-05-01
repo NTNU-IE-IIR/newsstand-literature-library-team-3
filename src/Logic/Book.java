@@ -47,40 +47,6 @@ public class Book extends Literature
         this.edition = setString(edition);
     }
 
-//    /**
-//     * Sets the title of the bookseries the book is part of.
-//     * If the input is empty, the series-title will
-//     * be set to "UNDEFINED".
-//     * @param seriesTitle The title of the bookseries the book is part of.
-//     */
-//    private void setSeriesTitle(String seriesTitle)
-//    {
-//        this.seriesTitle = setString(seriesTitle);
-//    }
-//
-//    /**
-//     * Sets the boolean field "partOfBookSeries".
-//     * If the book is not a part of a bookseries,
-//     * which means that the "seriesTitle"-field will
-//     * contain "UNDEFINED",
-//     * the "partOfBookSeries"-field will be set to false.
-//     * If not, it will be set to true.
-//     */
-//    private void setPartOfBookSeries()
-//    {
-//        this.partOfBookSeries = false;
-//
-//        if (!this.seriesTitle.equals("UNDEFINED"))
-//        {
-//            this.partOfBookSeries = true;
-//        }
-//        else
-//        {
-//            this.seriesTitle = "Not part of a bookseries";
-//            this.partOfBookSeries = false;
-//        }
-//    }
-
     //------Get-methods------
 
     /** Returns the author of the given book.
@@ -99,32 +65,6 @@ public class Book extends Literature
         return this.edition;
     }
 
-//    /**
-//     * Returns the title of the bookseries the book is part of.
-//     * @return The title of the bookseries the book is part of.
-//     */
-//    public String getSeriesTitle()
-//    {
-//        return this.seriesTitle;
-//    }
-//
-//    /**
-//     * Returns a boolean value representing whether
-//     * the book is part of a bookseries or not.
-//     * True if the book is part of a bookseries,
-//     * false if not.
-//     * @return A boolean value representing whether the book is part of a bookseries or not.
-//     */
-//    public boolean isPartOfBookSeries()
-//    {
-//        return this.partOfBookSeries;
-//    }
-//
-//    /**
-//     * Returns the title of the given book.
-//     *
-//     * @return title A string containing the title of the given book.
-//     */
     public String getTitle()
     {
         return super.getTitle();
