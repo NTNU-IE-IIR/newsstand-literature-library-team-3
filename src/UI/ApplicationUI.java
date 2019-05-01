@@ -1287,78 +1287,6 @@ public class ApplicationUI
     }
 
 
-//    /**
-//     * Lets the user add an item to the cart. Requiers the user to search for the
-//     * product by title. If the cart is empty, and message will be sent to the user.
-//     * @return The inputCase used in the switch case in the cartMenu.
-//     * */
-//    private int addItemToCart() throws InsufficientQuantityException
-//    {
-//        int inputCase;
-//        Scanner reader = new Scanner(System.in);
-//
-//        System.out.println("Please enter the title of the item you are interested in: ");
-//        String searchWord = reader.nextLine();
-//        Literature result = literatureCollection.searchByTitle(searchWord);
-//        if (result == null)
-//        {
-//            System.out.println("Could not find any product matching your search.");
-//            inputCase = 1;
-//        }
-//        else
-//        {
-//            Viewer litView = new Viewer();
-//            String litInfo = litView.createViewer(result).showLimited();
-//            System.out.println(litInfo);
-//            System.out.println("Do you wish to add this item to your cart?");
-//            System.out.println("Enter yes or no");
-//            String answer = reader.nextLine();
-//            if (answer.equals("yes"))
-//            {
-//                System.out.println("Please enter the amount you wish to add");
-//                int amount = reader.nextInt();
-//
-//                if(amount <= result.getQuantityInStock())
-//                {
-//                    for (int i = 1; i <= amount; i++)
-//                    {
-//                        this.cart.addToCart(result);
-//
-//                    }
-//                }
-//                else
-//                {
-//                    throw new InsufficientQuantityException(amount, result.getQuantityInStock());
-//                }
-//                System.out.println(result.getTitle() + " has been successfully added to your cart.");
-//                System.out.println("Do you wish to add another product?");
-//                System.out.println("Enter yes or no");
-//
-//                answer = reader.nextLine();
-//                if (answer.equals("yes"))
-//                {
-//                    inputCase = 4;
-//                }
-//                else
-//                {
-//                    inputCase = 1;
-//                }
-//
-//            } else if (answer.equals("no"))
-//            {
-//                System.out.println(result.getTitle() + " was not added to your cart.");
-//                inputCase = 1;
-//            }
-//            else
-//            {
-//                System.out.println("You entered an invalid answer. Request aborted.");
-//                inputCase = 1;
-//            }
-//
-//        }
-//       return inputCase;
-//    }
-
     /**
      * Lets the user add an item to the cart. Requiers the user to search for the
      * product by title. If the cart is empty, and message will be sent to the user.
@@ -1368,7 +1296,7 @@ public class ApplicationUI
     private int addItemToCart() throws InsufficientQuantityException
     {
         boolean completed = false;
-        int inputCase = 0;
+        int inputCase = 1;
         String[] choices =
                 {
                         "1. Books",
@@ -1411,79 +1339,82 @@ public class ApplicationUI
                     break;
 
                 case 5:
+                    inputCase = 1;
                     completed = true;
+                    break;
+
+                default:
+                    inputChoice = 5;
                     break;
             }
         }
 
-        System.out.println("Please enter the title of the item you are interested in: ");
-        String searchWord = reader.nextLine();
-        SalesItem result = null;
-        if((inputChoice == (1)) || (inputChoice == (2)) || (inputChoice == (3)))
+        if(inputChoice != 5)
         {
-            result = literatureCollection.searchByTitle(searchWord);
-        }
-        else if(inputChoice == 4)
-        {
-            result = bookSeriesRegister.searchByTitle(searchWord);
-        }
-        if (result == null)
-        {
-            System.out.println("Could not find any product matching your search.");
-            inputCase = 1;
-        } else
-        {
-            Viewer itemView = new Viewer();
-            String itemInfo = itemView.createViewer(result).showLimited();
-            System.out.println(itemInfo);
-            System.out.println("Do you wish to add this item to your cart?");
-            System.out.println("Enter yes or no");
-            String answer = reader.nextLine();
-            if (answer.equals("yes"))
+            System.out.println("Please enter the title of the item you are interested in: ");
+            String searchWord = reader.nextLine();
+            SalesItem result = null;
+            if ((inputChoice == (1)) || (inputChoice == (2)) || (inputChoice == (3)))
             {
-                System.out.println("Please enter the amount you wish to add.");
-                System.out.println("Quantity in stock: " + result.getQuantityInStock());
-                int amount = Integer.parseInt(reader.nextLine());
-                if (amount <= result.getQuantityInStock())
-                {
-                    for (int i = 1; i <= amount; i++)
-                    {
-                        this.cart.addToCart(result);
-                        result.reduceQuantityByOne();
-                    }
-                }
-                else
-                {
-                    throw new InsufficientQuantityException(amount, result.getQuantityInStock());
-                }
-                System.out.println(result.getTitle() + " has been successfully added to your cart.");
-                System.out.println("Do you wish to add another product?");
-                System.out.println("Enter yes or no");
-
-                answer = reader.nextLine();
-                if (answer.equals("yes"))
-                {
-                    inputCase = 4;
-                }
-                else
-                {
-                    inputCase = 1;
-                }
-
-            } else if (answer.equals("no"))
+                result = literatureCollection.searchByTitle(searchWord);
+            } else if (inputChoice == 4)
             {
-                System.out.println(result.getTitle() + " was not added to your cart.");
+                result = bookSeriesRegister.searchByTitle(searchWord);
+            }
+            if (result == null)
+            {
+                System.out.println("Could not find any product matching your search.");
                 inputCase = 1;
             } else
             {
-                System.out.println("You entered an invalid answer. Request aborted.");
-                inputCase = 1;
+                Viewer itemView = new Viewer();
+                String itemInfo = itemView.createViewer(result).showLimited();
+                System.out.println(itemInfo);
+                System.out.println("Do you wish to add this item to your cart?");
+                System.out.println("Enter yes or no");
+                String answer = reader.nextLine();
+                if (answer.equals("yes"))
+                {
+                    System.out.println("Please enter the amount you wish to add.");
+                    System.out.println("Quantity in stock: " + result.getQuantityInStock());
+                    int amount = Integer.parseInt(reader.nextLine());
+                    if (amount <= result.getQuantityInStock())
+                    {
+                        for (int i = 1; i <= amount; i++)
+                        {
+                            this.cart.addToCart(result);
+                            result.reduceQuantityByOne();
+                        }
+                    } else
+                    {
+                        throw new InsufficientQuantityException(amount, result.getQuantityInStock());
+                    }
+                    System.out.println(result.getTitle() + " has been successfully added to your cart.");
+                    System.out.println("Do you wish to add another product?");
+                    System.out.println("Enter yes or no");
+
+                    answer = reader.nextLine();
+                    if (answer.equals("yes"))
+                    {
+                        inputCase = 4;
+                    } else
+                    {
+                        inputCase = 1;
+                    }
+
+                } else if (answer.equals("no"))
+                {
+                    System.out.println(result.getTitle() + " was not added to your cart.");
+                    inputCase = 1;
+                } else
+                {
+                    System.out.println("You entered an invalid answer. Request aborted.");
+                    inputCase = 1;
+                }
             }
         }
         return inputCase;
     }
-
-
 
     /**
      * Lets the user remove an item from the cart. Requiers the user to search for the
@@ -1580,8 +1511,6 @@ public class ApplicationUI
         }
         return returnBoolean;
     }
-
-
 }
 
 
