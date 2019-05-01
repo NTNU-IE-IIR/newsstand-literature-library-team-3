@@ -28,8 +28,15 @@ public class Cart
  * */
     public void addToCart(SalesItem literatureToAdd)
     {
-        updateTotalPricePlus(literatureToAdd);
-        cart.add(literatureToAdd);
+        if(literatureToAdd.getQuantityInStock() < 1)
+        {
+            System.out.println("We are currently out of stock.");
+        }
+        else
+        {
+            updateTotalPricePlus(literatureToAdd);
+            cart.add(literatureToAdd);
+        }
     }
 
     public void removeFromCart(SalesItem literatureToRemove)
@@ -108,6 +115,7 @@ public class Cart
         while(it.hasNext())
         {
             SalesItem nextItem = it.next();
+            nextItem.reduceQuantityByOne();
             it.remove();
         }
     }
