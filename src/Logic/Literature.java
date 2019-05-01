@@ -88,29 +88,6 @@ public abstract class Literature extends SalesItem
         this.genre = setString(genre);
     }
 
-    /**
-     * Used by all set-methods requiring datatype String
-     * in this class and all sub-classes.
-     * The method returns a String. If the input is empty,
-     * it will return a String containing "UNDEFINED". If not,
-     * the return String will be equal to the input.
-     *
-     * @param input The input from the set-method calling on this method.
-     * @return The String to be set in the field.
-     */
-    protected String setString(String input)
-{
-    String returnString = "UNDEFINED";
-
-    if (input != null)
-    {
-        if (!input.isEmpty())
-        {
-            returnString = input;
-        }
-    }
-    return returnString;
-}
 
     //------Get-methods------
 

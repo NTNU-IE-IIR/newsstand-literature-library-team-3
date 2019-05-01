@@ -42,4 +42,28 @@ public class BookSeriesRegister
         }
     }
 
+    /**
+     * Removes a given bookseries from the bookseries register.
+     * If the register contains the given bookseries, the
+     * bookseries will be removed, and boolean true will be returned.
+     * If the register does not contain the given bookseries,
+     * hence the bookseries will not be removed, and boolean false will be returned.
+     *
+     * @param bookSeries The bookseries to be removed from the register.
+     * @return true if the bookseries was successfully removed,
+     *         false if not.
+     */
+    public boolean removeBookSeries(BookSeries bookSeries)
+    {
+        boolean success = false;
+
+        if (this.bookSeriesCollection.contains(bookSeries))
+        {
+            this.bookSeriesCollection.remove(bookSeries);
+            success = true;
+        }
+
+        return success;
+    }
+
 }
