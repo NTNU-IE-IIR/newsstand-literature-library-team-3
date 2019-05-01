@@ -1362,7 +1362,6 @@ public class ApplicationUI
                         for (int i = 1; i <= amount; i++)
                         {
                             this.cart.addToCart(result);
-                            result.reduceQuantityByOne();
                         }
                     } else
                     {

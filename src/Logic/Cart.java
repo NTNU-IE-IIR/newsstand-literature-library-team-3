@@ -35,6 +35,7 @@ public class Cart
         else
         {
             updateTotalPricePlus(literatureToAdd);
+            literatureToAdd.reduceQuantityByOne();
             cart.add(literatureToAdd);
         }
     }
@@ -112,7 +113,6 @@ public class Cart
         while(it.hasNext())
         {
             SalesItem nextItem = it.next();
-            nextItem.reduceQuantityByOne();
             it.remove();
         }
     }
