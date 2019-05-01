@@ -87,7 +87,27 @@ public class BookSeries extends SalesItem
         }
         return result;
     }
+    /**
+     * Reduces the current quantity of a specific book series by one.
+     * This will also reduce the quantity of the books in the book series
+     * by one.
+     */
+    @Override
+    public void reduceQuantityByOne()
+    {
+        Iterator<Book> bookSeriesIterator = getIterator();
+        while(bookSeriesIterator.hasNext())
+        {
+            Book book = bookSeriesIterator.next();
+            book.reduceQuantityByOne();
+        }
+        super.reduceQuantityByOne();
+    }
 
+    /**
+     * Returns an iterator for the values of the book series.
+     * @return an iterator for the values of the book series.
+     */
     public Iterator getIterator()
     {
         return this.bookSeries.values().iterator();

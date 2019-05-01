@@ -521,8 +521,8 @@ public class ApplicationUI
                     {
                         BookSeries bookSeries = bookSeriesIterator.next();
                         System.out.println(new Viewer().createViewer(bookSeries).show());
-                        completed = true;
                     }
+                    completed = true;
                     break;
 
                 case 2:
