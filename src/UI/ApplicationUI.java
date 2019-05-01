@@ -1,6 +1,7 @@
 package UI;
 
 import Logic.*;
+import Exception.InsufficientQuantityException;
 
 import java.sql.SQLOutput;
 import java.util.*;
@@ -1264,8 +1265,14 @@ public class ApplicationUI
                     break;
 
                 case 4:
-
-                    inputCase = addItemToCart();
+                    try
+                    {
+                        inputCase = addItemToCart();
+                    }
+                    catch(InsufficientQuantityException e)
+                    {
+                        System.out.println(e.toString());
+                    }
                     break;
 
                 case 5:
@@ -1330,7 +1337,7 @@ public class ApplicationUI
      * product by title. If the cart is empty, and message will be sent to the user.
      * @return The inputCase used in the switch case in the cartMenu.
      * */
-    private int addItemToCart()
+    private int addItemToCart() throws InsufficientQuantityException
     {
         int inputCase;
         Scanner reader = new Scanner(System.in);
@@ -1348,7 +1355,6 @@ public class ApplicationUI
             Viewer litView = new Viewer();
             String litInfo = litView.createViewer(result).showLimited();
             System.out.println(litInfo);
-            //System.out.println(result.getAllInfoAsString());
             System.out.println("Do you wish to add this item to your cart?");
             System.out.println("Enter yes or no");
             String answer = reader.nextLine();
@@ -1357,9 +1363,17 @@ public class ApplicationUI
                 System.out.println("Please enter the amount you wish to add");
                 int amount = reader.nextInt();
 
-                for(int i = 1; i <= amount; i++)
+                if(amount <= result.getQuantityInStock())
                 {
-                    this.cart.addToCart(result);
+                    for (int i = 1; i <= amount; i++)
+                    {
+                        this.cart.addToCart(result);
+
+                    }
+                }
+                else
+                {
+                    throw new InsufficientQuantityException(amount, result.getQuantityInStock());
                 }
                 System.out.println(result.getTitle() + " has been successfully added to your cart.");
                 System.out.println("Do you wish to add another product?");
@@ -1492,5 +1506,6 @@ public class ApplicationUI
 
 
 }
+
 
 
