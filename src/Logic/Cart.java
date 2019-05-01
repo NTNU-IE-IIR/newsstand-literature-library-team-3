@@ -113,7 +113,6 @@ public class Cart
         while(it.hasNext())
         {
             SalesItem nextItem = it.next();
-            nextItem.reduceQuantityByOne();
             it.remove();
         }
     }
