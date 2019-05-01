@@ -40,19 +40,27 @@ public abstract class SalesItem
     /**
      * Reduces the current quantity of a specific salesitem by one.
      */
-    protected void reduceQuantityByOne()
+    public void reduceQuantityByOne()
     {
-        if (this.quantityInStock < 0)
+        if (this.quantityInStock > 0)
         {
             this.quantityInStock--;
         }
     }
 
     /**
+     * Increases the current quantity of a specific salesitem by one.
+     */
+    public void increaseQuantityByOne()
+    {
+        this.quantityInStock++;
+    }
+
+    /**
      * Used by all set-methods requiring datatype int,
      * in this class and all sub-classes.
-     * The method returns an int. If the input is less or equal to 0,
-     * it will return an int equal to 0. If not,
+     * The method returns an int. If the input is less than 0,
+     * an InputMismatchException will be thrown. If not,
      * it will return an int equal to the input.
      *
      * @param input The input from the set-method calling on this method.
@@ -60,9 +68,13 @@ public abstract class SalesItem
      */
     protected int setInt(int input)
     {
-        int returnInt = 0;
+        int returnInt;
 
-        if (input >= 0)
+        if (input < 0)
+        {
+            throw new InputMismatchException("ERROR: Input was lower than 0.");
+        }
+        else
         {
             returnInt = input;
         }
@@ -90,53 +102,28 @@ public abstract class SalesItem
         return quantityInStock;
     }
 
-
-//    /**
-//     * Used by all set-methods requiring datatype String
-//     * in this class and all sub-classes.
-//     * The method returns a String. If the input is empty,
-//     * it will return a String containing "UNDEFINED". If not,
-//     * the return String will be equal to the input.
-//     *
-//     * @param input The input from the set-method calling on this method.
-//     * @return The String to be set in the field.
-//     */
-//    protected String setString(String input)
-//    {
-//        String returnString = "UNDEFINED";
-//
-//        if (input != null)
-//        {
-//            if (!input.isEmpty())
-//            {
-//                returnString = input;
-//            }
-//        }
-//        return returnString;
-//    }
-
     /**
      * Used by all set-methods requiring datatype String
      * in this class and all sub-classes.
-     * The method returns a String. If the input is empty,
-     * it will return a String containing "UNDEFINED". If not,
-     * the return String will be equal to the input.
+     * The method returns a String. If the input is empty or null,
+     * it will throw an InputMismatchException with an error-message.
+     * If not, the return String will be equal to the input.
      *
      * @param input The input from the set-method calling on this method.
      * @return The String to be set in the field.
      */
-    protected String setString(String input) throws InputMismatchException
+    protected String setString(String input)
     {
-            String returnString;
+        String returnString;
 
-            if (input == null || input.isEmpty())
-            {
-                throw new InputMismatchException();
-            }
-            else
-            {
-                returnString = input;
-            }
-            return returnString;
+        if (input == null || input.isEmpty())
+        {
+            throw new InputMismatchException("ERROR: Input was invalid.");
+        }
+        else
+        {
+            returnString = input;
+        }
+        return returnString;
     }
 }
