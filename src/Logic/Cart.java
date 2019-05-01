@@ -28,8 +28,15 @@ public class Cart
  * */
     public void addToCart(SalesItem literatureToAdd)
     {
-        updateTotalPricePlus(literatureToAdd);
-        cart.add(literatureToAdd);
+        if(literatureToAdd.getQuantityInStock() < 1)
+        {
+            System.out.println("We are currently out of stock.");
+        }
+        else
+        {
+            updateTotalPricePlus(literatureToAdd);
+            cart.add(literatureToAdd);
+        }
     }
 
     public void removeFromCart(SalesItem literatureToRemove)
@@ -73,13 +80,10 @@ public class Cart
 
         for(SalesItem salesItem : cart)
         {
-            if(salesItem instanceof Literature)
-            {
-                Viewer litView = new Viewer();
-                String litInfo = litView.createViewer(salesItem).showLimited();
-                String thisLiterature = litInfo + "\n";
-                itemsInCart = itemsInCart + thisLiterature + "\n";
-            }
+                Viewer itemView = new Viewer();
+                String itemInfo = itemView.createViewer(salesItem).showLimited();
+                String thisItem = itemInfo + "\n";
+                itemsInCart = itemsInCart + thisItem + "\n";
         }
 
         return itemsInCart;
@@ -100,10 +104,15 @@ public class Cart
 
     public void checkOut()
     {
+        if(cart.isEmpty())
+        {
+            System.out.println("No have no items in your cart.");
+        }
         Iterator<SalesItem> it = cart.iterator();
         while(it.hasNext())
         {
             SalesItem nextItem = it.next();
+            nextItem.reduceQuantityByOne();
             it.remove();
         }
     }
@@ -123,7 +132,10 @@ public class Cart
                 returnString = literature;
             }
         }
+        if(returnString.equals(null))
+        {
+            System.out.println("No items matching your search.");
+        }
         return returnString;
     }
-
 }
