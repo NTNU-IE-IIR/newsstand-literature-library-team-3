@@ -73,13 +73,10 @@ public class Cart
 
         for(SalesItem salesItem : cart)
         {
-            if(salesItem instanceof Literature)
-            {
-                Viewer litView = new Viewer();
-                String litInfo = litView.createViewer(salesItem).showLimited();
-                String thisLiterature = litInfo + "\n";
-                itemsInCart = itemsInCart + thisLiterature + "\n";
-            }
+                Viewer itemView = new Viewer();
+                String itemInfo = itemView.createViewer(salesItem).showLimited();
+                String thisItem = itemInfo + "\n";
+                itemsInCart = itemsInCart + thisItem + "\n";
         }
 
         return itemsInCart;
