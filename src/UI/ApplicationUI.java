@@ -982,12 +982,9 @@ public class ApplicationUI
                             if (choice == 1)
                             {
                                 inputCase = 8;
-                            } else if (choice == 2)
+                            } else if (choice == 2 || choice == 3)
                             {
                                 inputCase = 11;
-                            } else if (choice == 3)
-                            {
-                                inputCase = 14;
                             }
                         }
                         break;
@@ -1063,7 +1060,7 @@ public class ApplicationUI
                         break;
 
                     case 11:
-                        System.out.println("Please enter the number of yearly publications of the newspaper");
+                        System.out.println("Please enter the number of yearly publications of the " + litChoice);
                         String yearlyPublishInput = reader.nextLine().trim();
 
 
@@ -1098,7 +1095,7 @@ public class ApplicationUI
                         break;
 
                     case 12:
-                        System.out.println("Please enter the publication date of the newspaper");
+                        System.out.println("Please enter the publication date of the " + litChoice);
                         String publishDateInput = reader.nextLine().trim();
 
 
@@ -1124,7 +1121,14 @@ public class ApplicationUI
                         else
                         {
                             publicationDate = publishDateInput;
-                            inputCase = 13;
+                            if (choice == 2)
+                            {
+                                inputCase = 13;
+                            }
+                            else if (choice == 3)
+                            {
+                                inputCase = 14;
+                            }
                         }
                         break;
 
@@ -1137,71 +1141,6 @@ public class ApplicationUI
                         break;
 
                     case 14:
-                        System.out.println("Please enter the number of yearly publications of the magazine");
-                        String yearlyMagPublishInput = reader.nextLine().trim();
-
-
-                        if (yearlyMagPublishInput.equals("cancel"))
-                        {
-                            System.out.println("Do you wish to cancel? Type 'yes' or 'no'.");
-                            abortInput = reader.nextLine();
-                            if (abortInput.equals("yes"))
-                            {
-                                completed = true;
-                            } else if (abortInput.equals("no"))
-                            {
-                                inputCase = 14;
-                            } else
-                            {
-                                System.out.println("Your input was neither 'yes' or 'no'.");
-                                inputCase = 14;
-                            }
-                        } else if (yearlyMagPublishInput.isEmpty())
-                        {
-                            throw new InputMismatchException();
-                        }
-                        else if (Integer.parseInt(yearlyMagPublishInput) <= 0)
-                        {
-                            throw new InputMismatchException("ERROR: Number of yearly publications must be greater than 0");
-                        }
-                        else
-                        {
-                            numberOfYearlyPublications = Integer.parseInt(yearlyMagPublishInput);
-                            inputCase = 15;
-                        }
-                        break;
-
-                    case 15:
-                        System.out.println("Please enter the publication date of the magazine");
-                        String magPublishDateInput = reader.nextLine().trim();
-
-
-                        if (magPublishDateInput.equals("cancel"))
-                        {
-                            System.out.println("Do you wish to cancel? Type 'yes' or 'no'.");
-                            abortInput = reader.nextLine();
-                            if (abortInput.equals("yes"))
-                            {
-                                completed = true;
-                            } else if (abortInput.equals("no"))
-                            {
-                                inputCase = 15;
-                            } else
-                            {
-                                System.out.println("Your input was neither 'yes' or 'no'.");
-                                inputCase = 15;
-                            }
-                        } else if (magPublishDateInput.isEmpty())
-                        {
-                            throw new InputMismatchException();
-                        } else
-                        {
-                            publicationDate = magPublishDateInput;
-                            inputCase = 16;
-                        }
-                        break;
-
-                    case 16:
                         Magazine magazineToAdd = new Magazine(title, publisher, publishYear, language,
                                 genre, price, quantity, numberOfYearlyPublications, publicationDate);
                         literatureCollection.addLiterature(magazineToAdd);
@@ -1229,7 +1168,13 @@ public class ApplicationUI
     }
 
 
-
+    /**
+     * Displays the cart menu by calling the printMainCartMenu-method.
+     * Uses the user input to determine which methods to call.
+     * If the user tries to add an item to the cart, with a desired quantity
+     * higher than the available quantity, and InsufficientQuantityException will be caught.
+     * If the input is invalid, an InputMismatchException will be caught.
+     */
     private void cartMenu()
     {
         boolean completed = false;
@@ -1240,12 +1185,9 @@ public class ApplicationUI
 
             switch (inputCase)
             {
-
                 case 1:
-
                     inputCase = printMainCartMenu();
                     break;
-
 
                 case 2:
                     System.out.println(this.cart.showCart());
@@ -1276,13 +1218,11 @@ public class ApplicationUI
                     break;
 
                 case 6:
-
                     completed = proceedToCheckOut();
                     inputCase = 1;
                     break;
 
                 case 7:
-
                     completed = true;
                     break;
             }
@@ -1551,6 +1491,3 @@ public class ApplicationUI
         return returnBoolean;
     }
 }
-
-
-
