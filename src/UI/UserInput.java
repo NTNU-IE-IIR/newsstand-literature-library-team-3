@@ -1,6 +1,7 @@
 package UI;
 
 import java.util.Scanner;
+import Exception.UserInterruptException;
 
 public class UserInput
 {
@@ -83,7 +84,7 @@ public class UserInput
                     input = readInput();
                     if (input.equals("yes"))
                     {
-                        throw new UserInterruptException("");
+                        throw new UserInterruptException();
                     }
                 }
                 else
