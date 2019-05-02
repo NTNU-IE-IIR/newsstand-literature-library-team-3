@@ -18,11 +18,10 @@ public class ApplicationUI
 
     // An array containing strings to be displayed in the menu.
     private String[] menuItems = {
-            "1. List literature",
+            "1. List sales items",
             "2. Add new literature",
-            "3. List book series/ book collections",
-            "4. Create book series / book collection",
-            "5. Manage cart"
+            "3. Create book series / book collection",
+            "4. Manage cart"
     };
     private LiteratureRegister literatureCollection;
     private BookSeriesRegister bookSeriesRegister;
@@ -63,18 +62,14 @@ public class ApplicationUI
                         break;
 
                     case 3:
-                        this.listBookSeries();
-                        break;
-
-                    case 4:
                         this.createBookSeries();
                         break;
 
-                    case 5:
+                    case 4:
                         this.cartMenu();
                         break;
 
-                    case 6:
+                    case 5:
                         System.out.println("\nThank you for using Application v0.1. Bye!\n");
                         quit = true;
                         break;
@@ -83,7 +78,7 @@ public class ApplicationUI
                 }
             } catch (InputMismatchException ime)
             {
-                System.out.println("\nERROR: Please provide a number between 1 and " + this.menuItems.length + "..\n");
+                System.out.println("\nERROR: Please provide a number between 1 and " + (this.menuItems.length + 1) + "..\n");
             }
         }
 
@@ -96,9 +91,9 @@ public class ApplicationUI
      * The method returns the valid input from the user.
      *
      * @return the menu number (between 1 and max menu item number) provided by the user.
-     * @throws InputMismatchException if user enters an invalid number/menu choice
+     * @throws InputMismatchException if user enters an invalid number/menu choice.
      */
-    private int showMenu() throws InputMismatchException
+    private int showMenu()
     {
         System.out.println("\n**** Super Literature Store 3000 ****\n");
         // Display the menu
@@ -125,7 +120,8 @@ public class ApplicationUI
 
     /**
      * Initializes the application.
-     * Creates the literatureregister-instance, bookseriesregister-instance and the cart-instance.
+     * Creates the literatureRegister-instance, bookSeriesRegister-instance,
+     * cart-instance and userInput-instance.
      */
     private void init()
     {
@@ -137,7 +133,7 @@ public class ApplicationUI
 
     /**
      * The user will get the opportunity to list the type
-     * of literature he or she is interested in.
+     * of items he or she is interested in.
      */
     private void listSalesItems()
     {
@@ -204,6 +200,8 @@ public class ApplicationUI
      * is then returned by this method.
      *
      * @return An int based on the input from the user.
+     * @throws UserInterruptException used if the user wants to cancel his or her current action.
+     * @throws RegretChoiceException used if the user doesn't want to cancel his or her action after all.
      */
     private int printSalesItemViewChoices() throws UserInterruptException, RegretChoiceException
     {
@@ -227,6 +225,8 @@ public class ApplicationUI
      *
      * @param choices An Array of Strings containing the choices to be displayed.
      * @return An int based on the user input.
+     * @throws UserInterruptException if the user wants to cancel his or her current action.
+     * @throws RegretChoiceException used if the user doesn't want to cancel his or her action after all.
      */
     private int listChoices(String[] choices) throws UserInterruptException, RegretChoiceException
     {
@@ -416,7 +416,9 @@ public class ApplicationUI
     }
 
     /**
-     * Lists all the literature in the register
+     * Lists all the literature in the register. The user can select if
+     * he or she wants all the information about the literature, or just
+     * limited key information.
      */
     private void listAllLiterature()
     {
@@ -576,7 +578,7 @@ public class ApplicationUI
     }
 
     /**
-     * Prints the information of all instances of a given literaturetype.
+     * Prints the information of all instances of a given literature type.
      * Takes in a boolean variable, which determines whether the information
      * to be printed should be limited, of extended.
      *
@@ -657,7 +659,7 @@ public class ApplicationUI
     }
 
     /**
-     * Creates a new bookseries / bookcollection. The user gets a list
+     * Creates a new book series / book collection. The user gets a list
      * of all available books, and is asked to type the titles of the
      * books he or she wants to add to the collection.
      * The price of the collection is calculated by adding the prices of
@@ -672,127 +674,137 @@ public class ApplicationUI
         int price = 0;
         HashMap<String, Book> booksToAdd = new HashMap<>();
         int inputCase = 0;
-        Scanner reader = new Scanner(System.in);
 
         boolean completed = false;
 
         while (!completed)
         {
-            switch (inputCase)
+            try
             {
-                case 0:
-                    System.out.println("Please enter the title of the collection you want to create");
-                    String seriesTitleInput = reader.nextLine();
-                    if (seriesTitleInput.isEmpty())
-                    {
-                        System.out.println("You need to enter the title of the collection you want to create");
-                    } else
-                    {
-                        seriesTitle = seriesTitleInput;
-                        inputCase = 1;
-                    }
-                    break;
-
-                case 1:
-                    System.out.println("Please type the title of the books you want to add to a collection.");
-                    System.out.println("One title at the time.");
-                    System.out.println("These are the books you can add:");
-                    listAllBooks(false);
-
-                    String titleInput = reader.nextLine();
-                    if (this.literatureCollection.containsBook(titleInput))
-                    {
-                        Book bookToAdd = this.literatureCollection.getBook(titleInput);
-                        booksToAdd.put(titleInput, bookToAdd);
-                        price += bookToAdd.getPrice();
-                        inputCase = 2;
-                    } else
-                    {
-                        System.out.println("The title you entered does not exist in the register.");
-                    }
-                    break;
-
-                case 2:
-                    System.out.println("Are you finished adding books to the collection?");
-                    System.out.println("Please type yes or no.");
-
-                    String answer = reader.nextLine();
-                    char choice = answer.charAt(0);
-
-                    if (choice == 'y')
-                    {
-                        inputCase = 3;
-                    } else
-                    {
-                        inputCase = 1;
-                    }
-                    break;
-
-                case 3:
-                    System.out.println("The total price of this collection is calculated to be:");
-                    System.out.println(price + " NOK");
-                    System.out.println("Do you want to change the price of the collection?");
-                    System.out.println("Please type yes or no.");
-
-                    answer = reader.nextLine();
-                    choice = answer.charAt(0);
-
-                    if (choice == 'y')
-                    {
-                        System.out.println("Please enter the price you want to set for the collection.");
-
-                        price = reader.nextInt();
-
-                        System.out.println("The price of the collection is now " + price + " NOK");
-
-                        inputCase = 4;
-                    } else
-                    {
-                        inputCase = 4;
-                    }
-                    break;
-
-                case 4:
-                    int quantity = 0;
-                    boolean firstQuantityFound = false;
-                    Iterator<Book> bookListIt = booksToAdd.values().iterator();
-                    while (bookListIt.hasNext())
-                    {
-                        if (!firstQuantityFound)
+                switch (inputCase)
+                {
+                    case 0:
+                        System.out.println("Please enter the title of the collection you want to create");
+                        String seriesTitleInput = userInput.asString();
+                        if (seriesTitleInput.isEmpty())
                         {
-                            Book book = bookListIt.next();
-                            quantity = book.getQuantityInStock();
-                            firstQuantityFound = true;
+                            System.out.println("You need to enter the title of the collection you want to create");
                         } else
                         {
-                            Book book = bookListIt.next();
+                            seriesTitle = seriesTitleInput;
+                            inputCase = 1;
+                        }
+                        break;
 
-                            if (book.getQuantityInStock() < quantity)
+                    case 1:
+                        System.out.println("Please type the title of the books you want to add to a collection.");
+                        System.out.println("One title at the time.");
+                        System.out.println("These are the books you can add:");
+                        listAllBooks(false);
+
+                        String titleInput = userInput.asString();
+                        if (this.literatureCollection.containsBook(titleInput))
+                        {
+                            Book bookToAdd = this.literatureCollection.getBook(titleInput);
+                            booksToAdd.put(titleInput, bookToAdd);
+                            price += bookToAdd.getPrice();
+                            inputCase = 2;
+                        } else
+                        {
+                            System.out.println("The title you entered does not exist in the register.");
+                        }
+                        break;
+
+                    case 2:
+                        System.out.println("Are you finished adding books to the collection?");
+                        System.out.println("Please type yes or no.");
+
+                        String answer = userInput.asString();
+                        char choice = answer.charAt(0);
+
+                        if (choice == 'y')
+                        {
+                            inputCase = 3;
+                        } else
+                        {
+                            inputCase = 1;
+                        }
+                        break;
+
+                    case 3:
+                        System.out.println("The total price of this collection is calculated to be:");
+                        System.out.println(price + " NOK");
+                        System.out.println("Do you want to change the price of the collection?");
+                        System.out.println("Please type yes or no.");
+
+                        answer = userInput.asString();
+                        choice = answer.charAt(0);
+
+                        if (choice == 'y')
+                        {
+                            System.out.println("Please enter the price you want to set for the collection.");
+
+                            price = userInput.asInteger();
+
+                            System.out.println("The price of the collection is now " + price + " NOK");
+
+                            inputCase = 4;
+                        } else
+                        {
+                            inputCase = 4;
+                        }
+                        break;
+
+                    case 4:
+                        int quantity = 0;
+                        boolean firstQuantityFound = false;
+                        Iterator<Book> bookListIt = booksToAdd.values().iterator();
+                        while (bookListIt.hasNext())
+                        {
+                            if (!firstQuantityFound)
                             {
+                                Book book = bookListIt.next();
                                 quantity = book.getQuantityInStock();
+                                firstQuantityFound = true;
+                            } else
+                            {
+                                Book book = bookListIt.next();
+
+                                if (book.getQuantityInStock() < quantity)
+                                {
+                                    quantity = book.getQuantityInStock();
+                                }
                             }
                         }
-                    }
-                    BookSeries newBookSeries = new BookSeries(seriesTitle, price, quantity);
-                    newBookSeries.getBookSeries().putAll(booksToAdd);
-                    this.bookSeriesRegister.addBookSeries(newBookSeries);
+                        BookSeries newBookSeries = new BookSeries(seriesTitle, price, quantity);
+                        newBookSeries.getBookSeries().putAll(booksToAdd);
+                        this.bookSeriesRegister.addBookSeries(newBookSeries);
 
-                    System.out.println("The collection was successfully created.");
-                    completed = true;
-                    break;
+                        System.out.println("The collection was successfully created.");
+                        completed = true;
+                        break;
+                }
+            }
+            catch(RegretChoiceException e)
+            {
+                System.out.println("Please try again.");
+            }
+            catch(UserInterruptException e)
+            {
+                System.out.println(e.toString());
+                completed = true;
             }
         }
     }
 
     /**
-     * Adds a new literature-object to the literatureregister.
-     * Uses a Scanner class to fill the parameters to create a
+     * Adds a new literature-object to the literature register.
+     * Uses a UserInput class to fill the parameters to create a
      * new literature object. This object is added to the
      * literature collection.
      * A switch-case statement is used, where each parameter input is
      * entered in its own case. The switch-case statement is used
      * to secure the user from entering invalid input.
-     * An InputMismatchException will be thrown if the input is invalid.
      */
     private void addLiterature()
     {
@@ -1140,7 +1152,9 @@ public class ApplicationUI
     /**
      * Prints the main menu for the manage cart option. Will check that the number entered is valid.
      *
-     * @return The inputcase used in the switchcase in the cart menu. will return 1 if the number entered is invalid
+     * @return The input case used in the switch case in the cart menu. will return 1 if the number entered is invalid
+     * @throws UserInterruptException if the user wants to cancel his or her current action.
+     * @throws RegretChoiceException used if the user doesn't want to cancel his or her action after all.
      */
     private int printMainCartMenu() throws UserInterruptException, RegretChoiceException
     {
@@ -1157,7 +1171,7 @@ public class ApplicationUI
 
 
     /**
-     * prints the total price for all the products in the cart. if there are no
+     * Prints the total price for all the products in the cart. If there are no
      * items in the cart, a message will be sent to the user.
      */
     private void showCartPrice()
@@ -1175,10 +1189,15 @@ public class ApplicationUI
 
 
     /**
-     * Lets the user add an item to the cart. Requiers the user to search for the
-     * product by title. If the cart is empty, and message will be sent to the user.
+     * Lets the user add an item to the cart. The user will choose the type of item he or she is interested in,
+     * and will then be presented the available options in stock.
+     * The user will then have to select the item(s) by typing the title of the desired item, and will be presented the
+     * current quantity in stock.
      *
      * @return The inputCase used in the switch case in the cartMenu.
+     * @throws InsufficientQuantityException if the quantity in stock is lower than the desired quantity.
+     * @throws UserInterruptException if the user wants to cancel his or her current action.
+     * @throws RegretChoiceException used if the user doesn't want to cancel his or her action after all.
      */
     private int addItemToCart() throws InsufficientQuantityException,
             UserInterruptException, RegretChoiceException
@@ -1303,8 +1322,10 @@ public class ApplicationUI
     }
 
     /**
-     * Lets the user remove an item from the cart. Requiers the user to search for the
-     * product by title. If the cart is empty, and message will be sent to the user.
+     * Lets the user remove an item from the cart. The current items in the cart will be presented to the user.
+     * The user will then have to type the title of the item he or she wants to remove.
+     * @throws UserInterruptException if the user wants to cancel his or her current action.
+     * @throws RegretChoiceException used if the user doesn't want to cancel his or her action after all.
      */
 
     private void removeItemFromCart() throws UserInterruptException, RegretChoiceException
@@ -1350,10 +1371,13 @@ public class ApplicationUI
     }
 
     /**
-     * Allows the user to pay for the products in the cart. Change will be given if the amount
-     * is too big. If there are no items in the cart or the pay amount is too low a message will be sent to the user.
+     * Allows the user to pay for the products in the cart. Change will be given if the amount paid is greater than the
+     * total amount for the items. If there are no items in the cart or the pay amount is too low a message will be
+     * sent to the user.
      *
      * @return true if the payment is successful
+     * @throws UserInterruptException if the user wants to cancel his or her current action.
+     * @throws RegretChoiceException used if the user doesn't want to cancel his or her action after all.
      */
 
     private boolean proceedToCheckOut() throws UserInterruptException, RegretChoiceException
