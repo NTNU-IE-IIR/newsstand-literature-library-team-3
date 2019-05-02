@@ -145,40 +145,53 @@ public class ApplicationUI
         boolean completed = false;
         while (!completed)
         {
-            switch (inputCase)
+            try
             {
-                case 1:
-                    inputCase = printSalesItemViewChoices();
-                    break;
+                switch (inputCase)
+                {
+                    case 1:
+                        inputCase = printSalesItemViewChoices();
+                        break;
 
-                case 2:
-                    listBooks();
-                    completed = true;
-                    break;
+                    case 2:
+                        listBooks();
+                        completed = true;
+                        break;
 
-                case 3:
-                    listNewspapers();
-                    completed = true;
-                    break;
+                    case 3:
+                        listNewspapers();
+                        completed = true;
+                        break;
 
-                case 4:
-                    listMagazines();
-                    completed = true;
-                    break;
+                    case 4:
+                        listMagazines();
+                        completed = true;
+                        break;
 
-                case 5:
-                    listBookSeries();
-                    completed = true;
-                    break;
+                    case 5:
+                        listBookSeries();
+                        completed = true;
+                        break;
 
-                case 6:
-                    listAllLiterature();
-                    completed = true;
-                    break;
+                    case 6:
+                        listAllLiterature();
+                        completed = true;
+                        break;
 
-                case 7:
-                    completed = true;
-                    break;
+                    case 7:
+                        completed = true;
+                        break;
+                }
+            } catch (NumberFormatException ne)
+            {
+                System.out.println(ne.getMessage());
+            } catch (UserInterruptException e)
+            {
+                System.out.println(e.toString());
+                completed = true;
+            } catch (RegretChoiceException e)
+            {
+                System.out.println(e.toString());
             }
         }
     }
@@ -192,7 +205,7 @@ public class ApplicationUI
      *
      * @return An int based on the input from the user.
      */
-    private int printSalesItemViewChoices()
+    private int printSalesItemViewChoices() throws UserInterruptException, RegretChoiceException
     {
         String[] choices = {
                 "1. Books",
@@ -202,6 +215,7 @@ public class ApplicationUI
                 "5. All literature",
                 "6. Back"
         };
+
         return listChoices(choices);
     }
 
@@ -214,7 +228,7 @@ public class ApplicationUI
      * @param choices An Array of Strings containing the choices to be displayed.
      * @return An int based on the user input.
      */
-    private int listChoices(String[] choices)
+    private int listChoices(String[] choices) throws UserInterruptException, RegretChoiceException
     {
         int inputCase = 1;
         try
@@ -225,28 +239,16 @@ public class ApplicationUI
             }
 
             int input = userInput.asInteger();
-            if ((input < 1) || (input > 6))
+            if ((input < 1) || (input > choices.length))
             {
-                throw new NumberFormatException();
-            }
-            else
+                throw new NumberFormatException("You must enter a number between 1 and " + choices.length + ".");
+            } else
             {
                 inputCase = input + 1;
             }
-
-        }
-        catch (UserInterruptException e)
+        } catch (NumberFormatException e)
         {
-            System.out.println(e.toString());
-            inputCase = 7;
-        }
-        catch (RegretChoiceException re)
-        {
-            System.out.println(re.toString());
-        }
-        catch (NumberFormatException e)
-        {
-            System.out.println("Input must be a number between 1 and 6.");
+            System.out.println(e.getMessage());
         }
         return inputCase;
     }
@@ -269,25 +271,38 @@ public class ApplicationUI
 
         while (!completed)
         {
-            switch (inputCase)
+            try
             {
-                case 1:
-                    inputCase = listChoices(choices);
-                    break;
+                switch (inputCase)
+                {
+                    case 1:
+                        inputCase = listChoices(choices);
+                        break;
 
-                case 2:
-                    listAllBooks(true);
-                    completed = true;
-                    break;
+                    case 2:
+                        listAllBooks(true);
+                        completed = true;
+                        break;
 
-                case 3:
-                    listAllBooks(false);
-                    completed = true;
-                    break;
+                    case 3:
+                        listAllBooks(false);
+                        completed = true;
+                        break;
 
-                case 4:
-                    completed = true;
-                    break;
+                    case 4:
+                        completed = true;
+                        break;
+                }
+            } catch (NumberFormatException ne)
+            {
+                System.out.println(ne.getMessage());
+            } catch (UserInterruptException ue)
+            {
+                System.out.println(ue.toString());
+                completed = true;
+            } catch (RegretChoiceException re)
+            {
+                System.out.println(re.toString());
             }
         }
     }
@@ -310,25 +325,38 @@ public class ApplicationUI
 
         while (!completed)
         {
-            switch (inputCase)
+            try
             {
-                case 1:
-                    inputCase = listChoices(choices);
-                    break;
+                switch (inputCase)
+                {
+                    case 1:
+                        inputCase = listChoices(choices);
+                        break;
 
-                case 2:
-                    listAllMagazines(true);
-                    completed = true;
-                    break;
+                    case 2:
+                        listAllMagazines(true);
+                        completed = true;
+                        break;
 
-                case 3:
-                    listAllMagazines(false);
-                    completed = true;
-                    break;
+                    case 3:
+                        listAllMagazines(false);
+                        completed = true;
+                        break;
 
-                case 4:
-                    completed = true;
-                    break;
+                    case 4:
+                        completed = true;
+                        break;
+                }
+            } catch (NumberFormatException ne)
+            {
+                System.out.println(ne.getMessage());
+            } catch (UserInterruptException ue)
+            {
+                System.out.println(ue.toString());
+                completed = true;
+            } catch (RegretChoiceException re)
+            {
+                System.out.println(re.toString());
             }
         }
     }
@@ -351,25 +379,38 @@ public class ApplicationUI
 
         while (!completed)
         {
-            switch (inputCase)
+            try
             {
-                case 1:
-                    inputCase = listChoices(choices);
-                    break;
+                switch (inputCase)
+                {
+                    case 1:
+                        inputCase = listChoices(choices);
+                        break;
 
-                case 2:
-                    listAllNewspapers(true);
-                    completed = true;
-                    break;
+                    case 2:
+                        listAllNewspapers(true);
+                        completed = true;
+                        break;
 
-                case 3:
-                    listAllNewspapers(false);
-                    completed = true;
-                    break;
+                    case 3:
+                        listAllNewspapers(false);
+                        completed = true;
+                        break;
 
-                case 4:
-                    completed = true;
-                    break;
+                    case 4:
+                        completed = true;
+                        break;
+                }
+            } catch (NumberFormatException ne)
+            {
+                System.out.println(ne.getMessage());
+            } catch (UserInterruptException ue)
+            {
+                System.out.println(ue.toString());
+                completed = true;
+            } catch (RegretChoiceException re)
+            {
+                System.out.println(re.toString());
             }
         }
     }
@@ -390,29 +431,42 @@ public class ApplicationUI
 
         while (!completed)
         {
-            switch (inputCase)
+            try
             {
-                case 1:
-                    inputCase = listChoices(choices);
-                    break;
+                switch (inputCase)
+                {
+                    case 1:
+                        inputCase = listChoices(choices);
+                        break;
 
-                case 2:
-                    listAllBooks(true);
-                    listAllMagazines(true);
-                    listAllNewspapers(true);
-                    completed = true;
-                    break;
+                    case 2:
+                        listAllBooks(true);
+                        listAllMagazines(true);
+                        listAllNewspapers(true);
+                        completed = true;
+                        break;
 
-                case 3:
-                    listAllBooks(false);
-                    listAllMagazines(false);
-                    listAllNewspapers(false);
-                    completed = true;
-                    break;
+                    case 3:
+                        listAllBooks(false);
+                        listAllMagazines(false);
+                        listAllNewspapers(false);
+                        completed = true;
+                        break;
 
-                case 4:
-                    completed = true;
-                    break;
+                    case 4:
+                        completed = true;
+                        break;
+                }
+            } catch (NumberFormatException ne)
+            {
+                System.out.println(ne.getMessage());
+            } catch (UserInterruptException ue)
+            {
+                System.out.println(ue.toString());
+                completed = true;
+            } catch (RegretChoiceException re)
+            {
+                System.out.println(re.toString());
             }
         }
     }
@@ -562,29 +616,42 @@ public class ApplicationUI
         boolean completed = false;
         while (!completed)
         {
-            switch (inputCase)
+            try
             {
-                case 0:
-                    inputCase = listChoices(choices) - 1;
-                    break;
+                switch (inputCase)
+                {
+                    case 0:
+                        inputCase = listChoices(choices) - 1;
+                        break;
 
-                case 1:
-                    while (bookSeriesIterator.hasNext())
-                    {
-                        BookSeries bookSeries = bookSeriesIterator.next();
-                        System.out.println(new Viewer().createViewer(bookSeries).show());
-                    }
-                    completed = true;
-                    break;
+                    case 1:
+                        while (bookSeriesIterator.hasNext())
+                        {
+                            BookSeries bookSeries = bookSeriesIterator.next();
+                            System.out.println(new Viewer().createViewer(bookSeries).show());
+                        }
+                        completed = true;
+                        break;
 
-                case 2:
-                    while (bookSeriesIterator.hasNext())
-                    {
-                        BookSeries bookSeries = bookSeriesIterator.next();
-                        System.out.println(new Viewer().createViewer(bookSeries).showLimited());
-                    }
-                    completed = true;
-                    break;
+                    case 2:
+                        while (bookSeriesIterator.hasNext())
+                        {
+                            BookSeries bookSeries = bookSeriesIterator.next();
+                            System.out.println(new Viewer().createViewer(bookSeries).showLimited());
+                        }
+                        completed = true;
+                        break;
+                }
+            } catch (NumberFormatException ne)
+            {
+                System.out.println(ne.getMessage());
+            } catch (UserInterruptException ue)
+            {
+                System.out.println(ue.toString());
+                completed = true;
+            } catch (RegretChoiceException re)
+            {
+                System.out.println(re.toString());
             }
         }
     }
@@ -751,7 +818,8 @@ public class ApplicationUI
 
         boolean completed = false;
 
-        int inputCase = 0;;
+        int inputCase = 0;
+        ;
         while (!completed)
         {
             try
@@ -982,8 +1050,7 @@ public class ApplicationUI
             {
                 System.out.println(e.toString());
                 completed = true;
-            }
-            catch (RegretChoiceException re)
+            } catch (RegretChoiceException re)
             {
                 System.out.println(re.toString());
             }
@@ -1057,7 +1124,7 @@ public class ApplicationUI
      *
      * @return The inputcase used in the switchcase in the cart menu. will return 1 if the number entered is invalid
      */
-    private int printMainCartMenu()
+    private int printMainCartMenu() throws UserInterruptException, RegretChoiceException
     {
         String[] choices = {
                 "1. Show content in cart",

@@ -28,7 +28,7 @@ public class UserInput
      * @throws RegretChoiceException if the user regrets that he
      *                               or she wanted to quit.
      */
-    public int asInteger() throws UserInterruptException, RegretChoiceException
+    public int asInteger() throws UserInterruptException, RegretChoiceException, NumberFormatException
     {
         int returnValue = -1;
         boolean completed = false;
@@ -44,7 +44,14 @@ public class UserInput
                 throw new InputMismatchException();
             } else
             {
-                returnValue = Integer.parseInt(input);
+                try
+                {
+                    returnValue = Integer.parseInt(input);
+                }
+                catch (NumberFormatException ne)
+                {
+                    throw new NumberFormatException("Input must be an integer.");
+                }
                 if (returnValue < 0)
                 {
                     System.out.println("The value can not be negative");
