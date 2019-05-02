@@ -4,12 +4,14 @@ import UI.Viewer;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import Exception.InsufficientQuantityException;
+
 /**
 * Represents the cart with product the costumer wants to buy. Uses Arraylist to hold the products
 * and to give the total price, and list up the content in cart.
 *
-* @author Erlend Holseker, Arvin Khodabandeh, Isak Gamnes Sneltvedt
-* @version 0.2 (2019.04.03)
+ * @author Arvin Khodabandeh, Erlend Holseker & Isak Gamnes Sneltvedt
+ * @version v1.0 (2019.05.03)
 * */
 
 public class Cart
@@ -17,20 +19,27 @@ public class Cart
     private int totalPrice = 0;
     private ArrayList<SalesItem> cart;
 
+    /**
+     * Constructor of the shopping cart.
+     * Uses an ArrayList to hold all objects the user wants to buy.
+     */
     public Cart ()
     {
         cart = new ArrayList<>();
     }
 
-
-/**
- * Adds a product to the cart and
- * */
-    public void addToCart(SalesItem literatureToAdd)
+    /**
+     * Adds a sales item to the shopping cart, and updates the total price
+     * of the cart.
+     *
+     * @param literatureToAdd The literature the user wants to buy.
+     * @throws InsufficientQuantityException If the quantity of the literature is 0.
+     */
+    public void addToCart(SalesItem literatureToAdd) throws InsufficientQuantityException
     {
         if(literatureToAdd.getQuantityInStock() < 1)
         {
-            System.out.println("We are currently out of stock.");
+            throw new InsufficientQuantityException(0, 0);
         }
         else
         {
@@ -40,6 +49,11 @@ public class Cart
         }
     }
 
+    /**
+     * Removes an item from the shopping cart.
+     *
+     * @param literatureToRemove The item to be removed from the shopping cart.
+     */
     public void removeFromCart(SalesItem literatureToRemove)
     {
         updateTotalPriceMinus(literatureToRemove);
@@ -47,18 +61,35 @@ public class Cart
         cart.remove(literatureToRemove);
     }
 
+    /**
+     * Updates the total price of the shopping cart by
+     * adding the price of the latest added item to the total price.
+     *
+     * @param priceObject The price of the item that was last added to the cart.
+     */
     private void updateTotalPricePlus(SalesItem priceObject)
     {
         int price = priceObject.getPrice();
         this.totalPrice = totalPrice + price;
     }
 
+    /**
+     * Updates the total price of the shopping cart by
+     * subtracting the price of the latest removed item from the total price.
+     *
+     * @param priceObject The price of the item that was last removed from the cart.
+     */
     private void updateTotalPriceMinus(SalesItem priceObject)
     {
         int price = priceObject.getPrice();
         this.totalPrice = totalPrice - price;
     }
 
+    /**
+     * Returns the total price of the shopping cart.
+     *
+     * @return The total price of the shopping cart.
+     */
     public int getTotalPrice()
     {
         int price = 0;
@@ -70,6 +101,13 @@ public class Cart
         return price;
     }
 
+    /**
+     * Returns a string containing information about
+     * the items in the shopping cart.
+     *
+     * @return A string containing information about
+     *         the items in the shopping cart.
+     */
     public String showCart()
     {
         String itemsInCart = "";
@@ -90,19 +128,9 @@ public class Cart
         return itemsInCart;
     }
 
-    public void addDummiesToCart()
-    {
-        Newspaper testNewspaper2 = new Newspaper("Katastrofe", "VG", "2019", "Norsk",
-                "Nyheter", 20, 15, 52, "01.01.2019");
-        Newspaper testNewspaper3 = new Newspaper("Det kunne gått bedre", "VG", "2019", "Norsk",
-                "Nyheter", 20, 15, 52, "05.03.2019");
-        Newspaper testNewspaper = new Newspaper("Ingen trodde dette kunne skje", "Aftenposten", "2018",
-                "Norsk", "Nyheter", 35, 10, 52, "13.01.2018");
-        cart.add(testNewspaper);
-        cart.add(testNewspaper2);
-        cart.add(testNewspaper3);
-    }
-
+    /**
+     * Removes all items in the shopping cart.
+     */
     public void checkOut()
     {
         if(cart.isEmpty())
@@ -117,25 +145,37 @@ public class Cart
         }
     }
 
+    /**
+     * Returns the amount of items in the shopping cart.
+     *
+     * @return The amount of items in the shopping cart.
+     */
     public int getSize()
     {
         return cart.size();
     }
 
+    /**
+     * Searches for a specific sales item in the shopping cart
+     * by using its title.
+     *
+     * @param searchTitle The title of the sales item which is to be found.
+     * @return The item which is to be found. If it is not found, null will be returned.
+     */
     public SalesItem searchByTitle(String searchTitle)
     {
-        SalesItem returnString = null;
+        SalesItem returnItem = null;
         for (SalesItem literature : cart)
         {
             if(literature.getTitle().equals(searchTitle))
             {
-                returnString = literature;
+                returnItem = literature;
             }
         }
-        if(returnString.equals(null))
+        if(returnItem.equals(null))
         {
             System.out.println("No items matching your search.");
         }
-        return returnString;
+        return returnItem;
     }
 }

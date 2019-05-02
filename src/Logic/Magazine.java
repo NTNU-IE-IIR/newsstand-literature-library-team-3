@@ -36,6 +36,7 @@ public class Magazine extends Periodical
      * Returns the title of the given magazine.
      * @return title A string containing the title of the given magazine.
      */
+    @Override
     public String getTitle()
     {
         return super.getTitle();
@@ -44,6 +45,7 @@ public class Magazine extends Periodical
     /** Returns the publisher of the given magazine.
      * @return publisher A string containing the publisher of the given magazine.
      */
+    @Override
     public String getPublisher()
     {
         return super.getPublisher();
@@ -52,6 +54,7 @@ public class Magazine extends Periodical
     /** Returns the year the given magazine was published.
      * @return publishYear A string containing the year the given magazine was published.
      */
+    @Override
     public String getPublishYear()
     {
         return super.getPublishYear();
@@ -60,6 +63,7 @@ public class Magazine extends Periodical
     /** Returns the year the given magazine was published.
      * @return publishYear A string containing the year the given magazine was published.
      */
+    @Override
     public String getLanguage()
     {
         return super.getLanguage();
@@ -68,6 +72,7 @@ public class Magazine extends Periodical
     /** Returns the genre of the given magazine.
      * @return genre A string containing the genre of the given magazine.
      */
+    @Override
     public String getGenre()
     {
         return super.getGenre();
@@ -76,6 +81,7 @@ public class Magazine extends Periodical
     /** Returns the price of the given magazine.
      * @return price An int representing the price of the given magazine, in NOK (Norwegian kroner).
      */
+    @Override
     public int getPrice()
     {
         return super.getPrice();
@@ -84,6 +90,7 @@ public class Magazine extends Periodical
     /** Returns the amount of the given magazine in stock.
      * @return quantityInStock An int representing the amount of the given magazine in stock.
      */
+    @Override
     public int getQuantityInStock()
     {
         return super.getQuantityInStock();
@@ -92,6 +99,7 @@ public class Magazine extends Periodical
     /** Returns the publication date of the given magazine.
      * @return the publication date of the given magazine.
      */
+    @Override
     public String getPublicationDate()
     {
         return super.getPublicationDate();
@@ -100,6 +108,7 @@ public class Magazine extends Periodical
     /** Returns the number of yearly publications of the magazine.
      * @return the number of yearly publications of the magazine.
      */
+    @Override
     public int getNumberOfYearlyPublications()
     {
         return super.getNumberOfYearlyPublications();

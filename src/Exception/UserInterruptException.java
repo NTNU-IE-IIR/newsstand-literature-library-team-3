@@ -3,8 +3,8 @@ package Exception;
 /**
  * Exception thrown when the user forces the ongoing process to stop.
  *
- * @author Arvin Khodabandeh, Erlend Holseker, Isak Gamnes Sneltvedt
- * @version v0.2 (2019.05.01)
+ * @author Arvin Khodabandeh, Erlend Holseker & Isak Gamnes Sneltvedt
+ * @version v1.0 (2019.05.03)
  */
 public class UserInterruptException extends Exception
 {
