@@ -38,6 +38,7 @@ public class Newspaper extends Periodical
      * Returns the title of the given newspaper.
      * @return title A string containing the title of the given newspaper.
      */
+    @Override
     public String getTitle()
     {
         return super.getTitle();
@@ -46,6 +47,7 @@ public class Newspaper extends Periodical
     /** Returns the publisher of the given newspaper.
      * @return publisher A string containing the publisher of the given newspaper.
      */
+    @Override
     public String getPublisher()
     {
         return super.getPublisher();
@@ -54,6 +56,7 @@ public class Newspaper extends Periodical
     /** Returns the year the given newspaper was published.
      * @return publishYear A string containing the year the given newspaper was published.
      */
+    @Override
     public String getPublishYear()
     {
         return super.getPublishYear();
@@ -62,6 +65,7 @@ public class Newspaper extends Periodical
     /** Returns the year the given newspaper was published.
      * @return publishYear A string containing the year the given newspaper was published.
      */
+    @Override
     public String getLanguage()
     {
         return super.getLanguage();
@@ -70,6 +74,7 @@ public class Newspaper extends Periodical
     /** Returns the genre of the given newspaper.
      * @return genre A string containing the genre of the given newspaper.
      */
+    @Override
     public String getGenre()
     {
         return super.getGenre();
@@ -78,6 +83,7 @@ public class Newspaper extends Periodical
     /** Returns the price of the given newspaper.
      * @return price An int representing the price of the given newspaper, in NOK (Norwegian kroner).
      */
+    @Override
     public int getPrice()
     {
         return super.getPrice();
@@ -86,6 +92,7 @@ public class Newspaper extends Periodical
     /** Returns the amount of the given newspaper in stock.
      * @return quantityInStock An int representing the amount of the given newspaper in stock.
      */
+    @Override
     public int getQuantityInStock()
     {
         return super.getQuantityInStock();
@@ -94,6 +101,7 @@ public class Newspaper extends Periodical
     /** Returns the publication date of the given newspaper.
      * @return the publication date of the given newspaper.
      */
+    @Override
     public String getPublicationDate()
     {
         return super.getPublicationDate();
@@ -102,6 +110,7 @@ public class Newspaper extends Periodical
     /** Returns the number of yearly publications of the newspaper.
      * @return the number of yearly publications of the newspaper.
      */
+    @Override
     public int getNumberOfYearlyPublications()
     {
         return super.getNumberOfYearlyPublications();

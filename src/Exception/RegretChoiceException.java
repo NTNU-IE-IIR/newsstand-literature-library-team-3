@@ -4,8 +4,8 @@ package Exception;
  * Exception thrown when the user has tried to stop an operation,
  * but regrets it.
  *
- * @author Arvin Khodabandeh, Erlend Holseker, Isak Gamnes Sneltvedt
- * @version v0.2 (2019.05.02)
+ * @author Arvin Khodabandeh, Erlend Holseker & Isak Gamnes Sneltvedt
+ * @version v1.0 (2019.05.03)
  */
 public class RegretChoiceException extends Exception
 {

@@ -8,8 +8,8 @@ import java.util.Iterator;
  * The bookseries class contains a collection of books which are
  * members of the same bookseries.
  *
- * @author Arvin Khodabandeh, Erlend Holseker, Isak Gamnes Sneltvedt
- * @version 0.2 (2019.04.03)
+ * @author Arvin Khodabandeh, Erlend Holseker & Isak Gamnes Sneltvedt
+ * @version v1.0 (2019.05.03)
  */
 
 public class BookSeries extends SalesItem
@@ -17,6 +17,13 @@ public class BookSeries extends SalesItem
     private String title;
     private HashMap<String,Book> bookSeries;
 
+    /**
+     * Constructor of a BookSeries-object.
+     *
+     * @param seriesTitle The title of the bookseries.
+     * @param price The price of the bookseries.
+     * @param quantityOfSeries The quantity of this bookseries in stock.
+     */
     public BookSeries(String seriesTitle, int price, int quantityOfSeries)
     {
         super(price, quantityOfSeries);

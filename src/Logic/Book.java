@@ -5,8 +5,8 @@ package Logic;
  * The book-class contains the following information about a book:
  * Title, publisher, publish-year, language, genre, price, quantity in stock, author and edition.
  *
- * @author Arvin Khodabandeh, Erlend Holseker, Isak Gamnes Sneltvedt
- * @version 0.2 (2019.04.03)
+ * @author Arvin Khodabandeh, Erlend Holseker & Isak Gamnes Sneltvedt
+ * @version v1.0 (2019.05.03)
  */
 
 public class Book extends Literature
@@ -15,6 +15,19 @@ public class Book extends Literature
     private String edition;
 
 
+    /**
+     * Constructor of a Book-object.
+     *
+     * @param title The title of the book.
+     * @param publisher The publisher of the book.
+     * @param publishYear The year the book was published.
+     * @param language The language the book is written in.
+     * @param genre The genre of the book.
+     * @param price The price of the book.
+     * @param quantityInStock The quantity of this book in stock.
+     * @param author The author of the book.
+     * @param edition The edition of the book.
+     */
     public Book(String title, String publisher, String publishYear, String language, String genre, int price,
                 int quantityInStock, String author, String edition)
     {
@@ -71,6 +84,7 @@ public class Book extends Literature
      * Returns the title of the given book.
      * @return The title of the given book.
      */
+    @Override
     public String getTitle()
     {
         return super.getTitle();
@@ -81,6 +95,7 @@ public class Book extends Literature
      *
      * @return publisher A string containing the publisher of the given book.
      */
+    @Override
     public String getPublisher()
     {
         return super.getPublisher();
@@ -91,6 +106,7 @@ public class Book extends Literature
      *
      * @return publishYear A string containing the year the given book was published.
      */
+    @Override
     public String getPublishYear()
     {
         return super.getPublishYear();
@@ -101,6 +117,7 @@ public class Book extends Literature
      *
      * @return publishYear A string containing the year the given book was published.
      */
+    @Override
     public String getLanguage()
     {
         return super.getLanguage();
@@ -111,6 +128,7 @@ public class Book extends Literature
      *
      * @return genre A string containing the genre of the given book.
      */
+    @Override
     public String getGenre()
     {
         return super.getGenre();
@@ -121,6 +139,7 @@ public class Book extends Literature
      *
      * @return price An int representing the price of the given book, in NOK (Norwegian kroner).
      */
+    @Override
     public int getPrice()
     {
         return super.getPrice();
@@ -131,6 +150,7 @@ public class Book extends Literature
      *
      * @return quantityInStock An int representing the amount of the given book in stock.
      */
+    @Override
     public int getQuantityInStock()
     {
         return super.getQuantityInStock();

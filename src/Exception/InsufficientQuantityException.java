@@ -3,8 +3,8 @@ package Exception;
 /**
  * Capture a quantity number that is higher than the quantity of a given sales item.
  *
- * @author Arvin Khodabandeh, Erlend Holseker, Isak Gamnes Sneltvedt
- * @version 0.2 (2019.05.01)
+ * @author Arvin Khodabandeh, Erlend Holseker & Isak Gamnes Sneltvedt
+ * @version v1.0 (2019.05.03)
  */
 
 public class InsufficientQuantityException extends Exception

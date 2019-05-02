@@ -5,7 +5,7 @@ package Logic;
  * It is not meant to create instances of type Logic.Literature.
  *
  * @author Arvin Khodabandeh, Erlend Holseker & Isak Gamnes Sneltvedt
- * @version 0.2 (2019.04.03)
+ * @version v1.0 (2019.05.03)
  */
 
 public abstract class Literature extends SalesItem
@@ -16,6 +16,17 @@ public abstract class Literature extends SalesItem
     private String language;
     private String genre;
 
+    /**
+     * Constructor of Literature-class.
+     *
+     * @param title The title of the literature.
+     * @param publisher The publisher of the literature.
+     * @param publishYear The year the literature was published.
+     * @param language The language the literature is written in.
+     * @param genre The genre of the literature.
+     * @param price The price of the literature.
+     * @param quantityInStock The quantity of this literature in stock.
+     */
     public Literature(String title, String publisher, String publishYear, String language, String genre, int price, int quantityInStock)
     {
         super(price, quantityInStock);

@@ -6,8 +6,8 @@ import java.util.Iterator;
 /**
  * A register to hold all BookSeries. Used to add or remove Book-objects from a BookSeries.
  *
- * @author Arvin Khodabandeh, Erlend Holseker, Isak Gamnes Sneltvedt
- * @version 0.2 (2019.04.03)
+ * @author Arvin Khodabandeh, Erlend Holseker & Isak Gamnes Sneltvedt
+ * @version v1.0 (2019.05.03)
  */
 public class BookSeriesRegister
 {
@@ -66,6 +66,13 @@ public class BookSeriesRegister
         return success;
     }
 
+    /**
+     * Searches for a specific bookseries in the bookseries register,
+     * by using its title.
+     *
+     * @param searchTitle The title of the bookseries which is to be found.
+     * @return The bookseries to be found, if it is not found, null will be returned.
+     */
     public BookSeries searchByTitle(String searchTitle)
     {
         BookSeries returnString = null;
@@ -78,6 +85,4 @@ public class BookSeriesRegister
         }
         return returnString;
     }
-
-
 }
