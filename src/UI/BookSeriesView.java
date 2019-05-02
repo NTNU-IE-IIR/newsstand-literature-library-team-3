@@ -6,9 +6,10 @@ import java.util.Iterator;
 /**
  * Represents the viewer for book series. Formats the requested information into a readable form
  * and returns it as a String.
+ * Implements the SalesItemView interface.
  *
- * @author Arvin Khodabandeh, Erlend Holseker, Isak Gamnes Sneltvedt
- * @version 0.2 (2019.04.29)
+ * @author Arvin Khodabandeh, Erlend Holseker & Isak Gamnes Sneltvedt
+ * @version v1.0 (2019.05.03)
  */
 public class BookSeriesView implements SalesItemView
 {

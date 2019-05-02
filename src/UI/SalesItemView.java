@@ -3,8 +3,8 @@ package UI;
 /**
  * This is an interface used by the viewing-classes for the salesItem objects.
  *
- * @author Arvin Khodabandeh, Erlend Holseker, Isak Gamnes Sneltvedt
- * @version 0.2 (2019.04.03)
+ * @author Arvin Khodabandeh, Erlend Holseker & Isak Gamnes Sneltvedt
+ * @version v1.0 (2019.05.03)
  */
 public interface SalesItemView
 {

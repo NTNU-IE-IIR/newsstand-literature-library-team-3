@@ -3,16 +3,21 @@ import Logic.Magazine;
 
 /**
  * This class is used to view and retrieve data about magazines in the literature register.
- * It extends the LiteratureView interface.
+ * It implements the SalesItemView interface.
  *
- * @author Arvin Khodabandeh, Erlend Holseker, Isak Gamnes Sneltvedt
- * @version 0.2 (2019.04.03)
+ * @author Arvin Khodabandeh, Erlend Holseker & Isak Gamnes Sneltvedt
+ * @version v1.0 (2019.05.03)
  */
 
 public class MagazineView implements SalesItemView
 {
     private Magazine magazine;
 
+    /**
+     * Constructor of the MagazineView.
+     *
+     * @param magazine The magazine to be viewed.
+     */
     public MagazineView(Magazine magazine)
     {
         this.magazine = magazine;

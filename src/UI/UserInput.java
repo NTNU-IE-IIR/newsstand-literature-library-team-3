@@ -6,15 +6,32 @@ import java.util.Scanner;
 import Exception.UserInterruptException;
 import Exception.RegretChoiceException;
 
+/**
+ * Handles all input from the user. Checks if the input is valid
+ * and if the user wants to about a process.
+ *
+ * @author Arvin Khodabandeh, Erlend Holseker & Isak Gamnes Sneltvedt
+ * @version v1.0 (2019.05.03)
+ */
 public class UserInput
 {
-    Scanner userInput;
+    private Scanner userInput;
 
+    /**
+     * Constructor of the UserInput.
+     * Uses the Scanner to read the input from the user.
+     */
     public UserInput()
     {
         this.userInput = new Scanner(System.in);
     }
 
+    /**
+     * Reads the input from the user, trims it by removing blank
+     * space before and after the input, and returns it.
+     *
+     * @return The input from the user
+     */
     private String readInput()
     {
         return this.userInput.nextLine().trim();
@@ -27,6 +44,7 @@ public class UserInput
      * @throws UserInterruptException if the user wants to quit.
      * @throws RegretChoiceException if the user regrets that he
      *                               or she wanted to quit.
+     * @throws NumberFormatException if the user input is not an integer.
      */
     public int asInteger() throws UserInterruptException, RegretChoiceException, NumberFormatException
     {

@@ -3,15 +3,20 @@ import Logic.Newspaper;
 
 /**
  * This class is used to view and retrieve data about newspapers in the literature register.
- * It extends the LiteratureView interface.
+ * It implements the SalesItemView interface.
  *
- * @author Arvin Khodabandeh, Erlend Holseker, Isak Gamnes Sneltvedt
- * @version 0.2 (2019.04.03)
+ * @author Arvin Khodabandeh, Erlend Holseker & Isak Gamnes Sneltvedt
+ * @version v1.0 (2019.05.03)
  */
 public class NewspaperView implements SalesItemView
 {
     Newspaper newspaper;
 
+    /**
+     * Constructor of the NewspaperView.
+     *
+     * @param newspaper The newspaper to be viewed.
+     */
     public NewspaperView(Newspaper newspaper)
     {
         this.newspaper = newspaper;
@@ -49,5 +54,4 @@ public class NewspaperView implements SalesItemView
                 "Publication date: " + this.newspaper.getPublicationDate() + "\n" +
                 "Price: " + this.newspaper.getPrice();
     }
-
 }
