@@ -12,8 +12,8 @@ import static org.junit.Assert.*;
  * Represents a test class for the Logic.LiteratureRegister class. Contains test methods
  * to verify the functions of the methods in the Logic.LiteratureRegister class.
  *
- * @author Arvin Khodabandeh, Erlend Holseker, Isak Sneltvedt Gamnes
- * @version 0.2 (2019.04.03)
+ * @author Arvin Khodabandeh, Erlend Holseker & Isak Gamnes Sneltvedt
+ * @version v1.0 (2019.05.03)
  */
 
 
@@ -81,7 +81,7 @@ public class LiteratureRegisterTest
     }
 
     /**
-     * A negative test of the addLiterature class. If the value of the added object
+     * A negative test of the addLiterature method. If the value of the added object
      * is null, the object won't be added to the literature register.
      */
     @Test

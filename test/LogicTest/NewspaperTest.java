@@ -4,12 +4,15 @@ import Logic.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.InputMismatchException;
+
 import static org.junit.Assert.*;
 
 /**
  * Test class for testing the functionality of the Newspaper class.
- * @author Arvin Khodabandeh, Erlend Holseker, Isak Gamnes Sneltvedt
- * @version 0.2 (2019.04.03)
+ *
+ * @author Arvin Khodabandeh, Erlend Holseker & Isak Gamnes Sneltvedt
+ * @version v1.0 (2019.05.03)
  */
 public class NewspaperTest
 {
@@ -26,7 +29,7 @@ public class NewspaperTest
 
 
     /**
-     * Tests the getTitle method in the Newspaper class.
+     * A positive test of the getTitle-method in the Newspaper class.
      */
     @Test
     public void testGetTitle()
@@ -35,9 +38,8 @@ public class NewspaperTest
     }
 
     /**
-     * Tests the getNumberOfPublications method in the Newspaper class.
+     * A positive test of the getNumberOfYearlyPublications-method in the Newspaper class.
      */
-
     @Test
     public void testGetNumberOfPublications()
     {
@@ -45,17 +47,38 @@ public class NewspaperTest
     }
 
     /**
-     * Tests that it is not possible to enter null in title.
+     * A negative test testing that an empty string in the titleinput
+     * of a newspaper-object will lead to an InputMismatchException.
      */
-
     @Test
     public void testEmptyTitle()
     {
-        Newspaper testNewspaper2 = new Newspaper("", "VG", "2019", "Norsk",
-                "Nyheter", 20, 15, 52, "April 3rd");
-        Newspaper testNewspaper3 = new Newspaper(null, "VG", "2019", "Norsk",
-                "Nyheter", 20, 15, 52, "April 3rd");
-        assertEquals("UNDEFINED", testNewspaper2.getTitle());
-        assertEquals("UNDEFINED", testNewspaper3.getTitle());
+        try
+        {
+            Newspaper testNewspaper2 = new Newspaper("", "VG", "2019", "Norsk",
+                    "Nyheter", 20, 15, 52, "April 3rd");
+        }
+        catch (InputMismatchException ime)
+        {
+            assertEquals("ERROR: Input was invalid.", ime.getMessage() );
+        }
+    }
+
+    /**
+     * A negative test testing that an empty string in the titleinput
+     * of a newspaper-object will lead to an InputMismatchException.
+     */
+    @Test
+    public void testNullTitle()
+    {
+        try
+        {
+            Newspaper testNewspaper3 = new Newspaper(null, "VG", "2019", "Norsk",
+                    "Nyheter", 20, 15, 52, "April 3rd");
+        }
+        catch (InputMismatchException ime)
+        {
+            assertEquals("ERROR: Input was invalid.", ime.getMessage() );
+        }
     }
 }

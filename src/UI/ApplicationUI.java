@@ -10,8 +10,8 @@ import java.util.*;
  * Responsible for all user interaction, like displaying the menu
  * and receiving input from the user.
  *
- * @author Erlend Holseker, Arvin Khodabandeh, Isak Gamnes Sneltvedt
- * @version 0.2 (2019.04.03)
+ * @author Arvin Khodabandeh, Erlend Holseker & Isak Gamnes Sneltvedt
+ * @version v1.0 (2019.05.03)
  */
 public class ApplicationUI
 {

@@ -11,8 +11,9 @@ import static org.junit.Assert.*;
 
 /**
  * Test class for checking the functionality of the Viewer class.
- * @author Arvin Khodabandeh, Erlend Holseker, Isak Gamnes Sneltvedt
- * @version 0.2 (2019.04.03)
+ *
+ * @author Arvin Khodabandeh, Erlend Holseker & Isak Gamnes Sneltvedt
+ * @version v1.0 (2019.05.03)
  */
 public class ViewerTest
 {
