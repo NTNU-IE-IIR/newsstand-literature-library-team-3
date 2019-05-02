@@ -1005,50 +1005,68 @@ public class ApplicationUI
 
 
         while (!completed)
+        {
 
-            switch (inputCase)
+            try
             {
-                case 1:
-                    inputCase = printMainCartMenu();
-                    break;
+                switch (inputCase)
+                {
+                    case 1:
+                        inputCase = printMainCartMenu();
+                        break;
 
-                case 2:
-                    System.out.println(this.cart.showCart());
-                    inputCase = 1;
-                    break;
+                    case 2:
+                        System.out.println(this.cart.showCart());
+                        inputCase = 1;
+                        break;
 
-                case 3:
-                    showCartPrice();
-                    inputCase = 1;
-                    break;
+                    case 3:
+                        showCartPrice();
+                        inputCase = 1;
+                        break;
 
-                case 4:
-                    try
-                    {
+                    case 4:
                         inputCase = addItemToCart();
-                    } catch (InsufficientQuantityException e)
-                    {
-                        System.out.println(e.toString());
-                    } catch (InputMismatchException e)
-                    {
-                        System.out.println("Invalid input.");
-                    }
-                    break;
+                        break;
 
-                case 5:
-                    removeItemFromCart();
-                    inputCase = 1;
-                    break;
+                    case 5:
+                        removeItemFromCart();
+                        inputCase = 1;
+                        break;
 
-                case 6:
-                    completed = proceedToCheckOut();
-                    inputCase = 1;
-                    break;
+                    case 6:
+                        completed = proceedToCheckOut();
+                        inputCase = 1;
+                        break;
 
-                case 7:
-                    completed = true;
-                    break;
+                    case 7:
+                        completed = true;
+                        break;
+                }
             }
+
+            catch (InsufficientQuantityException e)
+            {
+                System.out.println(e.toString());
+            }
+            catch (InputMismatchException e)
+            {
+                System.out.println("Invalid input.");
+            }
+            catch(UserInterruptException e)
+            {
+                System.out.println("The operation was cancelled by the user.");
+                inputCase = 1;
+            }
+            catch(RegretChoiceException e)
+            {
+                System.out.println(e.toString());
+            }
+            catch(NumberFormatException e)
+            {
+                System.out.println("Please type an integer value.");
+            }
+        }
     }
 
 
@@ -1095,7 +1113,8 @@ public class ApplicationUI
      *
      * @return The inputCase used in the switch case in the cartMenu.
      */
-    private int addItemToCart() throws InsufficientQuantityException
+    private int addItemToCart() throws InsufficientQuantityException,
+            UserInterruptException, RegretChoiceException
     {
         boolean completed = false;
         int inputCase = 1;
@@ -1107,13 +1126,12 @@ public class ApplicationUI
                         "4. Book series",
                         "5. Back",
                 };
-        Scanner reader = new Scanner(System.in);
         System.out.println("Please choose the type of item you wish to purchase: ");
         for (String menuItem : choices)
         {
             System.out.println(menuItem);
         }
-        int inputChoice = Integer.parseInt(reader.nextLine());
+        int inputChoice = userInput.asInteger();
 
 
         while (!completed)
@@ -1154,7 +1172,7 @@ public class ApplicationUI
         if (inputChoice != 5)
         {
             System.out.println("Please enter the title of the item you are interested in: ");
-            String searchWord = reader.nextLine();
+            String searchWord = userInput.asString();
             SalesItem result = null;
             if ((inputChoice == (1)) || (inputChoice == (2)) || (inputChoice == (3)))
             {
@@ -1174,12 +1192,12 @@ public class ApplicationUI
                 System.out.println(itemInfo);
                 System.out.println("Do you wish to add this item to your cart?");
                 System.out.println("Enter yes or no");
-                String answer = reader.nextLine();
+                String answer = userInput.asString();
                 if (answer.equals("yes"))
                 {
                     System.out.println("Please enter the amount you wish to add.");
                     System.out.println("Quantity in stock: " + result.getQuantityInStock());
-                    int amount = Integer.parseInt(reader.nextLine());
+                    int amount = userInput.asInteger();
                     if (amount <= result.getQuantityInStock())
                     {
                         for (int i = 1; i <= amount; i++)
@@ -1194,7 +1212,7 @@ public class ApplicationUI
                     System.out.println("Do you wish to add another product?");
                     System.out.println("Enter yes or no");
 
-                    answer = reader.nextLine();
+                    answer = userInput.asString();
                     if (answer.equals("yes"))
                     {
                         inputCase = 4;
@@ -1222,9 +1240,8 @@ public class ApplicationUI
      * product by title. If the cart is empty, and message will be sent to the user.
      */
 
-    private void removeItemFromCart()
+    private void removeItemFromCart() throws UserInterruptException, RegretChoiceException
     {
-        Scanner reader = new Scanner(System.in);
 
         if (cart.getSize() == 0)
         {
@@ -1234,7 +1251,7 @@ public class ApplicationUI
         {
             cart.showCart();
             System.out.println("Please enter the title of the product you wish to remove");
-            String productToRemove = reader.nextLine();
+            String productToRemove = userInput.asString();
             SalesItem removeProduct = cart.searchByTitle(productToRemove);
 
             if (removeProduct == null)
@@ -1248,7 +1265,7 @@ public class ApplicationUI
                 String litInfo = litView.createViewer(removeProduct).showLimited();
                 System.out.println(litInfo);
                 System.out.println("Please enter yes or no");
-                String answer = reader.nextLine();
+                String answer = userInput.asString();
                 if (answer.equals("yes"))
                 {
                     System.out.println(removeProduct.getTitle() + " was successfully removed from your cart.");
@@ -1272,10 +1289,9 @@ public class ApplicationUI
      * @return true if the payment is successful
      */
 
-    private boolean proceedToCheckOut()
+    private boolean proceedToCheckOut() throws UserInterruptException, RegretChoiceException
     {
         boolean returnBoolean = false;
-        Scanner reader = new Scanner(System.in);
 
         if (cart.getSize() == 0)
         {
@@ -1290,7 +1306,7 @@ public class ApplicationUI
             System.out.println();
             System.out.println("Please enter the amount to pay");
 
-            int enteredAmount = reader.nextInt();
+            int enteredAmount = userInput.asInteger();
 
             if (enteredAmount < priceToPay)
             {
