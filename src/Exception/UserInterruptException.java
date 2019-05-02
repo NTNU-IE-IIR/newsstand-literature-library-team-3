@@ -10,14 +10,13 @@ public class UserInterruptException extends Exception
 {
     /**
      * Constructor of the user interrupt exception.
-     * Stores the error-message.
      */
     public UserInterruptException()
     {
         super();
     }
 
-    /**
+     /**
      * Returns a string containing information telling the user
      * why the operation was interrupted / cancelled.
      *

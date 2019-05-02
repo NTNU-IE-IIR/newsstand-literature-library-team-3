@@ -4,6 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import Exception.UserInterruptException;
+import Exception.RegretChoiceException;
 
 public class UserInput
 {
@@ -24,8 +25,10 @@ public class UserInput
      *
      * @return a positive integer value from the user.
      * @throws UserInterruptException if the user wants to quit.
+     * @throws RegretChoiceException if the user regrets that he
+     *                               or she wanted to quit.
      */
-    public int asInteger() throws UserInterruptException
+    public int asInteger() throws UserInterruptException, RegretChoiceException
     {
         int returnValue = -1;
         boolean completed = false;
@@ -35,12 +38,7 @@ public class UserInput
             String input = readInput();
             if (input.equals("/cancel"))
             {
-                System.out.println("Are you sure you want to cancel? Type yes to confirm.");
-                input = readInput();
-                if (input.equals("yes"))
-                {
-                    throw new UserInterruptException();
-                }
+                choose();
             } else if (input.isEmpty())
             {
                 throw new InputMismatchException();
@@ -64,8 +62,10 @@ public class UserInput
      *
      * @return a text String from the user.
      * @throws UserInterruptException if the user wants to quit.
+     * @throws RegretChoiceException if the user regrets that he
+     *                               or she wanted to quit.
      */
-    public String asString() throws UserInterruptException
+    public String asString() throws UserInterruptException, RegretChoiceException
     {
         String returnString = "";
         boolean completed = false;
@@ -75,12 +75,7 @@ public class UserInput
             String input = readInput();
             if (input.equals("/cancel"))
             {
-                System.out.println("Are you sure you want to cancel? Type yes to confirm.");
-                input = readInput();
-                if (input.equals("yes"))
-                {
-                    throw new UserInterruptException();
-                }
+                choose();
             } else
             {
                 returnString = input;
@@ -89,5 +84,27 @@ public class UserInput
         }
 
         return returnString;
+    }
+
+    /**
+     * If the user has intended that he or she wants to cancel the operation,
+     * the user will be asked if he or she is sure.
+     * If the input is "yes", an UserInterruptException will be thrown.
+     * If not, a RegretChoiceException will be thrown.
+     *
+     * @throws UserInterruptException If the input equals "yes".
+     * @throws RegretChoiceException  If the input does not equal to "yes".
+     */
+    private void choose() throws UserInterruptException, RegretChoiceException
+    {
+        System.out.println("Are you sure you want to cancel? Type yes to confirm.");
+        String input = readInput();
+        if (input.equals("yes"))
+        {
+            throw new UserInterruptException();
+        } else
+        {
+            throw new RegretChoiceException();
+        }
     }
 }

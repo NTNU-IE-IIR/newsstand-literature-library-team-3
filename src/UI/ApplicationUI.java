@@ -100,7 +100,7 @@ public class ApplicationUI
      */
     private int showMenu() throws InputMismatchException
     {
-        System.out.println("\n**** Application v0.1 ****\n");
+        System.out.println("\n**** Super Literature Store 3000 ****\n");
         // Display the menu
         for (String menuItem : menuItems)
         {
@@ -135,6 +135,10 @@ public class ApplicationUI
         this.userInput = new UserInput();
     }
 
+    /**
+     * The user will get the opportunity to list the type
+     * of literature he or she is interested in.
+     */
     private void listSalesItems()
     {
         int inputCase = 1;
@@ -180,6 +184,14 @@ public class ApplicationUI
     }
 
 
+    /**
+     * Sends a String-array to the listChoices-method, which
+     * displays the choices to the user. The listChoices-method
+     * then returns an int based on the input from the user, which
+     * is then returned by this method.
+     *
+     * @return An int based on the input from the user.
+     */
     private int printSalesItemViewChoices()
     {
         String[] choices = {
@@ -193,6 +205,15 @@ public class ApplicationUI
         return listChoices(choices);
     }
 
+    /**
+     * Used by methods that wants to display specified
+     * choices to the user. A String-array containing the
+     * choices is taken in as a parameter, and displayed to the user.
+     * An int based on the input from the user is returned.
+     *
+     * @param choices An Array of Strings containing the choices to be displayed.
+     * @return An int based on the user input.
+     */
     private int listChoices(String[] choices)
     {
         int inputCase = 1;
@@ -206,7 +227,7 @@ public class ApplicationUI
             int input = userInput.asInteger();
             if ((input < 1) || (input > 6))
             {
-                throw new NumberFormatException("Input must be a number between 1 and 6.");
+                throw new NumberFormatException();
             }
             else
             {
@@ -217,10 +238,15 @@ public class ApplicationUI
         catch (UserInterruptException e)
         {
             System.out.println(e.toString());
+            inputCase = 7;
+        }
+        catch (RegretChoiceException re)
+        {
+            System.out.println(re.toString());
         }
         catch (NumberFormatException e)
         {
-            System.out.println(e.getMessage());
+            System.out.println("Input must be a number between 1 and 6.");
         }
         return inputCase;
     }
@@ -956,6 +982,10 @@ public class ApplicationUI
             {
                 System.out.println(e.toString());
                 completed = true;
+            }
+            catch (RegretChoiceException re)
+            {
+                System.out.println(re.toString());
             }
         }
     }
