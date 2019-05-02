@@ -819,7 +819,7 @@ public class ApplicationUI
         boolean completed = false;
 
         int inputCase = 0;
-        ;
+
         while (!completed)
         {
             try
@@ -1122,8 +1122,8 @@ public class ApplicationUI
             }
             catch(UserInterruptException e)
             {
-                System.out.println("The operation was cancelled by the user.");
-                inputCase = 1;
+                System.out.println(e.toString());
+                completed = true;
             }
             catch(RegretChoiceException e)
             {

@@ -2,11 +2,23 @@ package Logic;
 
 import java.util.InputMismatchException;
 
+/**
+ * A sales item is an item that can be sold in a store. All sellable item-classes, such as inherits from this class.
+ *
+ * @author Arvin Khodabandeh, Erlend Holseker & Isak Gamnes Sneltvedt
+ * @version v1.0 (2019.05.03)
+ */
 public abstract class SalesItem
 {
     private int price;
     private int quantityInStock;
 
+    /**
+     * Constructor of the SalesItem-class.
+     *
+     * @param price The price of the sales item.
+     * @param quantityInStock The quantity of this sales item in stock.
+     */
     public SalesItem(int price, int quantityInStock)
     {
         setPrice(price);
@@ -65,6 +77,7 @@ public abstract class SalesItem
      *
      * @param input The input from the set-method calling on this method.
      * @return The int to be set in the field.
+     * @throws InputMismatchException if the input is lower than 0.
      */
     protected int setInt(int input)
     {
@@ -111,6 +124,7 @@ public abstract class SalesItem
      *
      * @param input The input from the set-method calling on this method.
      * @return The String to be set in the field.
+     * @throws InputMismatchException if the input is empty or null.
      */
     protected String setString(String input)
     {

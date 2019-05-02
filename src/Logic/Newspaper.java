@@ -5,7 +5,7 @@ package Logic;
  * Title, Publisher, Genre and the number of publications.
  *
  * @author Arvin Khodabandeh, Erlend Holseker & Isak Gamnes Sneltvedt
- * @version 0.2 (2019.04.03)
+ * @version v1.0 (2019.05.03)
  */
 
 public class Newspaper extends Periodical

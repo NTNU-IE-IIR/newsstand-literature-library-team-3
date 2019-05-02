@@ -1,7 +1,5 @@
 package Logic;
 
-import Logic.Literature;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -9,8 +7,8 @@ import java.util.Iterator;
  * Represents a register of literature. The current version only holds a collection
  * of newspaper objects. The newspaper objects is stored in an ArrayList.
  *
- * @author Erlend Holseker, Arvin Khodabandeh, Isak Gamnes Sneltvedt
- * @version 0.2 (2019.04.03)
+ * @author Arvin Khodabandeh, Erlend Holseker & Isak Gamnes Sneltvedt
+ * @version v1.0 (2019.05.03)
  */
 
 public class LiteratureRegister
@@ -67,6 +65,15 @@ public class LiteratureRegister
         return numberOfLiterature;
     }
 
+    /**
+     * Searches the literature register for a specific literature,
+     * given by the title which is searched for.
+     *
+     * @param searchTitle The title of the literature
+     * @return If the literature was found in the register, this
+     *         literature will be returned.
+     *         If no literature matches the searchword, null will be returned.
+     */
     public Literature searchByTitle(String searchTitle)
     {
         Literature returnString = null;
@@ -80,6 +87,15 @@ public class LiteratureRegister
         return returnString;
     }
 
+    /**
+     * Checks if the register contains a given book.
+     * Uses the title of the desired book to check if it
+     * exists in the register.
+     *
+     * @param bookTitle The title of the book.
+     * @return true if the book exists in the register,
+     *         false if not.
+     */
     public boolean containsBook(String bookTitle)
     {
         boolean result = false;
@@ -99,6 +115,14 @@ public class LiteratureRegister
         return result;
     }
 
+    /**
+     * Returns a desired book if it exists in the register.
+     * Uses the title as parameter.
+     *
+     * @param title The title of the given book.
+     * @return The desired book, if it exists in the register.
+     *         If the book does not exist in the register, null will be returned.
+     */
     public Book getBook(String title)
     {
         Book book = null;
