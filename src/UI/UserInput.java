@@ -38,15 +38,17 @@ public class UserInput
     }
 
     /**
-     * Reads and converts the user input to an int. Will only return a positive value.
+     * Reads and converts the user input to an int. Takes in a parameter
+     * which determines the lowest value that can be returned.
      *
      * @return a positive integer value from the user.
+     * @param minValue The minimum value that can be returned.
      * @throws UserInterruptException if the user wants to quit.
      * @throws RegretChoiceException  if the user regrets that he
      *                                or she wanted to quit.
      * @throws NumberFormatException  if the user input is not an integer.
      */
-    public int asInteger() throws UserInterruptException, RegretChoiceException
+    public int asInteger(int minValue) throws UserInterruptException, RegretChoiceException
     {
         int returnValue = -1;
         boolean completed = false;
@@ -64,9 +66,9 @@ public class UserInput
             {
                 returnValue = Integer.parseInt(input);
 
-                if (returnValue < 0)
+                if (returnValue < minValue)
                 {
-                    throw new InputMismatchException("ERROR: The value can not be negative.");
+                    throw new InputMismatchException("ERROR: The number must minimum be " + minValue + ".");
                 } else
                 {
                     completed = true;

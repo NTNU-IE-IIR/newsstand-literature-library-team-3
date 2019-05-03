@@ -238,7 +238,7 @@ public class ApplicationUI
                 System.out.println(menuItem);
             }
 
-            int input = userInput.asInteger();
+            int input = userInput.asInteger(0);
             if ((input < 1) || (input > choices.length))
             {
                 throw new NumberFormatException("You must enter a number between 1 and " + choices.length + ".");
@@ -744,7 +744,7 @@ public class ApplicationUI
                         {
                             System.out.println("Please enter the price you want to set for the collection.");
 
-                            price = userInput.asInteger();
+                            price = userInput.asInteger(0);
 
                             System.out.println("The price of the collection is now " + price + " NOK");
 
@@ -842,7 +842,7 @@ public class ApplicationUI
                         {
                             System.out.println(literatureChoice);
                         }
-                        int choiceInput = userInput.asInteger();
+                        int choiceInput = userInput.asInteger(0);
                         Integer[] validChoices = {
                                 1,
                                 2,
@@ -902,13 +902,13 @@ public class ApplicationUI
 
                     case 6:
                         System.out.print("Please enter the price of the " + litChoice + ". ");
-                        price = userInput.asInteger();
+                        price = userInput.asInteger(0);
                         inputCase = 7;
                         break;
 
                     case 7:
                         System.out.println("Please enter the quantity of this " + litChoice + " in stock. ");
-                        quantity = userInput.asInteger();
+                        quantity = userInput.asInteger(1);
                         if (choice == 1)
                         {
                             inputCase = 8;
@@ -940,7 +940,7 @@ public class ApplicationUI
 
                     case 11:
                         System.out.println("Please enter the number of yearly publications of the " + litChoice);
-                        int yearlyPublishInput = userInput.asInteger();
+                        int yearlyPublishInput = userInput.asInteger(1);
 
                         if (yearlyPublishInput <= 0)
                         {
@@ -1149,7 +1149,7 @@ public class ApplicationUI
         {
             System.out.println(menuItem);
         }
-        int inputChoice = userInput.asInteger();
+        int inputChoice = userInput.asInteger(0);
 
 
         while (!completed)
@@ -1215,7 +1215,7 @@ public class ApplicationUI
                 {
                     System.out.println("Please enter the amount you wish to add.");
                     System.out.println("Quantity in stock: " + result.getQuantityInStock());
-                    int amount = userInput.asInteger();
+                    int amount = userInput.asInteger(0);
                     if (amount <= result.getQuantityInStock())
                     {
                         for (int i = 1; i <= amount; i++)
@@ -1330,7 +1330,7 @@ public class ApplicationUI
             System.out.println();
             System.out.println("Please enter the amount to pay");
 
-            int enteredAmount = userInput.asInteger();
+            int enteredAmount = userInput.asInteger(0);
 
             if (enteredAmount < priceToPay)
             {
