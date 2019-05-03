@@ -70,7 +70,7 @@ public class ApplicationUI
                         break;
 
                     case 5:
-                        System.out.println("\nThank you for using Application v0.1. Bye!\n");
+                        System.out.println("\nThank you for using Super Literature Store 3000. Bye!\n");
                         quit = true;
                         break;
 
@@ -1057,7 +1057,14 @@ public class ApplicationUI
                 }
             } catch (NumberFormatException ne)
             {
-                System.out.println("ERROR: You must enter a number.");
+                if (ne.getMessage() == null)
+                {
+                    System.out.println("ERROR: Input must be an integer.");
+                }
+                else
+                {
+                    System.out.println(ne.getMessage());
+                }
             } catch (UserInterruptException e)
             {
                 System.out.println(e.toString());

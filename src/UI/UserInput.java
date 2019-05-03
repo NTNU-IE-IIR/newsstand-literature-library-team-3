@@ -42,9 +42,9 @@ public class UserInput
      *
      * @return a positive integer value from the user.
      * @throws UserInterruptException if the user wants to quit.
-     * @throws RegretChoiceException if the user regrets that he
-     *                               or she wanted to quit.
-     * @throws NumberFormatException if the user input is not an integer.
+     * @throws RegretChoiceException  if the user regrets that he
+     *                                or she wanted to quit.
+     * @throws NumberFormatException  if the user input is not an integer.
      */
     public int asInteger() throws UserInterruptException, RegretChoiceException, NumberFormatException
     {
@@ -65,14 +65,14 @@ public class UserInput
                 try
                 {
                     returnValue = Integer.parseInt(input);
-                }
-                catch (NumberFormatException ne)
+                } catch (NumberFormatException e)
                 {
-                    throw new NumberFormatException("Input must be an integer.");
+                    throw new NumberFormatException("ERROR: Input must be an integer.");
                 }
+
                 if (returnValue < 0)
                 {
-                    System.out.println("The value can not be negative");
+                    throw new InputMismatchException("ERROR: The value can not be negative.");
                 } else
                 {
                     completed = true;
@@ -87,8 +87,8 @@ public class UserInput
      *
      * @return a text String from the user.
      * @throws UserInterruptException if the user wants to quit.
-     * @throws RegretChoiceException if the user regrets that he
-     *                               or she wanted to quit.
+     * @throws RegretChoiceException  if the user regrets that he
+     *                                or she wanted to quit.
      */
     public String asString() throws UserInterruptException, RegretChoiceException
     {
