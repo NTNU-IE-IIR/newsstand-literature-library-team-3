@@ -31,7 +31,7 @@ public class MagazineView implements SalesItemView
     @Override
     public String show()
     {
-        return "Title                         : " + this.magazine.getTitle() + "\n" +
+        return  "Title                        : " + this.magazine.getTitle() + "\n" +
                 "Publisher                    : " + this.magazine.getPublisher() + "\n" +
                 "Publication date             : " + this.magazine.getPublicationDate() + "\n" +
                 "Publish year                 : " + this.magazine.getPublishYear() + "\n" +
@@ -39,7 +39,7 @@ public class MagazineView implements SalesItemView
                 "Genre                        : " + this.magazine.getGenre() + "\n" +
                 "Price                        : " + this.magazine.getPrice() + "\n" +
                 "Quantity in stock            : " + this.magazine.getQuantityInStock() + "\n" +
-                "Number of yearly publications: " + this.magazine.getNumberOfYearlyPublications();
+                "Number of yearly publications: " + this.magazine.getNumberOfYearlyPublications() + "\n";
     }
 
     /**
@@ -50,10 +50,10 @@ public class MagazineView implements SalesItemView
     @Override
     public String showLimited()
     {
-        return "Title            : " + this.magazine.getTitle() + "\n" +
+        return  "Title           : " + this.magazine.getTitle() + "\n" +
                 "Publisher       : " + this.magazine.getPublisher() + "\n" +
                 "Publication date: " + this.magazine.getPublicationDate() + "\n" +
-                "Price           : " + this.magazine.getPrice();
+                "Price           : " + this.magazine.getPrice() + "\n";
     }
 }
 

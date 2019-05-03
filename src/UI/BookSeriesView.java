@@ -62,9 +62,9 @@ public class BookSeriesView implements SalesItemView
     @Override
     public String showLimited()
     {
-        return "Title             : " + bookSeries.getTitle() + "\n" +
+        return  "Title            : " + bookSeries.getTitle() + "\n" +
                 "Price            : " + bookSeries.getPrice() + "\n" +
-                "Quantity in stock: " + bookSeries.getQuantityInStock();
+                "Quantity in stock: " + bookSeries.getQuantityInStock() + "\n";
 
     }
 }
