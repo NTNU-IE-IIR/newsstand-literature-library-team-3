@@ -273,7 +273,7 @@ public class ApplicationUI
      *
      * @return An int based on the input from the user.
      * @throws UserInterruptException used if the user wants to cancel his or her current action.
-     * @throws RegretChoiceException used if the user doesn't want to cancel his or her action after all.
+     * @throws RegretChoiceException  used if the user doesn't want to cancel his or her action after all.
      */
     private int printSalesItemViewChoices() throws UserInterruptException, RegretChoiceException
     {
@@ -298,7 +298,7 @@ public class ApplicationUI
      * @param choices An Array of Strings containing the choices to be displayed.
      * @return An int based on the user input.
      * @throws UserInterruptException if the user wants to cancel his or her current action.
-     * @throws RegretChoiceException used if the user doesn't want to cancel his or her action after all.
+     * @throws RegretChoiceException  used if the user doesn't want to cancel his or her action after all.
      */
     private int listChoices(String[] choices) throws UserInterruptException, RegretChoiceException
     {
@@ -310,7 +310,7 @@ public class ApplicationUI
                 System.out.println(menuItem);
             }
 
-            int input = userInput.asInteger();
+            int input = userInput.asInteger(0);
             if ((input < 1) || (input > choices.length))
             {
                 throw new NumberFormatException("You must enter a number between 1 and " + choices.length + ".");
@@ -816,7 +816,7 @@ public class ApplicationUI
                         {
                             System.out.println("Please enter the price you want to set for the collection.");
 
-                            price = userInput.asInteger();
+                            price = userInput.asInteger(0);
 
                             System.out.println("The price of the collection is now " + price + " NOK");
 
@@ -856,12 +856,10 @@ public class ApplicationUI
                         completed = true;
                         break;
                 }
-            }
-            catch(RegretChoiceException e)
+            } catch (RegretChoiceException e)
             {
                 System.out.println("Please try again.");
-            }
-            catch(UserInterruptException e)
+            } catch (UserInterruptException e)
             {
                 System.out.println(e.toString());
                 completed = true;
@@ -916,7 +914,7 @@ public class ApplicationUI
                         {
                             System.out.println(literatureChoice);
                         }
-                        int choiceInput = userInput.asInteger();
+                        int choiceInput = userInput.asInteger(0);
                         Integer[] validChoices = {
                                 1,
                                 2,
@@ -946,83 +944,43 @@ public class ApplicationUI
 
                     case 1:
                         System.out.print("Please enter the title of the " + litChoice + ". ");
-                        String titleInput = userInput.asString();
-
-                        if (titleInput.isEmpty())
-                        {
-                            throw new InputMismatchException();
-                        } else
-                        {
-                            title = titleInput;
-                            inputCase = 2;
-                        }
+                        title = userInput.asString();
+                        inputCase = 2;
                         break;
 
                     case 2:
                         System.out.print("Please enter the genre. ");
-                        String genreInput = userInput.asString();
-
-                        if (genreInput.isEmpty())
-                        {
-                            throw new InputMismatchException();
-                        } else
-                        {
-                            genre = genreInput;
-                            inputCase = 3;
-                        }
+                        genre = userInput.asString();
+                        inputCase = 3;
                         break;
 
                     case 3:
                         System.out.print("Please enter the publisher. ");
-                        String publisherInput = userInput.asString();
-
-                        if (publisherInput.isEmpty())
-                        {
-                            throw new InputMismatchException();
-                        } else
-                        {
-                            publisher = publisherInput;
-                            inputCase = 4;
-                        }
+                        publisher = userInput.asString();
+                        inputCase = 4;
                         break;
 
                     case 4:
                         System.out.print("Please enter the publish-year. ");
-                        String publishYearInput = userInput.asString();
-
-                        if (publishYearInput.isEmpty())
-                        {
-                            throw new InputMismatchException();
-                        } else
-                        {
-                            publishYear = publishYearInput;
-                            inputCase = 5;
-                        }
+                        publishYear = userInput.asString();
+                        inputCase = 5;
                         break;
 
                     case 5:
                         System.out.print("Please enter the language the " + litChoice + " is written in. ");
-                        String languageInput = userInput.asString();
-
-                        if (languageInput.isEmpty())
-                        {
-                            throw new InputMismatchException();
-                        } else
-                        {
-                            language = languageInput;
-                            inputCase = 6;
-                        }
+                        language = userInput.asString();
+                        inputCase = 6;
                         break;
 
                     case 6:
                         System.out.print("Please enter the price of the " + litChoice + ". ");
-                        price = userInput.asInteger();
+                        price = userInput.asInteger(0);
                         inputCase = 7;
                         break;
 
                     case 7:
                         System.out.println("Please enter the quantity of this " + litChoice + " in stock. ");
-                        quantity = userInput.asInteger();
+                        quantity = userInput.asInteger(1);
                         if (choice == 1)
                         {
                             inputCase = 8;
@@ -1034,30 +992,14 @@ public class ApplicationUI
 
                     case 8:
                         System.out.println("Please enter the name of the author of the book");
-                        String authorInput = userInput.asString();
-
-                        if (authorInput.isEmpty())
-                        {
-                            throw new InputMismatchException();
-                        } else
-                        {
-                            author = authorInput;
-                            inputCase = 9;
-                        }
+                        author = userInput.asString();
+                        inputCase = 9;
                         break;
 
                     case 9:
                         System.out.println("Please enter the edition of the book");
-                        String editionInput = userInput.asString();
-
-                        if (editionInput.isEmpty())
-                        {
-                            throw new InputMismatchException();
-                        } else
-                        {
-                            edition = editionInput;
-                            inputCase = 10;
-                        }
+                        edition = userInput.asString();
+                        inputCase = 10;
                         break;
 
                     case 10:
@@ -1070,7 +1012,7 @@ public class ApplicationUI
 
                     case 11:
                         System.out.println("Please enter the number of yearly publications of the " + litChoice);
-                        int yearlyPublishInput = userInput.asInteger();
+                        int yearlyPublishInput = userInput.asInteger(1);
 
                         if (yearlyPublishInput <= 0)
                         {
@@ -1084,21 +1026,13 @@ public class ApplicationUI
 
                     case 12:
                         System.out.println("Please enter the publication date of the " + litChoice);
-                        String publishDateInput = userInput.asString();
-
-                        if (publishDateInput.isEmpty())
+                        publicationDate = userInput.asString();
+                        if (choice == 2)
                         {
-                            throw new InputMismatchException();
-                        } else
+                            inputCase = 13;
+                        } else if (choice == 3)
                         {
-                            publicationDate = publishDateInput;
-                            if (choice == 2)
-                            {
-                                inputCase = 13;
-                            } else if (choice == 3)
-                            {
-                                inputCase = 14;
-                            }
+                            inputCase = 14;
                         }
                         break;
 
@@ -1117,6 +1051,10 @@ public class ApplicationUI
                         System.out.println("The magazine was successfully added to the literature register");
                         completed = true;
                         break;
+
+                    default:
+                        inputCase = 0;
+                        break;
                 }
             } catch (InputMismatchException e)
             {
@@ -1129,14 +1067,7 @@ public class ApplicationUI
                 }
             } catch (NumberFormatException ne)
             {
-                if (ne.getMessage() == null)
-                {
-                    System.out.println("ERROR: Input must be an integer.");
-                }
-                else
-                {
-                    System.out.println(ne.getMessage());
-                }
+                System.out.println("ERROR: Input must be an integer.");
             } catch (UserInterruptException e)
             {
                 System.out.println(e.toString());
@@ -1201,26 +1132,20 @@ public class ApplicationUI
                         completed = true;
                         break;
                 }
-            }
-
-            catch (InsufficientQuantityException e)
+            } catch (InsufficientQuantityException e)
             {
                 System.out.println(e.toString());
-            }
-            catch (InputMismatchException e)
+            } catch (InputMismatchException e)
             {
                 System.out.println("Invalid input.");
-            }
-            catch(UserInterruptException e)
+            } catch (UserInterruptException e)
             {
                 System.out.println(e.toString());
                 completed = true;
-            }
-            catch(RegretChoiceException e)
+            } catch (RegretChoiceException e)
             {
                 System.out.println(e.toString());
-            }
-            catch(NumberFormatException e)
+            } catch (NumberFormatException e)
             {
                 System.out.println("Please type an integer value.");
             }
@@ -1233,7 +1158,7 @@ public class ApplicationUI
      *
      * @return The input case used in the switch case in the cart menu. will return 1 if the number entered is invalid
      * @throws UserInterruptException if the user wants to cancel his or her current action.
-     * @throws RegretChoiceException used if the user doesn't want to cancel his or her action after all.
+     * @throws RegretChoiceException  used if the user doesn't want to cancel his or her action after all.
      */
     private int printMainCartMenu() throws UserInterruptException, RegretChoiceException
     {
@@ -1275,8 +1200,8 @@ public class ApplicationUI
      *
      * @return The inputCase used in the switch case in the cartMenu.
      * @throws InsufficientQuantityException if the quantity in stock is lower than the desired quantity.
-     * @throws UserInterruptException if the user wants to cancel his or her current action.
-     * @throws RegretChoiceException used if the user doesn't want to cancel his or her action after all.
+     * @throws UserInterruptException        if the user wants to cancel his or her current action.
+     * @throws RegretChoiceException         used if the user doesn't want to cancel his or her action after all.
      */
     private int addItemToCart() throws InsufficientQuantityException,
             UserInterruptException, RegretChoiceException
@@ -1296,7 +1221,7 @@ public class ApplicationUI
         {
             System.out.println(menuItem);
         }
-        int inputChoice = userInput.asInteger();
+        int inputChoice = userInput.asInteger(0);
 
 
         while (!completed)
@@ -1362,7 +1287,7 @@ public class ApplicationUI
                 {
                     System.out.println("Please enter the amount you wish to add.");
                     System.out.println("Quantity in stock: " + result.getQuantityInStock());
-                    int amount = userInput.asInteger();
+                    int amount = userInput.asInteger(0);
                     if (amount <= result.getQuantityInStock())
                     {
                         for (int i = 1; i <= amount; i++)
@@ -1403,8 +1328,9 @@ public class ApplicationUI
     /**
      * Lets the user remove an item from the cart. The current items in the cart will be presented to the user.
      * The user will then have to type the title of the item he or she wants to remove.
+     *
      * @throws UserInterruptException if the user wants to cancel his or her current action.
-     * @throws RegretChoiceException used if the user doesn't want to cancel his or her action after all.
+     * @throws RegretChoiceException  used if the user doesn't want to cancel his or her action after all.
      */
 
     private void removeItemFromCart() throws UserInterruptException, RegretChoiceException
@@ -1456,7 +1382,7 @@ public class ApplicationUI
      *
      * @return true if the payment is successful
      * @throws UserInterruptException if the user wants to cancel his or her current action.
-     * @throws RegretChoiceException used if the user doesn't want to cancel his or her action after all.
+     * @throws RegretChoiceException  used if the user doesn't want to cancel his or her action after all.
      */
 
     private boolean proceedToCheckOut() throws UserInterruptException, RegretChoiceException
@@ -1476,7 +1402,7 @@ public class ApplicationUI
             System.out.println();
             System.out.println("Please enter the amount to pay");
 
-            int enteredAmount = userInput.asInteger();
+            int enteredAmount = userInput.asInteger(0);
 
             if (enteredAmount < priceToPay)
             {

@@ -58,10 +58,13 @@ public class NewspaperTest
             Newspaper testNewspaper2 = new Newspaper("", "VG", "2019", "Norsk",
                     "Nyheter", 20, 15, 52, "April 3rd");
         }
+        catch (InputMismatchException e)
+        {
+            assertTrue(true);
+        }
         catch (Exception e)
         {
-            //assertEquals("ERROR: Input was invalid.", ime.getMessage() );
-            assertTrue(e instanceof InputMismatchException);
+            fail("Unexpected exception thrown.");
         }
     }
 
@@ -79,7 +82,11 @@ public class NewspaperTest
         }
         catch (InputMismatchException ime)
         {
-            assertEquals("ERROR: Input was invalid.", ime.getMessage() );
+            assertTrue(true);
+        }
+        catch (Exception e)
+        {
+            fail("Unexpected exception thrown.");
         }
     }
 }

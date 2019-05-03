@@ -34,7 +34,7 @@ public abstract class SalesItem
      */
     protected void setPrice(int newPrice)
     {
-        this.price = setInt(newPrice);
+        this.price = validateInt(newPrice);
     }
 
     /**
@@ -46,7 +46,7 @@ public abstract class SalesItem
      */
     protected void setQuantityInStock(int quantityInStock)
     {
-        this.quantityInStock = setInt(quantityInStock);
+        this.quantityInStock = validateInt(quantityInStock);
     }
 
     /**
@@ -79,7 +79,7 @@ public abstract class SalesItem
      * @return The int to be set in the field.
      * @throws InputMismatchException if the input is lower than 0.
      */
-    protected int setInt(int input)
+    protected int validateInt(int input)
     {
         int returnInt;
 
@@ -126,7 +126,7 @@ public abstract class SalesItem
      * @return The String to be set in the field.
      * @throws InputMismatchException if the input is empty or null.
      */
-    protected String setString(String input)
+    protected String validateString(String input)
     {
         String returnString;
 

@@ -30,14 +30,14 @@ public class NewspaperView implements SalesItemView
     @Override
     public String show()
     {
-        return "Title: " + this.newspaper.getTitle() + "\n" +
-                "Publisher: " + this.newspaper.getPublisher() + "\n" +
-                "Publish date: " + this.newspaper.getPublicationDate() + "\n" +
-                "Publish year: " + this.newspaper.getPublishYear() + "\n" +
-                "Language: " + this.newspaper.getLanguage() + "\n" +
-                "Genre: " + this.newspaper.getGenre() + "\n" +
-                "Price: " + this.newspaper.getPrice() + "\n" +
-                "Quantity in stock: " + this.newspaper.getQuantityInStock() + "\n" +
+        return "Title                         : " + this.newspaper.getTitle() + "\n" +
+                "Publisher                    : " + this.newspaper.getPublisher() + "\n" +
+                "Publish date                 : " + this.newspaper.getPublicationDate() + "\n" +
+                "Publish year                 : " + this.newspaper.getPublishYear() + "\n" +
+                "Language                     : " + this.newspaper.getLanguage() + "\n" +
+                "Genre                        : " + this.newspaper.getGenre() + "\n" +
+                "Price                        : " + this.newspaper.getPrice() + "\n" +
+                "Quantity in stock            : " + this.newspaper.getQuantityInStock() + "\n" +
                 "Number of yearly publications: " + this.newspaper.getNumberOfYearlyPublications();
     }
 
@@ -49,9 +49,9 @@ public class NewspaperView implements SalesItemView
     @Override
     public String showLimited()
     {
-        return "Title: " + this.newspaper.getTitle() + "\n" +
-                "Publisher: " + this.newspaper.getPublisher() + "\n" +
+        return "Title            : " + this.newspaper.getTitle() + "\n" +
+                "Publisher       : " + this.newspaper.getPublisher() + "\n" +
                 "Publication date: " + this.newspaper.getPublicationDate() + "\n" +
-                "Price: " + this.newspaper.getPrice();
+                "Price           : " + this.newspaper.getPrice();
     }
 }

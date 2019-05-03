@@ -35,18 +35,18 @@ public class BookSeriesView implements SalesItemView
     {
         Iterator<Book> bookSeriesIt = bookSeries.getIterator();
 
-        String returnString = ("Title: " + bookSeries.getTitle() + "\n" +
-                "Price: " + bookSeries.getPrice() + "\n" +
-                "Quantity in stock: " + bookSeries.getQuantityInStock() + "\n");
+        String returnString = ( "Title            : " + bookSeries.getTitle() + "\n" +
+                                "Price            : " + bookSeries.getPrice() + "\n" +
+                                "Quantity in stock: " + bookSeries.getQuantityInStock() + "\n");
         if (bookSeriesIt.hasNext())
         {
             returnString += ("Books in the collection: \n");
             while (bookSeriesIt.hasNext())
             {
                 Book book = bookSeriesIt.next();
-                returnString += ("Title: " + book.getTitle() + "\n" +
-                        "Author: " + book.getAuthor() + "\n" +
-                        "Genre: " + book.getGenre() + "\n" + "\n");
+                returnString += ("Title : " + book.getTitle() + "\n" +
+                                 "Author: " + book.getAuthor() + "\n" +
+                                 "Genre : " + book.getGenre() + "\n\n");
             }
 
         }
@@ -62,8 +62,8 @@ public class BookSeriesView implements SalesItemView
     @Override
     public String showLimited()
     {
-        return "Title: " + bookSeries.getTitle() + "\n" +
-                "Price: " + bookSeries.getPrice() + "\n" +
+        return "Title             : " + bookSeries.getTitle() + "\n" +
+                "Price            : " + bookSeries.getPrice() + "\n" +
                 "Quantity in stock: " + bookSeries.getQuantityInStock();
 
     }
