@@ -32,28 +32,29 @@ public class BookView implements SalesItemView
     @Override
     public String show()
     {
-        return "Title: " + book.getTitle() + "\n" +
-                "Author: " + book.getAuthor() + "\n" +
-                "Edition: " + book.getEdition() + "\n" +
-                "Publisher: " + book.getPublisher() + "\n" +
-                "Publish year: " + book.getPublishYear() + "\n" +
-                "Language: " + book.getLanguage() + "\n" +
-                "Genre: " + book.getGenre() + "\n" +
-                "Price: " + book.getPrice() + "\n" +
+        return  "Title            : " + book.getTitle() + "\n" +
+                "Author           : " + book.getAuthor() + "\n" +
+                "Edition          : " + book.getEdition() + "\n" +
+                "Publisher        : " + book.getPublisher() + "\n" +
+                "Publish year     : " + book.getPublishYear() + "\n" +
+                "Language         : " + book.getLanguage() + "\n" +
+                "Genre            : " + book.getGenre() + "\n" +
+                "Price            : " + book.getPrice() + "$\n" +
                 "Quantity in stock: " + book.getQuantityInStock() + "\n";
     }
 
     /**
-     * Returns the title, publisher and price of the book.
+     * Returns the title, publisher, quantity in stock and price of the book.
      *
      * @return A String containing the title, publisher and price of the book.
      */
     @Override
     public String showLimited()
     {
-        return "Title: " + book.getTitle() + "\n" +
-                "Author: " + book.getAuthor() + "\n" +
-                "Publisher: " + book.getPublisher() + "\n" +
-                "Price: " + book.getPrice() + "\n";
+        return  "Title            : " + book.getTitle() + "\n" +
+                "Author           : " + book.getAuthor() + "\n" +
+                "Publisher        : " + book.getPublisher() + "\n" +
+                "Price            : " + book.getPrice() + "$\n" +
+                "Quantity in stock: " + book.getQuantityInStock() +"\n";
     }
 }

@@ -26,11 +26,12 @@ public class LiteratureRegister
 
     /**
      * Adds new literature in the register.
+     *
      * @param literature The literature to be added to the register.
-     * */
+     */
     public void addLiterature(Literature literature)
     {
-        if(literature != null)
+        if (literature != null)
         {
             this.literatureCollection.add(literature);
         }
@@ -38,6 +39,7 @@ public class LiteratureRegister
 
     /**
      * Returns an Iterator for the literature collection.
+     *
      * @return An Iterator for the ArrayList containing the literature objects.
      */
     public Iterator<Literature> getIterator()
@@ -47,6 +49,7 @@ public class LiteratureRegister
 
     /**
      * Returns an ArrayList which contains a collection of literature.
+     *
      * @return An ArrayList which contains a collection of literature objects.
      */
     public ArrayList<Literature> getAllLiterature()
@@ -56,8 +59,9 @@ public class LiteratureRegister
 
     /**
      * Returns the number of literature in the register.
+     *
      * @return The number of literature in the register.
-     * */
+     */
 
     public int getNumberOfLiterature()
     {
@@ -71,15 +75,15 @@ public class LiteratureRegister
      *
      * @param searchTitle The title of the literature
      * @return If the literature was found in the register, this
-     *         literature will be returned.
-     *         If no literature matches the searchword, null will be returned.
+     * literature will be returned.
+     * If no literature matches the searchword, null will be returned.
      */
     public Literature searchByTitle(String searchTitle)
     {
         Literature returnString = null;
         for (Literature literature : literatureCollection)
         {
-            if(literature.getTitle().equals(searchTitle))
+            if (literature.getTitle().equals(searchTitle))
             {
                 returnString = literature;
             }
@@ -94,24 +98,24 @@ public class LiteratureRegister
      *
      * @param bookTitle The title of the book.
      * @return true if the book exists in the register,
-     *         false if not.
+     * false if not.
      */
     public boolean containsBook(String bookTitle)
     {
         boolean result = false;
 
         Iterator<Literature> litListIt = this.literatureCollection.iterator();
-            while (litListIt.hasNext() && !result)
+        while (litListIt.hasNext() && !result)
+        {
+            Literature literature = litListIt.next();
+            if (literature instanceof Book)
             {
-                Literature literature = litListIt.next();
-                if (literature instanceof Book)
+                if (literature.getTitle().equals(bookTitle))
                 {
-                    if (literature.getTitle().equals(bookTitle))
-                    {
-                        result = true;
-                    }
+                    result = true;
                 }
             }
+        }
         return result;
     }
 
@@ -121,7 +125,7 @@ public class LiteratureRegister
      *
      * @param title The title of the given book.
      * @return The desired book, if it exists in the register.
-     *         If the book does not exist in the register, null will be returned.
+     * If the book does not exist in the register, null will be returned.
      */
     public Book getBook(String title)
     {
@@ -139,5 +143,33 @@ public class LiteratureRegister
             }
         }
         return book;
+    }
+
+    /**
+     * Searches for a specific literature item in the literature register based on user input,
+     * title and publisher. Both must match an item in the register to return a Literature object.
+     * If no object matches the search criteria, null will be returned.
+     * @param title the title to search for
+     * @param publisher the publisher to search for
+     * @return a Literature object, will have value <code>null</code> if no matching results were found.
+     */
+    public Literature findLiteratureByTitleAndPublisher(String title, String publisher)
+    {
+        Literature foundLiterature = null;
+        boolean searching = true;
+        Iterator<Literature> litIt = this.literatureCollection.iterator();
+        while (litIt.hasNext() && searching)
+        {
+            Literature tempLit = litIt.next();
+            if (tempLit.getTitle().equals(title))
+            {
+                if (tempLit.getPublisher().equals(publisher))
+                {
+                    foundLiterature = tempLit;
+                    searching = false;
+                }
+            }
+        }
+        return foundLiterature;
     }
 }

@@ -21,7 +21,8 @@ public class ApplicationUI
             "1. List sales items",
             "2. Add new literature",
             "3. Create book series / book collection",
-            "4. Manage cart"
+            "4. Find literature by title and publisher",
+            "5. Manage cart"
     };
     private LiteratureRegister literatureCollection;
     private BookSeriesRegister bookSeriesRegister;
@@ -66,10 +67,14 @@ public class ApplicationUI
                         break;
 
                     case 4:
-                        this.cartMenu();
+                        this.findLiteratureByTitleAndPublisher();
                         break;
 
                     case 5:
+                        this.cartMenu();
+                        break;
+
+                    case 6:
                         System.out.println("\nThank you for using Super Literature Store 3000. Bye!\n");
                         quit = true;
                         break;
@@ -192,6 +197,73 @@ public class ApplicationUI
         }
     }
 
+    /**
+     * Allows the user to find one specific literature item based on title and publisher.
+     * If both search parameters matches BOTH the title and publisher of a literature object,
+     * all information about that object is display.
+     * If one or both of the search parameters doesnt match, the user will be notified that
+     * no literature matched his or her search criteria.
+     */
+
+    public void findLiteratureByTitleAndPublisher()
+    {
+        int state = 1;
+        String title = null;
+        String publisher = null;
+        boolean completed = false;
+        while(!completed)
+        {
+
+            try
+            {
+                switch (state)
+                {
+                    case 1:
+                        System.out.println("You can now search for a specific literature item" +
+                                " by entering the title and publisher.\n");
+                        state = 2;
+                        break;
+
+                    case 2:
+                        System.out.println("Please enter the title: ");
+                        title = userInput.asString();
+                        state = 3;
+                        break;
+
+                    case 3:
+                        System.out.println("Please enter the publisher: ");
+                        publisher = userInput.asString();
+                        state = 4;
+                        break;
+
+                    case 4:
+                        Literature foundLiterature = this.literatureCollection.findLiteratureByTitleAndPublisher(title, publisher);
+                        if(foundLiterature != null)
+                        {
+                            System.out.println("\nYour desired literature was found.\n");
+                            System.out.println(new Viewer().createViewer(foundLiterature).show());
+                            completed = true;
+                        }
+                        else
+                        {
+                            System.out.println("No literature matching your search criteria was found.");
+                            completed = true;
+                        }
+                        break;
+                }
+            }
+            catch(UserInterruptException e)
+            {
+                System.out.println(e.toString());
+                completed = true;
+            }
+            catch(RegretChoiceException e)
+            {
+                System.out.println("Please try again.");
+            }
+
+        }
+    }
 
     /**
      * Sends a String-array to the listChoices-method, which
