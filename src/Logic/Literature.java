@@ -41,8 +41,9 @@ public abstract class Literature extends SalesItem
 
     /**
      * Sets the title of the given literature.
-     * If the input is empty, the title will
-     * be set to "UNDEFINED".
+     * If the input is empty, an
+     * InputMismatchException will be
+     * thrown from the setString-method.
      *
      * @param title The title of the given literature.
      */
@@ -53,8 +54,9 @@ public abstract class Literature extends SalesItem
 
     /**
      * Sets the publisher of the given literature.
-     * If the input is empty, the publisher will
-     * be set to "UNDEFINED".
+     * If the input is empty, an
+     * InputMismatchException will be
+     * thrown from the setString-method.
      *
      * @param publisher The publisher of the given literature.
      */
@@ -65,8 +67,9 @@ public abstract class Literature extends SalesItem
 
     /**
      * Sets the year the given literature was published.
-     * If the input is empty, the publish-year will
-     * be set to "UNDEFINED".
+     * If the input is empty, an
+     * InputMismatchException will be
+     * thrown from the setString-method.
      *
      * @param publishYear The year the given literature was published.
      */
@@ -77,8 +80,9 @@ public abstract class Literature extends SalesItem
 
     /**
      * Sets the language the given literature is written in.
-     * If the input is empty, the language will
-     * be set to "UNDEFINED".
+     * If the input is empty, an
+     * InputMismatchException will be
+     * thrown from the setString-method.
      *
      * @param language The language the given literature is written in.
      */
@@ -89,8 +93,9 @@ public abstract class Literature extends SalesItem
 
     /**
      * Sets the genre of the the given literature.
-     * If the input is empty, the genre will
-     * be set to "UNDEFINED".
+     * If the input is empty, an
+     * InputMismatchException will be
+     * thrown from the setString-method.
      *
      * @param genre The genre of the given literature.
      */

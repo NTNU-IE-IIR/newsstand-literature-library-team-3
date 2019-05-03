@@ -58,9 +58,10 @@ public class NewspaperTest
             Newspaper testNewspaper2 = new Newspaper("", "VG", "2019", "Norsk",
                     "Nyheter", 20, 15, 52, "April 3rd");
         }
-        catch (InputMismatchException ime)
+        catch (Exception e)
         {
-            assertEquals("ERROR: Input was invalid.", ime.getMessage() );
+            //assertEquals("ERROR: Input was invalid.", ime.getMessage() );
+            assertTrue(e instanceof InputMismatchException);
         }
     }
 
