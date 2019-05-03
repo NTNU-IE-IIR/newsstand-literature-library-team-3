@@ -42,7 +42,7 @@ public abstract class Periodical extends Literature
      */
     protected void setPublicationDate(String publicationDate)
     {
-        this.publicationDate = setString(publicationDate);
+        this.publicationDate = validateString(publicationDate);
     }
 
     /**
@@ -52,7 +52,7 @@ public abstract class Periodical extends Literature
      */
     protected void setNumberOfYearlyPublications(int numberOfYearlyPublications)
     {
-        this.numberOfYearlyPublications = setInt(numberOfYearlyPublications);
+        this.numberOfYearlyPublications = validateInt(numberOfYearlyPublications);
     }
 
     /**

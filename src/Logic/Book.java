@@ -42,24 +42,24 @@ public class Book extends Literature
      * Sets the author of the book.
      * If the input is empty, an
      * InputMismatchException will be
-     * thrown from the setString-method.
+     * thrown from the validateString-method.
      * @param author The author of the book.
      */
     private void setAuthor(String author)
     {
-        this.author = setString(author);
+        this.author = validateString(author);
     }
 
     /**
      * Sets the edition of the book.
      * If the input is empty, an
      * InputMismatchException will be
-     * thrown from the setString-method.
+     * thrown from the validateString-method.
      * @param edition The edition of the book.
      */
     private void setEdition(String edition)
     {
-        this.edition = setString(edition);
+        this.edition = validateString(edition);
     }
 
     //------Get-methods------

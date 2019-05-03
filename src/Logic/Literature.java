@@ -43,65 +43,65 @@ public abstract class Literature extends SalesItem
      * Sets the title of the given literature.
      * If the input is empty, an
      * InputMismatchException will be
-     * thrown from the setString-method.
+     * thrown from the validateString-method.
      *
      * @param title The title of the given literature.
      */
     protected void setTitle(String title)
     {
-        this.title = setString(title);
+        this.title = validateString(title);
     }
 
     /**
      * Sets the publisher of the given literature.
      * If the input is empty, an
      * InputMismatchException will be
-     * thrown from the setString-method.
+     * thrown from the validateString-method.
      *
      * @param publisher The publisher of the given literature.
      */
     protected void setPublisher(String publisher)
     {
-        this.publisher = setString(publisher);
+        this.publisher = validateString(publisher);
     }
 
     /**
      * Sets the year the given literature was published.
      * If the input is empty, an
      * InputMismatchException will be
-     * thrown from the setString-method.
+     * thrown from the validateString-method.
      *
      * @param publishYear The year the given literature was published.
      */
     protected void setPublishYear(String publishYear)
     {
-        this.publishYear = setString(publishYear);
+        this.publishYear = validateString(publishYear);
     }
 
     /**
      * Sets the language the given literature is written in.
      * If the input is empty, an
      * InputMismatchException will be
-     * thrown from the setString-method.
+     * thrown from the validateString-method.
      *
      * @param language The language the given literature is written in.
      */
     protected void setLanguage(String language)
     {
-        this.language = setString(language);
+        this.language = validateString(language);
     }
 
     /**
      * Sets the genre of the the given literature.
      * If the input is empty, an
      * InputMismatchException will be
-     * thrown from the setString-method.
+     * thrown from the validateString-method.
      *
      * @param genre The genre of the given literature.
      */
     protected void setGenre(String genre)
     {
-        this.genre = setString(genre);
+        this.genre = validateString(genre);
     }
 
 

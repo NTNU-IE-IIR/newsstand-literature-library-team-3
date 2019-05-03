@@ -46,7 +46,7 @@ public class UserInput
      *                                or she wanted to quit.
      * @throws NumberFormatException  if the user input is not an integer.
      */
-    public int asInteger() throws UserInterruptException, RegretChoiceException, NumberFormatException
+    public int asInteger() throws UserInterruptException, RegretChoiceException
     {
         int returnValue = -1;
         boolean completed = false;
@@ -62,13 +62,7 @@ public class UserInput
                 throw new InputMismatchException();
             } else
             {
-                try
-                {
-                    returnValue = Integer.parseInt(input);
-                } catch (NumberFormatException e)
-                {
-                    throw new NumberFormatException("ERROR: Input must be an integer.");
-                }
+                returnValue = Integer.parseInt(input);
 
                 if (returnValue < 0)
                 {
@@ -101,7 +95,12 @@ public class UserInput
             if (input.equals("/cancel"))
             {
                 choose();
-            } else
+            }
+            else if (input.isEmpty())
+            {
+                throw new InputMismatchException();
+            }
+            else
             {
                 returnString = input;
                 completed = true;
